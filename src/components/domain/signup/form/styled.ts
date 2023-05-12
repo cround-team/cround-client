@@ -27,10 +27,13 @@ export const InputContainer = styled.div`
           color: ${theme.colors.neutral400};
         }
       }
-      & > svg {
+      & > button {
         position: absolute;
-        top: 19px;
-        right: 18.16px;
+        top: 16px;
+        right: 16px;
+        ${theme.flex.row()};
+        width: 24px;
+        height: 24px;
       }
     }
   `};

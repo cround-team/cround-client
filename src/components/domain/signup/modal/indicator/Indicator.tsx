@@ -1,8 +1,8 @@
-import { SinupStep } from "@/types/signup";
+import { SignupStep } from "@/types/signup";
 import * as S from "./styled";
 
 type IndicatorProps = {
-  step: SinupStep;
+  step: SignupStep;
 };
 
 const STEPS = ["nickName", "platforms", "themes", "success"];
