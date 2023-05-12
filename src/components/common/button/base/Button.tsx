@@ -9,6 +9,7 @@ type ButtonProps = {
   label: string;
   size: ButtonSize;
   variant: ButtonVariant;
+  onClick?: (e: React.MouseEvent) => void;
 };
 
 export default function Button({
@@ -16,9 +17,10 @@ export default function Button({
   label,
   size,
   variant,
+  onClick,
 }: ButtonProps) {
   return (
-    <S.Button type={type} size={size} variant={variant}>
+    <S.Button type={type} size={size} variant={variant} onClick={onClick}>
       {label}
     </S.Button>
   );
