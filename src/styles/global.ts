@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-import { theme } from "./themes/theme";
+import { theme } from "@/styles/themes";
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -138,6 +138,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     overflow-y: overlay;
   }
+
   body,
   body *,
   body::before,
@@ -149,6 +150,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
   a {
+    color: inherit;
     text-decoration: none;
     cursor: pointer;
   }
@@ -162,6 +164,7 @@ const GlobalStyle = createGlobalStyle`
   }
   input,
   textarea {
+    box-sizing: border-box;
     outline: 0;
   }
   button {
@@ -171,6 +174,7 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     user-select: none;
     background-color: transparent;
+    text-align: center;
     &:disabled {
       cursor: not-allowed;
     }

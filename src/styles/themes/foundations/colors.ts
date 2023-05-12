@@ -11,6 +11,7 @@ export const colors = {
   neutral600: "#585858",
   neutral700: "#4B4B4B",
   neutral800: "#363636",
+  neutral900: "#1E1E1E",
 
   primary50: "#FFE1E6",
   primary100: "#FFCCD5",
@@ -22,4 +23,8 @@ export const colors = {
   primary700: "#D8072A",
   primary800: "#B7001F",
   primary900: "#8C0018",
-};
+
+  dim: "rgba(0, 0, 0, 0.4)",
+} as const;
+
+export type ColorType = typeof colors;
