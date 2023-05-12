@@ -3,10 +3,10 @@
 import { useImmer } from "use-immer";
 import { SignupStep } from "@/types/signup";
 import * as S from "./styled";
-import InputNickName from "../../modal/InputNickName";
-import PickPlatforms from "../../modal/PickPlatforms";
-import PickThemes from "../../modal/PickThemes";
-import SuccessSignup from "../../modal/SuccessSignup";
+import InputNickName from "../modal/InputNickName";
+import PickPlatforms from "../modal/PickPlatforms";
+import PickThemes from "../modal/PickThemes";
+import SuccessSignup from "../modal/SuccessSignup";
 import { EyeOffIcon } from "@/assets/icons";
 
 export default function SignupForm() {
@@ -54,12 +54,16 @@ export default function SignupForm() {
           <div>
             <label>비밀번호</label>
             <input placeholder="비밀번호" />
-            <EyeOffIcon />
+            <button>
+              <EyeOffIcon />
+            </button>
           </div>
           <div>
             <label>비밀번호 확인</label>
             <input placeholder="비밀번호를 확인해 주세요." />
-            <EyeOffIcon />
+            <button>
+              <EyeOffIcon />
+            </button>
           </div>
           <S.PswGuide>영문자, 숫자, 특수문자 포함 최소 8~20자</S.PswGuide>
         </S.InputContainer>

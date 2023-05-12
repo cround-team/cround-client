@@ -8,6 +8,7 @@ type ButtonProps = {
 
 export const Button = styled.button<ButtonProps>`
   ${({ theme, size, variant }) => css`
+    width: 100%;
     ${size === "sm" && theme.button.size.sm};
     ${variant === "primary" && theme.button.variant.primary};
     ${variant === "ghost" && theme.button.variant.ghost};
