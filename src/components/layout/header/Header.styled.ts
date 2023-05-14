@@ -7,12 +7,6 @@ export const Header = styled.header`
   ${({ theme }) => css`
     width: 100%;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.05);
-    h1 {
-      font-weight: 900;
-      font-size: 24px;
-      line-height: 1;
-      color: ${theme.colors.primary500};
-    }
   `};
 `;
 
@@ -22,6 +16,18 @@ export const Container = styled.div`
     width: 1200px;
     margin: 0 auto;
     padding: 19px 0;
+
+    h1 {
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 1;
+      color: ${theme.colors.primary500};
+    }
+
+    ${theme.media.mobile} {
+      width: 100%;
+      padding: 12px 0 12px 20px;
+    }
   `};
 `;
 
@@ -29,6 +35,10 @@ export const RightContainer = styled.div`
   ${({ theme }) => css`
     ${theme.flex.row()};
     gap: 41px;
+
+    ${theme.media.mobile} {
+      display: none;
+    }
   `};
 `;
 
