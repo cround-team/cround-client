@@ -5,7 +5,7 @@ type IndicatorProps = {
   step: SignupStep;
 };
 
-const STEPS = ["nickName", "platforms", "themes", "success"];
+const STEPS = ["nickName", "platforms", "success"];
 
 export default function Indicator({ step }: IndicatorProps) {
   return (
