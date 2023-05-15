@@ -10,7 +10,7 @@ export default function TestPage() {
   const [data, setData] = useState("");
 
   // 테스트 API
-  const testApi = () => {
+  const testHealth = () => {
     const fetchData = async (): Promise<void> => {
       const response = await axios.get("/cround/health");
       console.log(response);
@@ -23,7 +23,8 @@ export default function TestPage() {
     const fetchData = async (): Promise<void> => {
       const response = await axios.get("/oauth2/authorize/kakao", {
         params: {
-          redirect_uri: "https://localhost3000/test/kakao",
+          // redirect_uri: "http://54.180.6.174/oauth2/kakao",
+          redirect_uri: "https://localhost:3000/test/kakao",
         },
       });
       console.log(response);
@@ -84,15 +85,12 @@ export default function TestPage() {
   return (
     <S.Container>
       <p>{`테스트: ${data}`}</p>
-      <button onClick={testKakao}>카카오 테스트!!!!</button>
-      <button onClick={test2Kakao}>카카오 테스트2</button>
-      <Link href="https://0f7c-180-230-14-102.ngrok-free.app/oauth2/authorize/kakao?redirect_uri=https://localhost3000/test/kakao">
+      <button onClick={testHealth}>health 테스트</button>
+      <button onClick={testKakao}>카카오 테스트</button>
+      <Link href="http://54.180.6.174/oauth2/authorize/kakao?redirect_uri=http://localhost:3000/test/kakao">
         링크테스트
       </Link>
-      <Link href="https://0f7c-180-230-14-102.ngrok-free.app/oauth2/authorize/kakao">
-        링크 테스트2
-      </Link>
-      <button onClick={testApi}>테스트 실행</button>
+      {/* <button onClick={testApi}>테스트 실행</button> */}
       {/* <button onClick={kakaoOauth}>카카오 오어쓰</button> */}
       {/* <button onClick={testSignup}>일반 회원가입 테스트</button>
       <button onClick={testLogin}>일반 로그인 테스트</button>
