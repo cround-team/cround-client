@@ -1,4 +1,11 @@
-import { GoogleIcon, KakaoIcon } from "@/assets/icons";
+"use client";
+
+import {
+  // GoogleIcon,
+  GoogleMoIcon,
+  // KakaoIcon,
+  KakaoMoIcon,
+} from "@/assets/icons";
 import * as S from "./styled";
 
 export type SocialLabels = "카카오" | "구글";
@@ -12,12 +19,14 @@ export default function SocialButton({ label }: SocialButtonProps) {
     <S.Container>
       {label === "카카오" && (
         <S.KakaoButton>
-          <KakaoIcon />
+          <KakaoMoIcon />
+          <span>카카오로 회원가입하기</span>
         </S.KakaoButton>
       )}
       {label === "구글" && (
         <S.GoogleButton>
-          <GoogleIcon />
+          <GoogleMoIcon />
+          <span>구글로 회원가입하기</span>
         </S.GoogleButton>
       )}
       <S.Span>{label}</S.Span>
