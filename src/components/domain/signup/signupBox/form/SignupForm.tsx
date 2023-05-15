@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import Input from "@/components/common/input/base/Input";
-import ModalStep from "../modal/ModalStep";
+import ModalStep from "../../modal/ModalStep";
 import * as S from "./styled";
 
 const INPUTS = [
