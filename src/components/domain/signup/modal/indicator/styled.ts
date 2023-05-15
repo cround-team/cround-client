@@ -2,6 +2,10 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
+    position: absolute;
+    top: 16px;
+    right: 50%;
+    transform: translateX(50%);
     ${theme.flex.row()};
     gap: 30px;
   `};

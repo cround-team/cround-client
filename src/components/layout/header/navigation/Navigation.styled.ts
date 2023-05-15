@@ -14,7 +14,10 @@ export const Nav = styled.nav`
 
     ul {
       ${theme.flex.row("flex-start")};
-      gap: 12px;
+    }
+    ${theme.media.mobile} {
+      width: 100%;
+      padding-left: 20px;
     }
   `};
 `;

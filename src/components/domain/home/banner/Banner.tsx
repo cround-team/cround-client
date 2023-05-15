@@ -22,7 +22,10 @@ export default function Banner() {
             </p>
           </S.TextWrapper>
           <S.Figure>
-            <Image src={bannerSlideWomanImg} alt="test" />
+            <Image
+              src={bannerSlideWomanImg}
+              alt="Women Power Sharing with the World"
+            />
           </S.Figure>
         </S.Wrapper>
       </S.Container>

@@ -17,6 +17,10 @@ export const Text = styled.span`
     ${theme.typo.title.sm};
     text-align: center;
     color: ${theme.colors.neutral200};
+
+    ${theme.media.mobile} {
+      display: none;
+    }
   `};
 `;
 
@@ -25,5 +29,10 @@ export const ButtonWrapper = styled.div`
     ${theme.flex.row()};
     gap: 20px;
     width: 100%;
+
+    ${theme.media.mobile} {
+      flex-direction: column-reverse;
+      gap: 10px;
+    }
   `};
 `;
