@@ -1,76 +1,34 @@
-"use client";
-
 import Link from "next/link";
 import styled, { css } from "styled-components";
 
 export const Header = styled.header`
   ${({ theme }) => css`
-    width: 100%;
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.05);
-  `};
-`;
-
-export const Container = styled.div`
-  ${({ theme }) => css`
-    ${theme.flex.row("space-between", "center")};
-    width: 1200px;
-    margin: 0 auto;
-    padding: 19px 0;
-
-    h1 {
-      font-weight: 900;
-      font-size: 24px;
-      line-height: 1;
-      color: ${theme.colors.primary500};
-    }
-
     ${theme.media.mobile} {
       width: 100%;
-      padding: 12px 0 12px 20px;
+      background-color: ${theme.colors.white};
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.03);
     }
   `};
 `;
 
-export const RightContainer = styled.div`
+export const Wrapper = styled.div`
   ${({ theme }) => css`
-    ${theme.flex.row()};
-    gap: 41px;
-
     ${theme.media.mobile} {
-      display: none;
+      ${theme.flex.row("space-between", "center")};
+      padding: 11px 20px 12px 20px;
     }
   `};
 `;
 
-export const OauthWrapper = styled.div`
+export const Logo = styled.h1`
   ${({ theme }) => css`
-    ${theme.flex.row()};
-    gap: 15px;
-
+    width: 90px;
+    height: 25px;
     a {
-      ${theme.flex.row()};
-      width: 72px;
-      height: 32px;
-      border-radius: ${theme.radius.md};
-      ${theme.typo.button.sm};
+      width: 100%;
+      height: 100%;
     }
-  `}
-`;
-
-export const LoginLink = styled(Link)`
-  ${({ theme }) => css`
-    background-color: ${theme.colors.primary500};
-    border: 1px solid ${theme.colors.primary500};
-    color: ${theme.colors.white};
-  `}
-`;
-
-export const SignupLink = styled(Link)`
-  ${({ theme }) => css`
-    background-color: ${theme.colors.white};
-    border: 1px solid ${theme.colors.primary500};
-    color: ${theme.colors.primary500};
-  `}
+  `};
 `;
 
 export const Nav = styled.nav``;

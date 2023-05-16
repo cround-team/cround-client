@@ -3,6 +3,9 @@ export const PATH = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   MYPAGE: "/mypage",
+  CREATORS: "/creators",
+  SHORTS: "/shorts",
+  CONTENTS: "/contents",
 
   PASSWORD: {
     SEND: "/password/send",
