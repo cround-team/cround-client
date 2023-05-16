@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 
-import type { StyledListProps } from "./SelectLink";
+type ListProps = {
+  isActive: boolean;
+};
 
 export const ListContainer = styled.ul`
   ${({ theme }) => css`
@@ -16,7 +18,7 @@ export const ListContainer = styled.ul`
   `}
 `;
 
-export const List = styled.li<StyledListProps>`
+export const List = styled.li<ListProps>`
   ${({ theme, isActive }) => css`
     width: 50%;
     padding: 16px 8px;

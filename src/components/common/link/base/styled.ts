@@ -1,12 +1,15 @@
-import styled, { css } from "styled-components";
-import { ButtonVariant, ButtonSize } from "./Button";
+"use client";
 
-type ButtonProps = {
-  size: ButtonSize;
-  variant: ButtonVariant;
+import Link from "next/link";
+import styled, { css } from "styled-components";
+import { LinkSize, LinkVariant } from "./LinkButton";
+
+type LinkProps = {
+  size: LinkSize;
+  variant: LinkVariant;
 };
 
-export const Button = styled.button<ButtonProps>`
+export const LinkButton = styled(Link)<LinkProps>`
   ${({ theme, size, variant }) => css`
     box-sizing: border-box;
     width: 100%;

@@ -30,18 +30,3 @@ export const PswGuide = styled.span`
     }
   `};
 `;
-
-export const SubmitButton = styled.button`
-  ${({ theme }) => css`
-    width: 100%;
-    padding: 20px 0;
-    border-radius: ${theme.radius.md};
-    background-color: ${theme.colors.primary500};
-    ${theme.typo.button.sm};
-    color: ${theme.colors.white};
-
-    ${theme.media.mobile} {
-      padding: 16px 0;
-    }
-  `};
-`;

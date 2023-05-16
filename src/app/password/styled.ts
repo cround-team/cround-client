@@ -2,14 +2,17 @@ import styled, { css } from "styled-components";
 
 export const Section = styled.section`
   ${({ theme }) => css`
-    padding: 70px 0;
+    ${theme.media.mobile} {
+      width: 360px;
+      margin: 0 auto;
+    }
   `};
 `;
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    width: 400px;
-    height: 100%;
-    margin: 0 auto;
+    ${theme.media.mobile} {
+      padding: 40px 20px 40px 20px;
+    }
   `};
 `;
