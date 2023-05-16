@@ -1,8 +1,21 @@
 "use client";
 
-import { EyeOffIcon } from "@/assets/icons";
-import * as S from "./styled";
 import { useImmer } from "use-immer";
+import Input from "@/components/common/input/base/Input";
+import Button from "@/components/common/button/base/Button";
+import * as S from "./styled";
+
+const INPUTS = [
+  {
+    label: "이메일",
+    id: "email",
+  },
+  {
+    label: "비밀번호",
+    id: "psw",
+    util: "eyeOff",
+  },
+];
 
 export default function LoginForm() {
   const [user, setUser] = useImmer({
@@ -10,7 +23,7 @@ export default function LoginForm() {
     psw: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("로그인 성공!! (임시)");
   };
@@ -26,32 +39,27 @@ export default function LoginForm() {
   };
 
   return (
-    <>
-      <S.Form onSubmit={handleSubmit}>
-        <S.InputContainer>
-          <div>
-            <label>이메일</label>
-            <input
-              name="email"
-              placeholder="이메일"
-              autoFocus
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label>비밀번호</label>
-            <input
-              name="psw"
-              placeholder="비밀번호"
-              onChange={handleInputChange}
-            />
-            <button type="button">
-              <EyeOffIcon />
-            </button>
-          </div>
-        </S.InputContainer>
-        <S.SubmitButton onClick={handleSubmit}>로그인</S.SubmitButton>
-      </S.Form>
-    </>
+    <S.Form onSubmit={handleSubmit}>
+      <S.InputContainer>
+        {INPUTS.map((input, idx) => (
+          <Input
+            key={input.id}
+            autoFocus={idx === 0}
+            label={input.label}
+            id={input.id}
+            name={input.id}
+            placeholder={input.label}
+            util={input.util}
+            onChange={handleInputChange}
+          />
+        ))}
+      </S.InputContainer>
+      <Button
+        label="로그인"
+        size="56"
+        variant="primary"
+        onClick={handleSubmit}
+      />
+    </S.Form>
   );
 }

@@ -1,14 +1,15 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  padding: 8px;
-
   ${({ theme }) => css`
-    a {
-      ${theme.flex.row("flex-start")};
-      gap: 4px;
-      ${theme.typo.button.sm};
-      color: ${theme.colors.primary500};
+    ${theme.media.mobile} {
+      margin-top: 16px;
+      margin-bottom: 212px;
+      a {
+        ${theme.flex.row("flex-end")};
+        ${theme.typo.button.sm};
+        color: ${theme.colors.neutral400};
+      }
     }
-  `}
+  `};
 `;
