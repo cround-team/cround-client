@@ -1,9 +1,10 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+
 import { GoogleMoIcon, KakaoMoIcon } from "@/assets/icons";
-import * as S from "./styled";
-import useCurrentPath from "@/hooks/useCurrentPath";
 import { PATH } from "@/constants";
+import * as S from "./styled";
 
 export type SocialLabels = "카카오" | "구글";
 
@@ -12,7 +13,7 @@ type SocialButtonProps = {
 };
 
 export default function SocialButton({ label }: SocialButtonProps) {
-  const currentPath = useCurrentPath();
+  const pathname = usePathname();
 
   return (
     <S.Container>

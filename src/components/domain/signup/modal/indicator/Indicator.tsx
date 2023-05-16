@@ -1,17 +1,17 @@
-import { SignupStep } from "@/types/signup";
+"use client";
 import * as S from "./styled";
 
 type IndicatorProps = {
-  step: SignupStep;
+  type: "slide" | "modal";
+  steps: string[];
+  current: string;
 };
 
-const STEPS = ["nickName", "platforms", "success"];
-
-export default function Indicator({ step }: IndicatorProps) {
+export default function Indicator({ type, steps, current }: IndicatorProps) {
   return (
     <S.Container>
-      {Array.from(STEPS).map((el) => {
-        return el === step ? (
+      {Array.from(steps).map((el) => {
+        return el === current ? (
           <S.ActiveBox key={el}></S.ActiveBox>
         ) : (
           <S.Box key={el}></S.Box>

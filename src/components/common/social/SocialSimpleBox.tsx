@@ -1,12 +1,12 @@
 "use client";
+import { usePathname } from "next/navigation";
 
-import useCurrentPath from "@/hooks/useCurrentPath";
 import { PATH } from "@/constants";
 import SocialButton from "../button/social/SocialButton";
 import * as S from "./styled";
 
 export default function SocialSimpleBox() {
-  const pathname = useCurrentPath();
+  const pathname = usePathname();
   return (
     <S.Container>
       {pathname === PATH.LOGIN && <S.Text>간편 로그인</S.Text>}

@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import useCurrentPath from "@/hooks/useCurrentPath";
 import { PATH } from "@/constants";
 import * as S from "./styled";
 
 export default function SelectLink() {
-  const pathname = useCurrentPath();
+  const pathname = usePathname();
 
   return (
     <S.ListContainer>

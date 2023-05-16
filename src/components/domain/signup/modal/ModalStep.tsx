@@ -13,6 +13,8 @@ import Indicator from "./indicator/Indicator";
 import * as S from "./styled";
 import { useRouter } from "next/navigation";
 
+const STEPS = ["nickname", "platforms", "success"];
+
 export default function ModalStep() {
   const router = useRouter();
   const [isMounted, setIsMounted] = useImmer({
@@ -45,7 +47,7 @@ export default function ModalStep() {
     <Modal isMounted={true}>
       <S.Layout>
         <S.Container>
-          <Indicator step={currentStep} />
+          <Indicator type="modal" steps={STEPS} current={currentStep} />
           {isMounted.nickName && <NickNameStep onNextStep={handleNextStep} />}
           {isMounted.platforms && (
             <PlatformStep
