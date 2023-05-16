@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import Input from "@/components/common/input/base/Input";
+import Button from "@/components/common/button/base/Button";
 import ModalStep from "../../modal/ModalStep";
 import * as S from "./styled";
 
@@ -31,7 +32,7 @@ const INPUTS = [
 export default function SignupForm() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("우선 성공 로직");
     setIsModalOpen(true);
@@ -57,7 +58,12 @@ export default function SignupForm() {
           ))}
           <S.PswGuide>영문자, 숫자, 특수문자 포함 최소 8~20자</S.PswGuide>
         </S.InputContainer>
-        <S.SubmitButton onClick={handleSubmit}>가입하기</S.SubmitButton>
+        <Button
+          label="가입하기"
+          size="56"
+          variant="primary"
+          onClick={handleSubmit}
+        />
       </S.Form>
       {isModalOpen && <ModalStep />}
     </>

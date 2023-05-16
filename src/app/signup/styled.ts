@@ -9,7 +9,7 @@ export const Section = styled.section`
     ${theme.media.mobile} {
       width: 360px;
       margin: 0 auto;
-      padding: 40px 20px 32px 20px;
+      padding: 40px 20px 50px 20px;
     }
   `};
 `;
