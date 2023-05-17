@@ -10,3 +10,6 @@ export { default as KakaoMoIcon } from "@/assets/icons/kakao-mo.svg";
 export { default as CroundLogoIcon } from "@/assets/icons/cround-logo.svg";
 export { default as BellIcon } from "@/assets/icons/bell.svg";
 export { default as HamburgerIcon } from "@/assets/icons/hamburger.svg";
+export { default as ChevronRightBlackIcon } from "@/assets/icons/chevron-right-black.svg";
+export { default as HeartIcon } from "@/assets/icons/heart.svg";
+export { default as BookmarkIcon } from "@/assets/icons/bookmark.svg";
