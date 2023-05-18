@@ -6,6 +6,7 @@ export type BaseCardData = {
 
 export type CreatorCardData = BaseCardData & {
   theme: string;
+  desc: string;
 };
 
 export type ShortCardData = BaseCardData & {

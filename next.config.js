@@ -29,8 +29,8 @@ const nextConfig = {
         destination: `${process.env.NEXT_PUBLIC_TEST_URL}/cround/auth`,
       },
       {
-        source: "/oauth2/authorize/kakao",
-        destination: `${process.env.NEXT_PUBLIC_TEST_URL}/oauth2/authorize/kakao`,
+        source: "/auth/kakao/login",
+        destination: `${process.env.NEXT_PUBLIC_TEST_URL}/auth/kakao/login`,
       },
     ];
   },
