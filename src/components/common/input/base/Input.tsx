@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactElement } from "react";
 import * as S from "./styled";
 import EyeOffButton from "../../button/eyeOff/EyeOffButton";
