@@ -5,36 +5,33 @@ import axios from "axios";
 
 import * as S from "./styled";
 import Link from "next/link";
+import { KAKAO_AUTH_URL, KAKAO_AUTH_LOGOUT } from "@/service/kakaoOauth";
 
 export default function TestPage() {
   const [data, setData] = useState("");
+
+  const testKakao = () => {
+    const fetchData = async (): Promise<void> => {
+      const response = await axios.get(KAKAO_AUTH_URL);
+      console.log(response);
+    };
+    fetchData();
+  };
 
   // 테스트 API
   const testHealth = () => {
     const fetchData = async (): Promise<void> => {
       const response = await axios.get("/cround/health");
-      console.log(response);
+      console.log(response.data);
       setData(response.data.status);
     };
     fetchData();
   };
 
-  const testKakao = () => {
+  // 카카오 로그아웃
+  const kakaoLogout = () => {
     const fetchData = async (): Promise<void> => {
-      const response = await axios.get("/oauth2/authorize/kakao", {
-        params: {
-          // redirect_uri: "http://54.180.6.174/oauth2/kakao",
-          redirect_uri: "https://localhost:3000/test/kakao",
-        },
-      });
-      console.log(response);
-    };
-    fetchData();
-  };
-
-  const test2Kakao = () => {
-    const fetchData = async (): Promise<void> => {
-      const response = await axios.get("/oauth2/authorize/kakao");
+      const response = await axios.get(KAKAO_AUTH_LOGOUT);
       console.log(response);
     };
     fetchData();
@@ -62,39 +59,12 @@ export default function TestPage() {
     fetchData();
   };
 
-  // 일반 로그인
-  const testLogin = () => {
-    const fetchData = async (): Promise<void> => {
-      const response = await axios.post(
-        "/api/members/login/token",
-        {
-          email: "cround@cround.com",
-          password: "cround",
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log(response);
-    };
-    fetchData();
-  };
-
   return (
     <S.Container>
-      <p>{`테스트: ${data}`}</p>
-      <button onClick={testHealth}>health 테스트</button>
-      <button onClick={testKakao}>카카오 테스트</button>
-      <Link href="http://54.180.6.174/oauth2/authorize/kakao?redirect_uri=http://localhost:3000/test/kakao">
-        링크테스트
-      </Link>
-      {/* <button onClick={testApi}>테스트 실행</button> */}
-      {/* <button onClick={kakaoOauth}>카카오 오어쓰</button> */}
-      {/* <button onClick={testSignup}>일반 회원가입 테스트</button>
-      <button onClick={testLogin}>일반 로그인 테스트</button>
-      <button onClick={testOauth}>Oauth 테스트</button> */}
+      <button onClick={testKakao}>카카오 버튼 테스트</button>
+      <Link href={KAKAO_AUTH_URL}>카카오 테스트</Link>
+      <button onClick={testHealth}>헬쓰 테스트</button>
+      <Link href={KAKAO_AUTH_LOGOUT}>로그아웃 테스트</Link>
     </S.Container>
   );
 }

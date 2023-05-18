@@ -22,6 +22,6 @@ export const Link = styled(NextLink)`
 export const CardWrapper = styled.div`
   ${({ theme }) => css`
     ${theme.flex.row()};
-    gap: 17px;
+    gap: 16px;
   `};
 `;

@@ -12,7 +12,7 @@ export const Wrapper = styled.section`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.col("cetner", "space-between")};
-      gap: 24px;
+      gap: 8px;
       margin-top: 40px;
     }
   `};

@@ -2,42 +2,58 @@
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 export default function KaKaoPage() {
   const [code, setCode] = useState();
+
   useEffect(() => {
     let code: any = new URL(window.location.href).searchParams.get("code");
     setCode(code);
-    console.log(code);
+    code && kakaoCodeTest(code);
   }, []);
 
   // 테스트 API
   const testApi = () => {
     const fetchData = async (): Promise<void> => {
-      const response = await axios.get("cround/health");
+      const response = await axios.get("/cround/health");
       console.log(response.data);
     };
     fetchData();
   };
 
-  //테스트3 기존 오어쓰 방식
-  const baseOauth = () => {
+  const kakaoCodeTest = (code: string) => {
+    console.log(code);
     const fetchData = async (): Promise<void> => {
-      const response = await axios.get("/oauth2/kakao", {
-        params: {
-          code: code,
-        },
-      });
-      console.log(response);
+      const response = await axios.get(
+        `http://54.180.6.174/auth/kakao/login?code=${code}`
+      );
+      // const response = await axios.get("/auth/kakao/login", {
+      //   params: { code },
+      // });
+
+      console.log(response.data);
     };
     fetchData();
   };
 
   return (
-    <>
-      <p>이곳은 리다이렉트용 카카오페이지입니다.</p>
+    <Container>
+      <h1>이곳은 리다이렉트용 카카오페이지입니다.</h1>
       <button onClick={testApi}>헬쓰ㅇㅇㅇㅇ</button>
-      <button onClick={baseOauth}>베이스 오어쓰</button>
-    </>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 60px;
+  text-align: center;
+  h1 {
+    font-size: 26px;
+  }
+`;

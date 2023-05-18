@@ -13,7 +13,7 @@ export const Container = styled.div`
       h3 {
         ${theme.typo.title.sm};
         color: ${theme.colors.neutral900};
-        ${theme.text.skip("40px")};
+        ${theme.text.skip(2)};
       }
     }
   `};
