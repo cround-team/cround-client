@@ -1,6 +1,6 @@
 import * as S from "./styled";
 
-export type LinkSize = "sm" | "48" | "56";
+export type LinkSize = "sm" | "32" | "48" | "56";
 export type LinkVariant = "primary" | "ghost";
 
 type LinkButtonProps = {

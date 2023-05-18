@@ -1,27 +1,22 @@
 "use client";
 
-import Link from "next/link";
-
-import * as S from "./Navigation.styled";
-import { usePathname } from "next/navigation";
+import { PATH } from "@/constants";
+import * as S from "./styled";
+import NavItem from "@/components/common/navItem/NavItem";
 
 const LINKS = [
-  { href: "/", name: "홈" },
-  { href: "/creator", name: "크리에이터" },
-  { href: "/shortClass", name: "숏클래스" },
-  { href: "/contents", name: "콘텐츠" },
+  { path: PATH.ROOT, label: "홈" },
+  { path: PATH.CREATORS, label: "크리에이터" },
+  { path: PATH.SHORTS, label: "숏클래스" },
+  { path: PATH.CONTENTS, label: "콘텐츠" },
 ];
 
 export default function Navigation() {
-  const pathname = usePathname();
-
   return (
     <S.Nav>
       <ul>
         {LINKS.map((link) => (
-          <S.List key={link.name} isActive={link.href === pathname}>
-            <Link href={link.href}>{link.name}</Link>
-          </S.List>
+          <NavItem key={link.label} path={link.path} label={link.label} />
         ))}
       </ul>
     </S.Nav>
