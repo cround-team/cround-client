@@ -1,6 +1,6 @@
 import * as S from "./Button.styled";
 
-export type ButtonSize = "sm" | "48" | "56";
+export type ButtonSize = "sm" | "32" | "48" | "56";
 export type ButtonVariant = "primary" | "ghost";
 export type ButtonType = "button" | "submit" | "reset";
 
