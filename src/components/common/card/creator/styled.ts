@@ -31,11 +31,12 @@ export const Figure = styled.figure`
   `};
 `;
 
-export const Desc = styled.div`
+export const TitleWrapper = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.col()};
       gap: 4px;
+      text-align: center;
 
       h2 {
         ${theme.typo.button.md};
@@ -45,6 +46,17 @@ export const Desc = styled.div`
         ${theme.typo.body.sm};
         color: ${theme.colors.neutral900};
       }
+    }
+  `};
+`;
+
+export const Desc = styled.p`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      ${theme.typo.body.sm};
+      color: ${theme.colors.neutral700};
+      ${theme.text.skip(3)};
+      text-align: center;
     }
   `};
 `;

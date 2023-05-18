@@ -22,8 +22,8 @@ export default function HomePageContainer() {
         <CreatorList creatorType="a" />
         <CreatorList creatorType="b" />
         <CreatorList creatorType="c" />
-        <ShortList />
-        <ContentList />
+        {/* <ShortList />
+        <ContentList /> */}
       </S.Wrapper>
     </S.Section>
   );
