@@ -163,7 +163,8 @@ const GlobalStyle = createGlobalStyle`
     all: unset;
   }
   input,
-  textarea {
+  textarea,
+  button {
     box-sizing: border-box;
     outline: 0;
   }
