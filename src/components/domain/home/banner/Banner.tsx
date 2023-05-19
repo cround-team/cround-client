@@ -52,14 +52,14 @@ export default function Banner() {
       }}
     >
       {SLIDES.map((slide, idx) => (
-        <SwiperSlide>
+        <SwiperSlide key={idx}>
           <S.Wrapper aria-label={slide.label}>
             <S.TextWrapper>
               <S.Title aria-label={slide.label}>{slide.title}</S.Title>
               <S.Sub aria-label={slide.label}>{slide.sub}</S.Sub>
             </S.TextWrapper>
             <S.Figure aria-label={slide.label}>
-              <Image src={slide.src} alt={slide.alt} />
+              <Image src={slide.src} alt={slide.alt} priority />
             </S.Figure>
           </S.Wrapper>
         </SwiperSlide>

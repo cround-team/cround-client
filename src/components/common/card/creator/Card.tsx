@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 import type { CreatorCardData } from "@/types/card";
+import { media } from "@/styles/themes/foundations";
 import { PATH } from "@/constants";
 import * as S from "./styled";
 
@@ -15,7 +16,7 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
   return (
     <S.Article>
       <S.Figure>
-        <Image src={img} fill={true} alt="profile" />
+        <Image src={img} fill={true} alt="profile" sizes={media.images.sizes} />
       </S.Figure>
       <S.TitleWrapper>
         <h3>{name}</h3>

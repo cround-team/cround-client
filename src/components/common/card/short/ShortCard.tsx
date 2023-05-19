@@ -3,9 +3,8 @@
 import Image from "next/image";
 
 import type { ShortCardData } from "@/types/card";
-import { PATH } from "@/constants";
 import TextBox from "../desc/textBox/TextBox";
-import UserBox from "../desc/userBox/UserBox";
+import { media } from "@/styles/themes/foundations";
 import * as S from "./styled";
 
 type ShortCardProps = {
@@ -13,19 +12,13 @@ type ShortCardProps = {
 };
 
 export default function ShortCard({ short }: ShortCardProps) {
-  const { name, platform, img, profileImg, title, like, bookmark } = short;
+  const { platform, img, title } = short;
   return (
     <S.Article>
       <S.Figure>
-        <Image src={img} fill={true} alt="profile" />
+        <Image src={img} fill={true} alt="profile" sizes={media.images.sizes} />
       </S.Figure>
       <TextBox platform={platform} title={title} />
-      <UserBox
-        profileImg={profileImg}
-        name={name}
-        like={like}
-        bookmark={bookmark}
-      />
     </S.Article>
   );
 }

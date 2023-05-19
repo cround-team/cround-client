@@ -9,17 +9,22 @@ export type CreatorCardData = BaseCardData & {
   desc: string;
 };
 
-export type ShortCardData = BaseCardData & {
+export type ShortCardData = {
   title: string;
-  profileImg: string;
-  like: number;
-  bookmark: number;
+  platform: string;
+  img: string;
 };
 
-export type ContentCardData = BaseCardData & {
+export type ContentCardData = {
+  id: string;
   title: string;
-  profileImg: string;
+  platform: string;
   desc: string;
-  like: number;
-  bookmark: number;
 };
+
+// export type ShortCardData = BaseCardData & {
+//   title: string;
+//   profileImg: string;
+//   like: number;
+//   bookmark: number;
+// };

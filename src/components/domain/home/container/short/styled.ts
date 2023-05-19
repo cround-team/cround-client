@@ -9,8 +9,7 @@ export const Link = styled(NextLink)`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.row("flex-start")};
-      gap: 9px;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
       h2 {
         ${theme.typo.button.md};
         color: ${theme.colors.neutral900};
@@ -23,7 +22,7 @@ export const CardWrapper = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.row()};
-      gap: 16px;
+      flex-wrap: wrap;
     }
   `};
 `;

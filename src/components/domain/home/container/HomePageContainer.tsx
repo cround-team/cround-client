@@ -19,11 +19,13 @@ export default function HomePageContainer() {
         placeholder="플랫폼 또는 관심 정보를 입력해 주세요"
       />
       <S.Wrapper>
-        <CreatorList creatorType="a" />
-        <CreatorList creatorType="b" />
-        <CreatorList creatorType="c" />
-        {/* <ShortList />
-        <ContentList /> */}
+        <S.CreatorWrapper>
+          <CreatorList creatorType="a" />
+          <CreatorList creatorType="b" />
+          <CreatorList creatorType="c" />
+        </S.CreatorWrapper>
+        <ShortList />
+        <ContentList />
       </S.Wrapper>
     </S.Section>
   );
