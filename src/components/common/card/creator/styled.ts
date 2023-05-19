@@ -6,6 +6,7 @@ export const Article = styled.article`
       ${theme.flex.col()};
       gap: 8px;
       width: 50%;
+      height: 212px;
       padding: 16px;
       background-color: ${theme.colors.white};
       border: 1px solid ${theme.colors.neutral100};
@@ -25,6 +26,7 @@ export const Figure = styled.figure`
 
       img {
         width: 100%;
+        height: 100%;
         border-radius: 50%;
       }
     }

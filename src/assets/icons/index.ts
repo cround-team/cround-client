@@ -13,3 +13,6 @@ export { default as HamburgerIcon } from "@/assets/icons/hamburger.svg";
 export { default as ChevronRightBlackIcon } from "@/assets/icons/chevron-right-black.svg";
 export { default as HeartIcon } from "@/assets/icons/heart.svg";
 export { default as BookmarkIcon } from "@/assets/icons/bookmark.svg";
+export { default as FooterTwiterIcon } from "@/assets/icons/footer-twiter.svg";
+export { default as FooterFacebookIcon } from "@/assets/icons/footer-facebook.svg";
+export { default as FooterInstagramIcon } from "@/assets/icons/footer-instagram.svg";
