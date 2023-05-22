@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { ChevronRightIcon } from "@/assets/icons";
+import { ChevronRightIcon } from "@/assets/icons/arrow";
 import * as S from "./styled";
 import { PATH } from "@/constants";
 
