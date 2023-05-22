@@ -4,7 +4,6 @@ import Image from "next/image";
 
 import type { CreatorCardData } from "@/types/card";
 import { media } from "@/styles/themes/foundations";
-import { PATH } from "@/constants";
 import * as S from "./styled";
 
 type CreatorCardProps = {

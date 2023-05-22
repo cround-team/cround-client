@@ -8,10 +8,12 @@ export const Input = styled.input<InputProps>`
   ${({ theme, isHidden }) => css`
     ${theme.media.mobile} {
       display: ${isHidden && "none"};
-      :checked + svg {
+      :checked + img {
         opacity: 1;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15),
+          0px 5px 5px rgba(0, 0, 0, 0.15);
       }
-      :not(:checked) + svg {
+      :not(:checked) + img {
         opacity: 0.5;
       }
     }
@@ -25,13 +27,13 @@ export const Label = styled.label`
       width: 85px;
       height: 105px;
 
-      :hover svg {
+      /* :hover img {
         box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15),
           0px 5px 5px rgba(0, 0, 0, 0.15);
         opacity: 1;
-      }
+      } */
 
-      svg {
+      img {
         transition: all 0.2s ease-in-out;
         border: 1px solid #d6d6d6;
         border-radius: 18.42px;

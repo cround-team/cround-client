@@ -1,4 +1,4 @@
-export default function ShortClassPage() {
+export default function ShortsPage() {
   return (
     <>
       <div>

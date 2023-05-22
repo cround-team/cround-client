@@ -19,6 +19,7 @@ export const Container = styled.div`
 export const Input = styled.input`
   ${({ theme }) => css`
     ${theme.media.mobile} {
+      width: 90%;
       ${theme.typo.label.lg};
       color: ${theme.colors.neutral900};
       caret-color: ${theme.colors.primary500};

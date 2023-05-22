@@ -3,26 +3,31 @@ import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import Image from "next/image";
-import { ContentCardData, CreatorCardData, ShortCardData } from "@/types/card";
-import { PropsWithChildren } from "react";
 
-//   pagination?: {
-//     clickable: boolean;
-//     renderBullet: (index: number, className: string) => string;
-//   };
+type BreakPoints = {
+  [key: number]: {
+    slidesPerView: number;
+    spaceBetween: number;
+  };
+};
 
 type SwiperProps = {
   isPagination?: boolean;
   isAutoPlay?: boolean;
-  // items: CreatorCardData[] | ShortCardData[] | ContentCardData[] | undefined;
+  slidesPerView: number;
+  spaceBetween: number;
+  breakPoints: BreakPoints;
+  centeredSlides?: boolean;
   children: React.ReactNode;
 };
 
 export default function CustomSwiper({
   isPagination,
   isAutoPlay,
-  // items,
+  slidesPerView,
+  spaceBetween,
+  breakPoints,
+  centeredSlides = false,
   children,
 }: SwiperProps) {
   const pagination = {
@@ -41,6 +46,11 @@ export default function CustomSwiper({
     <Swiper
       pagination={isPagination ? pagination : false}
       autoplay={isAutoPlay ? autoPlay : false}
+      slidesPerView={slidesPerView}
+      spaceBetween={spaceBetween}
+      breakpoints={breakPoints}
+      centeredSlides={centeredSlides}
+      // initialSlide={1}
     >
       {children}
     </Swiper>
