@@ -25,7 +25,7 @@ const SERVICE = [
     path: PATH.CONTENTS,
   },
   {
-    label: "크리에이터 등록",
+    label: "크리에이터로 참여하기",
     path: PATH.CREATORS,
   },
 ];
@@ -54,7 +54,7 @@ export default function Footer() {
             <h3>서비스</h3>
             <ul>
               {SERVICE.map((list) => (
-                <li>
+                <li key={list.label}>
                   <Link href={list.path}>{list.label}</Link>
                 </li>
               ))}
@@ -64,7 +64,7 @@ export default function Footer() {
             <h3>크라운드</h3>
             <ul>
               {CROUND.map((list) => (
-                <li>
+                <li key={list.label}>
                   <Link href={list.path}>{list.label}</Link>
                 </li>
               ))}
