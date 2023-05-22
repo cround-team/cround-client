@@ -14,3 +14,4 @@
 |           🩹           |   `adhesive_bandage`   | 단순한, critical하지 않은 이슈 수정 |
 | :closed_lock_with_key: | `closed_lock_with_key` |         설정 파일 업데이트          |
 |           🍱           |        `bento`         | asset 파일(이미지, 아이콘 등) 추가  |
+|   :white_check_mark:   |   `white_check_mark`   |          테스트 추가/수정           |
