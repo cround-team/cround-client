@@ -11,6 +11,8 @@ export const Link = styled(NextLink)`
       ${theme.flex.row("flex-start")};
       margin-bottom: 8px;
       h2 {
+        ${theme.flex.row()};
+        gap: 8px;
         ${theme.typo.button.md};
         color: ${theme.colors.neutral900};
       }

@@ -2,9 +2,26 @@ import styled, { css } from "styled-components";
 
 export const Section = styled.section`
   ${({ theme }) => css`
-    width: 100%;
-    height: 120px;
-    background-color: white;
-    border-bottom: 1px solid #d2d2d2;
+    ${theme.media.mobile} {
+      margin-top: 40px;
+      margin-bottom: 44px;
+    }
+  `};
+`;
+
+export const Wrapper = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      ${theme.flex.row()};
+    }
+  `};
+`;
+
+export const Figure = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      width: 48px;
+      height: 48px;
+    }
   `};
 `;

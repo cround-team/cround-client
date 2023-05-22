@@ -5,7 +5,7 @@ export const Article = styled.article`
     ${theme.media.mobile} {
       ${theme.flex.col()};
       gap: 8px;
-      width: 50%;
+      width: 152px;
       height: 212px;
       padding: 16px;
       background-color: ${theme.colors.white};

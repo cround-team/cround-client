@@ -1,12 +1,13 @@
 "use client";
 
-import { ChevronRightBlackIcon } from "@/assets/icons";
+import { ChevronRightBlackIcon } from "@/assets/icons/arrow";
 import { PATH } from "@/constants";
 import * as S from "./styled";
 import ContentCard from "@/components/common/card/content/ContentCard";
 import { useEffect, useState } from "react";
 import { ContentCardData } from "@/types/card";
 import { getMainContents } from "@/service/mock/test";
+import Image from "next/image";
 
 export default function ContentList() {
   const [contents, setContents] = useState<ContentCardData[]>();
@@ -27,7 +28,15 @@ export default function ContentList() {
   return (
     <S.Section>
       <S.Link href={PATH.CONTENTS}>
-        <h2>많은 사람들이 원한 정보들 바로 여기에!</h2>
+        <h2>
+          <Image
+            width={16}
+            height={16}
+            src="/images/title/book.png"
+            alt="book"
+          />
+          많은 사람들이 원한 정보들 바로 여기에!
+        </h2>
         <ChevronRightBlackIcon />
       </S.Link>
       <S.CardWrapper>
