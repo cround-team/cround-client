@@ -4,9 +4,14 @@ export const CurOptionBtn = styled.button`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.row("space-between")};
-      gap: 6px;
       ${theme.typo.button.md};
       color: ${theme.colors.neutral900};
+
+      svg {
+        width: 24px;
+        height: 24px;
+        stroke: ${theme.colors.neutral900};
+      }
     }
   `};
 `;
@@ -37,6 +42,12 @@ export const OptionList = styled.ul`
           width: 100%;
           ${theme.typo.button.md};
           color: ${theme.colors.neutral900};
+
+          svg {
+            width: 24px;
+            height: 24px;
+            stroke: ${theme.colors.neutral900};
+          }
 
           span {
             ${theme.flex.row("flex-end")};
