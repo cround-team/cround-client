@@ -26,6 +26,19 @@ export async function getListCreators(): Promise<CreatorCardData[]> {
   }
 }
 
+export async function getDetailCreators(): Promise<any[]> {
+  const filePath = "/data/user/creator.json";
+
+  try {
+    const response = await fetch(filePath);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
 export async function getMainShorts(): Promise<ShortCardData[]> {
   const filePath = "/data/card/short.json"; // 파일 경로를 수정해야 할 수 있습니다.
 

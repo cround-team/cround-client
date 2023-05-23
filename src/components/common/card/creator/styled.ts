@@ -9,7 +9,7 @@ export const Article = styled.article`
       height: 212px;
       padding: 16px;
       background-color: ${theme.colors.white};
-      border: 1px solid ${theme.colors.neutral100};
+      border: 1px solid ${theme.colors.neutral50};
       border-radius: ${theme.radius.md};
     }
   `};
