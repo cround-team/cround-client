@@ -2,9 +2,9 @@
 
 import SortDropdown, { Options } from "../../dropdown/sort/SortDropdown";
 import { FilterIcon } from "@/assets/icons";
-import * as S from "./styled";
 import { useState } from "react";
 import PlatFormModal from "../../modal/platform/PlatFormModal";
+import * as S from "./styled";
 
 type PageFilterProps = {
   options: Options[];
@@ -18,9 +18,9 @@ export default function PageFilter({ options }: PageFilterProps) {
   return (
     <>
       <S.Container>
-        <button onClick={() => handleOpenModal()}>
+        <S.FilterButton onClick={() => handleOpenModal()}>
           <FilterIcon />
-        </button>
+        </S.FilterButton>
         <SortDropdown options={options} />
       </S.Container>
       {isModalOpen && <PlatFormModal />}
