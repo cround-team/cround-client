@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronRightBlackIcon } from "@/assets/icons/arrow";
+import { ChevronRightIcon } from "@/assets/icons/arrow";
 import { PATH } from "@/constants";
 import CreatorCard from "@/components/common/card/creator/Card";
 
@@ -66,7 +66,7 @@ export default function CreatorList({ creatorType }: CreatorListProps) {
             크리에이터로 핫데뷔를 도와드릴게요!
           </h2>
         )}
-        <ChevronRightBlackIcon />
+        <ChevronRightIcon />
       </S.Link>
       <S.CardWrapper>
         {creators?.map((creator) => (

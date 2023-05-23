@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronRightBlackIcon } from "@/assets/icons/arrow";
+import { ChevronRightIcon } from "@/assets/icons/arrow";
 import { PATH } from "@/constants";
 import * as S from "./styled";
 import ContentCard from "@/components/common/card/content/ContentCard";
@@ -37,7 +37,7 @@ export default function ContentList() {
           />
           많은 사람들이 원한 정보들 바로 여기에!
         </h2>
-        <ChevronRightBlackIcon />
+        <ChevronRightIcon />
       </S.Link>
       <S.CardWrapper>
         {contents?.map((content) => (
