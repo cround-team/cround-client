@@ -14,6 +14,7 @@ export { default as BookmarkIcon } from "@/assets/icons/bookmark.svg";
 export { default as FooterTwiterIcon } from "@/assets/icons/footer-twiter.svg";
 export { default as FooterFacebookIcon } from "@/assets/icons/footer-facebook.svg";
 export { default as FooterInstagramIcon } from "@/assets/icons/footer-instagram.svg";
-export { default as CheckBlackIcon } from "@/assets/icons/check-black.svg";
 
+export { default as CheckIcon } from "@/assets/icons/check.svg";
 export { default as FilterIcon } from "@/assets/icons/utils/filter.svg";
+export { default as RatingStarIcon } from "@/assets/icons/ratingStar.svg";
