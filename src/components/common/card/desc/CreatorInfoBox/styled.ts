@@ -4,37 +4,45 @@ export const Container = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.row("space-between")};
+      width: 100%;
     }
   `};
 `;
 
-export const LeftContainer = styled.div`
+export const ImageNameGroup = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.row()};
       gap: 4px;
+    }
+  `};
+`;
 
-      figure {
-        position: relative;
-        width: 18px;
-        height: 18px;
+export const Figure = styled.figure`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      position: relative;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+
+      img {
         border-radius: 50%;
-        background-color: #d9d9d9;
-
-        img {
-          border-radius: 50%;
-        }
-      }
-
-      span {
-        ${theme.typo.label.md};
-        color: ${theme.colors.neutral500};
       }
     }
   `};
 `;
 
-export const RightContainer = styled.div`
+export const Name = styled.span`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      ${theme.typo.label.md};
+      color: ${theme.colors.neutral500};
+    }
+  `};
+`;
+
+export const LikeBookmarkGroup = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.row()};

@@ -3,9 +3,8 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      ${theme.flex.col("flex-start")};
+      ${theme.flex.col("center", "flex-start")};
       gap: 4px;
-      padding: 16px;
 
       span {
         ${theme.typo.body.sm};
