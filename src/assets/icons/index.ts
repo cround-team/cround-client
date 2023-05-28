@@ -18,3 +18,6 @@ export { default as FooterInstagramIcon } from "@/assets/icons/footer-instagram.
 export { default as CheckIcon } from "@/assets/icons/check.svg";
 export { default as FilterIcon } from "@/assets/icons/utils/filter.svg";
 export { default as RatingStarIcon } from "@/assets/icons/ratingStar.svg";
+
+export { default as XCloseIcon } from "@/assets/icons/utils/x-close.svg";
+export { default as SmileIcon } from "@/assets/icons/smile.svg";
