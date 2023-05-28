@@ -3,10 +3,22 @@ export const PATH = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   MYPAGE: "/mypage",
-  CREATORS: "/creators",
-  SHORTS: "/shorts",
-  CONTENTS: "/contents",
 
+  CREATORS: {
+    LIST: "/creators",
+    DETAIL: "/creators/detail",
+    REGISTER: "/creators/register",
+  },
+  SHORTS: {
+    LIST: "/shorts",
+    DETAIL: "/shorts/detail",
+    REGISTER: "/shorts/register",
+  },
+  CONTENTS: {
+    LIST: "/contents",
+    DETAIL: "/contents/detail",
+    REGISTER: "/shorts/register",
+  },
   PASSWORD: {
     SEND: "/password/send",
     FIND: "/password/find",

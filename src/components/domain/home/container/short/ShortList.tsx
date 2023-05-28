@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import type { ShortCardData } from "@/types/card";
-import { ChevronRightBlackIcon } from "@/assets/icons/arrow";
+import { ChevronRightIcon } from "@/assets/icons/arrow";
 import { PATH } from "@/constants";
 import ShortCard from "@/components/common/card/short/ShortCard";
 import { getMainShorts } from "@/service/mock/test";
@@ -59,7 +59,7 @@ export default function ShortList() {
           />
           크리에이터가 직접 알려주는 꿀팁!
         </h2>
-        <ChevronRightBlackIcon />
+        <ChevronRightIcon />
       </S.Link>
       <S.CardWrapper>
         {/* <CustomSwiper

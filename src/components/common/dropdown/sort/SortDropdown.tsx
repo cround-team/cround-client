@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { ChevronDownIcon } from "@/assets/icons/arrow";
-import { CheckBlackIcon } from "@/assets/icons";
+import { CheckIcon } from "@/assets/icons";
 import * as S from "./styled";
 
 export type Options = "신규순" | "팔로워순" | "좋아요순" | "북마크순";
@@ -40,7 +40,7 @@ export default function SortDropdown<T extends Options>({
           {options.map((option) => (
             <li key={option}>
               <button onClick={() => handleItemClick(option)}>
-                {currentSort === option && <CheckBlackIcon />}
+                {currentSort === option && <CheckIcon />}
                 <span>{option}</span>
               </button>
             </li>

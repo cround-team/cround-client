@@ -25,6 +25,7 @@ export const colors = {
   primary900: "#8C0018",
 
   dim: "rgba(0, 0, 0, 0.4)",
+  rating: "#FFA902",
 } as const;
 
 export type ColorType = typeof colors;

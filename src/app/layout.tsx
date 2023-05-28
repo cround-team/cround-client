@@ -5,6 +5,7 @@ import AppProvider from "@/lib/providers/AppProvider";
 import StyledRegistry from "@/lib/StyledRegistry";
 import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
+import MyPageSidebar from "@/components/layout/myPage/MyPageSidebar";
 
 const pretendard = localFont({
   src: [

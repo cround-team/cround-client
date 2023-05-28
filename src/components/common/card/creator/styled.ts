@@ -6,10 +6,10 @@ export const Article = styled.article`
       ${theme.flex.col()};
       gap: 8px;
       width: 152px;
-      height: 212px;
+      height: 228px;
       padding: 16px;
       background-color: ${theme.colors.white};
-      border: 1px solid ${theme.colors.neutral100};
+      border: 1px solid ${theme.colors.neutral50};
       border-radius: ${theme.radius.md};
     }
   `};
@@ -19,7 +19,6 @@ export const Figure = styled.figure`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       position: relative;
-      margin-bottom: 8px;
       width: 72px;
       height: 72px;
       border-radius: 50%;

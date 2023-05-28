@@ -16,6 +16,12 @@ export const Link = styled(NextLink)`
         ${theme.typo.button.md};
         color: ${theme.colors.neutral900};
       }
+
+      svg {
+        width: 16px;
+        height: 16px;
+        stroke: ${theme.colors.neutral900};
+      }
     }
   `};
 `;

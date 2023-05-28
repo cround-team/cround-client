@@ -6,69 +6,7 @@ import "swiper/css";
 
 import CustomSwiper from "@/components/common/swiper/CustomSwiper";
 import * as S from "./styled";
-
-const PLATFORMS = [
-  {
-    src: "/images/platform/youtube.png",
-    size: 48,
-    alt: "youtube",
-  },
-  {
-    src: "/images/platform/instagram.png",
-    size: 48,
-    alt: "instagram",
-  },
-  {
-    src: "/images/platform/tiktok.png",
-    size: 48,
-    alt: "tiktok",
-  },
-  {
-    src: "/images/platform/twitch.png",
-    size: 48,
-    alt: "twitch",
-  },
-  {
-    src: "/images/platform/afreeca.png",
-    size: 48,
-    alt: "afreeca",
-  },
-  {
-    src: "/images/platform/blog.png",
-    size: 48,
-    alt: "blog",
-  },
-  {
-    src: "/images/platform/podcast.png",
-    size: 48,
-    alt: "podcast",
-  },
-  {
-    src: "/images/platform/spoon.png",
-    size: 48,
-    alt: "spoon",
-  },
-  {
-    src: "/images/platform/zepeto.png",
-    size: 48,
-    alt: "zepeto",
-  },
-  {
-    src: "/images/platform/emoticon.png",
-    size: 48,
-    alt: "emoticon",
-  },
-  {
-    src: "/images/platform/webtoon.png",
-    size: 48,
-    alt: "webtoon",
-  },
-  {
-    src: "/images/platform/nft.png",
-    size: 48,
-    alt: "nft",
-  },
-];
+import { PLATFORMS } from "@/constants/platforms";
 
 const BREAK_POINTS = {
   640: {
@@ -99,12 +37,7 @@ export default function PlatformList() {
           {PLATFORMS.map((el, idx) => (
             <SwiperSlide key={idx}>
               <S.Figure>
-                <Image
-                  src={el.src}
-                  width={el.size}
-                  height={el.size}
-                  alt={el.alt}
-                />
+                <Image src={el.src} width={48} height={48} alt={el.id} />
               </S.Figure>
             </SwiperSlide>
           ))}

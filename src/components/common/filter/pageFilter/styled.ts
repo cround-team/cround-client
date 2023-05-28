@@ -8,3 +8,18 @@ export const Container = styled.div`
     }
   `};
 `;
+
+export const FilterButton = styled.button`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      width: 24px;
+      height: 24px;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        stroke: ${theme.colors.neutral900};
+      }
+    }
+  `};
+`;
