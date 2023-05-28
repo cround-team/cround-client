@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 
 import type { CreatorCardData } from "@/types/card";
-import CreatorCard from "@/components/common/card/creator/Card";
+import CreatorCard from "@/components/common/card/creator/CreatorCard";
 import { getListCreators } from "@/service/mock/test";
 import * as S from "./styled";
+import MorePageButton from "@/components/common/button/morePage/MorePageButton";
 
 export default function CreatorList() {
   const [creators, setCreators] = useState<CreatorCardData[]>();
@@ -22,11 +23,16 @@ export default function CreatorList() {
     fetchData();
   }, []);
 
+  const handleAddList = () => {};
+
   return (
-    <S.Container>
-      {creators?.map((creator) => (
-        <CreatorCard key={creator.id} creator={creator} />
-      ))}
-    </S.Container>
+    <>
+      <S.Container>
+        {creators?.map((creator) => (
+          <CreatorCard key={creator.id} creator={creator} />
+        ))}
+      </S.Container>
+      <MorePageButton isDisabled={false} onClick={handleAddList} />
+    </>
   );
 }

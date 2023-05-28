@@ -20,7 +20,9 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
       <S.TitleWrapper>
         <h3>{name}</h3>
         <span>
-          {platform}/{theme}
+          {platform}
+          <br />
+          {theme}
         </span>
       </S.TitleWrapper>
       <S.Desc>{desc}</S.Desc>

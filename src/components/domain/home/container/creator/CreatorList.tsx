@@ -2,7 +2,7 @@
 
 import { ChevronRightIcon } from "@/assets/icons/arrow";
 import { PATH } from "@/constants";
-import CreatorCard from "@/components/common/card/creator/Card";
+import CreatorCard from "@/components/common/card/creator/CreatorCard";
 
 import { getMainCreators } from "@/service/mock/test";
 import { useEffect, useState } from "react";
