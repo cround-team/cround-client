@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 
 import { PLATFORMS } from "@/constants/platforms";
@@ -7,8 +5,13 @@ import Modal from "../Modal";
 import * as S from "./styled";
 import Button from "../../button/base/Button";
 import PlatformCheckbox from "../../checkbox/PlatformCheckbox";
+import { XCloseIcon } from "@/assets/icons";
 
-export default function PlatFormModal() {
+type PlatFormModalProps = {
+  onCloseModal: () => void;
+};
+
+export default function PlatFormModal({ onCloseModal }: PlatFormModalProps) {
   const [selected, setSelected] = useState<string[]>([]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -26,6 +29,9 @@ export default function PlatFormModal() {
   return (
     <Modal isMounted={true}>
       <S.Layout>
+        <S.CloseButton onClick={onCloseModal}>
+          <XCloseIcon />
+        </S.CloseButton>
         <S.Form onSubmit={handleSubmit}>
           <S.PlatformList>
             {PLATFORMS.map((el) => (

@@ -9,6 +9,25 @@ export const Layout = styled.div`
   `};
 `;
 
+export const CloseButton = styled.button`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: ${theme.zIndex.icon};
+      ${theme.flex.row()};
+      width: 24px;
+      height: 24px;
+      svg {
+        width: 12px;
+        height: 12px;
+        stroke: ${theme.colors.neutral900};
+      }
+    }
+  `};
+`;
+
 export const Form = styled.form`
   ${({ theme }) => css`
     ${theme.media.mobile} {

@@ -15,6 +15,11 @@ export default function PageFilter({ options }: PageFilterProps) {
   const handleOpenModal = () => {
     setIsModalOpen((prev) => !prev);
   };
+
+  const handleCloseModal = () => {
+    setIsModalOpen((prev) => false);
+  };
+
   return (
     <>
       <S.Container>
@@ -23,7 +28,7 @@ export default function PageFilter({ options }: PageFilterProps) {
         </S.FilterButton>
         <SortDropdown options={options} />
       </S.Container>
-      {isModalOpen && <PlatFormModal />}
+      {isModalOpen && <PlatFormModal onCloseModal={handleCloseModal} />}
     </>
   );
 }
