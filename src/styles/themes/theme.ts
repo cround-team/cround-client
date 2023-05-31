@@ -1,5 +1,5 @@
 import { colors, zIndex, flex, typo, radius, media, text } from "./foundations";
-import { button } from "./components";
+import { button, input } from "./components";
 
 export const theme = {
   zIndex,
@@ -7,6 +7,7 @@ export const theme = {
   colors,
   typo,
   button,
+  input,
   radius,
   media,
   text,
