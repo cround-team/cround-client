@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 
 import type { SignupStep } from "@/types/signup";
@@ -12,17 +12,30 @@ import Indicator from "./indicator/Indicator";
 
 import * as S from "./styled";
 import { useRouter } from "next/navigation";
+import { BooleanMap } from "@/types/common";
+import { signupApi } from "@/utils/api/auth/auth";
 
 const STEPS = ["nickname", "platforms", "success"];
 
-export default function ModalStep() {
+type ModalStepProps = {
+  data: {
+    name: string;
+    email: string;
+    password: string;
+    psw2: string;
+  };
+};
+
+export default function ModalStep({ data }: ModalStepProps) {
   const router = useRouter();
-  const [isMounted, setIsMounted] = useImmer({
-    nickName: true,
+  const [isMounted, setIsMounted] = useImmer<BooleanMap>({
+    nickname: true,
     platforms: false,
     success: false,
   });
-  const [currentStep, setCurrentStep] = useState<SignupStep>("nickName");
+  const [nickname, setNickname] = useState("");
+
+  const [currentStep, setCurrentStep] = useState<SignupStep>("nickname");
   const handlePrevStep = <T extends SignupStep>(cur: T, prev: T) => {
     setIsMounted((draft) => {
       draft[cur] = !draft[cur];
@@ -39,7 +52,34 @@ export default function ModalStep() {
     setCurrentStep(next);
   };
 
-  const handleSuccess = () => {
+  const handleSetNickname = (nickname: string) => {
+    setNickname(nickname);
+  };
+
+  const handleSuccess = (platforms: string[]) => {
+    const { name, email, password, psw2 } = data;
+
+    const getResponse = async () => {
+      try {
+        const body = {
+          username: name,
+          nickname: nickname,
+          email: email,
+          password: password,
+          confirmPassword: psw2,
+          interestPlatform: platforms,
+        };
+
+        const response = await signupApi(body);
+        response?.status === 201 && handleNextStep("platforms", "success");
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getResponse();
+  };
+
+  const handlePushLogin = () => {
     router.push("/login");
   };
 
@@ -48,17 +88,24 @@ export default function ModalStep() {
       <S.Layout>
         <S.Container>
           <Indicator type="modal" steps={STEPS} current={currentStep} />
-          {isMounted.nickName && <NickNameStep onNextStep={handleNextStep} />}
+          {isMounted.nickname && (
+            <NickNameStep
+              name={data.name}
+              onNextStep={handleNextStep}
+              onSetNickname={handleSetNickname}
+            />
+          )}
           {isMounted.platforms && (
             <PlatformStep
+              name={data.name}
               onPrevStep={handlePrevStep}
-              onNextStep={handleNextStep}
+              onSuccess={handleSuccess}
             />
           )}
           {isMounted.success && (
             <SuccessSignup
               onPrevStep={handlePrevStep}
-              onSuccess={handleSuccess}
+              onPushLogin={handlePushLogin}
             />
           )}
         </S.Container>

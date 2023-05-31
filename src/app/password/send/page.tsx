@@ -6,7 +6,7 @@ import * as S from "./styled";
 
 export default function PasswordSendPage() {
   return (
-    <>
+    <S.Container>
       <S.TextWrapper>
         <h2>비밀번호 설정 메일 전송</h2>
         <span>cround@naver.com</span>
@@ -30,6 +30,6 @@ export default function PasswordSendPage() {
           variant="primary"
         />
       </S.LinkWrapper>
-    </>
+    </S.Container>
   );
 }

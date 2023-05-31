@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const Button = styled.button`
+export const Button = styled.div`
   ${({ theme }) => css`
     position: absolute;
     top: 16px;
@@ -8,6 +8,7 @@ export const Button = styled.button`
     ${theme.flex.row()};
     width: 24px;
     height: 24px;
+    cursor: pointer;
 
     ${theme.media.mobile} {
       top: 20px;

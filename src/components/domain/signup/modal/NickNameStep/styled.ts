@@ -15,7 +15,7 @@ export const Title = styled.h2`
 export const Form = styled.form`
   ${({ theme }) => css`
     ${theme.flex.col()};
-    gap: 16px;
+    gap: 48px;
     width: 100%;
   `}
 `;

@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 
 import type { SignupStep } from "@/types/signup";
@@ -10,12 +8,12 @@ import * as S from "./styled";
 
 type SuccessStepProps = {
   onPrevStep: <T extends SignupStep>(cur: T, prev: T) => void;
-  onSuccess: () => void;
+  onPushLogin: () => void;
 };
 
 export default function SuccessStep({
   onPrevStep,
-  onSuccess,
+  onPushLogin,
 }: SuccessStepProps) {
   return (
     <>
@@ -36,7 +34,7 @@ export default function SuccessStep({
         label="완료"
         size="48"
         variant="primary"
-        onClick={onSuccess}
+        onClick={onPushLogin}
       />
     </>
   );

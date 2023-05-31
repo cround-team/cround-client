@@ -3,8 +3,8 @@
 import Link from "next/link";
 
 import { ChevronRightIcon } from "@/assets/icons/arrow";
-import * as S from "./styled";
 import { PATH } from "@/constants";
+import * as S from "./styled";
 
 export default function FindPsw() {
   return (

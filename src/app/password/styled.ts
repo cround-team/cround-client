@@ -9,10 +9,12 @@ export const Section = styled.section`
   `};
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.main`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      padding: 40px 20px 40px 20px;
+      padding-top: 24px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
   `};
 `;

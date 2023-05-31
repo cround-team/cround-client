@@ -3,6 +3,8 @@ import styled, { css } from "styled-components";
 export const Container = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
+      ${theme.flex.col()};
+      gap: 40px;
     }
   `};
 `;
@@ -10,9 +12,9 @@ export const Container = styled.div`
 export const TitleWrapper = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      margin-bottom: 40px;
+      ${theme.flex.col()};
+      gap: 8px;
       h2 {
-        margin-bottom: 8px;
         ${theme.typo.title.md};
         text-align: center;
         color: ${theme.colors.neutral900};
@@ -21,11 +23,6 @@ export const TitleWrapper = styled.div`
         ${theme.typo.label.md};
         text-align: center;
         color: ${theme.colors.neutral500};
-      }
-    }
-    ${theme.media.desktop} {
-      h2 {
-        ${theme.typo.title.lg};
       }
     }
   `};

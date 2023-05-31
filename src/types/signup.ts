@@ -1,1 +1,1 @@
-export type SignupStep = "nickName" | "platforms" | "success";
+export type SignupStep = "nickname" | "platforms" | "success";

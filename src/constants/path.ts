@@ -7,7 +7,7 @@ export const PATH = {
   CREATORS: {
     LIST: "/creators",
     DETAIL: "/creators/detail",
-    REGISTER: "/creators/register",
+    REGISTER: "/creators/register/step1",
   },
   SHORTS: {
     LIST: "/shorts",
@@ -17,11 +17,22 @@ export const PATH = {
   CONTENTS: {
     LIST: "/contents",
     DETAIL: "/contents/detail",
-    REGISTER: "/shorts/register",
+    REGISTER: "/shorts/register/step1",
   },
   PASSWORD: {
     SEND: "/password/send",
     FIND: "/password/find",
     NEW: "/password/new",
   },
+};
+
+type PathTitleType = {
+  [key: string]: string;
+};
+
+export const PATH_TITLE: PathTitleType = {
+  "/creators/detail": "크리에이터 소개",
+  "/creators/register/step1": "크리에이터 등록",
+  "/creators/register/step2": "크리에이터 등록",
+  "/creators/register/step3": "크리에이터 등록",
 };

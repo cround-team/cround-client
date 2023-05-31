@@ -9,6 +9,12 @@ export const Container = styled.div`
         ${theme.flex.row("flex-end")};
         ${theme.typo.button.sm};
         color: ${theme.colors.neutral400};
+
+        svg {
+          width: 16px;
+          height: 16px;
+          stroke: ${theme.colors.neutral400};
+        }
       }
     }
   `};

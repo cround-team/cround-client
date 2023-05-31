@@ -9,7 +9,7 @@ type ButtonProps = {
   label: string;
   size: ButtonSize;
   variant: ButtonVariant;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e: React.MouseEvent | React.FormEvent) => void;
 };
 
 export default function Button({

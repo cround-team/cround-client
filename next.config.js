@@ -21,18 +21,14 @@ const nextConfig = {
 
   async rewrites() {
     return [
-      {
-        source: "/cround/health",
-        destination: `${process.env.NEXT_PUBLIC_TEST_URL}/cround/health`,
-      },
-      {
-        source: "/cround/auth",
-        destination: `${process.env.NEXT_PUBLIC_TEST_URL}/cround/auth`,
-      },
-      {
-        source: "/auth/kakao/login",
-        destination: `${process.env.NEXT_PUBLIC_TEST_URL}/auth/kakao/login`,
-      },
+      // {
+      //   source: "/cround/auth",
+      //   destination: `${process.env.NEXT_PUBLIC_TEST_URL}/cround/auth`,
+      // },
+      // {
+      //   source: "/auth/kakao/login",
+      //   destination: `${process.env.NEXT_PUBLIC_TEST_URL}/auth/kakao/login`,
+      // },
     ];
   },
 };
