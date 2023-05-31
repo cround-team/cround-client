@@ -36,7 +36,7 @@ export const ProfileContainer = styled.div`
 export const ProfileWrapper = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      ${theme.flex.row()};
+      ${theme.flex.row("space-between")};
       gap: 30px;
       margin-bottom: 24px;
     }
