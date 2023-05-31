@@ -1,5 +1,3 @@
-"use client";
-
 import { PATH } from "@/constants";
 import * as S from "./styled";
 import NavItem from "@/components/common/navItem/NavItem";

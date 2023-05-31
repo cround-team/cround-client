@@ -10,23 +10,25 @@ import {
   FooterTwiterIcon,
 } from "@/assets/icons";
 import * as S from "./styled";
+import { usePathname } from "next/navigation";
+import isFooterHidden from "@/utils/hiddenLayout";
 
 const SERVICE = [
   {
     label: "크리에이터 목록",
-    path: PATH.CREATORS,
+    path: PATH.CREATORS.LIST,
   },
   {
     label: "숏클래스 목록",
-    path: PATH.SHORTS,
+    path: PATH.SHORTS.LIST,
   },
   {
     label: "콘텐츠 목록",
-    path: PATH.CONTENTS,
+    path: PATH.CONTENTS.LIST,
   },
   {
     label: "크리에이터로 참여하기",
-    path: PATH.CREATORS,
+    path: PATH.CREATORS.REGISTER,
   },
 ];
 const CROUND = [
@@ -41,6 +43,10 @@ const CROUND = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (!isFooterHidden(pathname)) return null;
+
   return (
     <S.Footer>
       <S.Container>
