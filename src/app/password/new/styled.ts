@@ -1,33 +1,40 @@
 import styled, { css } from "styled-components";
 
+export const Container = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      ${theme.flex.col()};
+      gap: 40px;
+    }
+  `};
+`;
+
 export const Title = styled.h2`
   ${({ theme }) => css`
-    margin-bottom: 20px;
-    ${theme.typo.title.lg};
-    text-align: center;
-    color: ${theme.colors.neutral900};
+    ${theme.media.mobile} {
+      ${theme.typo.title.md};
+      color: ${theme.colors.neutral900};
+      text-align: center;
+    }
   `};
 `;
 
 export const Form = styled.form`
-  ${({ theme }) => css``};
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      ${theme.flex.col()};
+      gap: 64px;
+      width: 100%;
+    }
+  `};
 `;
 
 export const InputContainer = styled.div`
   ${({ theme }) => css`
-    ${theme.flex.col()};
-    gap: 20px;
-    margin-bottom: 8px;
-  `};
-`;
-
-export const PswGuide = styled.span`
-  ${({ theme }) => css`
-    display: inline-block;
-    width: 100%;
-    padding-left: 16px;
-    margin-bottom: 50px;
-    ${theme.typo.label.md};
-    color: ${theme.colors.neutral400};
+    ${theme.media.mobile} {
+      ${theme.flex.col()};
+      gap: 8px;
+      width: 100%;
+    }
   `};
 `;

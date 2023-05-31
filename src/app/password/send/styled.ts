@@ -1,10 +1,18 @@
 import styled, { css } from "styled-components";
 
+export const Container = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      ${theme.flex.col()};
+      gap: 40px;
+    }
+  `};
+`;
+
 export const TextWrapper = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.col()};
-      margin-bottom: 40px;
       text-align: center;
 
       h2 {
