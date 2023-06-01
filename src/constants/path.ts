@@ -32,7 +32,5 @@ type PathTitleType = {
 
 export const PATH_TITLE: PathTitleType = {
   "/creators/detail": "크리에이터 소개",
-  "/creators/register/step1": "크리에이터 등록",
-  "/creators/register/step2": "크리에이터 등록",
-  "/creators/register/step3": "크리에이터 등록",
+  "/creators/register": "크리에이터 등록",
 };
