@@ -5,6 +5,7 @@ export const Container = styled.section`
     ${theme.media.mobile} {
       ${theme.flex.col()};
       gap: 23px;
+      margin-top: 16px;
       svg {
         width: 20px;
         height: 20px;
