@@ -1,10 +1,15 @@
 export type CreatorCardData = {
-  id: number;
-  name: string;
-  platform: string;
-  img: string;
-  theme: string;
-  desc: string;
+  creatorId: number;
+  description: string;
+  platformActivityName: string;
+  platformType: string;
+  profileImage: string;
+
+  id?: number;
+  name?: string;
+  img?: string;
+  theme?: string;
+  desc?: string;
 };
 
 export type ShortCardData = CreatorInfo & {
