@@ -1,5 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+    deviceSizes: [360, 700, 1200], // 원하는 기기 사이즈 설정
+  },
+  experimental: {
+    appDir: true,
+  },
+  compiler: {
+    styledComponents: true,
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -8,28 +25,6 @@ const nextConfig = {
     });
 
     return config;
-  },
-  experimental: {
-    appDir: true,
-  },
-  compiler: {
-    styledComponents: true,
-  },
-  images: {
-    deviceSizes: [360, 700, 1200], // 원하는 기기 사이즈 설정
-  },
-
-  async rewrites() {
-    return [
-      // {
-      //   source: "/cround/auth",
-      //   destination: `${process.env.NEXT_PUBLIC_TEST_URL}/cround/auth`,
-      // },
-      // {
-      //   source: "/auth/kakao/login",
-      //   destination: `${process.env.NEXT_PUBLIC_TEST_URL}/auth/kakao/login`,
-      // },
-    ];
   },
 };
 
