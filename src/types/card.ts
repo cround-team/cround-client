@@ -4,6 +4,7 @@ export type CreatorCardData = {
   platformActivityName: string;
   platformType: string;
   profileImage: string;
+  platformTheme: string;
 
   id?: number;
   name?: string;
