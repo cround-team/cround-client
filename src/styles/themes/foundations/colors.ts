@@ -26,6 +26,7 @@ export const colors = {
 
   dim: "rgba(0, 0, 0, 0.4)",
   rating: "#FFA902",
+  disabled: "#f3f3f3",
 } as const;
 
 export type ColorType = typeof colors;

@@ -16,5 +16,12 @@ export const Button = styled.button<ButtonProps>`
     ${size === "sm" && theme.button.size.sm};
     ${variant === "primary" && theme.button.variant.primary};
     ${variant === "ghost" && theme.button.variant.ghost};
+
+    :disabled {
+      border: 1px solid ${theme.colors.neutral50};
+      border-radius: ${theme.radius.md};
+      background-color: ${theme.colors.neutral50};
+      color: ${theme.colors.white};
+    }
   `};
 `;

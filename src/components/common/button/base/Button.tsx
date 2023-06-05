@@ -1,3 +1,4 @@
+import { css } from "styled-components";
 import * as S from "./Button.styled";
 
 export type ButtonSize = "sm" | "32" | "48" | "56";
@@ -9,18 +10,33 @@ type ButtonProps = {
   label: string;
   size: ButtonSize;
   variant: ButtonVariant;
+  className?: string;
+  isDisabled?: boolean;
   onClick?: (e: React.MouseEvent | React.FormEvent) => void;
 };
+
+const test = css`
+  background-color: black;
+`;
 
 export default function Button({
   type = "submit",
   label,
   size,
   variant,
+  className,
+  isDisabled = false,
   onClick,
 }: ButtonProps) {
   return (
-    <S.Button type={type} size={size} variant={variant} onClick={onClick}>
+    <S.Button
+      className={className}
+      type={type}
+      size={size}
+      variant={variant}
+      disabled={isDisabled}
+      onClick={onClick}
+    >
       {label}
     </S.Button>
   );
