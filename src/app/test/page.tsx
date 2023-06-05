@@ -5,7 +5,11 @@ import axios from "axios";
 
 import * as S from "./styled";
 import Link from "next/link";
-import { KAKAO_AUTH_URL, KAKAO_AUTH_LOGOUT } from "@/service/kakaoOauth";
+import {
+  KAKAO_AUTH_URL,
+  KAKAO_AUTH_LOGOUT,
+  KAKAO_TEST_URL,
+} from "@/service/kakaoOauth";
 
 export default function TestPage() {
   const [data, setData] = useState("");
@@ -37,34 +41,19 @@ export default function TestPage() {
     fetchData();
   };
 
-  // 일반 로그인
-  const testSignup = () => {
-    const fetchData = async (): Promise<void> => {
-      const response = await axios.post(
-        "/api/members",
-        {
-          username: "크라운드드",
-          email: "cround2@cround.com",
-          password: "cround2",
-          confirmPassword: "cround2",
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log(response);
-    };
-    fetchData();
+  const windowTest = () => {
+    window.location.href = KAKAO_TEST_URL;
   };
 
   return (
     <S.Container>
-      <button onClick={testKakao}>카카오 버튼 테스트</button>
-      <Link href={KAKAO_AUTH_URL}>카카오 테스트</Link>
+      <button onClick={() => windowTest()}>카카오 버튼 테스트</button>
+      <Link target="_blank" href={KAKAO_TEST_URL}>
+        카카오 테스트
+      </Link>
       <button onClick={testHealth}>헬쓰 테스트</button>
       <Link href={KAKAO_AUTH_LOGOUT}>로그아웃 테스트</Link>
+      <Link href="https://kapi.kakao.com/v1/user/logout">로그아웃 2테스트</Link>
     </S.Container>
   );
 }

@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const Article = styled.article`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      ${theme.flex.col()};
+      ${theme.flex.col("flex-start")};
       gap: 8px;
       width: 152px;
       height: 228px;
