@@ -5,7 +5,7 @@ import * as S from "./styled";
 import Input from "@/components/common/input/base/Input";
 import Button from "@/components/common/button/base/Button";
 import { nicknameCheck } from "@/utils/validation";
-import { nicknameDupCheckApi } from "@/utils/api/auth/auth";
+import { nicknameDupCheckApi } from "@/utils/api/auth";
 
 type NickNameStepProps = {
   name: string;

@@ -4,7 +4,7 @@ export const Button = styled.button`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.row()};
-      gap: 4px;
+
       width: 100%;
       padding: 12px 0px;
       background-color: ${theme.colors.white};
@@ -14,8 +14,8 @@ export const Button = styled.button`
       color: ${theme.colors.neutral400};
 
       svg {
-        width: 8px;
-        height: 4px;
+        width: 16px;
+        height: 16px;
         stroke: ${theme.colors.neutral400};
       }
     }

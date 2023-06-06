@@ -13,7 +13,7 @@ import Indicator from "./indicator/Indicator";
 import * as S from "./styled";
 import { useRouter } from "next/navigation";
 import { BooleanMap } from "@/types/common";
-import { signupApi } from "@/utils/api/auth/auth";
+import { signupApi } from "@/utils/api/auth";
 
 const STEPS = ["nickname", "platforms", "success"];
 

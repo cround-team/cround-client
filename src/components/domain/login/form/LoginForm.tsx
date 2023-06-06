@@ -4,7 +4,7 @@ import { useImmer } from "use-immer";
 
 import type { BooleanMap, StringMap } from "@/types/common";
 import { emailValidCheck } from "@/utils/validation";
-import { loginApi } from "@/utils/api/auth/auth";
+import { loginApi } from "@/utils/api/auth";
 import Input from "@/components/common/input/base/Input";
 import Button from "@/components/common/button/base/Button";
 import * as S from "./styled";
@@ -86,14 +86,9 @@ export default function LoginForm() {
         password: psw,
       };
       const res = await loginApi(body);
-      if (res) {
-        if (res.status === 200) {
-          const tokenWithoutBearer = res.data.accessToken.replace(
-            "Bearer ",
-            ""
-          );
-          localStorage.setItem("accessToken", tokenWithoutBearer);
-        }
+      if (res.status === 200) {
+        const tokenWithoutBearer = res.data.accessToken.replace("Bearer ", "");
+        localStorage.setItem("accessToken", tokenWithoutBearer);
       }
     } catch (error: any) {
       if (error.response.status === 400) {
