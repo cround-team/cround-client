@@ -7,17 +7,31 @@ export const PATH = {
   CREATORS: {
     LIST: "/creators",
     DETAIL: "/creators/detail",
-    REGISTER: "/creators/register/step1",
+    REGISTER: {
+      BASE: "/creators/register/base",
+      PLATFORM: "/creators/register/platform",
+      ADDITION: "/creators/register/addition",
+      SUCCESS: "/creators/register/success",
+    },
   },
   SHORTS: {
     LIST: "/shorts",
     DETAIL: "/shorts/detail",
-    REGISTER: "/shorts/register",
+    REGISTER: {
+      BASE: "/shorts/register/base",
+      PLATFORM: "/shorts/register/platform",
+      UPLOAD: "/shorts/register/upload",
+      SUCCESS: "/shorts/register/success",
+    },
   },
   CONTENTS: {
     LIST: "/contents",
     DETAIL: "/contents/detail",
-    REGISTER: "/shorts/register/step1",
+    REGISTER: {
+      BASE: "/contents/register/base",
+      PLATFORM: "/contents/register/platform",
+      SUCCESS: "/contents/register/success",
+    },
   },
   PASSWORD: {
     SEND: "/password/send",
@@ -26,11 +40,7 @@ export const PATH = {
   },
 };
 
-type PathTitleType = {
-  [key: string]: string;
-};
-
-export const PATH_TITLE: PathTitleType = {
+export const PATH_TITLE: Record<string, string> = {
   "/creators/detail": "크리에이터 소개",
   "/creators/register": "크리에이터 등록",
 };
