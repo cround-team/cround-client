@@ -7,42 +7,36 @@ import { PATH, PATH_TITLE } from "@/constants";
 
 const STEP_HEADER = [
   PATH.CREATORS.DETAIL,
-  PATH.CREATORS.REGISTER,
   PATH.SHORTS.DETAIL,
-  PATH.SHORTS.REGISTER,
   PATH.CONTENTS.DETAIL,
-  PATH.CREATORS.REGISTER,
+  ...Object.values(PATH.SHORTS.REGISTER),
+  ...Object.values(PATH.CREATORS.REGISTER),
+  ...Object.values(PATH.CONTENTS.REGISTER),
 ];
 
 const NAV_HEADER = [PATH.CREATORS.LIST, PATH.SHORTS.LIST, PATH.CONTENTS.LIST];
 
+export type HeaderType = "default" | "step" | "navigate";
+
 const useChangeHeader = () => {
-  const [isStepHeader, setIsStepHeader] = useState(false);
-  const [isNavHeader, setIsNavHeader] = useState(false);
-  const [stepTitle, setStepTitle] = useState("");
+  const [headerType, setHeaderType] = useState<HeaderType>("default");
+  const [stepName, setStepName] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
     if (pathname === PATH.ROOT) {
-      setIsNavHeader(true);
-      setIsStepHeader(false);
-      setStepTitle("");
+      setHeaderType("navigate");
+    } else if (NAV_HEADER.find((path) => pathname === path)) {
+      setHeaderType("navigate");
     } else if (STEP_HEADER.some((path) => pathname.includes(path))) {
-      setIsStepHeader(true);
-      setIsNavHeader(false);
-      setStepTitle(PATH_TITLE[pathname]);
-    } else if (NAV_HEADER.some((path) => pathname.includes(path))) {
-      setIsNavHeader(true);
-      setIsStepHeader(false);
-      setStepTitle("");
+      setHeaderType("step");
+      setStepName(PATH_TITLE[pathname.substring(0, pathname.lastIndexOf("/"))]);
     } else {
-      setIsNavHeader(false);
-      setIsStepHeader(false);
-      setStepTitle("");
+      setHeaderType("default");
     }
   }, [pathname]);
 
-  return { isStepHeader, isNavHeader, stepTitle };
+  return { headerType, stepName };
 };
 
 export default useChangeHeader;

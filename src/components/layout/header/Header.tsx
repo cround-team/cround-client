@@ -11,7 +11,7 @@ import useChangeHeader from "@/hooks/useChangeHeader";
 import StepHeader from "./step/StepHeader";
 
 export default function Header() {
-  const { isStepHeader, isNavHeader, stepTitle } = useChangeHeader();
+  const { headerType, stepName } = useChangeHeader();
 
   return (
     <S.Header>
@@ -23,8 +23,8 @@ export default function Header() {
         </S.Logo>
         <Utils />
       </S.Wrapper>
-      {isStepHeader && <StepHeader label={stepTitle} />}
-      {isNavHeader && <Navigation />}
+      {headerType === "step" && <StepHeader label={stepName} />}
+      {headerType === "navigate" && <Navigation />}
     </S.Header>
   );
 }
