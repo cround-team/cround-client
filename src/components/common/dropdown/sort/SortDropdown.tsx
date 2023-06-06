@@ -6,7 +6,12 @@ import { ChevronDownIcon } from "@/assets/icons/arrow";
 import { CheckIcon } from "@/assets/icons";
 import * as S from "./styled";
 
-export type Options = "신규순" | "팔로워순" | "좋아요순" | "북마크순";
+export type Options =
+  | "신규순"
+  | "팔로워순"
+  | "좋아요순"
+  | "북마크순"
+  | "리뷰순";
 
 type SortDropdownProps<T extends Options> = {
   options: T[];
