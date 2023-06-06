@@ -1,3 +1,5 @@
+export type KeyOf<T> = Extract<keyof T, string>;
+
 export type StringMap = {
   [key: string]: string;
 };
