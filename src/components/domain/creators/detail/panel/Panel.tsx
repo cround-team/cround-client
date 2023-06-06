@@ -60,15 +60,19 @@ export default function Panel() {
           contents?.map((content) => (
             <ContentCard key={content.id} content={content} isShowCreatorInfo />
           ))}
-        {selected === "리뷰" &&
-          reviews?.map((review) => (
-            <ReviewCard
-              key={review.id}
-              name={review.name}
-              rating={review.rating}
-              content={review.content}
-            />
-          ))}
+        {selected === "리뷰" && (
+          <>
+            <S.ReviewWriteBtn>리뷰 작성하기</S.ReviewWriteBtn>
+            {reviews?.map((review) => (
+              <ReviewCard
+                key={review.id}
+                name={review.name}
+                rating={review.rating}
+                content={review.content}
+              />
+            ))}
+          </>
+        )}
       </S.Wrapper>
       <MorePageButton
         isDisabled={false}
