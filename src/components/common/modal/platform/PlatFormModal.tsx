@@ -6,24 +6,17 @@ import * as S from "./styled";
 import Button from "../../button/base/Button";
 import PlatformCheckbox from "../../checkbox/PlatformCheckbox";
 import { XCloseIcon } from "@/assets/icons";
+import useSelectPlatform from "@/hooks/input/useSelectPlatform";
 
 type PlatFormModalProps = {
   onCloseModal: () => void;
 };
 
 export default function PlatFormModal({ onCloseModal }: PlatFormModalProps) {
-  const [selected, setSelected] = useState<string[]>([]);
+  const { selected, handleSelect, handleUnSelect } = useSelectPlatform();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-  };
-
-  const handleSelect = (platform: string) => {
-    setSelected((prev) => [...prev, platform]);
-  };
-
-  const handleUnSelect = (platform: string) => {
-    setSelected((prev) => prev.filter((el) => el !== platform));
   };
 
   return (
