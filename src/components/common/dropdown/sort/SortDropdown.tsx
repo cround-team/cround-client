@@ -1,24 +1,19 @@
-"use client";
-
 import { useState } from "react";
 
 import { ChevronDownIcon } from "@/assets/icons/arrow";
 import { CheckIcon } from "@/assets/icons";
 import * as S from "./styled";
+import type { Sorts } from "@/types/service";
+import { conversionSort } from "@/utils/conversion";
 
-export type Options =
-  | "신규순"
-  | "팔로워순"
-  | "좋아요순"
-  | "북마크순"
-  | "리뷰순";
-
-type SortDropdownProps<T extends Options> = {
+type SortDropdownProps<T extends Sorts> = {
   options: T[];
+  onSelectSort: (sorted: string) => void;
 };
 
-export default function SortDropdown<T extends Options>({
+export default function SortDropdown<T extends Sorts>({
   options,
+  onSelectSort,
 }: SortDropdownProps<T>) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentSort, setCurrentSort] = useState<string>(options[0]);
@@ -30,6 +25,9 @@ export default function SortDropdown<T extends Options>({
   const handleItemClick = (option: string) => {
     setCurrentSort(option);
     setIsDropdownOpen((prev) => !prev);
+
+    const sort = conversionSort(option);
+    onSelectSort(sort);
   };
 
   return (

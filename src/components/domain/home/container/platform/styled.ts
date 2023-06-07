@@ -3,8 +3,8 @@ import styled, { css } from "styled-components";
 export const Section = styled.section`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      margin-top: 40px;
-      margin-bottom: 44px;
+      padding-top: 40px;
+      padding-bottom: 20px;
     }
   `};
 `;
