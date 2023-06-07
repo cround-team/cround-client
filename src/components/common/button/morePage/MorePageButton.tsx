@@ -11,7 +11,11 @@ export default function MorePageButton({
   onClick,
 }: MorePageButtonProps) {
   return (
-    <S.Button aria-disabled={isDisabled ? "true" : "false"} onClick={onClick}>
+    <S.Button
+      aria-disabled={isDisabled ? "true" : "false"}
+      disabled={isDisabled}
+      onClick={onClick}
+    >
       더보기
       <ChevronDownIcon />
     </S.Button>

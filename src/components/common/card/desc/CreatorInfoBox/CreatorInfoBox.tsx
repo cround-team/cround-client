@@ -6,32 +6,34 @@ import type { CreatorInfo } from "@/types/card";
 import { media } from "@/styles/themes/foundations";
 
 export default function CreatorInfoBox({
-  profileImg,
-  name,
-  like,
-  bookmark,
+  profileImage,
+  author,
+  liked,
+  likesCount,
+  bookmarked,
+  bookmarksCount,
 }: CreatorInfo) {
   return (
     <S.Container>
       <S.ImageNameGroup>
         <S.Figure>
           <Image
-            src={profileImg}
+            src={profileImage}
             alt="Creator Profile Image"
             sizes={media.images.sizes}
             fill
           />
         </S.Figure>
-        <S.Name>{name}</S.Name>
+        <S.Name>{author}</S.Name>
       </S.ImageNameGroup>
       <S.LikeBookmarkGroup>
         <div>
           <HeartIcon />
-          <span>{like}</span>
+          <span>{likesCount}</span>
         </div>
         <div>
           <BookmarkIcon />
-          <span>{bookmark}</span>
+          <span>{bookmarksCount}</span>
         </div>
       </S.LikeBookmarkGroup>
     </S.Container>

@@ -6,6 +6,7 @@ export const Container = styled.div`
       position: relative;
       ${theme.flex.row("space-between")};
       width: 100%;
+      margin: 24px 0;
       padding: 8px 16px;
       background-color: ${theme.colors.white};
       border: 1px solid ${theme.colors.primary500};
