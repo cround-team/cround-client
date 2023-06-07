@@ -1,10 +1,11 @@
 "use client";
 
-import CreatorDetail from "@/components/domain/creators/detail/CreatorDetail";
 import InformativeBubbles from "@/components/domain/creators/detail/InformativeBubbles/InformativeBubbles";
 import Introduce from "@/components/domain/creators/detail/introduce/Introduce";
 import Panel from "@/components/domain/creators/detail/panel/Panel";
 import Profile from "@/components/domain/creators/detail/profile/Profile";
+
+import * as S from "./styled";
 
 type CreatorDetailPageProps = {
   params: {
@@ -12,9 +13,7 @@ type CreatorDetailPageProps = {
   };
 };
 
-export default async function CreatorDetailPage({
-  params,
-}: CreatorDetailPageProps) {
+export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
   return (
     <S.Section>
       {/* 프로필 컴포넌트 */}
