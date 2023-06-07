@@ -12,12 +12,17 @@ export type CreatorCardData = {
   theme?: string;
   desc?: string;
 };
-
-export type ShortCardData = CreatorInfo & {
-  id: number;
+export type ShortCardData = {
+  shortsId: number;
   title: string;
-  platform: string;
-  img: string;
+  thumbnailUrl: string;
+  platformType: string;
+  profileImage: string;
+  author: string;
+  liked: boolean;
+  likesCount: number;
+  bookmarked: boolean;
+  bookmarksCount: number;
 };
 
 export type ContentCardData = CreatorInfo & {
@@ -35,8 +40,10 @@ export type ReviewCardData = {
 };
 
 export type CreatorInfo = {
-  profileImg: string;
-  name: string;
-  like: number;
-  bookmark: number;
+  profileImage: string;
+  author: string;
+  liked: boolean;
+  likesCount: number;
+  bookmarked: boolean;
+  bookmarksCount: number;
 };

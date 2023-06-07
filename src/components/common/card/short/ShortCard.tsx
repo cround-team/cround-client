@@ -5,6 +5,7 @@ import TextBox from "../desc/textBox/TextBox";
 import { media } from "@/styles/themes/foundations";
 import CreatorInfoBox from "../desc/CreatorInfoBox/CreatorInfoBox";
 import * as S from "./styled";
+import { PATH } from "@/constants";
 
 type ShortCardProps = {
   short: ShortCardData;
@@ -15,29 +16,46 @@ export default function ShortCard({
   short,
   isShowCreatorInfo,
 }: ShortCardProps) {
-  const { platform, img, title, profileImg, name, like, bookmark } = short;
+  const {
+    shortsId,
+    title,
+    thumbnailUrl,
+    platformType,
+    profileImage,
+    author,
+    liked,
+    likesCount,
+    bookmarked,
+    bookmarksCount,
+  } = short;
+
   return (
-    <S.Article>
-      <S.Figure>
-        <Image
-          src={img}
-          fill={true}
-          alt="profile"
-          sizes={media.images.sizes}
-          style={{ objectFit: "cover" }}
-        />
-      </S.Figure>
-      <S.InfoGroup>
-        <TextBox platform={platform} title={title} />
-        {isShowCreatorInfo && (
-          <CreatorInfoBox
-            profileImg={profileImg}
-            name={name}
-            like={like}
-            bookmark={bookmark}
+    <S.LinkCard href={`${PATH.SHORTS.DETAIL}/${shortsId}`}>
+      <S.Article>
+        <S.Figure>
+          <Image
+            src={thumbnailUrl}
+            fill={true}
+            alt="profile"
+            sizes={media.images.sizes}
+            style={{ objectFit: "cover" }}
+            // "fill" | Globals | "contain" | "cover" | "none" | "scale-down"
           />
-        )}
-      </S.InfoGroup>
-    </S.Article>
+        </S.Figure>
+        <S.InfoGroup>
+          <TextBox platform={platformType} title={title} />
+          {isShowCreatorInfo && (
+            <CreatorInfoBox
+              profileImage={profileImage}
+              author={author}
+              liked={liked}
+              likesCount={likesCount}
+              bookmarked={bookmarked}
+              bookmarksCount={bookmarksCount}
+            />
+          )}
+        </S.InfoGroup>
+      </S.Article>
+    </S.LinkCard>
   );
 }
