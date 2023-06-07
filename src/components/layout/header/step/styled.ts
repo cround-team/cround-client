@@ -4,8 +4,8 @@ export const Container = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       position: relative;
-      ${theme.flex.row()};
-      padding: 8px 0;
+      ${theme.flex.row("space-between")};
+      padding: 8px 20px;
 
       button {
         position: absolute;
@@ -13,6 +13,9 @@ export const Container = styled.div`
       }
 
       h2 {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
         ${theme.typo.title.sm};
         color: ${theme.colors.neutral900};
       }

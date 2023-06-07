@@ -44,3 +44,8 @@ export const PATH_TITLE: Record<string, string> = {
   "/creators/detail": "크리에이터 소개",
   "/creators/register": "크리에이터 등록",
 };
+
+type Indicator = {
+  length: number;
+  current: number;
+};

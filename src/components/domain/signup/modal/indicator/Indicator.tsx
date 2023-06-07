@@ -2,12 +2,11 @@
 import * as S from "./styled";
 
 type IndicatorProps = {
-  type: "slide" | "modal";
   steps: string[];
   current: string;
 };
 
-export default function Indicator({ type, steps, current }: IndicatorProps) {
+export default function Indicator({ steps, current }: IndicatorProps) {
   return (
     <S.Container>
       {Array.from(steps).map((el) => {

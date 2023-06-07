@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useImmer } from "use-immer";
 
 import type { SignupStep } from "@/types/signup";
@@ -87,7 +87,7 @@ export default function ModalStep({ data }: ModalStepProps) {
     <Modal isMounted={true}>
       <S.Layout>
         <S.Container>
-          <Indicator type="modal" steps={STEPS} current={currentStep} />
+          <Indicator steps={STEPS} current={currentStep} />
           {isMounted.nickname && (
             <NickNameStep
               name={data.name}
