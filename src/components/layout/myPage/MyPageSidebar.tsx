@@ -19,26 +19,11 @@ const MY_PAGE = [
     path: PATH.ROOT,
   },
   {
-    label: "나의 좋아요",
-    path: PATH.ROOT,
-  },
-  {
     label: "개인정보 변경",
     path: PATH.ROOT,
   },
   {
     label: "크리에이터 등록하기",
-    path: PATH.ROOT,
-  },
-];
-
-const TERMS = [
-  {
-    label: "이용약관",
-    path: PATH.ROOT,
-  },
-  {
-    label: "개인정보처리방침",
     path: PATH.ROOT,
   },
 ];
@@ -64,13 +49,6 @@ export default function MyPageSidebar() {
         </S.User>
         <S.List>
           {MY_PAGE.map((page, idx) => (
-            <li key={idx}>
-              <Link href={page.path}>{page.label}</Link>
-            </li>
-          ))}
-        </S.List>
-        <S.List>
-          {TERMS.map((page, idx) => (
             <li key={idx}>
               <Link href={page.path}>{page.label}</Link>
             </li>

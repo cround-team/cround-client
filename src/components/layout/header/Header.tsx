@@ -8,10 +8,10 @@ import Navigation from "@/components/layout/header/navigation/Navigation";
 import Utils from "./utils/Utils";
 import * as S from "./Header.styled";
 import useChangeHeader from "@/hooks/useChangeHeader";
-import DetailHeader from "./detail/DetailHeader";
+import StepHeader from "./step/StepHeader";
 
 export default function Header() {
-  const { isStepHeader, isNavHeader, stepTitle } = useChangeHeader();
+  const { headerType, stepName } = useChangeHeader();
 
   return (
     <S.Header>
@@ -23,8 +23,8 @@ export default function Header() {
         </S.Logo>
         <Utils />
       </S.Wrapper>
-      {isStepHeader && <DetailHeader label={stepTitle} />}
-      {isNavHeader && <Navigation />}
+      {headerType === "step" && <StepHeader label={stepName} />}
+      {headerType === "navigate" && <Navigation />}
     </S.Header>
   );
 }

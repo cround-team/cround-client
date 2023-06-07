@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import Image from "next/image";
 
@@ -13,7 +11,7 @@ type PlatformCheckboxProps = {
   onUnSelect: (platform: string) => void;
 };
 
-export default function PlatformRadio({
+export default function PlatformCheckbox({
   src,
   value,
   title,

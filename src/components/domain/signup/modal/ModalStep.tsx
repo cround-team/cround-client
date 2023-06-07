@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useImmer } from "use-immer";
 
 import type { SignupStep } from "@/types/signup";
@@ -13,7 +13,7 @@ import Indicator from "./indicator/Indicator";
 import * as S from "./styled";
 import { useRouter } from "next/navigation";
 import { BooleanMap } from "@/types/common";
-import { signupApi } from "@/utils/api/auth/auth";
+import { signupApi } from "@/utils/api/auth";
 
 const STEPS = ["nickname", "platforms", "success"];
 
@@ -87,7 +87,7 @@ export default function ModalStep({ data }: ModalStepProps) {
     <Modal isMounted={true}>
       <S.Layout>
         <S.Container>
-          <Indicator type="modal" steps={STEPS} current={currentStep} />
+          <Indicator steps={STEPS} current={currentStep} />
           {isMounted.nickname && (
             <NickNameStep
               name={data.name}

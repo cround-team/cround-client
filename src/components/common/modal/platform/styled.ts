@@ -5,6 +5,7 @@ export const Layout = styled.div`
     ${theme.media.mobile} {
       position: relative;
       width: 360px;
+      backdrop-filter: blur(2px);
     }
   `};
 `;
@@ -37,7 +38,6 @@ export const Form = styled.form`
       margin: 0 auto;
       padding: 42px 20px 16px 20px;
       background-color: ${theme.colors.white};
-      backdrop-filter: blur(2px);
       border-radius: ${theme.radius.md};
     }
   `};

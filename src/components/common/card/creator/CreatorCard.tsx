@@ -11,21 +11,33 @@ type CreatorCardProps = {
 };
 
 export default function CreatorCard({ creator }: CreatorCardProps) {
-  const { img, name, platform, theme, desc } = creator;
+  const {
+    creatorId,
+    description,
+    platformActivityName,
+    platformType,
+    profileImage,
+  } = creator;
+
   return (
     <S.Article>
       <S.Figure>
-        <Image src={img} fill={true} alt="profile" sizes={media.images.sizes} />
+        <Image
+          src={profileImage}
+          fill={true}
+          alt="profile"
+          sizes={media.images.sizes}
+        />
       </S.Figure>
       <S.TitleWrapper>
-        <h3>{name}</h3>
+        <h3>{platformActivityName}</h3>
         <span>
-          {platform}
+          {platformType}
           <br />
-          {theme}
+          {"임시 테마"}
         </span>
       </S.TitleWrapper>
-      <S.Desc>{desc}</S.Desc>
+      <S.Desc>{description}</S.Desc>
     </S.Article>
   );
 }

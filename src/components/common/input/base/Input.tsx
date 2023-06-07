@@ -1,15 +1,15 @@
 "use client";
 
 import { ReactElement, useState } from "react";
+import { EyeOffIcon } from "@/assets/icons";
 import * as S from "./styled";
-import EyeOffButton from "../../button/eyeOff/EyeOffButton";
 
 export type InputStylesProps = "oauth" | "register";
 
 type InputType = "text" | "password";
 
 type InputProps = {
-  autoFocus: boolean;
+  autoFocus?: boolean;
   type?: InputType;
   styles: InputStylesProps;
   isVisibleLabel: boolean;
@@ -23,12 +23,8 @@ type InputProps = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-type IconMap = {
-  [key: string]: ReactElement;
-};
-
 export default function Input({
-  autoFocus,
+  autoFocus = false,
   type = "text",
   styles,
   isVisibleLabel,
@@ -42,12 +38,17 @@ export default function Input({
   isInvalid = true,
 }: InputProps) {
   const [inputType, setInputType] = useState<InputType>(type);
-  const utilIcon: IconMap = {
-    eyeOff: <EyeOffButton onClick={() => handleTogglePassword()} />,
+
+  const utilIcon: Record<string, ReactElement> = {
+    eyeOff: (
+      <S.EyeOffButton onClick={() => handleChangeInputType()}>
+        <EyeOffIcon />
+      </S.EyeOffButton>
+    ),
   };
 
-  const handleTogglePassword = () => {
-    inputType === "text" ? setInputType("password") : setInputType("text");
+  const handleChangeInputType = () => {
+    setInputType(inputType === "text" ? "password" : "text");
   };
 
   return (
@@ -63,10 +64,12 @@ export default function Input({
         autoFocus={autoFocus}
         onChange={onChange}
         aria-invalid={isInvalid ? "true" : "false"}
+        aria-errormessage="err"
       />
+
       {util && utilIcon[util]}
       {inputMessage && (
-        <S.InputMessage aria-invalid={isInvalid ? "true" : "false"}>
+        <S.InputMessage id="err" role="alert">
           {inputMessage}
         </S.InputMessage>
       )}

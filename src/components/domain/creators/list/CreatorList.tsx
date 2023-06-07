@@ -1,38 +1,33 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import CreatorCard from "@/components/common/card/creator/CreatorCard";
+import MorePageButton from "@/components/common/button/morePage/MorePageButton";
+import * as S from "./styled";
 
 import type { CreatorCardData } from "@/types/card";
-import CreatorCard from "@/components/common/card/creator/CreatorCard";
-import { getListCreators } from "@/service/mock/test";
-import * as S from "./styled";
-import MorePageButton from "@/components/common/button/morePage/MorePageButton";
 
-export default function CreatorList() {
-  const [creators, setCreators] = useState<CreatorCardData[]>();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getListCreators();
-        setCreators(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+type CreatorListProps = {
+  data: CreatorCardData[];
+  isNextPage: boolean;
+  fetchCreatorsData: (id?: number) => void;
+};
 
-    fetchData();
-  }, []);
+export default function CreatorList({
+  data,
+  fetchCreatorsData,
+  isNextPage,
+}: CreatorListProps) {
+  const handleAddList = () => {
+    fetchCreatorsData(data.at(-1)?.creatorId);
+  };
 
-  const handleAddList = () => {};
-
+  console.log("data", data);
   return (
-    <>
-      <S.Container>
-        {creators?.map((creator) => (
-          <CreatorCard key={creator.id} creator={creator} />
+    <S.Container>
+      <S.Wrapper>
+        {data.map((creator: CreatorCardData) => (
+          <CreatorCard key={creator.creatorId} creator={creator} />
         ))}
-      </S.Container>
-      <MorePageButton isDisabled={false} onClick={handleAddList} />
-    </>
+      </S.Wrapper>
+      <MorePageButton isDisabled={!isNextPage} onClick={handleAddList} />
+    </S.Container>
   );
 }

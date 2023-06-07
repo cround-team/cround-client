@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import Button from "@/components/common/button/base/Button";
 import * as S from "./styled";
-import { ChevronLeftIcon } from "@/assets/icons/arrow";
+import { media } from "@/styles/themes/foundations";
 
 export default function Profile({}) {
   const handleFollowCreator = () => {};
@@ -11,38 +11,40 @@ export default function Profile({}) {
 
   return (
     <S.Section>
-      <S.PrevButton>
-        <ChevronLeftIcon />
-      </S.PrevButton>
-      <S.ProfileContainer>
-        <S.ProfileWrapper>
+      <S.Container>
+        <S.TopWrapper>
           <S.Figure>
             <Image
               src="/images/profile2.jpg"
-              width={100}
-              height={100}
               alt="Profile Image"
+              sizes={media.images.sizes}
+              fill
               priority
             />
           </S.Figure>
           <S.ProfileText>
             <S.Nickname>코코</S.Nickname>
             <S.PlatformThemeGroup>
-              <span>유튜브</span>
               <span>ASMR</span>
+              <span>유튜브, 인스타그램, 틱톡</span>
             </S.PlatformThemeGroup>
-            <S.RatingFollowGroup>
-              <div>
-                <span>후기</span>
-                <span>4.8</span>
-              </div>
-              <div>
-                <span>팔로워</span>
-                <span>12명</span>
-              </div>
-            </S.RatingFollowGroup>
           </S.ProfileText>
-        </S.ProfileWrapper>
+        </S.TopWrapper>
+        <S.MiddleWrapper>
+          <div>
+            <span>4.9</span>
+            <span>리뷰</span>
+          </div>
+          <div>
+            <span>12명</span>
+            <span>팔로워</span>
+          </div>
+          <div>
+            <span>유튜브</span>
+            <span>대표 플랫폼</span>
+          </div>
+        </S.MiddleWrapper>
+
         <S.ButtonWrapper>
           <Button
             label="팔로우하기"
@@ -57,7 +59,7 @@ export default function Profile({}) {
             onClick={handleFollowCreator}
           />
         </S.ButtonWrapper>
-      </S.ProfileContainer>
+      </S.Container>
     </S.Section>
   );
 }

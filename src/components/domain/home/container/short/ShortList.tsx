@@ -8,8 +8,6 @@ import { PATH } from "@/constants";
 import ShortCard from "@/components/common/card/short/ShortCard";
 import { getMainShorts } from "@/service/mock/test";
 import * as S from "./styled";
-import CustomSwiper from "@/components/common/swiper/CustomSwiper";
-import { SwiperSlide } from "swiper/react";
 import Image from "next/image";
 
 const BREAK_POINTS = {
@@ -49,7 +47,7 @@ export default function ShortList() {
 
   return (
     <S.Section>
-      <S.Link href={PATH.SHORTS}>
+      <S.Link href={PATH.SHORTS.LIST}>
         <h2>
           <Image
             width={16}
@@ -62,18 +60,6 @@ export default function ShortList() {
         <ChevronRightIcon />
       </S.Link>
       <S.CardWrapper>
-        {/* <CustomSwiper
-          slidesPerView={1}
-          spaceBetween={16}
-          breakPoints={BREAK_POINTS}
-          centeredSlides={true}
-        >
-          {shorts?.map((short) => (
-            <SwiperSlide key={short.id}>
-              <ShortCard key={short.id} short={short} />
-            </SwiperSlide>
-          ))}
-        </CustomSwiper> */}
         {shorts?.map((short) => (
           <ShortCard key={short.id} short={short} />
         ))}

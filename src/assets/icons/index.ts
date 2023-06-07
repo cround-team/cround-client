@@ -16,8 +16,11 @@ export { default as FooterFacebookIcon } from "@/assets/icons/footer-facebook.sv
 export { default as FooterInstagramIcon } from "@/assets/icons/footer-instagram.svg";
 
 export { default as CheckIcon } from "@/assets/icons/check.svg";
-export { default as FilterIcon } from "@/assets/icons/utils/filter.svg";
+export { default as SmileIcon } from "@/assets/icons/smile.svg";
 export { default as RatingStarIcon } from "@/assets/icons/ratingStar.svg";
 
+export { default as FilterIcon } from "@/assets/icons/utils/filter.svg";
 export { default as XCloseIcon } from "@/assets/icons/utils/x-close.svg";
-export { default as SmileIcon } from "@/assets/icons/smile.svg";
+export { default as CameraIcon } from "@/assets/icons/utils/camera.svg";
+export { default as SelectBoxIcon } from "@/assets/icons/select-box.svg";
+export { default as PlusIcon } from "@/assets/icons/plus.svg";

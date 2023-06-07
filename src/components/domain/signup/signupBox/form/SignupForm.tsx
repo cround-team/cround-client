@@ -12,7 +12,7 @@ import {
   passwordValidCheck,
   psw2ValidCheck,
 } from "@/utils/validation";
-import { emailDupCheckApi } from "@/utils/api/auth/auth";
+import { emailDupCheckApi } from "@/utils/api/auth";
 
 const INPUTS = [
   {

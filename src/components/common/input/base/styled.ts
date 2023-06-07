@@ -62,3 +62,20 @@ export const InputMessage = styled.div`
     }
   `};
 `;
+
+export const EyeOffButton = styled.button`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      position: absolute;
+      top: 20px;
+      right: 16px;
+      ${theme.flex.row()};
+
+      svg {
+        width: 24px;
+        height: 24px;
+        stroke: ${theme.colors.neutral500};
+      }
+    }
+  `};
+`;

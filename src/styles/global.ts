@@ -168,6 +168,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     outline: 0;
   }
+  textarea {
+    outline: none;
+    resize: none;
+  }
   button {
     border-color: transparent;
     border: 0;

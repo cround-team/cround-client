@@ -30,6 +30,7 @@ export const CardWrapper = styled.div`
     ${theme.media.mobile} {
       ${theme.flex.row()};
       flex-wrap: wrap;
+      gap: 16px;
     }
   `};
 `;

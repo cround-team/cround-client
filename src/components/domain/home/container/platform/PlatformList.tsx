@@ -4,9 +4,9 @@ import Image from "next/image";
 import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 
+import { PLATFORMS } from "@/constants/platforms";
 import CustomSwiper from "@/components/common/swiper/CustomSwiper";
 import * as S from "./styled";
-import { PLATFORMS } from "@/constants/platforms";
 
 const BREAK_POINTS = {
   640: {

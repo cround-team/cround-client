@@ -27,7 +27,7 @@ export default function ContentList() {
 
   return (
     <S.Section>
-      <S.Link href={PATH.CONTENTS}>
+      <S.Link href={PATH.CONTENTS.LIST}>
         <h2>
           <Image
             width={16}
