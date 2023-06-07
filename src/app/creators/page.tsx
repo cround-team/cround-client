@@ -116,7 +116,7 @@ export default function CreatorsPage() {
         <CreatorList
           data={creators.data}
           isNextPage={isNextPage}
-          fetchCreatorsData={fetchCreatorsData}
+          onFetchCreatorsData={fetchCreatorsData}
         />
       )}
     </S.Section>
