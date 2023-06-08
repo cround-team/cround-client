@@ -30,7 +30,6 @@ export default function CreatorRegisterSuccessPage() {
           alt="Croods Standing"
         />
       </S.Figure>
-
       <Button
         size="56"
         variant="primary"
