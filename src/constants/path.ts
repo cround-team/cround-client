@@ -43,6 +43,8 @@ export const PATH = {
 export const PATH_TITLE: Record<string, string> = {
   "/creators/detail": "크리에이터 소개",
   "/creators/register": "크리에이터 등록",
+  "/shorts/detail": "숏클래스",
+  "/shorts/register": "숏클래스 등록",
 };
 
 type Indicator = {
