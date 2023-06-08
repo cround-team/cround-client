@@ -1,4 +1,4 @@
-import apiInstance from "./server";
+import { apiInstance } from "./server";
 
 type SignupBody = {
   username: string;

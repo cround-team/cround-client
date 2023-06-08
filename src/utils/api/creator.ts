@@ -1,5 +1,5 @@
 import type { Platforms } from "@/types/service";
-import apiInstance from "./server";
+import { apiInstance, multiPartInstance } from "./server";
 
 type CreatorsParams = {
   params: {
@@ -14,6 +14,20 @@ type CreatorNicknameBody = {
   nickname: string;
 };
 
+// type CreatorCreateBody = {
+//   nickname: formData.get('nickname') as string,
+//       description: formData.get('description') as string,
+//       platformHeadType: formData.get('platformHeadType') as string,
+//       platformHeadTheme: formData.get('platformHeadTheme') as string,
+//   nickname: string;
+//   description: string;
+//   platformHeadType: string;
+//   platformHeadTheme: string;
+//   platformUrl: string;
+//   tags: string[];
+//   activityPlatforms: string[];
+// };
+
 export const creatorsApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get("/api/creators", { params });
 
@@ -25,6 +39,13 @@ export const creatorNicknameCheckApi = async (body: CreatorNicknameBody) => {
     "/api/creators/validations/nickname",
     body
   );
+
+  return response;
+};
+
+export const creatorCreateApi = async (body: any) => {
+  console.log("body", body);
+  const response = await multiPartInstance.post("/api/creators", body);
 
   return response;
 };

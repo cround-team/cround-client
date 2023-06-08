@@ -1,14 +1,30 @@
 import axios, { AxiosInstance } from "axios";
 
-const apiInstance: AxiosInstance = axios.create({
+export const apiInstance: AxiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
   headers: {
     "Content-type": "application/json",
   },
 });
 
+export const multiPartInstance: AxiosInstance = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
+  headers: {
+    "Content-type": "multipart/form-data",
+  },
+});
+
 // Axios 요청시 인터셉트
 apiInstance.interceptors.request.use((req) => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    req.headers["authorization"] = `Bearer ${accessToken}`;
+  }
+
+  return req;
+});
+
+multiPartInstance.interceptors.request.use((req) => {
   const accessToken = localStorage.getItem("accessToken");
   if (accessToken) {
     req.headers["authorization"] = `Bearer ${accessToken}`;
@@ -36,4 +52,3 @@ apiInstance.interceptors.request.use((req) => {
 //     return err.response;
 //   }
 // );
-export default apiInstance;
