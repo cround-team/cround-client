@@ -25,8 +25,8 @@ export default function Profile({}) {
           <S.ProfileText>
             <S.Nickname>코코</S.Nickname>
             <S.PlatformThemeGroup>
-              <span>ASMR</span>
               <span>유튜브, 인스타그램, 틱톡</span>
+              <span>ASMR</span>
             </S.PlatformThemeGroup>
           </S.ProfileText>
         </S.TopWrapper>

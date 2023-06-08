@@ -16,7 +16,7 @@ export default function StepHeader({ label }: DetailHeaderProps) {
     <S.Container>
       <PrevButton />
       <h2>{label}</h2>
-      {steps.length && <Indicator steps={steps} current={current} />}
+      {steps.length > 0 && <Indicator steps={steps} current={current} />}
     </S.Container>
   );
 }

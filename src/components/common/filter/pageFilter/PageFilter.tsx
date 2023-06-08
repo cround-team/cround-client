@@ -1,23 +1,32 @@
-"use client";
-
-import SortDropdown, { Options } from "../../dropdown/sort/SortDropdown";
+import SortDropdown from "../../dropdown/sort/SortDropdown";
 import { FilterIcon } from "@/assets/icons";
 import { useState } from "react";
 import PlatFormModal from "../../modal/platform/PlatFormModal";
 import * as S from "./styled";
+import { Sorts } from "@/types/service";
 
 type PageFilterProps = {
-  options: Options[];
+  options: Sorts[];
+  onSelectSort: (sorted: string) => void;
+  onSubmitPlatform: (selected: string[]) => void;
 };
 
-export default function PageFilter({ options }: PageFilterProps) {
+export default function PageFilter({
+  options,
+  onSelectSort,
+  onSubmitPlatform,
+}: PageFilterProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleOpenModal = () => {
-    setIsModalOpen((prev) => !prev);
-  };
 
-  const handleCloseModal = () => {
-    setIsModalOpen((prev) => false);
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  const handleSubmitPlatform = (
+    e: React.FormEvent<HTMLFormElement>,
+    selected: string[]
+  ) => {
+    setIsModalOpen(false);
+    onSubmitPlatform(selected);
   };
 
   return (
@@ -26,9 +35,14 @@ export default function PageFilter({ options }: PageFilterProps) {
         <S.FilterButton onClick={() => handleOpenModal()}>
           <FilterIcon />
         </S.FilterButton>
-        <SortDropdown options={options} />
+        <SortDropdown options={options} onSelectSort={onSelectSort} />
       </S.Container>
-      {isModalOpen && <PlatFormModal onCloseModal={handleCloseModal} />}
+      {isModalOpen && (
+        <PlatFormModal
+          onSubmitPlatform={handleSubmitPlatform}
+          onCloseModal={handleCloseModal}
+        />
+      )}
     </>
   );
 }

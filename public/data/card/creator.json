@@ -1,18 +1,18 @@
 [
   {
-    "id": 1,
-    "name": "코코",
-    "platform": "유튜브",
-    "theme": "ASMR",
-    "img": "/images/profile.png",
-    "desc": "가성비 마이크와 카메라의 총집합! 장비 추천부터 도와드려요:)"
+    "creatorId": 0,
+    "description": "가성비 마이크와 카메라의 총집합! 장비 추천부터 도와드려요:)",
+    "platformActivityName": "가가",
+    "platformType": "youtube",
+    "profileImage": "/images/profile.png",
+    "platformTheme": "ASMR"
   },
   {
-    "id": 2,
-    "name": "쿠쿠",
-    "platform": "트위치",
-    "theme": "게임",
-    "img": "/images/mago.png",
-    "desc": "가성비 마이크와 카메라의 총집합! 장비 추천부터 도와드려요요요요요요요요요요ㅇㅇㅅㅇㅅㅇㅅㅇㅅㅇㅅㅇ:)"
+    "creatorId": 1,
+    "description": "가성비 마이크와 카메라의 총집합! 장비 추천부터 도와드려요:)",
+    "platformActivityName": "코코",
+    "platformType": "youtube",
+    "profileImage": "/images/profile.png",
+    "platformTheme": "ASMR"
   }
 ]

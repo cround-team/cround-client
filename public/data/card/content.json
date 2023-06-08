@@ -20,5 +20,27 @@
     "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus illo sit assumenda ratione pariatur voluptates quas impedit numquam quos quibusdam corporis aut obcaecati sed dolorem minus repellendus, aperiam exercitationem error.",
     "like": 1444,
     "bookmark": 220
+  },
+  {
+    "id": 3,
+    "title": "Lorem ipsum dolor sit amet consectetur adipisicing",
+    "platform": "트위치",
+    "img": "/images/short1.png",
+    "profileImg": "/images/mago.png",
+    "name": "쿠쿠",
+    "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus illo sit assumenda ratione pariatur voluptates quas impedit numquam quos quibusdam corporis aut obcaecati sed dolorem minus repellendus, aperiam exercitationem error.",
+    "like": 1444,
+    "bookmark": 220
+  },
+  {
+    "id": 4,
+    "title": "Lorem ipsum dolor sit amet consectetur adipisicing",
+    "platform": "트위치",
+    "img": "/images/short1.png",
+    "profileImg": "/images/mago.png",
+    "name": "쿠쿠",
+    "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus illo sit assumenda ratione pariatur voluptates quas impedit numquam quos quibusdam corporis aut obcaecati sed dolorem minus repellendus, aperiam exercitationem error.",
+    "like": 1444,
+    "bookmark": 220
   }
 ]

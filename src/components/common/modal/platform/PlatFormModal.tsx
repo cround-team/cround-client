@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { PLATFORMS } from "@/constants/platforms";
 import Modal from "../Modal";
 import * as S from "./styled";
@@ -9,15 +7,18 @@ import { XCloseIcon } from "@/assets/icons";
 import useSelectPlatform from "@/hooks/input/useSelectPlatform";
 
 type PlatFormModalProps = {
+  onSubmitPlatform: (
+    e: React.FormEvent<HTMLFormElement>,
+    selected: string[]
+  ) => void;
   onCloseModal: () => void;
 };
 
-export default function PlatFormModal({ onCloseModal }: PlatFormModalProps) {
+export default function PlatFormModal({
+  onSubmitPlatform,
+  onCloseModal,
+}: PlatFormModalProps) {
   const { selected, handleSelect, handleUnSelect } = useSelectPlatform();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-  };
 
   return (
     <Modal isMounted={true}>
@@ -25,7 +26,7 @@ export default function PlatFormModal({ onCloseModal }: PlatFormModalProps) {
         <S.CloseButton onClick={onCloseModal}>
           <XCloseIcon />
         </S.CloseButton>
-        <S.Form onSubmit={handleSubmit}>
+        <S.Form onSubmit={(e) => onSubmitPlatform(e, selected)}>
           <S.PlatformList>
             {PLATFORMS.map((el) => (
               <PlatformCheckbox
@@ -42,7 +43,6 @@ export default function PlatFormModal({ onCloseModal }: PlatFormModalProps) {
             label={selected.length ? "완료" : "플랫폼을 1개 이상 선택해 주세요"}
             size="48"
             variant="primary"
-            onClick={handleSubmit}
           />
         </S.Form>
       </S.Layout>

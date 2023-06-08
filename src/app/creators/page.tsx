@@ -3,18 +3,23 @@
 import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 
-import type { Options } from "@/components/common/dropdown/sort/SortDropdown";
+import type { Filter, Sorts } from "@/types/service";
 import SearchInput from "@/components/common/input/search/SearchInput";
 import PageFilter from "@/components/common/filter/pageFilter/PageFilter";
 import CreatorList from "@/components/domain/creators/list/CreatorList";
 import { creatorsApi } from "@/utils/api/creator";
 import * as S from "./styled";
 
-const OPTIONS: Options[] = ["신규순", "리뷰순", "팔로워순"];
+const OPTIONS: Sorts[] = ["신규순", "팔로워순", "리뷰순"];
+const INITIAL_SORT = "latest";
 
 export default function CreatorsPage() {
   const [creators, setCreators] = useImmer({
     data: [],
+  });
+  const [filter, setFilter] = useImmer<Filter>({
+    platforms: [],
+    sort: INITIAL_SORT,
   });
   const [isNextPage, setIsNextPage] = useState(false);
 
@@ -23,19 +28,28 @@ export default function CreatorsPage() {
   }, []);
 
   const fetchCreatorsData = (id?: number) => {
-    console.log("fetch");
     const getResponse = async () => {
       try {
         const params = {
-          sort: "latest",
+          sort: filter.sort,
+          filter: filter.platforms.join(","),
+          size: 12,
           cursorId: id,
+          // 키워드 추가해야함
+          keyword: "",
         };
-        console.log("params", params);
         const response = await creatorsApi(params);
-        console.log("response, data", response.data);
-        setCreators((draft: any) => {
-          draft.data = [...draft.data, ...response.data.pages];
-        });
+
+        if (id) {
+          setCreators((draft: any) => {
+            draft.data = [...draft.data, ...response.data.pages];
+          });
+        } else {
+          setCreators((draft: any) => {
+            draft.data = response.data.pages;
+          });
+        }
+
         setIsNextPage(response.data.hasNext);
       } catch (error) {
         console.error(error);
@@ -44,22 +58,65 @@ export default function CreatorsPage() {
     getResponse();
   };
 
+  const fetchFilterData = (
+    sort = filter.sort,
+    platforms = filter.platforms
+  ) => {
+    const getResponse = async () => {
+      try {
+        const params = {
+          sort,
+          size: 12,
+          cursorId: undefined,
+          filter: platforms.join(","),
+          // 키워드 추가해야함
+          keyword: "",
+        };
+        const response = await creatorsApi(params);
+        setCreators((draft: any) => {
+          draft.data = response.data.pages;
+        });
+
+        setIsNextPage(response.data.hasNext);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getResponse();
+  };
+
+  const handleSelectPlatform = (selected: string[]) => {
+    setFilter((draft) => {
+      draft.platforms = selected;
+    });
+    fetchFilterData(filter.sort, selected);
+  };
+
+  const handleSelectSort = (sorted: string) => {
+    setFilter((draft) => {
+      draft.sort = sorted;
+    });
+    fetchFilterData(sorted, filter.platforms);
+  };
+
   return (
     <S.Section>
-      <S.InputWrapper>
-        <SearchInput
-          label="검색창"
-          id="search"
-          name="search"
-          placeholder="플랫폼 또는 관심 정보를 입력해 주세요"
-        />
-      </S.InputWrapper>
-      <PageFilter options={OPTIONS} />
+      <SearchInput
+        label="검색창"
+        id="search"
+        name="search"
+        placeholder="플랫폼 또는 관심 정보를 입력해 주세요"
+      />
+      <PageFilter
+        options={OPTIONS}
+        onSelectSort={handleSelectSort}
+        onSubmitPlatform={handleSelectPlatform}
+      />
       {creators?.data && (
         <CreatorList
           data={creators.data}
           isNextPage={isNextPage}
-          fetchCreatorsData={fetchCreatorsData}
+          onFetchCreatorsData={fetchCreatorsData}
         />
       )}
     </S.Section>

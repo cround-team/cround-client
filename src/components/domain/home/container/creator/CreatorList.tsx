@@ -70,7 +70,7 @@ export default function CreatorList({ creatorType }: CreatorListProps) {
       </S.Link>
       <S.CardWrapper>
         {creators?.map((creator) => (
-          <CreatorCard key={creator.name} creator={creator} />
+          <CreatorCard key={creator.creatorId} creator={creator} />
         ))}
       </S.CardWrapper>
     </S.Section>

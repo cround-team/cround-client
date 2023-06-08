@@ -1,9 +1,12 @@
+import type { Platforms } from "@/types/service";
 import apiInstance from "./server";
 
 type CreatorsParams = {
   params: {
     sort: "latest" | "follow" | "review";
-    filters: "youtube" | "tiktok" | "instagram" | "podcast";
+    filters: Platforms[];
+    size: number;
+    id: number;
   };
 };
 

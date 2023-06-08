@@ -8,3 +8,11 @@ export const Section = styled.section`
     }
   `};
 `;
+
+export const InputWrapper = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      margin-bottom: 24px;
+    }
+  `};
+`;
