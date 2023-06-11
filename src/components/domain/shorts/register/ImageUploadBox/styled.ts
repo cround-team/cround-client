@@ -56,3 +56,18 @@ export const TipMessage = styled.p`
     }
   `};
 `;
+
+export const Figure = styled.figure`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      position: relative;
+      width: 320px;
+      height: 170px;
+      border-radius: ${theme.radius.md};
+
+      img {
+        border-radius: ${theme.radius.md};
+      }
+    }
+  `};
+`;

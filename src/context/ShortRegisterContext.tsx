@@ -1,93 +1,82 @@
-import type { Platforms } from "@/types/service";
-import { hasKey } from "@/utils/form";
-import React, { PropsWithChildren, createContext, useContext } from "react";
+import React, {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useState,
+} from "react";
 import { useImmer } from "use-immer";
 
-type TitleDesc = {
+import { hasKey } from "@/utils/form";
+
+type FormData = {
   title: string;
-  desc: string;
-};
-
-type PlatformsData = {
-  platforms: string[];
-};
-
-type Video = {
-  thumbnail: any;
+  description: string;
+  thumbnail: File | null;
   url: string;
 };
 
-type FormData = TitleDesc & PlatformsData & Video;
-
-type InputContextProps = {
+type FormContextProps = {
   formData: FormData;
-  handleSetValues: (name: string, value: string | string[]) => void;
-  handleSetTitleDesc: (inputValues: TitleDesc) => void;
-  handleSetVideo: (video: Video) => void;
+  platforms: string[];
+  handleChangeForm: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   handleSetPlatforms: (platforms: string[]) => void;
+  handleSetFile: (file: File) => void;
 };
 
-type SetFormData = (
-  recipeUpdater: (draft: FormData) => void | FormData
-) => void;
-
-const InputContext = createContext<InputContextProps | undefined>(undefined);
+const FormContext = createContext<FormContextProps | undefined>(undefined);
 
 export const ShortRegisterProvider = ({ children }: PropsWithChildren) => {
   const [formData, setFormData] = useImmer<FormData>({
     title: "",
-    desc: "",
-    platforms: [""],
-    thumbnail: "",
+    description: "",
+    thumbnail: null,
     url: "",
   });
+  const [platforms, setPlatforms] = useState([""]);
 
-  const handleSetTitleDesc = (inputValues: TitleDesc) => {
-    setFormData((draft) => {
-      draft.title = inputValues.title;
-      draft.desc = inputValues.desc;
-    });
+  const handleChangeForm = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+
+    if (!hasKey(formData, name)) {
+      throw new Error("is not valid name");
+    }
+
+    if (name !== "thumbnail") {
+      setFormData((draft) => {
+        draft[name] = value;
+      });
+    }
   };
 
-  const handleSetVideo = (video: Video) => {
+  const handleSetFile = (file: File) => {
     setFormData((draft) => {
-      draft.thumbnail = video.thumbnail;
-      draft.url = video.url;
+      draft.thumbnail = file;
     });
   };
 
   const handleSetPlatforms = (platforms: string[]) => {
-    setFormData((draft) => {
-      draft.platforms = platforms;
-    });
+    setPlatforms(platforms);
   };
 
-  const handleSetValues = (name: string, value: string | string[]) => {
-    if (!hasKey(formData, name)) {
-      throw new Error("is not valid name");
-    }
-    setFormData((draft) => {
-      draft[name] = value;
-    });
+  const contextValue = {
+    formData,
+    platforms,
+    handleChangeForm,
+    handleSetPlatforms,
+    handleSetFile,
   };
 
   return (
-    <InputContext.Provider
-      value={{
-        formData,
-        handleSetValues,
-        handleSetTitleDesc,
-        handleSetPlatforms,
-        handleSetVideo,
-      }}
-    >
-      {children}
-    </InputContext.Provider>
+    <FormContext.Provider value={contextValue}>{children}</FormContext.Provider>
   );
 };
 
-export const useShortRegisterContext = (): InputContextProps => {
-  const context = useContext(InputContext);
+export const useShortRegisterContext = (): FormContextProps => {
+  const context = useContext(FormContext);
   if (!context) {
     throw new Error(
       "useShortRegisterContext은 ShortRegisterProvider 내에서 사용되어야 합니다."

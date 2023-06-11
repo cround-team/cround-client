@@ -1,25 +1,13 @@
 "use client";
 
-import Label from "@/components/common/label/Label";
-import * as S from "./styled";
-import PlatformForm from "@/components/common/form/platform/PlatformForm";
-import usePlatform from "@/hooks/form/usePlatform";
 import useShortRegister from "@/hooks/form/useShortRegister";
-import { useShortRegisterContext } from "@/context/ShortRegisterContext";
-import { useRouter } from "next/navigation";
-import { PATH } from "@/constants";
-import { useEffect } from "react";
+
+import Label from "@/components/common/label/Label";
+import PlatformForm from "@/components/common/form/platform/PlatformForm";
+import * as S from "./styled";
 
 export default function ShortRegisterPlatformPage() {
   const { handleSubmitPlatform } = useShortRegister();
-  const { formData } = useShortRegisterContext();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!formData.desc || !formData.title) {
-      router.push(PATH.SHORTS.REGISTER.BASE);
-    }
-  }, []);
 
   return (
     <S.Container>

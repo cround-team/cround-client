@@ -1,68 +1,42 @@
-import { useShortRegisterContext } from "@/context/ShortRegisterContext";
-import { hasKey } from "@/utils/form";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { useImmer } from "use-immer";
 
-type Inputs = {
-  title: string;
-  desc: string;
-  platforms: string[];
-  thumbnail: string;
-  url: string;
-};
+import { PATH } from "@/constants";
+import { useShortRegisterContext } from "@/context/ShortRegisterContext";
+import { useEffect } from "react";
+import { useUploadImage } from "../useUploadImage";
 
 export default function useShortRegister() {
-  const [inputValues, setInputValues] = useImmer<Inputs>({
-    title: "",
-    desc: "",
-    platforms: [""],
-    thumbnail: "",
-    url: "",
-  });
-  const {
-    formData,
-    handleSetValues,
-    handleSetTitleDesc,
-    handleSetPlatforms,
-    handleSetVideo,
-  } = useShortRegisterContext();
   const router = useRouter();
+  const {
+    formData: { title, description, thumbnail, url },
+    platforms,
+    handleSetPlatforms,
+    handleSetFile,
+  } = useShortRegisterContext();
 
-  const isBaseDisabled = !(inputValues.title && inputValues.desc);
-  const isUploadDisabled = !(formData.thumbnail && inputValues.url);
+  const { selectedImage, previewImage, fileInputRef, handleFileChange } =
+    useUploadImage();
 
-  const handleChangeForm = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { value, name } = e.target;
-
-    if (!hasKey(inputValues, name)) {
-      throw new Error("is not valid name");
+  useEffect(() => {
+    if (!title || !description) {
+      router.push(PATH.SHORTS.REGISTER.BASE);
+    } else if (!platforms.length) {
+      router.push(PATH.SHORTS.REGISTER.PLATFORM);
     }
+  }, []);
 
-    if (name === "title") {
-      setInputValues((draft) => {
-        draft.title = value;
-      });
-    } else if (name === "desc") {
-      setInputValues((draft) => {
-        draft.desc = value;
-      });
-    } else if (name === "url") {
-      setInputValues((draft) => {
-        draft.url = value;
-      });
+  useEffect(() => {
+    if (selectedImage !== null) {
+      handleSetFile(selectedImage);
     }
-  };
+  }, [selectedImage]);
+
+  const isBaseDisabled = !(title && description);
+  const isUploadDisabled = !(thumbnail && url);
 
   const handleSubmitBase = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleSetTitleDesc({
-      title: inputValues.title,
-      desc: inputValues.desc,
-    });
-    router.push("/shorts/register/platform");
+    router.push(PATH.SHORTS.REGISTER.PLATFORM);
   };
 
   const handleSubmitPlatform = (
@@ -71,28 +45,34 @@ export default function useShortRegister() {
   ) => {
     e.preventDefault();
     handleSetPlatforms(selected);
-    router.push("/shorts/register/upload");
+    router.push(PATH.SHORTS.REGISTER.UPLOAD);
   };
 
-  const handleSubmitVideo = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitApi = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleSetVideo({
-      thumbnail: inputValues.thumbnail,
-      url: inputValues.desc,
-    });
-    router.push("/shorts/register/video");
+    console.log("title", title);
+    console.log("description", description);
+    console.log("platforms", platforms);
+    console.log("thumbnail", thumbnail);
+    console.log("url", url);
+
+    // API 성공시
+    // router.push(PATH.SHORTS.REGISTER.SUCCESS);
   };
+
+  const handlePrevStep = () => router.back();
 
   return {
-    inputValues,
-    //
     isBaseDisabled,
     isUploadDisabled,
     //
-    handleChangeForm,
+    previewImage,
+    fileInputRef,
     //
+    handleFileChange,
+    handlePrevStep,
     handleSubmitBase,
     handleSubmitPlatform,
-    handleSubmitVideo,
+    handleSubmitApi,
   };
 }

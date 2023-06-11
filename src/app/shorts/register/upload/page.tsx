@@ -1,56 +1,45 @@
 "use client";
 
-import { useShortRegisterContext } from "@/context/ShortRegisterContext";
-import * as S from "./styled";
-import RegisterInput from "@/components/common/input/register/RegisterInput";
 import useShortRegister from "@/hooks/form/useShortRegister";
-import { useEffect } from "react";
-import { PATH } from "@/constants";
-import { useRouter } from "next/navigation";
+import { useShortRegisterContext } from "@/context/ShortRegisterContext";
+import RegisterInput from "@/components/common/input/register/RegisterInput";
 import Label from "@/components/common/label/Label";
 import ImageUploadBox from "@/components/domain/shorts/register/ImageUploadBox/ImageUploadBox";
 import Button from "@/components/common/button/base/Button";
-import { useUploadImage } from "@/hooks/useUploadImage";
+import * as S from "./styled";
 
 export default function ShortRegisterUploadPage() {
-  const { formData } = useShortRegisterContext();
-  const { inputValues, isUploadDisabled, handleChangeForm, handleSubmitVideo } =
-    useShortRegister();
-  const router = useRouter();
-
-  //   useEffect(() => {
-  //     if (!formData.desc || !formData.title) {
-  //       router.push(PATH.SHORTS.REGISTER.BASE);
-  //     }
-  //   }, []);
-
-  useEffect(() => {
-    console.log(formData);
-  });
-
-  const handlePrevStep = () => {
-    router.back();
-  };
-
-  const { selectedImage, previewImage, fileInputRef, handleFileChange } =
-    useUploadImage();
+  const {
+    formData: { url },
+    handleChangeForm,
+  } = useShortRegisterContext();
+  const {
+    isUploadDisabled,
+    fileInputRef,
+    previewImage,
+    handlePrevStep,
+    handleFileChange,
+    handleSubmitApi,
+  } = useShortRegister();
 
   return (
-    <S.Form>
+    <S.Form onSubmit={handleSubmitApi}>
       <S.Thumbnail>
         <Label label="숏클래스의 썸네일을 등록해 주세요." />
         <ImageUploadBox
           fileRef={fileInputRef}
+          previewImage={previewImage}
           onFileChange={handleFileChange}
         />
       </S.Thumbnail>
       <RegisterInput
+        css={S.MarginBottom}
         label="숏클래스의 url을 등록해 주세요."
         size="md"
         id="url"
         name="url"
-        css={S.MarginBottom}
         placeholder="url을 등록해 주세요"
+        value={url}
         onChange={handleChangeForm}
       />
       <S.ButtonWrapper>
