@@ -39,6 +39,7 @@ export default function CreatorAdditionForm() {
         <RegisterInput
           tipMessage="(예시) ASMR, 먹방, 예술, 판타지, 일러스트 등"
           label="크리에이터님의 대표 테마를 1개 입력해 주세요."
+          size="md"
           id="theme"
           name="theme"
           placeholder="10글자 이내로 입력해 주세요"
@@ -49,6 +50,7 @@ export default function CreatorAdditionForm() {
         <RegisterInput
           label="크리에이터님의 강점을 1~7개 입력해 주세요."
           tipMessage="(예시) 가성비, 꿀팁 가득, 프로그램 추천, 장비 추천 등"
+          size="md"
           id="tag"
           name="tag"
           placeholder="20글자 이내로 입력해 주세요"
@@ -60,6 +62,7 @@ export default function CreatorAdditionForm() {
       <S.InputWrapper>
         <RegisterInput
           label="활동 중이신 플랫폼 url을 등록해 주세요."
+          size="md"
           id="tag"
           name="tag"
           placeholder="20글자 이내로 입력해 주세요"

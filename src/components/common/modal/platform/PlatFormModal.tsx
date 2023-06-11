@@ -31,6 +31,7 @@ export default function PlatFormModal({
             {PLATFORMS.map((el) => (
               <PlatformCheckbox
                 key={el.id}
+                isChecked={selected.includes(el.id)}
                 src={el.src}
                 value={el.id}
                 title={el.title}

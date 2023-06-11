@@ -4,22 +4,22 @@ import * as S from "./styled";
 import Button from "../../button/base/Button";
 import PlatformCheckbox from "../../checkbox/PlatformCheckbox";
 
-export default function PlatformForm() {
-  const {
-    selected,
-    handleSelect,
-    handlePrevStep,
-    handleNextStep,
-    handleUnSelect,
-  } = usePlatform();
+type PlatformFormProps = {
+  onSubmit: (e: React.FormEvent<HTMLFormElement>, selected: string[]) => void;
+};
+
+export default function PlatformForm({ onSubmit }: PlatformFormProps) {
+  const { selected, handleSelect, handlePrevStep, handleUnSelect } =
+    usePlatform();
   return (
-    <S.Form onSubmit={handleNextStep}>
+    <S.Form onSubmit={(e) => onSubmit(e, selected)}>
       <S.PlatformList>
         {PLATFORMS.map((el) => (
           <PlatformCheckbox
             key={el.id}
             src={el.src}
             value={el.id}
+            isChecked={selected.includes(el.id)}
             title={el.title}
             onSelect={handleSelect}
             onUnSelect={handleUnSelect}

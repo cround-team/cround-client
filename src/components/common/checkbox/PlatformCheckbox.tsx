@@ -4,6 +4,7 @@ import Image from "next/image";
 import * as S from "./styled";
 
 type PlatformCheckboxProps = {
+  isChecked: boolean;
   src: string;
   value: string;
   title: string;
@@ -12,13 +13,14 @@ type PlatformCheckboxProps = {
 };
 
 export default function PlatformCheckbox({
+  isChecked,
   src,
   value,
   title,
   onSelect,
   onUnSelect,
 }: PlatformCheckboxProps) {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(isChecked ?? false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
