@@ -25,11 +25,17 @@ export type ShortCardData = {
   bookmarksCount: number;
 };
 
-export type ContentCardData = CreatorInfo & {
-  id: number;
+export type ContentCardData = {
+  boardId: number;
   title: string;
-  platform: string;
-  desc: string;
+  content: string;
+  platformType: string;
+  profileImage: string;
+  author: string;
+  likesCount: number;
+  bookmarksCount: number;
+  liked: boolean;
+  bookmarked: boolean;
 };
 
 export type ReviewCardData = {
