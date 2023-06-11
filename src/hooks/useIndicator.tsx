@@ -25,6 +25,12 @@ export default function useIndicator({ label }: UseIndicatorProps) {
         setCurrent(lastPath[lastPath.length - 1]);
         break;
 
+      case "콘텐츠 등록":
+        setSteps(["base", "platform", "success"]);
+        lastPath = pathname.split("/");
+        setCurrent(lastPath[lastPath.length - 1]);
+        break;
+
       default:
         return setSteps([]);
     }
