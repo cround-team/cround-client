@@ -1,8 +1,12 @@
 export const PATH = {
   ROOT: "/",
-  LOGIN: "/login",
-  SIGNUP: "/signup",
+  AUTH: "/auth",
   MYPAGE: "/mypage",
+  PASSWORD: {
+    SEND: "/password/send",
+    FIND: "/password/find",
+    NEW: "/password/new",
+  },
 
   CREATORS: {
     LIST: "/creators",
@@ -33,11 +37,6 @@ export const PATH = {
       SUCCESS: "/contents/register/success",
     },
   },
-  PASSWORD: {
-    SEND: "/password/send",
-    FIND: "/password/find",
-    NEW: "/password/new",
-  },
 };
 
 export const PATH_TITLE: Record<string, string> = {
@@ -45,6 +44,8 @@ export const PATH_TITLE: Record<string, string> = {
   "/creators/register": "크리에이터 등록",
   "/shorts/detail": "숏클래스",
   "/shorts/register": "숏클래스 등록",
+  "/contents/detail": "콘텐츠",
+  "/contents/register": "콘텐츠 등록",
 };
 
 type Indicator = {
