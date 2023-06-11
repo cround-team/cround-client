@@ -14,6 +14,7 @@ type RegisterInputProps = {
   type?: "text";
   id: string;
   name: string;
+  value: string;
   placeholder: string;
   validMessage?: string;
   errorMessage?: string;
@@ -29,6 +30,7 @@ export default function RegisterInput({
   type = "text",
   id,
   name,
+  value,
   placeholder,
   validMessage = "",
   errorMessage = "",
@@ -45,6 +47,7 @@ export default function RegisterInput({
         type={type}
         id={id}
         name={name}
+        value={value}
         placeholder={placeholder}
         onChange={onChange}
       />
