@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 import * as S from "./styled";
+import { media } from "@/styles/themes/foundations";
 
 type PlatformCheckboxProps = {
   isChecked: boolean;
@@ -38,7 +39,9 @@ export default function PlatformCheckbox({
         value={value}
         onChange={handleChange}
       />
-      <Image src={src} width={85} height={85} alt={value} />
+      <S.Figure>
+        <Image src={src} fill sizes={media.images.sizes} alt={value} />
+      </S.Figure>
       <S.Name>{title}</S.Name>
     </S.Label>
   );

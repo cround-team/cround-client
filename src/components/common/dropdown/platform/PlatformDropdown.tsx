@@ -4,16 +4,23 @@ import { ChevronDownIcon } from "@/assets/icons/arrow";
 import ListItem from "./listItem/ListItem";
 import * as S from "./styled";
 
-const PLATFORMS = ["유튜브", "트위치", "팟캐스트", "아프리카 TV"];
+type PlatformDropdownProps = {
+  platforms: string[];
+  onChange: (selected: string) => void;
+};
 
-export default function PlatformDropdown() {
+export default function PlatformDropdown({
+  platforms,
+  onChange,
+}: PlatformDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(PLATFORMS[0]);
+  const [selected, setSelected] = useState(platforms[0]);
 
   const handleToggleDropdown = () => setIsOpen((prev) => !prev);
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelected(e.target.value);
+    onChange(e.target.value);
     setIsOpen(false);
   };
 
@@ -26,7 +33,7 @@ export default function PlatformDropdown() {
       {/* 드롭다운 */}
       {isOpen && (
         <S.Dropdown>
-          {PLATFORMS.map((platform) => (
+          {platforms.map((platform) => (
             <ListItem
               key={platform}
               item={platform}
