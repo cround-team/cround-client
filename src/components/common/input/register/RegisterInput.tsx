@@ -1,4 +1,4 @@
-import Label from "../../label/Label";
+import { Label } from "@/components/common";
 import * as S from "./styled";
 
 export type InputSize = "sm" | "md" | "lg";
@@ -14,7 +14,7 @@ type RegisterInputProps = {
   type?: "text";
   id: string;
   name: string;
-  value: string;
+  value?: string;
   placeholder: string;
   validMessage?: string;
   errorMessage?: string;
