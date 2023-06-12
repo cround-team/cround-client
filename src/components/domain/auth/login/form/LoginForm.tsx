@@ -87,8 +87,8 @@ export default function LoginForm() {
       };
       const res = await loginApi(body);
       if (res.status === 200) {
-        // const tokenWithoutBearer = res.data.accessToken.replace("Bearer ", "");
-        localStorage.setItem("accessToken", res.data.accessToken);
+        const tokenWithoutBearer = res.data.accessToken.replace("Bearer ", "");
+        localStorage.setItem("accessToken", tokenWithoutBearer);
       }
     } catch (error: any) {
       if (error.response.status === 400) {

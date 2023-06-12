@@ -14,6 +14,7 @@ import * as S from "./styled";
 import { useRouter } from "next/navigation";
 import { BooleanMap } from "@/types/common";
 import { signupApi } from "@/utils/api/auth";
+import { PATH } from "@/constants";
 
 const STEPS = ["nickname", "platforms", "success"];
 
@@ -80,7 +81,7 @@ export default function ModalStep({ data }: ModalStepProps) {
   };
 
   const handlePushLogin = () => {
-    router.push("/login");
+    router.push(PATH.AUTH);
   };
 
   return (
