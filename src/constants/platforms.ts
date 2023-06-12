@@ -20,7 +20,7 @@ export const PLATFORMS = [
     src: "/images/platform/twitch.png",
   },
   {
-    id: "afreecac",
+    id: "afreecatv",
     title: "아프리카TV",
     src: "/images/platform/afreeca.png",
   },
