@@ -13,7 +13,7 @@ export const List = styled.li`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       width: 50%;
-      padding: 0px;
+      padding: 8px 0 10px 0;
       text-align: center;
     }
 
@@ -38,7 +38,8 @@ export const List = styled.li`
     button {
       display: inline-block;
       width: auto;
-      padding: 2px 0;
+      /* padding: 2px 0; */
+
       ${theme.typo.button.md};
       transition: all 0.25s ease-in-out;
     }

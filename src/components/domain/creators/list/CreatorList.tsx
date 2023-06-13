@@ -7,16 +7,16 @@ import * as S from "./styled";
 type CreatorListProps = {
   data: CreatorCardData[];
   isNextPage: boolean;
-  onFetchCreatorsData: (id?: number) => void;
+  onFectData: (id?: number) => void;
 };
 
 export default function CreatorList({
   data,
-  onFetchCreatorsData,
+  onFectData,
   isNextPage,
 }: CreatorListProps) {
   const handleAddList = () => {
-    onFetchCreatorsData(data.at(-1)?.creatorId);
+    onFectData(data.at(-1)?.creatorId);
   };
 
   return (

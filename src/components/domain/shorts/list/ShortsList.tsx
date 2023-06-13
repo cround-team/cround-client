@@ -7,16 +7,16 @@ import * as S from "./styled";
 type ShortsListProps = {
   data: ShortCardData[];
   isNextPage: boolean;
-  onFetchShortsData: (id?: number) => void;
+  onFetchData: (id?: number) => void;
 };
 
 export default function ShortsList({
   data,
   isNextPage,
-  onFetchShortsData,
+  onFetchData,
 }: ShortsListProps) {
   const handleAddList = () => {
-    onFetchShortsData(data.at(-1)?.shortsId);
+    onFetchData(data.at(-1)?.shortsId);
   };
 
   return (

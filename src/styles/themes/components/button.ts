@@ -13,7 +13,7 @@ export const button = {
     32: () => css`
       ${flex.row()};
       height: 32px;
-      border-radius: 9px;
+      border-radius: ${radius.md};
       ${typo.button.sm};
     `,
     48: () => css`

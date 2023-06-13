@@ -1,16 +1,20 @@
-import Label from "../../label/Label";
+import { Label } from "@/components/common";
 import * as S from "./styled";
+
+export type InputSize = "sm" | "md" | "lg";
 
 type RegisterInputProps = {
   //label
   tipMessage?: string;
   label: string;
 
+  size?: InputSize;
   autoFocus?: boolean;
   className?: string;
   type?: "text";
   id: string;
   name: string;
+  value?: string;
   placeholder: string;
   validMessage?: string;
   errorMessage?: string;
@@ -20,12 +24,13 @@ type RegisterInputProps = {
 export default function RegisterInput({
   tipMessage = "",
   label,
-
+  size = "md",
   autoFocus = false,
   className,
   type = "text",
   id,
   name,
+  value,
   placeholder,
   validMessage = "",
   errorMessage = "",
@@ -38,9 +43,11 @@ export default function RegisterInput({
         aria-invalid={errorMessage ? "false" : "true"}
         aria-errormessage="err"
         autoFocus={autoFocus}
+        inputSize={size}
         type={type}
         id={id}
         name={name}
+        value={value}
         placeholder={placeholder}
         onChange={onChange}
       />

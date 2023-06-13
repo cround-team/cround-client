@@ -1,42 +1,28 @@
-import { useState } from "react";
+import React from "react";
 import Image from "next/image";
 
 import * as S from "./styled";
+import { media } from "@/styles/themes/foundations";
 
 type PlatformCheckboxProps = {
   src: string;
   value: string;
   title: string;
-  onSelect: (platform: string) => void;
-  onUnSelect: (platform: string) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function PlatformCheckbox({
   src,
   value,
   title,
-  onSelect,
-  onUnSelect,
+  onChange,
 }: PlatformCheckboxProps) {
-  const [checked, setChecked] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-
-    setChecked((prev) => !prev);
-    checked ? onSelect(value) : onUnSelect(value);
-  };
-
   return (
     <S.Label>
-      <S.Input
-        isHidden
-        type="checkbox"
-        checked={checked}
-        value={value}
-        onChange={handleChange}
-      />
-      <Image src={src} width={85} height={85} alt={value} />
+      <S.Input isHidden type="checkbox" value={value} onChange={onChange} />
+      <S.Figure>
+        <Image src={src} fill sizes={media.images.sizes} alt={value} />
+      </S.Figure>
       <S.Name>{title}</S.Name>
     </S.Label>
   );

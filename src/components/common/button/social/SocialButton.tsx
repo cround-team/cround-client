@@ -16,7 +16,6 @@ import {
   OAUTH_REDIRECT_URI,
 } from "@/service/kakaoOauth";
 import { kakaoSocialApi } from "@/utils/api/auth";
-import Link from "next/link";
 
 export type SocialLabels = "카카오" | "구글";
 
@@ -53,7 +52,6 @@ export default function SocialButton({ label }: SocialButtonProps) {
   if (label === "카카오") {
     return (
       <>
-        <Link href={KAKAO_TEST_URL}>테스트</Link>
         <S.KakaoButton onClick={() => handleOauthKakao()}>
           <S.Figure>
             <Image
@@ -63,8 +61,7 @@ export default function SocialButton({ label }: SocialButtonProps) {
               sizes={media.images.sizes}
             />
           </S.Figure>
-          {pathname === PATH.LOGIN && <span>카카오로 로그인</span>}
-          {pathname === PATH.SIGNUP && <span>카카오로 회원가입</span>}
+          <span>카카오로 로그인</span>
         </S.KakaoButton>
       </>
     );
@@ -79,12 +76,7 @@ export default function SocialButton({ label }: SocialButtonProps) {
             sizes={media.images.sizes}
           />
         </S.Figure>
-        {pathname === PATH.LOGIN && (
-          <span className={roboto.className}>구글로 로그인</span>
-        )}
-        {pathname === PATH.SIGNUP && (
-          <span className={roboto.className}>구글로 회원가입</span>
-        )}
+        <span className={roboto.className}>구글로 로그인</span>
       </S.GoogleButton>
     );
   } else {

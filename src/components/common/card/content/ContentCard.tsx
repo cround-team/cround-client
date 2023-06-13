@@ -2,8 +2,9 @@
 
 import type { ContentCardData } from "@/types/card";
 import TextBox from "../desc/textBox/TextBox";
-import * as S from "./styled";
 import CreatorInfoBox from "../desc/CreatorInfoBox/CreatorInfoBox";
+import { PATH } from "@/constants";
+import * as S from "./styled";
 
 type ContentCardProps = {
   content: ContentCardData;
@@ -14,21 +15,36 @@ export default function ContentCard({
   content,
   isShowCreatorInfo,
 }: ContentCardProps) {
-  const { platform, title, desc, profileImg, name, like, bookmark } = content;
+  const {
+    boardId,
+    title,
+    content: desc,
+    platformType,
+    profileImage,
+    author,
+    likesCount,
+    bookmarksCount,
+    liked,
+    bookmarked,
+  } = content;
 
   return (
-    <S.Article>
-      <S.InfoGroup>
-        <TextBox platform={platform} title={title} desc={desc} />
-        {isShowCreatorInfo && (
-          <CreatorInfoBox
-            profileImg={profileImg}
-            name={name}
-            like={like}
-            bookmark={bookmark}
-          />
-        )}
-      </S.InfoGroup>
-    </S.Article>
+    <S.LinkCard href={`${PATH.CONTENTS.DETAIL}/${boardId}`}>
+      <S.Article>
+        <S.InfoGroup>
+          <TextBox platform={platformType} title={title} desc={desc} />
+          {isShowCreatorInfo && (
+            <CreatorInfoBox
+              profileImage={profileImage}
+              author={author}
+              liked={liked}
+              likesCount={likesCount}
+              bookmarked={bookmarked}
+              bookmarksCount={bookmarksCount}
+            />
+          )}
+        </S.InfoGroup>
+      </S.Article>
+    </S.LinkCard>
   );
 }

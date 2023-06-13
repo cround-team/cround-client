@@ -20,8 +20,7 @@ export default function usePlatform() {
     router.back();
   };
 
-  const handleNextStep = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleNextStep = () => {
     let nextPath = "";
     switch (pathname) {
       case PATH.CREATORS.REGISTER.PLATFORM:

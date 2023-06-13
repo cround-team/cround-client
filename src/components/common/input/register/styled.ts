@@ -1,7 +1,12 @@
+import { InputSize } from "./RegisterInput";
 import styled, { css } from "styled-components";
 
 type ContainerProps = {
   tipMessage: string;
+};
+
+type InputProps = {
+  inputSize: InputSize;
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -15,11 +20,13 @@ export const Container = styled.div<ContainerProps>`
   `};
 `;
 
-export const Input = styled.input`
-  ${({ theme }) => css`
+export const Input = styled.input<InputProps>`
+  ${({ theme, inputSize }) => css`
     ${theme.media.mobile} {
       width: 100%;
-      padding: 12px 19px 12px 16px;
+      ${inputSize === "sm" && "padding: 8px 16px"};
+      ${inputSize === "md" && "padding: 12px 19px 12px 16px;"};
+
       background-color: #f3f3f3;
       border: 1px solid #f3f3f3;
       border-radius: ${theme.radius.md};

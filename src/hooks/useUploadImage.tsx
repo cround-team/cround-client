@@ -5,7 +5,7 @@ export const useUploadImage = () => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
     if (file) {
@@ -22,6 +22,6 @@ export const useUploadImage = () => {
     selectedImage,
     previewImage,
     fileInputRef,
-    handleImageUpload,
+    handleFileChange,
   };
 };

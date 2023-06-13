@@ -7,8 +7,8 @@ import FileInput from "../input/file/FileInput";
 import { CameraIcon } from "@/assets/icons";
 
 type AvatarPorps = {
-  fileRef?: React.RefObject<HTMLInputElement>;
-  src: string | null;
+  fileRef?: React.ForwardedRef<HTMLInputElement>;
+  previewImage: string | null;
   alt: string;
   className?: string;
   onFileChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -16,7 +16,7 @@ type AvatarPorps = {
 
 export default function Avatar({
   fileRef,
-  src,
+  previewImage,
   alt,
   className = "",
   onFileChange,
@@ -30,7 +30,7 @@ export default function Avatar({
   return (
     <S.Figure className={className}>
       <Image
-        src={src ? src : avatarImg}
+        src={previewImage ?? avatarImg}
         alt={alt}
         sizes={media.images.sizes}
         fill

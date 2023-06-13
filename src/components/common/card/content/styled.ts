@@ -1,4 +1,18 @@
+"use client";
+
+import Link from "next/link";
+
 import styled, { css } from "styled-components";
+
+export const LinkCard = styled(Link)`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  `};
+`;
 
 export const Article = styled.article`
   ${({ theme }) => css`
