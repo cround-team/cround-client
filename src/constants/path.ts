@@ -11,31 +11,17 @@ export const PATH = {
   CREATORS: {
     LIST: "/creators",
     DETAIL: "/creators/detail",
-    REGISTER: {
-      BASE: "/creators/register/base",
-      PLATFORM: "/creators/register/platform",
-      ADDITION: "/creators/register/addition",
-      SUCCESS: "/creators/register/success",
-    },
+    REGISTER: "/creators/register",
   },
   SHORTS: {
     LIST: "/shorts",
     DETAIL: "/shorts/detail",
-    REGISTER: {
-      BASE: "/shorts/register/base",
-      PLATFORM: "/shorts/register/platform",
-      UPLOAD: "/shorts/register/upload",
-      SUCCESS: "/shorts/register/success",
-    },
+    REGISTER: "/shorts/register",
   },
   CONTENTS: {
     LIST: "/contents",
     DETAIL: "/contents/detail",
-    REGISTER: {
-      BASE: "/contents/register/base",
-      PLATFORM: "/contents/register/platform",
-      SUCCESS: "/contents/register/success",
-    },
+    REGISTER: "/contents/register",
   },
 };
 
