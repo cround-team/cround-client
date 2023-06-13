@@ -15,9 +15,7 @@ type AddInputProps = {
   placeholder: string;
   maxCount: number;
   onAddInput: () => void;
-  onChangeInput: (
-    id: string
-  ) => (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeInput: (id: string, e: React.ChangeEvent<HTMLInputElement>) => void;
   onRemoveInput: (id: string) => void;
 };
 
@@ -40,7 +38,7 @@ export default function AddInput({
           <S.Input
             autoFocus={idx === 0}
             placeholder={placeholder}
-            onChange={onChangeInput(item.id)}
+            onChange={(e) => onChangeInput(item.id, e)}
           />
           {idx > 0 && (
             <button onClick={() => onRemoveInput(item.id)}>

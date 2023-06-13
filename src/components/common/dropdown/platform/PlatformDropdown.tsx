@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ChevronDownIcon } from "@/assets/icons/arrow";
 import ListItem from "./listItem/ListItem";
@@ -6,23 +6,21 @@ import * as S from "./styled";
 
 type PlatformDropdownProps = {
   platforms: string[];
-  onChange: (selected: string) => void;
+  selected: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function PlatformDropdown({
   platforms,
+  selected,
   onChange,
 }: PlatformDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(platforms[0]);
-
   const handleToggleDropdown = () => setIsOpen((prev) => !prev);
 
-  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelected(e.target.value);
-    onChange(e.target.value);
-    setIsOpen(false);
-  };
+  useEffect(() => {
+    setIsOpen((prev) => !prev);
+  }, [selected]);
 
   return (
     <S.Container>
@@ -37,8 +35,9 @@ export default function PlatformDropdown({
             <ListItem
               key={platform}
               item={platform}
+              name="platformHeadType"
               isChecked={selected === platform}
-              onChange={handleChangeInput}
+              onChange={onChange}
             />
           ))}
         </S.Dropdown>

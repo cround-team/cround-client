@@ -7,7 +7,7 @@ import FileInput from "../input/file/FileInput";
 import { CameraIcon } from "@/assets/icons";
 
 type AvatarPorps = {
-  fileRef?: React.RefObject<HTMLInputElement>;
+  fileRef?: React.ForwardedRef<HTMLInputElement>;
   previewImage: string | null;
   alt: string;
   className?: string;

@@ -3,17 +3,23 @@ import * as S from "./styled";
 type ListItemProps = {
   isChecked: boolean;
   item: string;
+  name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function ListItem({ isChecked, item, onChange }: ListItemProps) {
+export default function ListItem({
+  isChecked,
+  name,
+  item,
+  onChange,
+}: ListItemProps) {
   return (
     <S.ListItem>
       <S.Label>
         <S.Input
           aria-hidden="true"
           type="radio"
-          name="platform"
+          name={name}
           value={item}
           onChange={onChange}
         />
