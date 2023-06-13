@@ -23,18 +23,20 @@ export default function useAddInput() {
     setInputValues((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const handleChangeInput =
-    (id: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { value } = e.target;
+  const handleChangeInput = (
+    id: string,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { value } = e.target;
 
-      setInputValues((prev) => {
-        const updatedValues = prev.map((item) =>
-          item.id === id ? { ...item, value } : item
-        );
+    setInputValues((prev) => {
+      const updatedValues = prev.map((item) =>
+        item.id === id ? { ...item, value } : item
+      );
 
-        return updatedValues;
-      });
-    };
+      return updatedValues;
+    });
+  };
 
   return {
     inputValues,
