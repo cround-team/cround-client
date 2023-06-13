@@ -28,12 +28,14 @@ export default function PlatformsStep({
     }
   };
 
-  const handleSelect = (platform: string) => {
-    setSelected((prev) => [...prev, platform]);
-  };
+  const handleChangePlatform = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
 
-  const handleUnSelect = (platform: string) => {
-    setSelected((prev) => prev.filter((el) => el !== platform));
+    const checkedList = checked
+      ? [...selected, value]
+      : selected.filter((v) => v !== value);
+
+    setSelected(checkedList);
   };
 
   return (
@@ -50,8 +52,7 @@ export default function PlatformsStep({
             src={el.src}
             value={el.id}
             title={el.title}
-            onSelect={handleSelect}
-            onUnSelect={handleUnSelect}
+            onChange={handleChangePlatform}
           />
         ))}
         <Button

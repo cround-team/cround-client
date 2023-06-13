@@ -9,9 +9,9 @@ const STEP_HEADER = [
   PATH.CREATORS.DETAIL,
   PATH.SHORTS.DETAIL,
   PATH.CONTENTS.DETAIL,
+  PATH.CONTENTS.REGISTER,
   ...Object.values(PATH.SHORTS.REGISTER),
   ...Object.values(PATH.CREATORS.REGISTER),
-  ...Object.values(PATH.CONTENTS.REGISTER),
 ];
 
 const NAV_HEADER = [PATH.CREATORS.LIST, PATH.SHORTS.LIST, PATH.CONTENTS.LIST];
@@ -30,7 +30,11 @@ const useChangeHeader = () => {
       setHeaderType("navigate");
     } else if (STEP_HEADER.some((path) => pathname.includes(path))) {
       setHeaderType("step");
-      setStepName(PATH_TITLE[pathname.substring(0, pathname.lastIndexOf("/"))]);
+      // setStepName(PATH_TITLE[pathname.substring(0, pathname.lastIndexOf("/"))]);
+      setStepName(
+        PATH_TITLE[pathname] ||
+          PATH_TITLE[pathname.substring(0, pathname.lastIndexOf("/"))]
+      );
     } else {
       setHeaderType("default");
     }
