@@ -1,43 +1,103 @@
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useImmer } from "use-immer";
 
-import { PATH } from "@/constants";
-import { useContentRegisterContext } from "@/context/ContentRegisterContext";
-import { useEffect } from "react";
+import { hasKey } from "@/utils/form";
+import useGoPath from "../useGoPath";
+
+type Steps = "base" | "platform" | "success";
+type ContentRegisterForm = {
+  title: string;
+  description: string;
+  platforms: string[];
+};
+
+const INITIAL_STATE: ContentRegisterForm = {
+  title: "",
+  description: "",
+  platforms: [],
+};
 
 export default function useContentRegister() {
-  const router = useRouter();
-  const {
-    formData: { title, description },
-    platforms,
-    handleSetPlatforms,
-  } = useContentRegisterContext();
+  const [form, setForm] = useImmer<ContentRegisterForm>(INITIAL_STATE);
+  const [step, setStep] = useState<Steps>("base");
+  const { title, description, platforms } = form;
+
+  const isDisabledBase = !(title && description);
+  const isDisabledPlatform = !platforms.length;
+
+  const { handleGoMainPage } = useGoPath();
 
   useEffect(() => {
-    if (!title || !description) {
-      router.push(PATH.CONTENTS.REGISTER.BASE);
+    if (step === "platform" && isDisabledBase) {
+      setStep("base");
     }
-  }, []);
+  }, [step]);
 
-  const isBaseDisabled = !(title && description);
+  const handleChangeForm = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+
+    if (!hasKey(form, name)) {
+      throw new Error("is not valid name");
+    } else if (name !== "platforms") {
+      setForm((draft) => {
+        draft[name] = value;
+      });
+    }
+  };
+
+  const handleChangePlatform = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+
+    const checkedList = checked
+      ? [...form.platforms, value]
+      : form.platforms.filter((v) => v !== value);
+
+    setForm((draft) => {
+      draft.platforms = checkedList;
+    });
+  };
 
   const handleSubmitBase = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push(PATH.CONTENTS.REGISTER.PLATFORM);
+    setStep("platform");
   };
 
-  const handleSubmitApi = (
-    e: React.FormEvent<HTMLFormElement>,
-    selected: string[]
-  ) => {
+  const handleSubmitPlatform = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleSetPlatforms(selected);
-    // Api 통신 => 성공시 push
-    //router.push(PATH.CONTENTS.REGISTER.SUCCESS);
+    setStep("success");
+    // Api 통신 =>
+    console.log("form", form);
   };
+
+  const getBaseStepProps = ({ ...otherProps } = {}) => ({
+    isDisabledSubmit: isDisabledBase,
+    title,
+    description,
+    handleChangeForm,
+    handleSubmit: handleSubmitBase,
+    ...otherProps,
+  });
+
+  const getPlatformStepProps = ({ ...otherProps } = {}) => ({
+    isDisabledSubmit: isDisabledPlatform,
+    handlePrevStep: () => setStep("base"),
+    handleChange: handleChangePlatform,
+    handleSubmit: handleSubmitPlatform,
+    ...otherProps,
+  });
+
+  const getSuccessStepProps = ({ ...otherProps } = {}) => ({
+    handleGoMainPage,
+    ...otherProps,
+  });
 
   return {
-    isBaseDisabled,
-    handleSubmitBase,
-    handleSubmitApi,
+    step,
+    getBaseStepProps,
+    getPlatformStepProps,
+    getSuccessStepProps,
   };
 }

@@ -1,78 +1,141 @@
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useImmer } from "use-immer";
 
 import { PATH } from "@/constants";
-import { useShortRegisterContext } from "@/context/ShortRegisterContext";
-import { useEffect } from "react";
+import { hasKey } from "@/utils/form";
 import { useUploadImage } from "../useUploadImage";
+import useGoPath from "../useGoPath";
+
+type Steps = "base" | "platform" | "upload" | "success";
+type ShortRegisterForm = {
+  title: string;
+  description: string;
+  platforms: string[];
+  thumbnail: File | null;
+  url: string;
+};
+
+const INITIAL_STATE: ShortRegisterForm = {
+  title: "",
+  description: "",
+  platforms: [],
+  thumbnail: null,
+  url: "",
+};
 
 export default function useShortRegister() {
-  const router = useRouter();
-  const {
-    formData: { title, description, thumbnail, url },
-    platforms,
-    handleSetPlatforms,
-    handleSetFile,
-  } = useShortRegisterContext();
+  const [form, setForm] = useImmer<ShortRegisterForm>(INITIAL_STATE);
+  const [step, setStep] = useState<Steps>("base");
+  const { title, description, platforms, thumbnail, url } = form;
 
   const { selectedImage, previewImage, fileInputRef, handleFileChange } =
     useUploadImage();
+  const { handleGoMainPage } = useGoPath();
+
+  const isDisabledBase = !(title && description);
+  const isDisabledPlatform = !platforms.length;
+  const isDisabledUpload = !(thumbnail && url);
 
   useEffect(() => {
-    if (!title || !description) {
-      router.push(PATH.SHORTS.REGISTER.BASE);
-    } else if (!platforms.length) {
-      router.push(PATH.SHORTS.REGISTER.PLATFORM);
+    if (step === "platform" && isDisabledBase) {
+      setStep("base");
+    } else if (step === "upload" && isDisabledPlatform) {
+      setStep("platform");
     }
-  }, []);
+  }, [step]);
 
   useEffect(() => {
     if (selectedImage !== null) {
-      handleSetFile(selectedImage);
+      setForm((draft) => {
+        draft.thumbnail = selectedImage;
+      });
     }
   }, [selectedImage]);
 
-  const isBaseDisabled = !(title && description);
-  const isUploadDisabled = !(thumbnail && url);
+  const handleChangeForm = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+
+    if (!hasKey(form, name)) {
+      throw new Error("is not valid name");
+    } else if (name !== "platforms" && name !== "thumbnail") {
+      setForm((draft) => {
+        draft[name] = value;
+      });
+    }
+  };
+
+  const handleChangePlatform = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+
+    const checkedList = checked
+      ? [...form.platforms, value]
+      : form.platforms.filter((v) => v !== value);
+
+    setForm((draft) => {
+      draft.platforms = checkedList;
+    });
+  };
 
   const handleSubmitBase = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push(PATH.SHORTS.REGISTER.PLATFORM);
+    setStep("platform");
   };
 
-  const handleSubmitPlatform = (
-    e: React.FormEvent<HTMLFormElement>,
-    selected: string[]
-  ) => {
+  const handleSubmitPlatform = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleSetPlatforms(selected);
-    router.push(PATH.SHORTS.REGISTER.UPLOAD);
+    setStep("upload");
   };
 
-  const handleSubmitApi = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitUpload = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("title", title);
-    console.log("description", description);
-    console.log("platforms", platforms);
-    console.log("thumbnail", thumbnail);
-    console.log("url", url);
-
-    // API 성공시
-    // router.push(PATH.SHORTS.REGISTER.SUCCESS);
+    console.log("form", form);
+    //API 호출..
+    // 성공시
+    // setStep("success");
   };
 
-  const handlePrevStep = () => router.back();
+  const getBaseStepProps = ({ ...otherProps } = {}) => ({
+    isDisabledSubmit: isDisabledBase,
+    title,
+    description,
+    handleChangeForm,
+    handleSubmit: handleSubmitBase,
+    ...otherProps,
+  });
+
+  const getPlatformStepProps = ({ ...otherProps } = {}) => ({
+    isDisabledSubmit: isDisabledPlatform,
+    handleChange: handleChangePlatform,
+    handlePrevStep: () => setStep("base"),
+    handleSubmit: handleSubmitPlatform,
+    ...otherProps,
+  });
+
+  const getUploadStepProps = ({ ...otherProps } = {}) => ({
+    isDisabledSubmit: isDisabledUpload,
+    url,
+    fileInputRef,
+    previewImage,
+    handlePrevStep: () => setStep("platform"),
+    handleFileChange,
+    handleChangeForm,
+    handleSubmit: handleSubmitUpload,
+    ...otherProps,
+  });
+
+  const getSuccessStepProps = ({ ...otherProps } = {}) => ({
+    handleGoMainPage,
+    ...otherProps,
+  });
 
   return {
-    isBaseDisabled,
-    isUploadDisabled,
-    //
-    previewImage,
-    fileInputRef,
-    //
-    handleFileChange,
-    handlePrevStep,
-    handleSubmitBase,
-    handleSubmitPlatform,
-    handleSubmitApi,
+    step,
+    getBaseStepProps,
+    getPlatformStepProps,
+    getUploadStepProps,
+    getSuccessStepProps,
   };
 }

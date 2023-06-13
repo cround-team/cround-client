@@ -1,111 +1,159 @@
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { useCreatorRegisterContext } from "@/context/CreatorRegisterContext";
-import { PATH } from "@/constants";
-import { creatorCreateApi, creatorNicknameCheckApi } from "@/utils/api/creator";
+import { useImmer } from "use-immer";
+
+import { hasKey } from "@/utils/form";
 import { useUploadImage } from "../useUploadImage";
+import useGoPath from "../useGoPath";
+import { creatorCreateApi } from "@/utils/api/creator";
 import useAddInput from "../input/useAddInput";
 
+type Steps = "base" | "platform" | "addition" | "success";
+type CreatorRegisterForm = {
+  profileImage: File | null;
+  nickname: string;
+  description: string;
+  activityPlatforms: string[];
+  platformHeadType: string;
+  platformHeadTheme: string;
+  tags: string[];
+  platformUrl: string;
+};
+
+const INITIAL_STATE: CreatorRegisterForm = {
+  profileImage: null,
+  nickname: "",
+  description: "",
+  activityPlatforms: [],
+  platformHeadType: "",
+  platformHeadTheme: "",
+  tags: [],
+  platformUrl: "",
+};
+
 export default function useCreatorRegister() {
-  const router = useRouter();
+  const [form, setForm] = useImmer<CreatorRegisterForm>(INITIAL_STATE);
+  const [step, setStep] = useState<Steps>("base");
   const {
-    formData: {
-      nickname,
-      description,
-      platformHeadType,
-      platformHeadTheme,
-      platformUrl,
-      profileImage,
-    },
+    profileImage,
+    nickname,
+    description,
     activityPlatforms,
+    platformHeadType,
+    platformHeadTheme,
     tags,
-    handleSetActivityPlatforms,
-    handleSetTags,
-    handleSetFile,
-  } = useCreatorRegisterContext();
+    platformUrl,
+  } = form;
 
   const { selectedImage, previewImage, fileInputRef, handleFileChange } =
     useUploadImage();
+  const { handleGoMainPage } = useGoPath();
 
   const {
     inputValues: inputTags,
-    handleAddInput: handleAddTag,
-    handleRemoveInput: handleRemoveTag,
-    handleChangeInput: handleChangeTag,
+    handleAddInput,
+    handleRemoveInput,
+    handleChangeInput,
   } = useAddInput();
 
-  useEffect(() => {
-    if (!nickname || !description || !profileImage) {
-      router.push(PATH.CREATORS.REGISTER.BASE);
-    } else if (!activityPlatforms.length) {
-      router.push(PATH.CREATORS.REGISTER.PLATFORM);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (selectedImage !== null) {
-      handleSetFile(selectedImage);
-    }
-  }, [selectedImage]);
-
-  useEffect(() => {
-    if (inputTags.length > 0) {
-      const tags = inputTags.map((tag) => tag.value);
-      handleSetTags(tags);
-    }
-  }, [inputTags]);
-
-  const isBaseDisabled = !(nickname && description && profileImage);
-  const isAdditionDisabled = !(
+  const isDisabledBase = !(nickname && description && profileImage);
+  const isDisabledPlatform = !activityPlatforms.length;
+  const isDisabledAddition = !(
     platformHeadType &&
     platformHeadTheme &&
     tags.length &&
     platformUrl
   );
 
-  const handleSubmitBase = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const body = { nickname };
-      const res = await creatorNicknameCheckApi(body);
-      if (res.status === 200) {
-        console.log("res", res);
-        router.push(PATH.CREATORS.REGISTER.PLATFORM);
-      }
-    } catch (error: any) {
-      console.log(error);
+  useEffect(() => {
+    if (selectedImage !== null) {
+      setForm((draft) => {
+        draft.profileImage = selectedImage;
+      });
+    }
+  }, [selectedImage]);
+
+  useEffect(() => {
+    if (step === "platform" && isDisabledBase) {
+      setStep("base");
+    } else if (step === "addition" && isDisabledPlatform) {
+      setStep("platform");
+    }
+  }, [step]);
+
+  const handleChangeForm = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    const another = ["activityPlatforms", "tags", "profileImage"];
+    if (!hasKey(form, name)) {
+      throw new Error("is not valid name");
+    } else if (
+      name !== "activityPlatforms" &&
+      name !== "tags" &&
+      name !== "profileImage"
+    ) {
+      setForm((draft) => {
+        draft[name] = value;
+      });
     }
   };
 
-  const handleSubmitPlatform = (
-    e: React.FormEvent<HTMLFormElement>,
-    selected: string[]
-  ) => {
-    e.preventDefault();
-    handleSetActivityPlatforms(selected);
-    router.push(PATH.CREATORS.REGISTER.ADDITION);
+  const handleChangePlatform = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+
+    const checkedList = checked
+      ? [...form.activityPlatforms, value]
+      : form.activityPlatforms.filter((v) => v !== value);
+
+    setForm((draft) => {
+      draft.activityPlatforms = checkedList;
+    });
   };
 
-  const handleSubmitApi = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleAddTag = () => {
+    handleAddInput();
+    handleSetTag();
+  };
+
+  const handleRemoveTag = (id: string) => {
+    handleRemoveInput(id);
+    handleSetTag();
+  };
+
+  const handleChangeTag = (
+    id: string,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    handleChangeInput(id, e);
+    handleSetTag();
+  };
+
+  const handleSetTag = () => {
+    setForm((draft) => {
+      draft.tags = inputTags.map((v) => v.value);
+    });
+  };
+
+  const handleSubmitBase = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStep("platform");
+  };
+
+  const handleSubmitPlatform = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStep("addition");
+  };
+
+  const handleSubmitAddition = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("form", form);
     try {
       const formData = new FormData();
-      console.log(
-        nickname,
-        description,
-        platformHeadType,
-        platformHeadTheme,
-        platformUrl,
-        profileImage,
-        tags,
-        activityPlatforms
-      );
 
       if (profileImage) {
         formData.append("profileImage", profileImage);
       }
-
       const creatorSaveRequest = {
         nickname,
         description,
@@ -125,32 +173,57 @@ export default function useCreatorRegister() {
       console.log("res", res);
       if (res.status === 201) {
         console.log("201", res);
-        router.push(PATH.CREATORS.REGISTER.SUCCESS);
+        setStep("success");
       }
     } catch (error: any) {
       console.log(error);
     }
   };
 
-  const handlePrevStep = () => router.back();
-
-  return {
-    isBaseDisabled,
-    isAdditionDisabled,
-    //
+  const getBaseStepProps = ({ ...otherProps } = {}) => ({
+    isDisabledSubmit: isDisabledBase,
+    nickname,
+    description,
     previewImage,
     fileInputRef,
-    inputTags,
-    //
     handleFileChange,
+    handleChangeForm,
+    handleSubmit: handleSubmitBase,
+    ...otherProps,
+  });
+
+  const getPlatformStepProps = ({ ...otherProps } = {}) => ({
+    isDisabledSubmit: isDisabledPlatform,
+    handlePrevStep: () => setStep("base"),
+    handleChange: handleChangePlatform,
+    handleSubmit: handleSubmitPlatform,
+    ...otherProps,
+  });
+  const getAdditionStepProps = ({ ...otherProps } = {}) => ({
+    isDisabledSubmit: isDisabledAddition,
+    activityPlatforms,
+    platformHeadTheme,
+    platformHeadType,
+    platformUrl,
+    inputTags,
+    handlePrevStep: () => setStep("platform"),
     handleAddTag,
-    handleChangeTag,
     handleRemoveTag,
-    //
-    handlePrevStep,
-    //
-    handleSubmitBase,
-    handleSubmitPlatform,
-    handleSubmitApi,
+    handleChangeTag,
+    handleChangeForm,
+    handleSubmit: handleSubmitAddition,
+    ...otherProps,
+  });
+  const getSuccessStepProps = ({ ...otherProps } = {}) => ({
+    handleGoMainPage,
+    ...otherProps,
+  });
+
+  return {
+    step,
+    getBaseStepProps,
+    getPlatformStepProps,
+    getAdditionStepProps,
+    getSuccessStepProps,
   };
 }
