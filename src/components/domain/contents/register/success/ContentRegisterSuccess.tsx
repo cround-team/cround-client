@@ -1,21 +1,20 @@
-"use client";
-
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
-import successImg from "public/images/success/short-register-success.png";
-import Button from "@/components/common/button/base/Button";
-import { PATH } from "@/constants";
+import successImg from "public/images/success/content-register-success.png";
+import { Button } from "@/components/common";
 import { media } from "@/styles/themes/foundations";
 import * as S from "./styled";
 
-export default function ShortRegisterSuccessPage() {
-  const router = useRouter();
-  const handleNextPage = () => router.push(PATH.ROOT);
+type ContentRegisterSuccessProps = {
+  handleGoMainPage: () => void;
+};
 
+export default function ContentRegisterSuccess({
+  handleGoMainPage,
+}: ContentRegisterSuccessProps) {
   return (
     <S.Container>
-      <h3>숏클래스 등록이 완료되었습니다!</h3>
+      <h3>콘텐츠 등록이 완료되었습니다!</h3>
       <p>
         크리에이터님의 값진 경험을 공유해 주셔서
         <br />
@@ -26,6 +25,7 @@ export default function ShortRegisterSuccessPage() {
           src={successImg}
           fill
           sizes={media.images.sizes}
+          priority
           alt="Croods Standing"
         />
       </S.Figure>
@@ -33,7 +33,7 @@ export default function ShortRegisterSuccessPage() {
         size="56"
         variant="primary"
         label="메인 페이지로"
-        onClick={() => handleNextPage()}
+        onClick={handleGoMainPage}
       />
     </S.Container>
   );

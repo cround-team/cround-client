@@ -1,22 +1,26 @@
-"use client";
-
-import useShortRegister from "@/hooks/form/useShortRegister";
-import { useShortRegisterContext } from "@/context/ShortRegisterContext";
-import RegisterInput from "@/components/common/input/register/RegisterInput";
-import TextArea from "@/components/common/textarea/TextArea";
-import Button from "@/components/common/button/base/Button";
+import React from "react";
 import * as S from "./styled";
+import { Button, RegisterInput, TextArea } from "@/components/common";
 
-export default function ShortRegisterBasePage() {
-  const {
-    formData: { title, description },
-    handleChangeForm,
-  } = useShortRegisterContext();
+type ShortRegisterBaseProps = {
+  isDisabledSubmit: boolean;
+  title: string;
+  description: string;
+  handleChangeForm: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+};
 
-  const { isBaseDisabled, handleSubmitBase } = useShortRegister();
-
+export default function ShortRegisterBase({
+  isDisabledSubmit,
+  title,
+  description,
+  handleChangeForm,
+  handleSubmit,
+}: ShortRegisterBaseProps) {
   return (
-    <S.Form onSubmit={handleSubmitBase}>
+    <S.Form onSubmit={handleSubmit}>
       <S.InputWrapper>
         <RegisterInput
           label="숏클래스의 제목을 입력해 주세요."
@@ -38,7 +42,7 @@ export default function ShortRegisterBasePage() {
         />
       </S.InputWrapper>
       <Button
-        isDisabled={isBaseDisabled}
+        isDisabled={isDisabledSubmit}
         label="다음"
         size="56"
         variant="primary"

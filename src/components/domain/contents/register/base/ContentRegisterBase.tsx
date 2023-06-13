@@ -1,25 +1,31 @@
-"use client";
+import { Button, RegisterInput, TextArea } from "@/components/common";
+import React from "react";
 
-import { useContentRegisterContext } from "@/context/ContentRegisterContext";
-import useContentRegister from "@/hooks/form/useContentRegister";
-import RegisterInput from "@/components/common/input/register/RegisterInput";
-import TextArea from "@/components/common/textarea/TextArea";
-import Button from "@/components/common/button/base/Button";
 import * as S from "./styled";
 
-export default function ContentRegisterBasePage() {
-  const {
-    formData: { title, description },
-    handleChangeForm,
-  } = useContentRegisterContext();
-  const { isBaseDisabled, handleSubmitBase } = useContentRegister();
+type ContentRegisterBaseType = {
+  isDisabledSubmit: boolean;
+  title: string;
+  description: string;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleChangeForm: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+};
 
+export default function ContentRegisterBase({
+  isDisabledSubmit,
+  title,
+  description,
+  handleSubmit,
+  handleChangeForm,
+}: ContentRegisterBaseType) {
   return (
-    <S.Form onSubmit={handleSubmitBase}>
+    <S.Form onSubmit={handleSubmit}>
       <S.InputWrapper>
         <RegisterInput
           label="콘텐츠의 제목을 입력해 주세요."
-          autoFocus={true}
+          autoFocus
           size="sm"
           id="title"
           name="title"
@@ -37,7 +43,7 @@ export default function ContentRegisterBasePage() {
         />
       </S.InputWrapper>
       <Button
-        isDisabled={isBaseDisabled}
+        isDisabled={isDisabledSubmit}
         label="다음"
         size="56"
         variant="primary"

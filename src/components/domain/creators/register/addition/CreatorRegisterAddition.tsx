@@ -1,40 +1,54 @@
-"use client";
-
-import { useCreatorRegisterContext } from "@/context/CreatorRegisterContext";
-import PlatformDropdown from "@/components/common/dropdown/platform/PlatformDropdown";
-import Label from "@/components/common/label/Label";
-import RegisterInput from "@/components/common/input/register/RegisterInput";
-import { AddInput, Button } from "@/components/common";
-import useCreatorRegister from "@/hooks/form/useCreatorRegister";
+import {
+  AddInput,
+  Button,
+  Label,
+  PlatformDropdown,
+  RegisterInput,
+} from "@/components/common";
 import * as S from "./styled";
 
-export default function CreatorRegisterAdditionPage() {
-  const {
-    formData,
-    activityPlatforms,
-    handleSetPlatformHeadType,
-    handleChangeForm,
-  } = useCreatorRegisterContext();
+type Inputs = {
+  id: string;
+  value: string;
+};
 
-  const {
-    isAdditionDisabled,
-    inputTags,
-    handlePrevStep,
-    handleAddTag,
-    handleChangeTag,
-    handleRemoveTag,
-    handleSubmitApi,
-  } = useCreatorRegister();
+type CreatorRegisterAdditionProps = {
+  isDisabledSubmit: boolean;
+  activityPlatforms: string[];
+  platformHeadTheme: string;
+  platformHeadType: string;
+  platformUrl: string;
+  inputTags: Inputs[];
+  handleAddTag: () => void;
+  handleRemoveTag: (id: string) => void;
+  handleChangeTag: (id: string, e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlePrevStep: () => void;
+  handleChangeForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+};
 
-  const { platformHeadTheme, platformUrl } = formData;
-
+export default function CreatorRegisterAddition({
+  isDisabledSubmit,
+  activityPlatforms,
+  platformHeadTheme,
+  platformHeadType,
+  platformUrl,
+  inputTags,
+  handleAddTag,
+  handleRemoveTag,
+  handleChangeTag,
+  handlePrevStep,
+  handleChangeForm,
+  handleSubmit,
+}: CreatorRegisterAdditionProps) {
   return (
-    <S.Form onSubmit={handleSubmitApi}>
+    <S.Form onSubmit={handleSubmit}>
       <S.InputWrapper>
         <Label label="활동 중이신 플랫폼 중 대표 플랫폼을 선택해 주세요" />
         <PlatformDropdown
+          selected={platformHeadType}
           platforms={activityPlatforms}
-          onChange={handleSetPlatformHeadType}
+          onChange={handleChangeForm}
         />
       </S.InputWrapper>
       <S.InputWrapper>
@@ -86,7 +100,7 @@ export default function CreatorRegisterAdditionPage() {
           size="56"
           variant="primary"
           css={S.NextButton}
-          isDisabled={isAdditionDisabled}
+          isDisabled={isDisabledSubmit}
         />
       </S.ButtonWrapper>
     </S.Form>

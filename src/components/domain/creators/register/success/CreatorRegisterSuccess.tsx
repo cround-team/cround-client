@@ -1,17 +1,17 @@
-"use client";
-
 import Image from "next/image";
-import * as S from "./styled";
-import Button from "@/components/common/button/base/Button";
-import { useRouter } from "next/navigation";
-import { PATH } from "@/constants";
 
-import successImg from "public/images/success/creator-register-success.png";
+import { Button } from "@/components/common";
 import { media } from "@/styles/themes/foundations";
+import successImg from "public/images/success/creator-register-success.png";
+import * as S from "./styled";
 
-export default function CreatorRegisterSuccessPage() {
-  const router = useRouter();
+type CreatorRegisterSuccessProps = {
+  handleGoMainPage: () => void;
+};
 
+export default function CreatorRegisterSuccess({
+  handleGoMainPage,
+}: CreatorRegisterSuccessProps) {
   return (
     <S.Container>
       <h3>크리에이터 등록이 완료되었습니다!</h3>
@@ -34,7 +34,7 @@ export default function CreatorRegisterSuccessPage() {
         size="56"
         variant="primary"
         label="메인 페이지로"
-        onClick={() => router.push(PATH.ROOT)}
+        onClick={handleGoMainPage}
       />
     </S.Container>
   );

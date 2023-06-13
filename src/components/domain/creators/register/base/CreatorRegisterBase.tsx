@@ -1,28 +1,29 @@
-"use client";
-
-import { useCreatorRegisterContext } from "@/context/CreatorRegisterContext";
-import Button from "@/components/common/button/base/Button";
-import RegisterInput from "@/components/common/input/register/RegisterInput";
-import TextArea from "@/components/common/textarea/TextArea";
-import Avatar from "@/components/common/avatar/Avatar";
+import { Avatar, Button, RegisterInput, TextArea } from "@/components/common";
 import * as S from "./styled";
-import useCreatorRegister from "@/hooks/form/useCreatorRegister";
 
-export default function CreatorRegisterBasePage() {
-  const {
-    formData: { nickname, description },
-    handleChangeForm,
-  } = useCreatorRegisterContext();
-  const {
-    handleSubmitBase,
-    isBaseDisabled,
-    previewImage,
-    fileInputRef,
-    handleFileChange,
-  } = useCreatorRegister();
+type CreatorRegisterBaseProps = {
+  isDisabledSubmit: boolean;
+  nickname: string;
+  description: string;
+  previewImage: string | null;
+  fileInputRef: React.ForwardedRef<HTMLInputElement>;
+  handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChangeForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+};
 
+export default function CreatorRegisterBase({
+  isDisabledSubmit,
+  nickname,
+  description,
+  previewImage,
+  fileInputRef,
+  handleFileChange,
+  handleChangeForm,
+  handleSubmit,
+}: CreatorRegisterBaseProps) {
   return (
-    <S.Form onSubmit={handleSubmitBase}>
+    <S.Form onSubmit={handleSubmit}>
       <Avatar
         css={S.Avatar}
         previewImage={previewImage}
@@ -52,7 +53,7 @@ export default function CreatorRegisterBasePage() {
         onChange={handleChangeForm}
       />
       <Button
-        isDisabled={isBaseDisabled}
+        isDisabled={isDisabledSubmit}
         label="다음"
         size="56"
         variant="primary"
