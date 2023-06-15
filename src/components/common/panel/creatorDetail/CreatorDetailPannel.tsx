@@ -19,7 +19,7 @@ import MorePageButton from "@/components/common/button/morePage/MorePageButton";
 
 const TABS = ["숏클래스", "콘텐츠", "리뷰"];
 
-export default function Panel() {
+export default function CreatorDetailPannel() {
   const [selected, setSelected] = useState(TABS[0]);
   const [shorts, setShorts] = useState<ShortCardData[]>();
   const [contents, setContents] = useState<ContentCardData[]>();
@@ -54,11 +54,15 @@ export default function Panel() {
       <S.Wrapper>
         {selected === "숏클래스" &&
           shorts?.map((short) => (
-            <ShortCard key={short.id} short={short} isShowCreatorInfo />
+            <ShortCard key={short.shortsId} short={short} isShowCreatorInfo />
           ))}
         {selected === "콘텐츠" &&
           contents?.map((content) => (
-            <ContentCard key={content.id} content={content} isShowCreatorInfo />
+            <ContentCard
+              key={content.boardId}
+              content={content}
+              isShowCreatorInfo
+            />
           ))}
         {selected === "리뷰" && (
           <>
@@ -74,11 +78,7 @@ export default function Panel() {
           </>
         )}
       </S.Wrapper>
-      <MorePageButton
-        isDisabled={false}
-        label="더보기"
-        onClick={handleMorePage}
-      />
+      <MorePageButton isDisabled={false} onClick={handleMorePage} />
     </S.Section>
   );
 }
