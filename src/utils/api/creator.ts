@@ -34,6 +34,15 @@ export const creatorsApi = async (params: Record<string, any>) => {
   return response;
 };
 
+export const creatorsFollowListApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get(
+    "/api/members/me/creators/followings",
+    { params }
+  );
+
+  return response;
+};
+
 export const creatorNicknameCheckApi = async (body: CreatorNicknameBody) => {
   const response = await apiInstance.post(
     "/api/creators/validations/nickname",
