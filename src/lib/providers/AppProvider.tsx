@@ -5,7 +5,6 @@ import ReactQuery from "./ReactQuery";
 import GlobalStyle from "@/styles/global";
 import { theme } from "@/styles/themes/theme";
 import { PropsWithChildren } from "react";
-import MyPageSidebar from "@/components/layout/myPage/MyPageSidebar";
 
 export default function AppProvider({ children }: PropsWithChildren) {
   return (
