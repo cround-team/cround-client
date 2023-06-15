@@ -1,10 +1,9 @@
 "use client";
 
 import type { ContentCardData } from "@/types/card";
-import TextBox from "../desc/textBox/TextBox";
-import CreatorInfoBox from "../desc/CreatorInfoBox/CreatorInfoBox";
 import { PATH } from "@/constants";
 import * as S from "./styled";
+import { CreatorInfoBox, TextBox } from "../../etc";
 
 type ContentCardProps = {
   content: ContentCardData;

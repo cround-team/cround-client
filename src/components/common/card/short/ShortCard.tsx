@@ -1,11 +1,12 @@
 import Image from "next/image";
 
 import type { ShortCardData } from "@/types/card";
-import TextBox from "../desc/textBox/TextBox";
+
 import { media } from "@/styles/themes/foundations";
-import CreatorInfoBox from "../desc/CreatorInfoBox/CreatorInfoBox";
+import CreatorInfoBox from "../../etc/CreatorInfoBox/CreatorInfoBox";
 import * as S from "./styled";
 import { PATH } from "@/constants";
+import { TextBox } from "../../etc";
 
 type ShortCardProps = {
   short: ShortCardData;
