@@ -6,6 +6,8 @@ export * from "./form";
 export * from "./input";
 export * from "./link";
 export * from "./modal";
+export * from "./panel";
+export * from "./shorts";
 export { default as Avatar } from "./avatar/Avatar";
 export { default as PlatformCheckbox } from "./checkbox/PlatformCheckbox";
 export { default as Indicator } from "./indicator/Indicator";

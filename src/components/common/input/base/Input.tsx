@@ -41,7 +41,7 @@ export default function Input({
 
   const utilIcon: Record<string, ReactElement> = {
     eyeOff: (
-      <S.EyeOffButton onClick={() => handleChangeInputType()}>
+      <S.EyeOffButton tabIndex={-1} onClick={() => handleChangeInputType()}>
         <EyeOffIcon />
       </S.EyeOffButton>
     ),

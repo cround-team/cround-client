@@ -7,7 +7,7 @@ import Bookmark from "./bookmark/Bookmark";
 
 type CreatorInfoBoxProps = {
   data: {
-    boardId: number;
+    id: number;
     profileImage: string;
     author: string;
     liked: boolean;
@@ -29,7 +29,7 @@ export default function CreatorInfoBox({
   onCancelLike,
 }: CreatorInfoBoxProps) {
   const {
-    boardId,
+    id,
     profileImage,
     author,
     liked,

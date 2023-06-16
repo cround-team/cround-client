@@ -16,15 +16,5 @@ export default function Indicator({ steps, current }: IndicatorProps) {
         }
       })}
     </S.Container>
-
-    // <S.Container>
-    //   {Array.from(steps).map((el) => {
-    //     return el === current ? (
-    //       <S.ActiveBox key={el}></S.ActiveBox>
-    //     ) : (
-    //       <S.Box key={el}></S.Box>
-    //     );
-    //   })}
-    // </S.Container>
   );
 }
