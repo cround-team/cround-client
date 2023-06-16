@@ -15,6 +15,7 @@ export default function CreatorRegisterPage() {
     getAdditionStepProps,
     getSuccessStepProps,
   } = useCreatorRegister();
+
   return (
     <S.Section>
       {step === "base" && <CreatorRegisterBase {...getBaseStepProps()} />}

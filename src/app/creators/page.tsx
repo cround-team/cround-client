@@ -36,7 +36,7 @@ export default function CreatorsPage() {
         <CreatorList
           data={list.data}
           isNextPage={isNextPage}
-          onFectData={fetchListData}
+          onFetchData={fetchListData}
         />
       )}
     </S.Section>

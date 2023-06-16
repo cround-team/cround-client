@@ -4,8 +4,8 @@ export const Section = styled.section`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       width: 100%;
-      margin: 16px auto 50px auto;
-      padding: 0 20px;
+      height: 100%;
+      padding: 16px 20px;
     }
   `};
 `;
