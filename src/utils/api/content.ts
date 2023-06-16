@@ -33,13 +33,13 @@ export const contentCancelLikeApi = async (id: number) => {
 };
 
 export const contentBookmarkApi = async (id: number) => {
-  const response = await apiInstance.post(`/api/boards/${id}/bookmark`);
+  const response = await apiInstance.post(`/api/boards/${id}/bookmarks`);
 
   return response;
 };
 
 export const contentCancelBookmarkApi = async (id: number) => {
-  const response = await apiInstance.delete(`/api/boards/${id}/bookmark`);
+  const response = await apiInstance.delete(`/api/boards/${id}/bookmarks`);
 
   return response;
 };
