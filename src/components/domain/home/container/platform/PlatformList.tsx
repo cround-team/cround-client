@@ -7,6 +7,7 @@ import "swiper/css";
 import { PLATFORMS } from "@/constants/platforms";
 import CustomSwiper from "@/components/common/swiper/CustomSwiper";
 import * as S from "./styled";
+import { media } from "@/styles/themes/foundations";
 
 const BREAK_POINTS = {
   640: {
@@ -37,7 +38,12 @@ export default function PlatformList() {
           {PLATFORMS.map((el, idx) => (
             <SwiperSlide key={idx}>
               <S.Figure>
-                <Image src={el.src} width={48} height={48} alt={el.id} />
+                <Image
+                  src={el.src}
+                  fill
+                  sizes={media.images.sizes}
+                  alt={el.id}
+                />
               </S.Figure>
             </SwiperSlide>
           ))}

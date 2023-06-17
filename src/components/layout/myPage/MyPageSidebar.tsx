@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import userImg from "public/images/user.png";
 import { media } from "@/styles/themes/foundations";

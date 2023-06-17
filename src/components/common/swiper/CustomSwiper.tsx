@@ -1,6 +1,6 @@
 "use client";
-import { Autoplay, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+
+import { Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -50,7 +50,6 @@ export default function CustomSwiper({
       spaceBetween={spaceBetween}
       breakpoints={breakPoints}
       centeredSlides={centeredSlides}
-      // initialSlide={1}
     >
       {children}
     </Swiper>

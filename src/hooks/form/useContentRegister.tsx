@@ -4,6 +4,7 @@ import { useImmer } from "use-immer";
 
 import { hasKey } from "@/utils/form";
 import useGoPath from "../useGoPath";
+import querystring from "querystring";
 
 type Steps = "base" | "platform" | "success";
 type ContentRegisterForm = {
@@ -22,6 +23,7 @@ export default function useContentRegister() {
   const [form, setForm] = useImmer<ContentRegisterForm>(INITIAL_STATE);
   const [step, setStep] = useState<Steps>("base");
   const { title, description, platforms } = form;
+  const router = useRouter();
 
   const isDisabledBase = !(title && description);
   const isDisabledPlatform = !platforms.length;
@@ -32,6 +34,11 @@ export default function useContentRegister() {
     if (step === "platform" && isDisabledBase) {
       setStep("base");
     }
+
+    const query = { step };
+    const queryString = querystring.stringify(query);
+    const url = `/creators/register?${queryString}`;
+    router.push(url);
   }, [step]);
 
   const handleChangeForm = (

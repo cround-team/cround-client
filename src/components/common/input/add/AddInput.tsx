@@ -1,5 +1,5 @@
 import { Label } from "@/components/common";
-import { PlusIcon } from "@/assets/icons";
+import { PlusIcon, XSmallIcon } from "@/assets/icons";
 import * as S from "./styled";
 
 type Inputs = {
@@ -34,18 +34,17 @@ export default function AddInput({
     <S.Container className={className} tipMessage={tipMessage}>
       <Label label={label} tipMessage={tipMessage} />
       {inputs.map((item, idx) => (
-        <div key={item.id}>
+        <S.InputWrapper key={item.id}>
           <S.Input
-            autoFocus={idx === 0}
             placeholder={placeholder}
             onChange={(e) => onChangeInput(item.id, e)}
           />
           {idx > 0 && (
-            <button onClick={() => onRemoveInput(item.id)}>
-              임시 삭제 버튼
-            </button>
+            <S.RemoveButton onClick={() => onRemoveInput(item.id)}>
+              <XSmallIcon />
+            </S.RemoveButton>
           )}
-        </div>
+        </S.InputWrapper>
       ))}
       <S.Button
         type="button"

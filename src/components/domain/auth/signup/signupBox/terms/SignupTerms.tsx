@@ -1,54 +1,46 @@
 "use client";
 
-import { useImmer } from "use-immer";
+import { useState } from "react";
 
 import Privacy from "./termsModal/Privacy";
 import Terms from "./termsModal/Terms";
 import TermsModal from "./termsModal/TermsModal";
 import * as S from "./styled";
 
-export type termsType = "terms" | "privacy";
-export type termsTitle = "이용약관" | "개인정보처리방침";
-
 export default function SignupTerms() {
-  const [isMounted, setIsMounted] = useImmer({
-    terms: false,
-    privacy: false,
-  });
+  const [termsType, setTermsType] = useState("");
+  const [isMounted, setIsMounted] = useState(false);
 
-  const handleSetIsMounted = (type: termsType) => {
-    setIsMounted((draft) => {
-      draft[type] = !draft[type];
-    });
+  const handleSetIsMounted = () => setIsMounted((prev) => !prev);
+  const handleOpenServiceTerms = () => {
+    setIsMounted(true);
+    setTermsType("service");
+  };
+  const handleOpenPrivacyPolicy = () => {
+    setIsMounted(true);
+    setTermsType("privacy");
   };
 
   return (
     <>
       <S.SignupTerms>
         {`회원가입 시 `}
-        <button type="button" onClick={() => handleSetIsMounted("terms")}>
+        <button type="button" onClick={handleOpenServiceTerms}>
           이용약관
         </button>
         {` 및 `}
-        <button type="button" onClick={() => handleSetIsMounted("privacy")}>
+        <button type="button" onClick={handleOpenPrivacyPolicy}>
           개인정보처리방침
         </button>
         {` 에 동의하게 됩니다.`}
       </S.SignupTerms>
-      {isMounted.terms && (
-        <TermsModal
-          isMounted={isMounted.terms}
-          termsType="terms"
-          title="이용약관"
-          onSetIsMounted={handleSetIsMounted}
-        >
+      {isMounted && termsType === "service" && (
+        <TermsModal title="이용약관" onSetIsMounted={handleSetIsMounted}>
           <Terms />
         </TermsModal>
       )}
-      {isMounted.privacy && (
+      {isMounted && termsType === "privacy" && (
         <TermsModal
-          isMounted={isMounted.privacy}
-          termsType="privacy"
           title="개인정보처리방침"
           onSetIsMounted={handleSetIsMounted}
         >

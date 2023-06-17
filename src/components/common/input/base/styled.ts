@@ -6,7 +6,6 @@ type LabelProps = {
 
 type InputProps = {
   isVisibleLabel: boolean;
-  styles: string;
 };
 
 export const Container = styled.div`
@@ -36,9 +35,9 @@ export const Label = styled.label<LabelProps>`
 `;
 
 export const Input = styled.input<InputProps>`
-  ${({ theme, isVisibleLabel, styles }) => css`
+  ${({ theme, isVisibleLabel }) => css`
     ${theme.media.mobile} {
-      ${styles === "oauth" && theme.input.styles.oauth};
+      ${theme.input.styles.base};
       padding: ${isVisibleLabel ? "28px 16px 12px 16px" : "20px 16px"};
     }
   `};
@@ -63,19 +62,30 @@ export const InputMessage = styled.div`
   `};
 `;
 
-export const EyeOffButton = styled.button`
+// 유효메세지, 에러메세지 공통 스타일
+export const Message = styled.span`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       position: absolute;
-      top: 20px;
-      right: 16px;
-      ${theme.flex.row()};
+      bottom: -24px;
+      left: 16px;
+      ${theme.typo.label.md};
+    }
+  `};
+`;
 
-      svg {
-        width: 24px;
-        height: 24px;
-        stroke: ${theme.colors.neutral500};
-      }
+export const ValidMessage = styled(Message)`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      color: ${theme.colors.neutral400};
+    }
+  `};
+`;
+
+export const ErrorMessage = styled(Message)`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      color: ${theme.colors.primary500};
     }
   `};
 `;

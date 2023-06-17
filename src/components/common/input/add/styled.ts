@@ -45,6 +45,33 @@ export const Input = styled.input`
   `};
 `;
 
+export const InputWrapper = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      position: relative;
+      width: 100%;
+    }
+  `};
+`;
+
+export const RemoveButton = styled.button`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      position: absolute;
+      top: 25%;
+      right: 16px;
+      ${theme.flex.row()};
+      width: 24px;
+      height: 24px;
+      svg {
+        width: 24px;
+        height: 24px;
+        stroke: ${theme.colors.neutral500};
+      }
+    }
+  `};
+`;
+
 export const Button = styled.button`
   ${({ theme }) => css`
     ${theme.media.mobile} {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useImmer } from "use-immer";
-
+import querystring from "querystring";
 import { PATH } from "@/constants";
 import { hasKey } from "@/utils/form";
 import { useUploadImage } from "../useUploadImage";
@@ -32,6 +32,7 @@ export default function useShortRegister() {
   const { selectedImage, previewImage, fileInputRef, handleFileChange } =
     useUploadImage();
   const { handleGoMainPage } = useGoPath();
+  const router = useRouter();
 
   const isDisabledBase = !(title && description);
   const isDisabledPlatform = !platforms.length;
@@ -43,6 +44,11 @@ export default function useShortRegister() {
     } else if (step === "upload" && isDisabledPlatform) {
       setStep("platform");
     }
+
+    const query = { step };
+    const queryString = querystring.stringify(query);
+    const url = `/creators/register?${queryString}`;
+    router.push(url);
   }, [step]);
 
   useEffect(() => {

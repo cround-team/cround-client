@@ -1,11 +1,14 @@
 export const PATH = {
   ROOT: "/",
   AUTH: "/auth",
-  MYPAGE: "/mypage",
   PASSWORD: {
     SEND: "/password/send",
     FIND: "/password/find",
     NEW: "/password/new",
+  },
+  MYPAGE: {
+    FOLLOW: "/mypage/follow",
+    BOOKMARK: "/mypage/bookmark",
   },
 
   CREATORS: {
@@ -32,9 +35,6 @@ export const PATH_TITLE: Record<string, string> = {
   "/shorts/register": "숏클래스 등록",
   "/contents/detail": "콘텐츠",
   "/contents/register": "콘텐츠 등록",
-};
-
-type Indicator = {
-  length: number;
-  current: number;
+  "/mypage/bookmark": "나의 북마크",
+  "/mypage/follow": "나의 팔로우",
 };

@@ -1,13 +1,18 @@
 import * as S from "./styled";
 
 type IndicatorProps = {
+  className?: string;
   steps: string[];
   current: string;
 };
 
-export default function Indicator({ steps, current }: IndicatorProps) {
+export default function Indicator({
+  className,
+  steps,
+  current,
+}: IndicatorProps) {
   return (
-    <S.Container>
+    <S.Container className={className}>
       {Array.from(steps).map((el) => {
         if (el === current) {
           return <S.ActiveBox key={el}></S.ActiveBox>;
@@ -16,15 +21,5 @@ export default function Indicator({ steps, current }: IndicatorProps) {
         }
       })}
     </S.Container>
-
-    // <S.Container>
-    //   {Array.from(steps).map((el) => {
-    //     return el === current ? (
-    //       <S.ActiveBox key={el}></S.ActiveBox>
-    //     ) : (
-    //       <S.Box key={el}></S.Box>
-    //     );
-    //   })}
-    // </S.Container>
   );
 }

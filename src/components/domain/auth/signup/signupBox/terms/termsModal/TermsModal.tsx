@@ -1,33 +1,27 @@
 "use client";
 
-import type { termsType, termsTitle } from "../SignupTerms";
-
-import Modal from "@/components/common/modal/Modal";
+import { Modal } from "@/components/common";
 import { XBtnIcon } from "@/assets/icons";
 import * as S from "./styled";
 
 type TermsModalProps = {
-  isMounted: boolean;
-  termsType: termsType;
-  title: termsTitle;
-  onSetIsMounted?: (type: termsType) => void;
+  title: string;
+  onSetIsMounted?: () => void;
   children: React.ReactNode;
 };
 
 export default function TermsModal({
-  isMounted,
-  termsType,
   title,
   onSetIsMounted,
   children,
 }: TermsModalProps) {
   return (
-    <Modal isMounted={isMounted}>
+    <Modal isMounted={true}>
       <S.Layout>
         <S.Container>
           <h1>{title}</h1>
           {onSetIsMounted && (
-            <S.CloseButton onClick={() => onSetIsMounted(termsType)}>
+            <S.CloseButton onClick={onSetIsMounted}>
               <XBtnIcon />
             </S.CloseButton>
           )}

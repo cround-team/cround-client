@@ -3,7 +3,7 @@ import { flex, typo, colors, radius } from "../foundations";
 
 export const input = {
   styles: {
-    oauth: () => css`
+    base: () => css`
       width: 100%;
       padding: 20px 16px;
       ${typo.label.lg};

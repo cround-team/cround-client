@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 import { PATH } from "@/constants";
@@ -10,8 +11,6 @@ import {
   FooterTwiterIcon,
 } from "@/assets/icons";
 import * as S from "./styled";
-import { usePathname } from "next/navigation";
-import isFooterHidden from "@/utils/hiddenLayout";
 
 const SERVICE = [
   {
@@ -31,6 +30,7 @@ const SERVICE = [
     path: PATH.CREATORS.REGISTER,
   },
 ];
+
 const CROUND = [
   {
     label: "이용약관",
@@ -45,7 +45,7 @@ const CROUND = [
 export default function Footer() {
   const pathname = usePathname();
 
-  if (!isFooterHidden(pathname)) return null;
+  if (pathname.includes("/password") || pathname.includes("/auth")) return null;
 
   return (
     <S.Footer>

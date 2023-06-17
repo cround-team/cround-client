@@ -1,16 +1,20 @@
 "use client";
 
-import React from "react";
-
+import {
+  AuthPannel,
+  GoogleLoginButton,
+  KakaoLoginButton,
+} from "@/components/common";
 import * as S from "./styled";
-import SocialSimpleBox from "@/components/common/social/SocialSimpleBox";
-import AuthPannel from "@/components/domain/creators/detail/panel/auth/AuthPannel";
 
 export default function AuthPage() {
   return (
     <S.Section>
       <AuthPannel />
-      <SocialSimpleBox />
+      <S.Social>
+        <KakaoLoginButton />
+        <GoogleLoginButton />
+      </S.Social>
     </S.Section>
   );
 }
