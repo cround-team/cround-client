@@ -21,7 +21,7 @@ export const Video = css`
 export const Platform = styled.span`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      margin-bottom: 4px;
+      margin-bottom: 8px;
       ${theme.typo.body.md};
       color: ${theme.colors.neutral800};
     }

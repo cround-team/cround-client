@@ -16,7 +16,7 @@ export const TextWrapper = styled.div`
       ${theme.flex.col("center", "flex-start")};
 
       span {
-        margin-bottom: 4px;
+        margin-bottom: 8px;
         ${theme.typo.body.md};
         color: ${theme.colors.neutral800};
       }
