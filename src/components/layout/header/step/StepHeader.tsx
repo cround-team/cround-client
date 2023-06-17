@@ -1,9 +1,7 @@
-import { useRouter } from "next/navigation";
-
-import * as S from "./styled";
 import PrevButton from "@/components/common/button/prev/PrevButton";
 import useIndicator from "@/hooks/useIndicator";
 import Indicator from "@/components/common/indicator/Indicator";
+import * as S from "./styled";
 
 type DetailHeaderProps = {
   label: string;

@@ -1,16 +1,16 @@
 import * as S from "./styled";
 
-type IndicatorProps = {
+type IndicatorModalProps = {
   className?: string;
   steps: string[];
   current: string;
 };
 
-export default function Indicator({
+export default function IndicatorModal({
   className,
   steps,
   current,
-}: IndicatorProps) {
+}: IndicatorModalProps) {
   return (
     <S.Container className={className}>
       {Array.from(steps).map((el) => {

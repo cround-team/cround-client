@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-
 import { useImmer } from "use-immer";
+import querystring from "querystring";
 
 import { hasKey } from "@/utils/form";
 import { useUploadImage } from "../useUploadImage";
 import useGoPath from "../useGoPath";
 import { creatorCreateApi } from "@/utils/api/creator";
 import useAddInput from "../input/useAddInput";
+import { useRouter } from "next/navigation";
 
 type Steps = "base" | "platform" | "addition" | "success";
 type CreatorRegisterForm = {
@@ -48,6 +49,7 @@ export default function useCreatorRegister() {
   const { selectedImage, previewImage, fileInputRef, handleFileChange } =
     useUploadImage();
   const { handleGoMainPage } = useGoPath();
+  const router = useRouter();
 
   const {
     inputValues: inputTags,
@@ -79,13 +81,17 @@ export default function useCreatorRegister() {
     } else if (step === "addition" && isDisabledPlatform) {
       setStep("platform");
     }
+
+    const query = { step };
+    const queryString = querystring.stringify(query);
+    const url = `/creators/register?${queryString}`;
+    router.push(url);
   }, [step]);
 
   const handleChangeForm = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    const another = ["activityPlatforms", "tags", "profileImage"];
     if (!hasKey(form, name)) {
       throw new Error("is not valid name");
     } else if (

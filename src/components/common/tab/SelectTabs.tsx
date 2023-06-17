@@ -15,7 +15,7 @@ export default function SelectTabs({
 }: SelectTabProps) {
   return (
     <S.ListContainer className={className}>
-      {tabs.map((tab, idx) => (
+      {tabs.map((tab) => (
         <S.List key={tab} aria-selected={tab === selected ? "true" : "false"}>
           <button onClick={() => onTabClick(tab)}>{tab}</button>
         </S.List>

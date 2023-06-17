@@ -1,6 +1,6 @@
 import type { Filter } from "@/types/service";
 import { contentsApi } from "@/utils/api/content";
-import { creatorsApi } from "@/utils/api/creator";
+import { creatorsApi, creatorsFollowApi } from "@/utils/api/creator";
 import { shortsApi } from "@/utils/api/short";
 import React, { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
@@ -44,8 +44,6 @@ export default function useListPage({ listType }: useListPageProps) {
         } else if (listType === "contents") {
           response = await contentsApi(params);
         }
-
-        console.log(params);
 
         if (id) {
           setList((draft: any) => {

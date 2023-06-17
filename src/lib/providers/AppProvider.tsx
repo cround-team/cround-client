@@ -10,10 +10,7 @@ export default function AppProvider({ children }: PropsWithChildren) {
   return (
     <ReactQuery>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        {/* <MyPageSidebar /> */}
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ReactQuery>
   );
 }

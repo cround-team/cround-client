@@ -1,20 +1,14 @@
-import { useRouter } from "next/navigation";
-import * as S from "./styled";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+import { LoginBox, SignupBox } from "@/components/domain";
 import SelectTabs from "@/components/common/tab/SelectTabs";
-import LoginForm from "@/components/domain/auth/login/form/LoginForm";
-import FindPsw from "@/components/domain/auth/login/findPsw/FindPsw";
-import SignupForm from "@/components/domain/auth/signup/signupBox/form/SignupForm";
-import SignupTerms from "@/components/domain/auth/signup/signupBox/terms/SignupTerms";
+import * as S from "./styled";
 
 const TABS = ["로그인", "회원가입"];
 
 export default function AuthPannel() {
-  const router = useRouter();
   const [selected, setSelected] = useState<string>(TABS[0]);
-  const handleTabClick = (selected: string) => {
-    setSelected(selected);
-  };
+  const handleTabClick = (selected: string) => setSelected(selected);
 
   return (
     <S.Container>
@@ -24,18 +18,8 @@ export default function AuthPannel() {
         selected={selected}
         onTabClick={handleTabClick}
       />
-      {selected === "로그인" && (
-        <>
-          <LoginForm />
-          <FindPsw />
-        </>
-      )}
-      {selected === "회원가입" && (
-        <>
-          <SignupForm />
-          <SignupTerms />
-        </>
-      )}
+      {selected === "로그인" && <LoginBox />}
+      {selected === "회원가입" && <SignupBox />}
     </S.Container>
   );
 }
