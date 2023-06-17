@@ -79,22 +79,3 @@ export const ErrorMessage = styled(Message)`
     }
   `};
 `;
-
-export const InputMessage = styled.div`
-  ${({ theme }) => css`
-    ${theme.media.mobile} {
-      position: absolute;
-      bottom: -24px;
-      left: 16px;
-      ${theme.typo.label.md};
-
-      /* &[aria-invalid="true"] {
-        color: ${theme.colors.neutral400};
-      }
-
-      &[aria-invalid="false"] {
-        color: ${theme.colors.primary500};
-      } */
-    }
-  `};
-`;
