@@ -15,10 +15,6 @@ export const passwordValidCheck = (pw: string): boolean => {
   return regex.test(pw);
 };
 
-export const psw2ValidCheck = (psw1: string, psw2: string): boolean => {
-  return psw1 === psw2;
-};
-
 export const nicknameCheck = (nickname: string): boolean => {
   const regex = /^[가-힣a-zA-Z0-9]{2,6}$/;
   return regex.test(nickname);
