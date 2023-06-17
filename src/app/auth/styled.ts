@@ -9,3 +9,13 @@ export const Section = styled.section`
     }
   `};
 `;
+
+export const Social = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      ${theme.flex.col()};
+      gap: 8px;
+      width: 100%;
+    }
+  `};
+`;
