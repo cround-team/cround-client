@@ -37,9 +37,8 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
     bookmarked,
   } = data;
 
-  const { handleLikeContent, handleCancelLikeContent } = useLike(id);
-  const { handleBookmarkContent, handleCancelBookmarkContent } =
-    useBookmark(id);
+  const { handleLikeContent, handleCancelLikeContent } = useLike();
+  const { handleBookmarkContent, handleCancelBookmarkContent } = useBookmark();
 
   useEffect(() => {
     fetchDetailData();
@@ -56,7 +55,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   };
 
   const handleLike = async () => {
-    const { liked, likesCount } = await handleLikeContent();
+    const { liked, likesCount } = await handleLikeContent(id);
     setData((draft) => {
       draft.liked = liked;
       draft.likesCount = likesCount;
@@ -64,7 +63,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   };
 
   const handleCancelLike = async () => {
-    const { liked, likesCount } = await handleCancelLikeContent();
+    const { liked, likesCount } = await handleCancelLikeContent(id);
     setData((draft) => {
       draft.liked = liked;
       draft.likesCount = likesCount;
@@ -72,7 +71,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   };
 
   const handleBookmark = async () => {
-    const { bookmarked, bookmarksCount } = await handleBookmarkContent();
+    const { bookmarked, bookmarksCount } = await handleBookmarkContent(id);
     setData((draft) => {
       draft.bookmarked = bookmarked;
       draft.bookmarksCount = bookmarksCount;
@@ -80,7 +79,9 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   };
 
   const handleCancelBookmark = async () => {
-    const { bookmarked, bookmarksCount } = await handleCancelBookmarkContent();
+    const { bookmarked, bookmarksCount } = await handleCancelBookmarkContent(
+      id
+    );
     setData((draft) => {
       draft.bookmarked = bookmarked;
       draft.bookmarksCount = bookmarksCount;

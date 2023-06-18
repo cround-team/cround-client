@@ -39,8 +39,8 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
     bookmarked,
   } = data;
 
-  const { handleLikeShort, handleCancelLikeShort } = useLike(id);
-  const { handleBookmarkShort, handleCancelBookmarkShort } = useBookmark(id);
+  const { handleLikeShort, handleCancelLikeShort } = useLike();
+  const { handleBookmarkShort, handleCancelBookmarkShort } = useBookmark();
 
   useEffect(() => {
     fetchDetailData();
@@ -57,7 +57,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   };
 
   const handleLike = async () => {
-    const { liked, likesCount } = await handleLikeShort();
+    const { liked, likesCount } = await handleLikeShort(id);
     setData((draft) => {
       draft.liked = liked;
       draft.likesCount = likesCount;
@@ -65,7 +65,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   };
 
   const handleCancelLike = async () => {
-    const { liked, likesCount } = await handleCancelLikeShort();
+    const { liked, likesCount } = await handleCancelLikeShort(id);
     setData((draft) => {
       draft.liked = liked;
       draft.likesCount = likesCount;
@@ -73,7 +73,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   };
 
   const handleBookmark = async () => {
-    const { bookmarked, bookmarksCount } = await handleBookmarkShort();
+    const { bookmarked, bookmarksCount } = await handleBookmarkShort(id);
     setData((draft) => {
       draft.bookmarked = bookmarked;
       draft.bookmarksCount = bookmarksCount;
@@ -81,7 +81,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   };
 
   const handleCancelBookmark = async () => {
-    const { bookmarked, bookmarksCount } = await handleCancelBookmarkShort();
+    const { bookmarked, bookmarksCount } = await handleCancelBookmarkShort(id);
     setData((draft) => {
       draft.bookmarked = bookmarked;
       draft.bookmarksCount = bookmarksCount;
