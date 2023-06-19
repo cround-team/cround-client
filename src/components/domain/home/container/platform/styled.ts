@@ -5,7 +5,7 @@ export const Section = styled.section`
     ${theme.media.mobile} {
       margin-right: -20px;
       padding-top: 40px;
-      padding-bottom: 20px;
+      padding-bottom: 44px;
 
       .swiper-slide {
         width: 48px !important;

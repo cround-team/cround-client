@@ -5,8 +5,8 @@ import {
   shortLikeApi,
 } from "@/utils/api";
 
-export default function useLike(id: number) {
-  const handleLikeShort = async () => {
+export default function useLike() {
+  const handleLikeShort = async (id: number) => {
     let liked = false;
     let likesCount = 0;
 
@@ -25,7 +25,7 @@ export default function useLike(id: number) {
     }
   };
 
-  const handleCancelLikeShort = async () => {
+  const handleCancelLikeShort = async (id: number) => {
     let liked = false;
     let likesCount = 0;
 
@@ -44,7 +44,7 @@ export default function useLike(id: number) {
     }
   };
 
-  const handleLikeContent = async () => {
+  const handleLikeContent = async (id: number) => {
     let liked = false;
     let likesCount = 0;
 
@@ -63,7 +63,7 @@ export default function useLike(id: number) {
     }
   };
 
-  const handleCancelLikeContent = async () => {
+  const handleCancelLikeContent = async (id: number) => {
     let liked = false;
     let likesCount = 0;
 

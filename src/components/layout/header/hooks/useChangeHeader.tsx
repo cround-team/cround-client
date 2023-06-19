@@ -14,7 +14,12 @@ const STEP_HEADER = [
   PATH.CREATORS.REGISTER,
 ];
 
-const NAV_HEADER = [PATH.CREATORS.LIST, PATH.SHORTS.LIST, PATH.CONTENTS.LIST];
+const NAV_HEADER = [
+  PATH.CREATORS.LIST,
+  PATH.SHORTS.LIST,
+  PATH.CONTENTS.LIST,
+  PATH.SEARCH,
+];
 
 export type HeaderType = "default" | "step" | "navigate";
 

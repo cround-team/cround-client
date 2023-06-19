@@ -16,18 +16,26 @@ export const CurOptionBtn = styled.button`
   `};
 `;
 
-export const OptionList = styled.ul`
+export const Form = styled.form`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       position: absolute;
       top: 32px;
       right: 0;
+      z-index: ${theme.zIndex.sort};
+    }
+  `};
+`;
+
+export const OptionList = styled.ul`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
       padding: 16px;
       background-color: rgba(255, 255, 255, 0.8);
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(2.5px);
       border-radius: ${theme.radius.md};
-      z-index: ${theme.zIndex.sort};
+
       li {
         width: 85px;
         padding: 8px 0;

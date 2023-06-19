@@ -132,7 +132,7 @@ export default function useSignupValid(form: SignupForm) {
         setIsOpenModal(true);
       }
     } catch (error: any) {
-      if (error.response.status === 400) {
+      if ([400, 404].includes(error.response.status)) {
         setValid((draft) => {
           draft.email = false;
         });

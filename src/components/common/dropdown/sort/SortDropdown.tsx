@@ -32,23 +32,25 @@ export default function SortDropdown<T extends Sorts>({
 
   return (
     <>
-      <S.CurOptionBtn onClick={() => handleOpenDropdown()}>
+      <S.CurOptionBtn onClick={handleOpenDropdown}>
         {currentSort}
         <ChevronDownIcon />
       </S.CurOptionBtn>
 
       {/* 드롭다운 */}
       {isDropdownOpen && (
-        <S.OptionList>
-          {options.map((option) => (
-            <li key={option}>
-              <button onClick={() => handleItemClick(option)}>
-                {currentSort === option && <CheckIcon />}
-                <span>{option}</span>
-              </button>
-            </li>
-          ))}
-        </S.OptionList>
+        <S.Form>
+          <S.OptionList>
+            {options.map((option) => (
+              <li key={option}>
+                <button onClick={() => handleItemClick(option)}>
+                  {currentSort === option && <CheckIcon />}
+                  <span>{option}</span>
+                </button>
+              </li>
+            ))}
+          </S.OptionList>
+        </S.Form>
       )}
     </>
   );

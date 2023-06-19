@@ -1,11 +1,10 @@
 import type { ShortCardData } from "@/types/card";
-import { MorePageButton, ShortCard } from "@/components/common";
+import { ShortCard } from "@/components/common";
 import * as S from "./styled";
 
-type ShortsListProps = {
+type PopularShortsListProps = {
   data: ShortCardData[];
-  isNextPage: boolean;
-  onFetchData: (id?: number) => void;
+  label: string;
   onLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
   onCancelLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
   onBookmark: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
@@ -15,19 +14,17 @@ type ShortsListProps = {
   ) => void;
 };
 
-export default function ShortsList({
+export default function PopularShortsList({
   data,
-  isNextPage,
-  onFetchData,
+  label,
   onLike,
   onCancelLike,
   onBookmark,
   onCancelBookmark,
-}: ShortsListProps) {
-  const handleAddList = () => onFetchData(data.at(-1)?.shortsId);
-
+}: PopularShortsListProps) {
   return (
     <S.Container>
+      <S.Title>{label}</S.Title>
       <S.Wrapper>
         {data.map((short: ShortCardData) => (
           <ShortCard
@@ -41,7 +38,6 @@ export default function ShortsList({
           />
         ))}
       </S.Wrapper>
-      <MorePageButton isDisabled={!isNextPage} onClick={handleAddList} />
     </S.Container>
   );
 }

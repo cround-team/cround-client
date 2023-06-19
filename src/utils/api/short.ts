@@ -6,6 +6,12 @@ export const shortsApi = async (params: Record<string, any>) => {
   return response;
 };
 
+export const shortsPopularApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get("/api/shorts/populars", { params });
+
+  return response;
+};
+
 export const shortDetailApi = async (shortsId: number) => {
   const response = await apiInstance.get(`/api/shorts/${shortsId}`);
 

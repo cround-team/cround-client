@@ -1,4 +1,4 @@
-import useLoginForm from "@/hooks/form/useLoginForm";
+import useLoginForm from "@/components/domain/auth/login/loginBox/hooks/useLoginForm";
 import { Input, PasswordInput, Button } from "@/components/common";
 import * as S from "./styled";
 

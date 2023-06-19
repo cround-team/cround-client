@@ -4,24 +4,29 @@ import { SearchMdIcon } from "@/assets/icons";
 import * as S from "./styled";
 
 type SearchInputProps = {
+  isDisabled: boolean;
+  searchKeyword: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
   autoFocus?: boolean;
   label: string;
-  id: string;
-  name: string;
+  id?: string;
+  name?: string;
   placeholder: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function SearchInput({
+  isDisabled,
   autoFocus = false,
   label,
-  id,
-  name,
+  id = "",
+  name = "",
   placeholder,
   onChange,
+  onSubmit,
 }: SearchInputProps) {
   return (
-    <S.Container>
+    <S.Form onSubmit={onSubmit}>
       <S.Input
         autoFocus={autoFocus}
         id={id}
@@ -30,9 +35,9 @@ export default function SearchInput({
         aria-label={label}
         onChange={onChange}
       />
-      <button>
+      <button disabled={isDisabled}>
         <SearchMdIcon />
       </button>
-    </S.Container>
+    </S.Form>
   );
 }

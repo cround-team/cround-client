@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div`
+export const Form = styled.form`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       position: relative;
       ${theme.flex.row("space-between")};
       width: 100%;
-      margin: 24px 0;
+      margin: 0 auto;
       padding: 8px 16px;
       background-color: ${theme.colors.white};
       border: 1px solid ${theme.colors.primary500};

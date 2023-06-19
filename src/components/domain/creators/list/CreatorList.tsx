@@ -1,7 +1,5 @@
 import type { CreatorCardData } from "@/types/card";
-
-import CreatorCard from "@/components/common/card/creator/CreatorCard";
-import MorePageButton from "@/components/common/button/morePage/MorePageButton";
+import { CreatorCard, MorePageButton } from "@/components/common";
 import * as S from "./styled";
 
 type CreatorListProps = {

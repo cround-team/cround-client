@@ -3,14 +3,15 @@ import * as S from "./styled";
 
 type HeartProps = {
   isLiked: boolean;
+  id: number;
   count: number;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
 };
 
-export default function Heart({ isLiked, count, onClick }: HeartProps) {
+export default function Heart({ isLiked, id, count, onClick }: HeartProps) {
   return (
     <S.Container isLiked={isLiked}>
-      <button onClick={onClick}>
+      <button onClick={(e) => onClick(e, id)}>
         <HeartIcon />
       </button>
       <span>{count}</span>

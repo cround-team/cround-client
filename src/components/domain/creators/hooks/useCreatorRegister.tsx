@@ -3,11 +3,12 @@ import { useImmer } from "use-immer";
 import querystring from "querystring";
 
 import { hasKey } from "@/utils/form";
-import { useUploadImage } from "../useUploadImage";
-import useGoPath from "../useGoPath";
+
 import { creatorCreateApi } from "@/utils/api/creator";
-import useAddInput from "../input/useAddInput";
+import useAddInput from "./useAddInput";
 import { useRouter } from "next/navigation";
+import { PATH } from "@/constants";
+import { useUploadImage } from "@/hooks";
 
 type Steps = "base" | "platform" | "addition" | "success";
 type CreatorRegisterForm = {
@@ -48,7 +49,7 @@ export default function useCreatorRegister() {
 
   const { selectedImage, previewImage, fileInputRef, handleFileChange } =
     useUploadImage();
-  const { handleGoMainPage } = useGoPath();
+
   const router = useRouter();
 
   const {
@@ -221,7 +222,7 @@ export default function useCreatorRegister() {
     ...otherProps,
   });
   const getSuccessStepProps = ({ ...otherProps } = {}) => ({
-    handleGoMainPage,
+    handleGoMainPage: () => router.push(PATH.ROOT),
     ...otherProps,
   });
 

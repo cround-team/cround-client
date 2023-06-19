@@ -5,6 +5,7 @@ export const Container = styled.div`
     ${theme.media.mobile} {
       position: relative;
       ${theme.flex.row("space-between")};
+      width: 100%;
     }
   `};
 `;

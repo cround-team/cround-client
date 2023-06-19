@@ -4,7 +4,7 @@ import ShortRegisterBase from "@/components/domain/shorts/register/base/ShortReg
 import ShortRegisterPlatform from "@/components/domain/shorts/register/platform/ShortRegisterPlatform";
 import ShortRegisterSuccess from "@/components/domain/shorts/register/success/ShortRegisterSuccess";
 import ShortRegisterUpload from "@/components/domain/shorts/register/upload/ShortRegisterUpload";
-import useShortRegister from "@/hooks/form/useShortRegister";
+import useShortRegister from "@/components/domain/shorts/hooks/useShortRegister";
 import * as S from "./styled";
 
 export default function ShortRegisterPage() {

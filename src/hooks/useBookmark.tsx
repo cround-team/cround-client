@@ -5,8 +5,8 @@ import {
   shortCancelBookmarkApi,
 } from "@/utils/api";
 
-export default function useBookmark(id: number) {
-  const handleBookmarkShort = async () => {
+export default function useBookmark() {
+  const handleBookmarkShort = async (id: number) => {
     let bookmarked = false;
     let bookmarksCount = 0;
 
@@ -24,7 +24,7 @@ export default function useBookmark(id: number) {
     }
   };
 
-  const handleCancelBookmarkShort = async () => {
+  const handleCancelBookmarkShort = async (id: number) => {
     let bookmarked = false;
     let bookmarksCount = 0;
 
@@ -42,7 +42,7 @@ export default function useBookmark(id: number) {
     }
   };
 
-  const handleBookmarkContent = async () => {
+  const handleBookmarkContent = async (id: number) => {
     let bookmarked = false;
     let bookmarksCount = 0;
 
@@ -60,7 +60,7 @@ export default function useBookmark(id: number) {
     }
   };
 
-  const handleCancelBookmarkContent = async () => {
+  const handleCancelBookmarkContent = async (id: number) => {
     let bookmarked = false;
     let bookmarksCount = 0;
 

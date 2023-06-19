@@ -75,7 +75,7 @@ export default function useLoginForm() {
         router.push(PATH.ROOT);
       }
     } catch (error: any) {
-      if (error.response.status === 400) {
+      if ([400, 404].includes(error.response.status)) {
         const { message } = error.response.data;
 
         switch (message) {

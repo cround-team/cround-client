@@ -1,6 +1,6 @@
 "use client";
 
-import useContentDetail from "@/hooks/detail/useContentDetail";
+import useContentDetail from "@/components/domain/contents/hooks/useContentDetail";
 import { CreatorInfoBox } from "@/components/common/etc";
 import * as S from "./styled";
 

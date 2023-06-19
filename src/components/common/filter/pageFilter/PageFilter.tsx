@@ -1,46 +1,51 @@
-import SortDropdown from "../../dropdown/sort/SortDropdown";
-import { FilterIcon } from "@/assets/icons";
 import { useState } from "react";
-import PlatFormModal from "../../modal/platform/PlatFormModal";
+
+import type { Sorts } from "@/types/service";
+import { FilterIcon } from "@/assets/icons";
+import { SortDropdown } from "../../dropdown";
+import { PlatformModal } from "../../modal";
 import * as S from "./styled";
-import { Sorts } from "@/types/service";
 
 type PageFilterProps = {
+  isDisabledPlatform: boolean;
   options: Sorts[];
   onSelectSort: (sorted: string) => void;
-  onSubmitPlatform: (selected: string[]) => void;
+  onChangePlatform: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFetchData: (id?: number) => void;
 };
 
 export default function PageFilter({
+  isDisabledPlatform,
   options,
   onSelectSort,
-  onSubmitPlatform,
+  onChangePlatform,
+  onFetchData,
 }: PageFilterProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
 
-  const handleSubmitPlatform = (
-    e: React.FormEvent<HTMLFormElement>,
-    selected: string[]
-  ) => {
-    setIsModalOpen(false);
-    onSubmitPlatform(selected);
+  const handleSubmitPlatform = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onFetchData();
+    handleCloseModal();
   };
 
   return (
     <>
       <S.Container>
-        <S.FilterButton onClick={() => handleOpenModal()}>
+        <S.FilterButton onClick={handleOpenModal}>
           <FilterIcon />
         </S.FilterButton>
         <SortDropdown options={options} onSelectSort={onSelectSort} />
       </S.Container>
       {isModalOpen && (
-        <PlatFormModal
-          onSubmitPlatform={handleSubmitPlatform}
+        <PlatformModal
+          isDisabledPlatform={isDisabledPlatform}
           onCloseModal={handleCloseModal}
+          onChangePlatform={onChangePlatform}
+          onSubmit={handleSubmitPlatform}
         />
       )}
     </>

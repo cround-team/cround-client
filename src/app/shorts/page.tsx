@@ -1,44 +1,55 @@
 "use client";
 
-import PageFilter from "@/components/common/filter/pageFilter/PageFilter";
-import SearchInput from "@/components/common/input/search/SearchInput";
+import useShortList from "@/components/domain/shorts/hooks/useShortList";
+import { PageFilter, SearchInput } from "@/components/common";
+import PopularShortsList from "@/components/domain/shorts/popularList/PopularShortsList";
 import ShortsList from "@/components/domain/shorts/list/ShortsList";
-import type { Filter, Sorts } from "@/types/service";
-import useListPage from "@/hooks/useListPage";
+import NotList from "@/components/common/etc/notList/NotList";
 import * as S from "./styled";
-
-const OPTIONS: Sorts[] = ["신규순", "북마크순", "좋아요순"];
-const LIST_TYPE = "shorts";
 
 export default function ShortsPage() {
   const {
-    list,
-    isNextPage,
-    handleSelectPlatform,
-    handleSelectSort,
-    fetchListData,
-  } = useListPage({ listType: LIST_TYPE });
+    searched,
+    getPopluarListProps,
+    getListProps,
+    getSearchProps,
+    getFilterProps,
+  } = useShortList();
 
   return (
     <S.Section>
       <SearchInput
+        {...getSearchProps()}
         label="검색창"
-        id="search"
-        name="search"
         placeholder="플랫폼 또는 관심 정보를 입력해 주세요"
       />
-      <PageFilter
-        options={OPTIONS}
-        onSelectSort={handleSelectSort}
-        onSubmitPlatform={handleSelectPlatform}
-      />
-      {list?.data && (
-        <ShortsList
-          data={list.data}
-          isNextPage={isNextPage}
-          onFetchData={fetchListData}
-        />
+      {!searched && (
+        <S.PopularContainer>
+          <PopularShortsList
+            {...getPopluarListProps()}
+            data={getPopluarListProps().visitShorts}
+            label="이번 주 조회수가 급증한 숏클래스"
+          />
+          <PopularShortsList
+            {...getPopluarListProps()}
+            data={getPopluarListProps().likeShorts}
+            label="많은 사랑을 받은 숏클래스"
+          />
+          <PopularShortsList
+            {...getPopluarListProps()}
+            data={getPopluarListProps().bookmarkShorts}
+            label="사람들이 많이 찜해둔 숏클래스"
+          />
+        </S.PopularContainer>
       )}
+
+      <S.BaseContainer>
+        <PageFilter {...getFilterProps()} />
+        {!!getListProps().data.length && <ShortsList {...getListProps()} />}
+        {!getListProps().data.length && (
+          <NotList label="숏클래스" searched={searched} />
+        )}
+      </S.BaseContainer>
     </S.Section>
   );
 }
