@@ -7,8 +7,8 @@ import { PATH } from "@/constants";
 import Navigation from "@/components/layout/header/navigation/Navigation";
 import Utils from "./utils/Utils";
 import * as S from "./Header.styled";
-import useChangeHeader from "@/hooks/useChangeHeader";
 import StepHeader from "./step/StepHeader";
+import useChangeHeader from "./hooks/useChangeHeader";
 
 export default function Header() {
   const { headerType, stepName } = useChangeHeader();
