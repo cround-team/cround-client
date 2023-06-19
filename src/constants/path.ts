@@ -1,6 +1,7 @@
 export const PATH = {
   ROOT: "/",
   AUTH: "/auth",
+  SEARCH: "/search",
   PASSWORD: {
     SEND: "/password/send",
     FIND: "/password/find",
