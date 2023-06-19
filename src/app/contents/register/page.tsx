@@ -3,7 +3,7 @@
 import ContentRegisterBase from "@/components/domain/contents/register/base/ContentRegisterBase";
 import ContentRegisterPlatform from "@/components/domain/contents/register/platform/ContentRegisterPlatform";
 import ContentRegisterSuccess from "@/components/domain/contents/register/success/ContentRegisterSuccess";
-import useContentRegister from "@/hooks/form/useContentRegister";
+import useContentRegister from "@/components/domain/contents/hooks/useContentRegister";
 import * as S from "./styled";
 
 export default function ContentRegisterPage() {

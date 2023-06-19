@@ -2,7 +2,7 @@
 
 import { YoutubeShort } from "@/components/common";
 import { CreatorInfoBox } from "@/components/common/etc";
-import useShortDetail from "@/hooks/detail/useShortDetail";
+import useShortDetail from "@/components/domain/shorts/hooks/useShortDetail";
 import * as S from "./styled";
 
 type ShortDetailPageProps = {
