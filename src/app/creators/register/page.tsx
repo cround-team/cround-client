@@ -1,7 +1,7 @@
 "use client";
 
 import CreatorRegisterBase from "@/components/domain/creators/register/base/CreatorRegisterBase";
-import useCreatorRegister from "@/hooks/form/useCreatorRegister";
+import useCreatorRegister from "@/components/domain/creators/hooks/useCreatorRegister";
 import * as S from "./styled";
 import CreatorRegisterPlatform from "@/components/domain/creators/register/platform/CreatorRegisterPlatform";
 import CreatorRegisterAddition from "@/components/domain/creators/register/addition/CreatorRegisterAddition";
