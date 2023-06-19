@@ -1,14 +1,13 @@
 "use client";
+import Image from "next/image";
 import { Autoplay, Pagination } from "swiper";
 import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import Image from "next/image";
 
 import bannerInstaImg from "public/images/banner-insta.png";
 import bannerYoutubeImg from "public/images/banner-youtube.png";
 import bannerAdPostImg from "public/images/banner-ad-post.png";
-
 import * as S from "./styled";
 
 const SLIDES = [
