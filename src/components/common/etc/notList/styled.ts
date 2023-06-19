@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 
-export const NotList = styled.div`
+export const Container = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       ${theme.flex.col("center", "flex-start")};
       gap: 8px;
-      margin-top: 32px;
+      width: 100%;
       color: ${theme.colors.neutral900};
     }
   `};
