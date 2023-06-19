@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-export const useUploadImage = () => {
+export default function useUploadImage() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -24,4 +24,4 @@ export const useUploadImage = () => {
     fileInputRef,
     handleFileChange,
   };
-};
+}
