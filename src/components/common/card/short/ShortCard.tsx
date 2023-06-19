@@ -1,21 +1,30 @@
 import Image from "next/image";
 
 import type { ShortCardData } from "@/types/card";
-
 import { media } from "@/styles/themes/foundations";
-import CreatorInfoBox from "../../etc/CreatorInfoBox/CreatorInfoBox";
-import * as S from "./styled";
+import { CreatorInfoBox, TextBox } from "../../etc";
 import { PATH } from "@/constants";
-import { TextBox } from "../../etc";
+import * as S from "./styled";
 
 type ShortCardProps = {
   short: ShortCardData;
   isShowCreatorInfo?: boolean;
+  onLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onCancelLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onBookmark: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onCancelBookmark: (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ) => void;
 };
 
 export default function ShortCard({
   short,
   isShowCreatorInfo,
+  onLike,
+  onCancelLike,
+  onBookmark,
+  onCancelBookmark,
 }: ShortCardProps) {
   const {
     shortsId,
@@ -29,6 +38,16 @@ export default function ShortCard({
     bookmarked,
     bookmarksCount,
   } = short;
+
+  const creatorInfo = {
+    id: shortsId,
+    profileImage,
+    author,
+    liked,
+    likesCount,
+    bookmarked,
+    bookmarksCount,
+  };
 
   return (
     <S.LinkCard href={`${PATH.SHORTS.DETAIL}/${shortsId}`}>
@@ -47,12 +66,11 @@ export default function ShortCard({
           <TextBox platform={platformType} title={title} />
           {isShowCreatorInfo && (
             <CreatorInfoBox
-              profileImage={profileImage}
-              author={author}
-              liked={liked}
-              likesCount={likesCount}
-              bookmarked={bookmarked}
-              bookmarksCount={bookmarksCount}
+              data={creatorInfo}
+              onBookmark={onBookmark}
+              onCancelBookmark={onCancelBookmark}
+              onLike={onLike}
+              onCancelLike={onCancelLike}
             />
           )}
         </S.InfoGroup>

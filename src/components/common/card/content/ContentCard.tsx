@@ -1,18 +1,27 @@
-"use client";
-
 import type { ContentCardData } from "@/types/card";
 import { PATH } from "@/constants";
-import * as S from "./styled";
 import { CreatorInfoBox, TextBox } from "../../etc";
+import * as S from "./styled";
 
 type ContentCardProps = {
   content: ContentCardData;
   isShowCreatorInfo?: boolean;
+  onLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onCancelLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onBookmark: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onCancelBookmark: (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ) => void;
 };
 
 export default function ContentCard({
   content,
   isShowCreatorInfo,
+  onLike,
+  onCancelLike,
+  onBookmark,
+  onCancelBookmark,
 }: ContentCardProps) {
   const {
     boardId,
@@ -27,6 +36,16 @@ export default function ContentCard({
     bookmarked,
   } = content;
 
+  const creatorInfo = {
+    id: boardId,
+    profileImage,
+    author,
+    liked,
+    likesCount,
+    bookmarked,
+    bookmarksCount,
+  };
+
   return (
     <S.LinkCard href={`${PATH.CONTENTS.DETAIL}/${boardId}`}>
       <S.Article>
@@ -34,12 +53,11 @@ export default function ContentCard({
           <TextBox platform={platformType} title={title} desc={desc} />
           {isShowCreatorInfo && (
             <CreatorInfoBox
-              profileImage={profileImage}
-              author={author}
-              liked={liked}
-              likesCount={likesCount}
-              bookmarked={bookmarked}
-              bookmarksCount={bookmarksCount}
+              data={creatorInfo}
+              onBookmark={onBookmark}
+              onCancelBookmark={onCancelBookmark}
+              onLike={onLike}
+              onCancelLike={onCancelLike}
             />
           )}
         </S.InfoGroup>

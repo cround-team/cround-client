@@ -14,20 +14,6 @@ type CreatorNicknameBody = {
   nickname: string;
 };
 
-// type CreatorCreateBody = {
-//   nickname: formData.get('nickname') as string,
-//       description: formData.get('description') as string,
-//       platformHeadType: formData.get('platformHeadType') as string,
-//       platformHeadTheme: formData.get('platformHeadTheme') as string,
-//   nickname: string;
-//   description: string;
-//   platformHeadType: string;
-//   platformHeadTheme: string;
-//   platformUrl: string;
-//   tags: string[];
-//   activityPlatforms: string[];
-// };
-
 export const creatorsApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get("/api/creators", { params });
 

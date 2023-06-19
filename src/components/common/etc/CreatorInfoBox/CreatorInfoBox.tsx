@@ -1,9 +1,9 @@
 import Image from "next/image";
 
-import * as S from "./styled";
 import { media } from "@/styles/themes/foundations";
 import Heart from "./heart/Heart";
 import Bookmark from "./bookmark/Bookmark";
+import * as S from "./styled";
 
 type CreatorInfoBoxProps = {
   data: {
@@ -15,10 +15,13 @@ type CreatorInfoBoxProps = {
     bookmarked: boolean;
     bookmarksCount: number;
   };
-  onBookmark: () => void;
-  onCancelBookmark: () => void;
-  onLike: () => void;
-  onCancelLike: () => void;
+  onBookmark: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onCancelBookmark: (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: number
+  ) => void;
+  onLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onCancelLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
 };
 
 export default function CreatorInfoBox({
@@ -37,6 +40,7 @@ export default function CreatorInfoBox({
     bookmarked,
     bookmarksCount,
   } = data;
+
   return (
     <S.Container>
       <S.ImageNameGroup>
@@ -53,10 +57,12 @@ export default function CreatorInfoBox({
       <S.LikeBookmarkGroup>
         <Heart
           isLiked={liked}
+          id={id}
           count={likesCount}
           onClick={liked ? onCancelLike : onLike}
         />
         <Bookmark
+          id={id}
           isBookmarked={bookmarked}
           count={bookmarksCount}
           onClick={bookmarked ? onCancelBookmark : onBookmark}
