@@ -2,8 +2,14 @@ import type { ShortCardData } from "@/types";
 import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 
-import { shortsApi, shortsPopularApi } from "@/utils/api";
 import { useBookmark, useLike, useListFilter, useSearchKeyword } from "@/hooks";
+import { shortsApi, shortsPopularApi } from "@/utils/api";
+
+type PopularShorts = {
+  visit: ShortCardData[];
+  like: ShortCardData[];
+  bookmark: ShortCardData[];
+};
 
 const INITIAL_SHORTS = [
   {
@@ -25,13 +31,6 @@ const INITIAL_POPULAR_SHORTS = {
   like: INITIAL_SHORTS,
   bookmark: INITIAL_SHORTS,
 };
-
-type PopularShorts = {
-  visit: ShortCardData[];
-  like: ShortCardData[];
-  bookmark: ShortCardData[];
-};
-
 export default function useShortList() {
   const [shorts, setShorts] = useImmer<ShortCardData[]>(INITIAL_SHORTS);
   const [popularShorts, setPopularShorts] = useImmer<PopularShorts>(

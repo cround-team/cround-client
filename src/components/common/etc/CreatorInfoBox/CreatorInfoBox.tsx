@@ -10,18 +10,18 @@ type CreatorInfoBoxProps = {
     id: number;
     profileImage: string;
     author: string;
-    liked: boolean;
-    likesCount: number;
-    bookmarked: boolean;
-    bookmarksCount: number;
+    liked?: boolean;
+    likesCount?: number;
+    bookmarked?: boolean;
+    bookmarksCount?: number;
   };
-  onBookmark: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
-  onCancelBookmark: (
+  onBookmark?: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onCancelBookmark?: (
     e: React.MouseEvent<HTMLButtonElement>,
     id: number
   ) => void;
-  onLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
-  onCancelLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onLike?: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onCancelLike?: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
 };
 
 export default function CreatorInfoBox({
@@ -35,10 +35,10 @@ export default function CreatorInfoBox({
     id,
     profileImage,
     author,
-    liked,
-    likesCount,
-    bookmarked,
-    bookmarksCount,
+    liked = false,
+    likesCount = 0,
+    bookmarked = false,
+    bookmarksCount = 0,
   } = data;
 
   return (
