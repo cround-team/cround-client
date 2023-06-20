@@ -15,10 +15,10 @@ export type ShortCardData = {
   platformType: string;
   profileImage: string;
   author: string;
-  liked: boolean;
-  likesCount: number;
-  bookmarked: boolean;
-  bookmarksCount: number;
+  liked?: boolean;
+  likesCount?: number;
+  bookmarked?: boolean;
+  bookmarksCount?: number;
 };
 
 export type ContentCardData = {
@@ -28,10 +28,10 @@ export type ContentCardData = {
   platformType: string;
   profileImage: string;
   author: string;
-  likesCount: number;
-  bookmarksCount: number;
-  liked: boolean;
-  bookmarked: boolean;
+  likesCount?: number;
+  bookmarksCount?: number;
+  liked?: boolean;
+  bookmarked?: boolean;
 };
 
 export type ReviewCardData = {
