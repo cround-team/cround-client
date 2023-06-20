@@ -1,0 +1,195 @@
+import { useEffect, useState } from "react";
+import { useImmer } from "use-immer";
+
+import type { ContentCardData, ShortCardData, CreatorCardData } from "@/types";
+import {
+  creatorsCustomApi,
+  contentsApi,
+  shortsApi,
+  creatorsApi,
+} from "@/utils/api";
+import { useSearchKeyword } from "@/hooks";
+
+type CustomCreators = {
+  latest: CreatorCardData[];
+  interest: CreatorCardData[];
+  random: CreatorCardData[];
+};
+
+const INITIAL_CREATORS = [
+  {
+    creatorId: 0,
+    description: "",
+    platformActivityName: "",
+    platformType: "",
+    profileImage: "",
+    platformTheme: "",
+  },
+];
+
+const INITIAL_CUSTOM_CREATORS = {
+  latest: INITIAL_CREATORS,
+  interest: INITIAL_CREATORS,
+  random: INITIAL_CREATORS,
+};
+
+const INITIAL_CONTENTS = [
+  {
+    author: "",
+    boardId: 0,
+    content: "",
+    platformType: "",
+    profileImage: "",
+    title: "",
+  },
+];
+
+const INITIAL_SHORTS = [
+  {
+    shortsId: 0,
+    title: "",
+    thumbnailUrl: "",
+    platformType: "",
+    profileImage: "",
+    author: "",
+  },
+];
+
+export default function useMainList() {
+  const [customCreators, setCustomCreators] = useImmer<CustomCreators>(
+    INITIAL_CUSTOM_CREATORS
+  );
+  const [creators, setCreators] = useImmer<CreatorCardData[]>(INITIAL_CREATORS);
+  const [contents, setContents] = useImmer<ContentCardData[]>(INITIAL_CONTENTS);
+  const [shorts, setShorts] = useImmer<ShortCardData[]>(INITIAL_SHORTS);
+
+  const {
+    isDisabledSearch,
+    searched,
+    searchKeyword,
+    handleSearched,
+    handleChangeKeyword,
+  } = useSearchKeyword();
+
+  useEffect(() => {
+    fetchCustomCreatorList();
+    fetchShortList();
+    fetchContentList();
+  }, []);
+
+  const fetchCustomCreatorList = async () => {
+    try {
+      const params = { size: 4 };
+      const response = await creatorsCustomApi(params);
+      setCustomCreators((draft) => {
+        draft.latest = response.data.latestCreators;
+        draft.interest = response.data.interestCreators;
+        draft.random = response.data.randomCreators;
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchCreatorList = async () => {
+    try {
+      const params = {
+        size: 4,
+        keyword: searchKeyword,
+      };
+      const response = await creatorsApi(params);
+      setCreators(response.data.pages);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      handleSearched();
+    }
+  };
+
+  const fetchContentList = async () => {
+    try {
+      const params = {
+        size: 4,
+        keyword: searchKeyword,
+      };
+      const response = await contentsApi(params);
+      setContents(response.data.pages);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      handleSearched();
+    }
+  };
+
+  const fetchShortList = async () => {
+    try {
+      const params = {
+        size: 4,
+
+        keyword: searchKeyword,
+      };
+      const response = await shortsApi(params);
+      setShorts(response.data.pages);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      handleSearched();
+    }
+  };
+
+  const handleSubmitKeyword = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    fetchCreatorList();
+    fetchShortList();
+    fetchContentList();
+  };
+
+  const getLatestCreatorListProps = ({ ...otherProps } = {}) => ({
+    data: customCreators.latest,
+    ...otherProps,
+  });
+
+  const getInterestCreatorListProps = ({ ...otherProps } = {}) => ({
+    data: customCreators.interest,
+    ...otherProps,
+  });
+
+  const getRandomCreatorListProps = ({ ...otherProps } = {}) => ({
+    data: customCreators.random,
+    ...otherProps,
+  });
+
+  const getCreatorListProps = ({ ...otherProps } = {}) => ({
+    data: creators,
+    ...otherProps,
+  });
+
+  const getShortListProps = ({ ...otherProps } = {}) => ({
+    data: shorts,
+    ...otherProps,
+  });
+
+  const getContentListProps = ({ ...otherProps } = {}) => ({
+    data: contents,
+    ...otherProps,
+  });
+
+  const getSearchProps = ({ ...otherProps } = {}) => ({
+    isDisabled: isDisabledSearch,
+    searchKeyword,
+    onChange: handleChangeKeyword,
+    onSubmit: handleSubmitKeyword,
+    ...otherProps,
+  });
+
+  return {
+    searched,
+    getLatestCreatorListProps,
+    getInterestCreatorListProps,
+    getRandomCreatorListProps,
+    getCreatorListProps,
+    getShortListProps,
+    getContentListProps,
+    getSearchProps,
+  };
+}
