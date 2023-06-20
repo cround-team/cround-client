@@ -20,6 +20,12 @@ export const creatorsApi = async (params: Record<string, any>) => {
   return response;
 };
 
+export const creatorsCustomApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get("/api/creators/home", { params });
+
+  return response;
+};
+
 export const creatorsFollowListApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get(
     "/api/members/me/creators/followings",
