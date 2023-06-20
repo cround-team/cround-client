@@ -59,9 +59,10 @@ export default function useShortList() {
   useEffect(() => {
     fetchShortList();
     fetchPopularsShortList();
-  }, []);
+  }, [filter.sort]);
 
   const fetchShortList = async (id?: number) => {
+    console.log(filter.sort);
     try {
       const params = {
         sort: filter.sort,

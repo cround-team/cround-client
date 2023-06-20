@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import * as S from "./styled";
+import * as S from "../styled";
 import { media } from "@/styles/themes/foundations";
 
 type PlatformCheckboxProps = {

@@ -43,7 +43,7 @@ export default function useContentList() {
 
   useEffect(() => {
     fetchContentList();
-  }, []);
+  }, [filter.sort]);
 
   const fetchContentList = async (id?: number) => {
     try {

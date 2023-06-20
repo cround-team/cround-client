@@ -1,8 +1,7 @@
 import { PLATFORMS } from "@/constants/platforms";
-import usePlatform from "@/hooks/form/usePlatform";
 import * as S from "./styled";
 import Button from "../../button/base/Button";
-import PlatformCheckbox from "../../checkbox/PlatformCheckbox";
+import PlatformCheckbox from "../../checkbox/platform/PlatformCheckbox";
 
 type PlatformFormProps = {
   isDisabledSubmit: boolean;

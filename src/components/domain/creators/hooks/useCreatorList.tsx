@@ -36,7 +36,7 @@ export default function useCreatorList() {
 
   useEffect(() => {
     fetchCreatorList();
-  }, []);
+  }, [filter.sort]);
 
   const fetchCreatorList = async (id?: number) => {
     try {
