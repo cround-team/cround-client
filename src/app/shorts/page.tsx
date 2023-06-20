@@ -1,9 +1,9 @@
 "use client";
 
-import useShortList from "@/components/domain/shorts/hooks/useShortList";
 import { PageFilter, SearchInput } from "@/components/common";
-import PopularShortsList from "@/components/domain/shorts/popularList/PopularShortsList";
-import ShortsList from "@/components/domain/shorts/list/ShortsList";
+
+import useShortList from "@/components/domain/shorts/hooks/useShortList";
+import { PopularShortsList, ShortsList } from "@/components/domain";
 import NotList from "@/components/common/etc/notList/NotList";
 import * as S from "./styled";
 
@@ -42,7 +42,6 @@ export default function ShortsPage() {
           />
         </S.PopularContainer>
       )}
-
       <S.BaseContainer>
         <PageFilter {...getFilterProps()} />
         {!!getListProps().data.length && <ShortsList {...getListProps()} />}

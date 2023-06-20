@@ -4,8 +4,8 @@ import * as S from "./styled";
 
 type CreatorListProps = {
   data: CreatorCardData[];
-  isNextPage: boolean;
-  onFetchData: (id?: number) => void;
+  isNextPage?: boolean;
+  onFetchData?: (id?: number) => void;
 };
 
 export default function CreatorList({
@@ -14,7 +14,7 @@ export default function CreatorList({
   isNextPage,
 }: CreatorListProps) {
   const handleAddList = () => {
-    onFetchData(data.at(-1)?.creatorId);
+    onFetchData && onFetchData(data.at(-1)?.creatorId);
   };
 
   return (
@@ -24,7 +24,9 @@ export default function CreatorList({
           <CreatorCard key={creator.creatorId} creator={creator} />
         ))}
       </S.Wrapper>
-      <MorePageButton isDisabled={!isNextPage} onClick={handleAddList} />
+      {onFetchData && (
+        <MorePageButton isDisabled={!isNextPage} onClick={handleAddList} />
+      )}
     </S.Container>
   );
 }

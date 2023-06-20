@@ -5,7 +5,7 @@ type BookmarkProps = {
   isBookmarked: boolean;
   id: number;
   count: number;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
 };
 
 export default function Bookmark({
@@ -14,6 +14,8 @@ export default function Bookmark({
   count,
   onClick,
 }: BookmarkProps) {
+  if (!onClick) return <></>;
+
   return (
     <S.Container isBookmarked={isBookmarked}>
       <button onClick={(e) => onClick(e, id)}>

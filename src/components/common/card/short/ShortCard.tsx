@@ -9,10 +9,10 @@ import * as S from "./styled";
 type ShortCardProps = {
   short: ShortCardData;
   isShowCreatorInfo?: boolean;
-  onLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
-  onCancelLike: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
-  onBookmark: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
-  onCancelBookmark: (
+  onLike?: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onCancelLike?: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onBookmark?: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
+  onCancelBookmark?: (
     e: React.MouseEvent<HTMLButtonElement>,
     id: number
   ) => void;
@@ -29,7 +29,7 @@ export default function ShortCard({
   const {
     shortsId,
     title,
-    thumbnailUrl,
+    thumbnailUrl = "",
     platformType,
     profileImage,
     author,
