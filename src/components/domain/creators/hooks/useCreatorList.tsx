@@ -74,6 +74,7 @@ export default function useCreatorList() {
 
   const getFilterProps = ({ ...otherProps } = {}) => ({
     isDisabledPlatform,
+    platforms: filter.platforms,
     options: creatorOptions,
     onSelectSort: handleChangeSort,
     onChangePlatform: handleChangePlatform,

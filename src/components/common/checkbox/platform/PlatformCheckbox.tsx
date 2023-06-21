@@ -1,10 +1,10 @@
-import React from "react";
 import Image from "next/image";
 
-import * as S from "../styled";
 import { media } from "@/styles/themes/foundations";
+import * as S from "./styled";
 
 type PlatformCheckboxProps = {
+  isChecked: boolean;
   src: string;
   value: string;
   title: string;
@@ -12,6 +12,7 @@ type PlatformCheckboxProps = {
 };
 
 export default function PlatformCheckbox({
+  isChecked,
   src,
   value,
   title,
@@ -19,7 +20,13 @@ export default function PlatformCheckbox({
 }: PlatformCheckboxProps) {
   return (
     <S.Label>
-      <S.Input isHidden type="checkbox" value={value} onChange={onChange} />
+      <S.Input
+        isHidden
+        checked={isChecked}
+        type="checkbox"
+        value={value}
+        onChange={onChange}
+      />
       <S.Figure>
         <Image src={src} fill sizes={media.images.sizes} alt={value} />
       </S.Figure>

@@ -8,6 +8,7 @@ import * as S from "./styled";
 
 type PageFilterProps = {
   isDisabledPlatform: boolean;
+  platforms: string[];
   options: Sorts[];
   onSelectSort: (sorted: string) => void;
   onChangePlatform: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -16,6 +17,7 @@ type PageFilterProps = {
 
 export default function PageFilter({
   isDisabledPlatform,
+  platforms,
   options,
   onSelectSort,
   onChangePlatform,
@@ -43,6 +45,7 @@ export default function PageFilter({
       {isModalOpen && (
         <PlatformModal
           isDisabledPlatform={isDisabledPlatform}
+          platforms={platforms}
           onCloseModal={handleCloseModal}
           onChangePlatform={onChangePlatform}
           onSubmit={handleSubmitPlatform}
