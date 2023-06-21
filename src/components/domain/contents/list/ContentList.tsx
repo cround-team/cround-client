@@ -35,7 +35,7 @@ export default function ContentList({
           <ContentCard
             key={content.boardId}
             content={content}
-            isShowCreatorInfo={onLike ? true : false}
+            isShowCreatorInfo={onFetchData ? true : false}
             onLike={onLike}
             onCancelLike={onCancelLike}
             onBookmark={onBookmark}
