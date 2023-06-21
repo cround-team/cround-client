@@ -14,6 +14,11 @@ type CreatorNicknameBody = {
   nickname: string;
 };
 
+type CreatorFollowBody = {
+  sourceId: string;
+  targetId: number;
+};
+
 export const creatorsApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get("/api/creators", { params });
 
@@ -22,6 +27,20 @@ export const creatorsApi = async (params: Record<string, any>) => {
 
 export const creatorsCustomApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get("/api/creators/home", { params });
+
+  return response;
+};
+
+export const creatorFollowApi = async (body: CreatorFollowBody) => {
+  const response = await apiInstance.post("/api/members/following", body);
+
+  return response;
+};
+
+export const creatorUnFollowApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.delete("/api/members/following", {
+    params,
+  });
 
   return response;
 };

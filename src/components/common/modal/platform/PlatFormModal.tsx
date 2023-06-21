@@ -3,7 +3,7 @@ import { PLATFORMS } from "@/constants/platforms";
 import { XCloseIcon } from "@/assets/icons";
 import * as S from "./styled";
 import Modal from "../Modal";
-import PlatformCheckbox from "../../checkbox/PlatformCheckbox";
+import PlatformCheckbox from "../../checkbox/platform/PlatformCheckbox";
 import { Button } from "../../button";
 
 type PlatFormModalProps = {

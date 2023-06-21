@@ -1,21 +1,19 @@
 "use client";
 
-import * as S from "./styled";
-import useCreatorFollowList from "@/hooks/list/useCreatorFollowList";
+import { useFollowList } from "@/hooks";
 import CreatorList from "@/components/domain/creators/list/CreatorList";
+import * as S from "./styled";
 
 export default function MyFollowPage() {
-  const { list, isNextPage, fetchListData } = useCreatorFollowList();
+  const { data, isNextPage, fetchData } = useFollowList();
 
   return (
     <S.Section>
-      {list?.data && (
-        <CreatorList
-          data={list.data}
-          isNextPage={isNextPage}
-          onFetchData={fetchListData}
-        />
-      )}
+      <CreatorList
+        data={data}
+        isNextPage={isNextPage}
+        onFetchData={fetchData}
+      />
     </S.Section>
   );
 }

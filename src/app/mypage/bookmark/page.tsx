@@ -1,7 +1,7 @@
 "use client";
 
-import * as S from "./styled";
 import BookmarkPannel from "@/components/common/panel/bookmark/BookmarkPannel";
+import * as S from "./styled";
 
 export default function MyBookmarkPage() {
   return (

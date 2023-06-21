@@ -4,17 +4,7 @@ import { useImmer } from "use-immer";
 import type { CreatorCardData } from "@/types";
 import { useListFilter, useSearchKeyword } from "@/hooks";
 import { creatorsApi, shortsApi } from "@/utils/api";
-
-const INITIAL_CREATORS = [
-  {
-    creatorId: 0,
-    description: "",
-    platformActivityName: "",
-    platformType: "",
-    profileImage: "",
-    platformTheme: "",
-  },
-];
+import { INITIAL_CREATORS } from "@/constants/initial";
 
 export default function useCreatorList() {
   const [creators, setCreators] = useImmer<CreatorCardData[]>(INITIAL_CREATORS);
@@ -36,7 +26,7 @@ export default function useCreatorList() {
 
   useEffect(() => {
     fetchCreatorList();
-  }, []);
+  }, [filter.sort]);
 
   const fetchCreatorList = async (id?: number) => {
     try {

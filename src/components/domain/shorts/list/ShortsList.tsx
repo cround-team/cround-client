@@ -35,7 +35,7 @@ export default function ShortsList({
           <ShortCard
             key={short.shortsId}
             short={short}
-            isShowCreatorInfo={onLike ? true : false}
+            isShowCreatorInfo={onFetchData ? true : false}
             onLike={onLike}
             onCancelLike={onCancelLike}
             onBookmark={onBookmark}
