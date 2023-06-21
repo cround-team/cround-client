@@ -1,5 +1,5 @@
-import useLoginForm from "@/components/domain/auth/login/loginBox/hooks/useLoginForm";
 import { Input, PasswordInput, Button } from "@/components/common";
+import useLoginForm from "../hooks/useLoginForm";
 import * as S from "./styled";
 
 export default function LoginForm() {

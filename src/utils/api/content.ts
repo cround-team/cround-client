@@ -6,6 +6,12 @@ export const contentsApi = async (params: Record<string, any>) => {
   return response;
 };
 
+export const contentRegisterApi = async (body: any) => {
+  const response = await apiInstance.post("/api/boards", body);
+
+  return response;
+};
+
 export const contentDetailApi = async (boardId: number) => {
   const response = await apiInstance.get(`/api/boards/${boardId}`);
 

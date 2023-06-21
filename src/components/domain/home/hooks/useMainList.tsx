@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useImmer } from "use-immer";
 
 import type { ContentCardData, ShortCardData, CreatorCardData } from "@/types";

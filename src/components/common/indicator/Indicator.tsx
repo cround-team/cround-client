@@ -3,7 +3,7 @@ import * as S from "./styled";
 type IndicatorProps = {
   className?: string;
   steps: string[];
-  current: string;
+  current: string | null;
 };
 
 export default function Indicator({

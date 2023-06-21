@@ -5,8 +5,13 @@ import * as S from "./styled";
 
 export default function PrevButton() {
   const router = useRouter();
+
+  const handleClick = () => {
+    router.back();
+  };
+
   return (
-    <S.Button onClick={() => router.back()}>
+    <S.Button onClick={handleClick}>
       <ChevronLeftIcon />
     </S.Button>
   );

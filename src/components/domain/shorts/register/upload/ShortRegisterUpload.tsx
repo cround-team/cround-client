@@ -1,6 +1,6 @@
 import { Button, Label, RegisterInput } from "@/components/common";
-import * as S from "./styled";
 import ImageUploadBox from "./ImageUploadBox/ImageUploadBox";
+import * as S from "./styled";
 
 type ShortRegisterUploadProps = {
   isDisabledSubmit: boolean;

@@ -1,27 +1,27 @@
 import { creatorFollowApi, creatorUnFollowApi } from "@/utils/api";
 
 export default function useFollow() {
-  const handleFollow = async (targetId: number) => {
+  const handleFollow = async (id: number) => {
+    let followed = false;
     try {
-      const body = {
-        sourceId: "",
-        targetId,
-      };
-      return await creatorFollowApi(body);
+      const response = await creatorFollowApi(id);
+      followed = response.data.followed;
     } catch (error) {
       console.error(error);
+    } finally {
+      return { followed };
     }
   };
 
-  const handleUnFollow = async (targetId: number) => {
+  const handleUnFollow = async (id: number) => {
+    let followed = false;
     try {
-      const params = {
-        sourceId: "",
-        targetId,
-      };
-      return await creatorUnFollowApi(params);
+      const response = await creatorUnFollowApi(id);
+      followed = response.data.followed;
     } catch (error) {
       console.error(error);
+    } finally {
+      return { followed };
     }
   };
 

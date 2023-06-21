@@ -161,6 +161,7 @@ export default function useContentList() {
 
   const getFilterProps = ({ ...otherProps } = {}) => ({
     isDisabledPlatform,
+    platforms: filter.platforms,
     options: contentOptions,
     onSelectSort: handleChangeSort,
     onChangePlatform: handleChangePlatform,

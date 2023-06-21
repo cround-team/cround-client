@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useImmer } from "use-immer";
 
 import querystring from "querystring";
 import { PATH } from "@/constants";
 import { hasKey } from "@/utils/form";
 import { useUploadImage } from "@/hooks";
+import { shortRegisterApi } from "@/utils/api";
 
 type Steps = "base" | "platform" | "upload" | "success";
 type ShortRegisterForm = {
   title: string;
   description: string;
-  platforms: string[];
+  platform: string;
   thumbnail: File | null;
   url: string;
 };
@@ -19,7 +20,7 @@ type ShortRegisterForm = {
 const INITIAL_STATE: ShortRegisterForm = {
   title: "",
   description: "",
-  platforms: [],
+  platform: "",
   thumbnail: null,
   url: "",
 };
@@ -27,15 +28,16 @@ const INITIAL_STATE: ShortRegisterForm = {
 export default function useShortRegister() {
   const [form, setForm] = useImmer<ShortRegisterForm>(INITIAL_STATE);
   const [step, setStep] = useState<Steps>("base");
-  const { title, description, platforms, thumbnail, url } = form;
+  const { title, description, platform, thumbnail, url } = form;
 
   const { selectedImage, previewImage, fileInputRef, handleFileChange } =
     useUploadImage();
 
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const isDisabledBase = !(title && description);
-  const isDisabledPlatform = !platforms.length;
+  const isDisabledPlatform = !platform;
   const isDisabledUpload = !(thumbnail && url);
 
   useEffect(() => {
@@ -44,12 +46,18 @@ export default function useShortRegister() {
     } else if (step === "upload" && isDisabledPlatform) {
       setStep("platform");
     }
-
     const query = { step };
     const queryString = querystring.stringify(query);
-    const url = `/creators/register?${queryString}`;
+    const url = `${PATH.SHORTS.REGISTER}?${queryString}`;
     router.push(url);
   }, [step]);
+
+  useEffect(() => {
+    const query = searchParams.get("step");
+    if (query) {
+      setStep(query as Steps);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (selectedImage !== null) {
@@ -66,7 +74,7 @@ export default function useShortRegister() {
 
     if (!hasKey(form, name)) {
       throw new Error("is not valid name");
-    } else if (name !== "platforms" && name !== "thumbnail") {
+    } else if (name !== "platform" && name !== "thumbnail") {
       setForm((draft) => {
         draft[name] = value;
       });
@@ -76,13 +84,10 @@ export default function useShortRegister() {
   const handleChangePlatform = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
 
-    const checkedList = checked
-      ? [...form.platforms, value]
-      : form.platforms.filter((v) => v !== value);
-
-    setForm((draft) => {
-      draft.platforms = checkedList;
-    });
+    checked &&
+      setForm((draft) => {
+        draft.platform = value;
+      });
   };
 
   const handleSubmitBase = (e: React.FormEvent<HTMLFormElement>) => {
@@ -95,12 +100,37 @@ export default function useShortRegister() {
     setStep("upload");
   };
 
-  const handleSubmitUpload = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("form", form);
-    //API 호출..
-    // 성공시
-    // setStep("success");
+
+    try {
+      const formData = new FormData();
+
+      if (thumbnail) {
+        formData.append("thumbnailImage", thumbnail);
+      }
+      const shortFormSaveRequest = {
+        title,
+        content: description,
+        platformType: platform,
+        shortFormUrl: url,
+      };
+      formData.append(
+        "shortFormSaveRequest",
+        new Blob([JSON.stringify(shortFormSaveRequest)], {
+          type: "application/json",
+        })
+      );
+      const res = await shortRegisterApi(formData);
+      console.log("res", "res");
+      if (res.status === 201) {
+        console.log("201", res);
+        setStep("success");
+      }
+    } catch (error: any) {
+      console.log(error);
+    }
   };
 
   const getBaseStepProps = ({ ...otherProps } = {}) => ({
@@ -114,6 +144,7 @@ export default function useShortRegister() {
 
   const getPlatformStepProps = ({ ...otherProps } = {}) => ({
     isDisabledSubmit: isDisabledPlatform,
+    selectedPlatform: platform,
     handleChange: handleChangePlatform,
     handlePrevStep: () => setStep("base"),
     handleSubmit: handleSubmitPlatform,

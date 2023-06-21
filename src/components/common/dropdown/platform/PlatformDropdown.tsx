@@ -19,13 +19,15 @@ export default function PlatformDropdown({
   const handleToggleDropdown = () => setIsOpen((prev) => !prev);
 
   useEffect(() => {
-    setIsOpen((prev) => !prev);
+    isOpen && setIsOpen((prev) => !prev);
   }, [selected]);
 
   return (
     <S.Container>
       <S.DropdownButton type="button" onClick={() => handleToggleDropdown()}>
-        <S.Selected>{selected}</S.Selected>
+        <S.Selected>
+          {selected.length === 0 ? "대표 플랫폼 선택" : selected}
+        </S.Selected>
         <ChevronDownIcon />
       </S.DropdownButton>
       {/* 드롭다운 */}

@@ -1,4 +1,3 @@
-import { ChangeEvent, useState } from "react";
 import * as S from "./styled";
 import Label from "../label/Label";
 

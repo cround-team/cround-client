@@ -201,6 +201,7 @@ export default function useShortList() {
 
   const getFilterProps = ({ ...otherProps } = {}) => ({
     isDisabledPlatform,
+    platforms: filter.platforms,
     options: shortOptions,
     onSelectSort: handleChangeSort,
     onChangePlatform: handleChangePlatform,

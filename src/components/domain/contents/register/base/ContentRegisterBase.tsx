@@ -1,6 +1,6 @@
-import { Button, RegisterInput, TextArea } from "@/components/common";
 import React from "react";
 
+import { Button, RegisterInput, TextArea } from "@/components/common";
 import * as S from "./styled";
 
 type ContentRegisterBaseType = {

@@ -2,12 +2,12 @@ import Image from "next/image";
 
 import avatarImg from "public/images/avatar.png";
 import { media } from "@/styles/themes/foundations";
-import * as S from "./styled";
-import FileInput from "../input/file/FileInput";
 import { CameraIcon } from "@/assets/icons";
+import * as S from "./styled";
+import { FileInput } from "../input";
 
 type AvatarPorps = {
-  fileRef?: React.ForwardedRef<HTMLInputElement>;
+  fileRef: React.RefObject<HTMLInputElement>;
   previewImage: string | null;
   alt: string;
   className?: string;
@@ -18,7 +18,7 @@ export default function Avatar({
   fileRef,
   previewImage,
   alt,
-  className = "",
+  className,
   onFileChange,
 }: AvatarPorps) {
   const handleOpenFileDialog = () => {
@@ -33,7 +33,7 @@ export default function Avatar({
         src={previewImage ?? avatarImg}
         alt={alt}
         sizes={media.images.sizes}
-        fill
+        fill={true}
         priority
       />
       {fileRef && onFileChange && (

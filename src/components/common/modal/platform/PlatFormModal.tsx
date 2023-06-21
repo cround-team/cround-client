@@ -8,6 +8,7 @@ import { Button } from "../../button";
 
 type PlatFormModalProps = {
   isDisabledPlatform: boolean;
+  platforms: string[];
   onChangePlatform: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onCloseModal: () => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -15,6 +16,7 @@ type PlatFormModalProps = {
 
 export default function PlatFormModal({
   isDisabledPlatform,
+  platforms,
   onChangePlatform,
   onCloseModal,
   onSubmit,
@@ -29,6 +31,7 @@ export default function PlatFormModal({
           <S.PlatformList>
             {PLATFORMS.map((el) => (
               <PlatformCheckbox
+                isChecked={platforms.includes(el.id) ? true : false}
                 key={el.id}
                 src={el.src}
                 value={el.id}

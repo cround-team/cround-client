@@ -1,9 +1,11 @@
 "use client";
 
-import ContentRegisterBase from "@/components/domain/contents/register/base/ContentRegisterBase";
-import ContentRegisterPlatform from "@/components/domain/contents/register/platform/ContentRegisterPlatform";
-import ContentRegisterSuccess from "@/components/domain/contents/register/success/ContentRegisterSuccess";
-import useContentRegister from "@/components/domain/contents/hooks/useContentRegister";
+import {
+  ContentRegisterBase,
+  ContentRegisterPlatform,
+  ContentRegisterSuccess,
+  useContentRegister,
+} from "@/components/domain";
 import * as S from "./styled";
 
 export default function ContentRegisterPage() {

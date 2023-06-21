@@ -1,10 +1,13 @@
 import { PLATFORMS } from "@/constants/platforms";
-import * as S from "./styled";
 import Button from "../../button/base/Button";
-import PlatformCheckbox from "../../checkbox/platform/PlatformCheckbox";
+
+import * as S from "./styled";
+import { PlatformCheckbox } from "../../checkbox";
+import { PlatformRadio } from "../../radio";
 
 type PlatformFormProps = {
   isDisabledSubmit: boolean;
+  selected: string[] | string;
   onPrevStep: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -12,6 +15,7 @@ type PlatformFormProps = {
 
 export default function PlatformForm({
   isDisabledSubmit,
+  selected,
   onPrevStep,
   onChange,
   onSubmit,
@@ -19,15 +23,28 @@ export default function PlatformForm({
   return (
     <S.Form onSubmit={onSubmit}>
       <S.PlatformList>
-        {PLATFORMS.map((el) => (
-          <PlatformCheckbox
-            key={el.id}
-            src={el.src}
-            value={el.id}
-            title={el.title}
-            onChange={onChange}
-          />
-        ))}
+        {Array.isArray(selected) &&
+          PLATFORMS.map((el) => (
+            <PlatformCheckbox
+              isChecked={selected.includes(el.id) ? true : false}
+              key={el.id}
+              src={el.src}
+              value={el.id}
+              title={el.title}
+              onChange={onChange}
+            />
+          ))}
+        {!Array.isArray(selected) &&
+          PLATFORMS.map((el) => (
+            <PlatformRadio
+              isChecked={selected.includes(el.id) ? true : false}
+              key={el.id}
+              src={el.src}
+              value={el.id}
+              title={el.title}
+              onChange={onChange}
+            />
+          ))}
       </S.PlatformList>
       <S.ButtonWrapper>
         <Button

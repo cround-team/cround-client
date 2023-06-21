@@ -3,6 +3,7 @@ import * as S from "./styled";
 
 type ShortRegisterPlatformProps = {
   isDisabledSubmit: boolean;
+  selectedPlatform: string;
   handlePrevStep: () => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -10,6 +11,7 @@ type ShortRegisterPlatformProps = {
 
 export default function ShortRegisterPlatform({
   isDisabledSubmit,
+  selectedPlatform,
   handlePrevStep,
   handleChange,
   handleSubmit,
@@ -19,6 +21,7 @@ export default function ShortRegisterPlatform({
       <Label label="등록하실 숏클래스에 해당하는 플랫폼을 선택해 주세요." />
       <PlatformForm
         isDisabledSubmit={isDisabledSubmit}
+        selected={selectedPlatform}
         onPrevStep={handlePrevStep}
         onChange={handleChange}
         onSubmit={handleSubmit}

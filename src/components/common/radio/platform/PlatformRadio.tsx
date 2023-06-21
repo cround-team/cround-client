@@ -23,7 +23,8 @@ export default function PlatformCheckbox({
       <S.Input
         isHidden
         checked={isChecked}
-        type="checkbox"
+        type="radio"
+        name="platform"
         value={value}
         onChange={onChange}
       />
