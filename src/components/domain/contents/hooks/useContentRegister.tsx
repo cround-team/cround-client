@@ -29,8 +29,6 @@ export default function useContentRegister() {
   const isDisabledBase = !(title && description);
   const isDisabledPlatform = !platforms.length;
 
-  
-
   useEffect(() => {
     if (step === "platform" && isDisabledBase) {
       setStep("base");
@@ -98,7 +96,7 @@ export default function useContentRegister() {
   });
 
   const getSuccessStepProps = ({ ...otherProps } = {}) => ({
-    handleGoMainPage: () => router.push(PATH.ROOT)
+    handleGoMainPage: () => router.push(PATH.ROOT),
     ...otherProps,
   });
 
