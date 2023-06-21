@@ -1,7 +1,13 @@
-import { apiInstance } from "./server";
+import { apiInstance, multiPartInstance } from "./server";
 
 export const shortsApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get("/api/shorts", { params });
+
+  return response;
+};
+
+export const shortRegisterApi = async (body: any) => {
+  const response = await multiPartInstance.post("/api/shorts", body);
 
   return response;
 };

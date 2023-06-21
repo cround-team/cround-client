@@ -31,16 +31,13 @@ export const creatorsCustomApi = async (params: Record<string, any>) => {
   return response;
 };
 
-export const creatorFollowApi = async (body: CreatorFollowBody) => {
-  const response = await apiInstance.post("/api/members/following", body);
-
+export const creatorFollowApi = async (id: number) => {
+  const response = await apiInstance.post(`/api/members/${id}following`);
   return response;
 };
 
-export const creatorUnFollowApi = async (params: Record<string, any>) => {
-  const response = await apiInstance.delete("/api/members/following", {
-    params,
-  });
+export const creatorUnFollowApi = async (id: number) => {
+  const response = await apiInstance.delete(`/api/members/${id}following`);
 
   return response;
 };
