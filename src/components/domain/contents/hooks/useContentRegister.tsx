@@ -1,44 +1,52 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useImmer } from "use-immer";
 
 import { hasKey } from "@/utils/form";
 
 import querystring from "querystring";
 import { PATH } from "@/constants";
+import { contentRegisterApi } from "@/utils/api";
 
 type Steps = "base" | "platform" | "success";
 type ContentRegisterForm = {
   title: string;
   description: string;
-  platforms: string[];
+  platform: string;
 };
 
 const INITIAL_STATE: ContentRegisterForm = {
   title: "",
   description: "",
-  platforms: [],
+  platform: "",
 };
 
 export default function useContentRegister() {
   const [form, setForm] = useImmer<ContentRegisterForm>(INITIAL_STATE);
   const [step, setStep] = useState<Steps>("base");
-  const { title, description, platforms } = form;
+  const { title, description, platform } = form;
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const isDisabledBase = !(title && description);
-  const isDisabledPlatform = !platforms.length;
+  const isDisabledPlatform = !platform;
 
   useEffect(() => {
     if (step === "platform" && isDisabledBase) {
       setStep("base");
     }
-
     const query = { step };
     const queryString = querystring.stringify(query);
-    const url = `/creators/register?${queryString}`;
+    const url = `${PATH.CONTENTS.REGISTER}?${queryString}`;
     router.push(url);
   }, [step]);
+
+  useEffect(() => {
+    const query = searchParams.get("step");
+    if (query) {
+      setStep(query as Steps);
+    }
+  }, [searchParams]);
 
   const handleChangeForm = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -47,7 +55,7 @@ export default function useContentRegister() {
 
     if (!hasKey(form, name)) {
       throw new Error("is not valid name");
-    } else if (name !== "platforms") {
+    } else if (name !== "platform") {
       setForm((draft) => {
         draft[name] = value;
       });
@@ -57,13 +65,10 @@ export default function useContentRegister() {
   const handleChangePlatform = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
 
-    const checkedList = checked
-      ? [...form.platforms, value]
-      : form.platforms.filter((v) => v !== value);
-
-    setForm((draft) => {
-      draft.platforms = checkedList;
-    });
+    checked &&
+      setForm((draft) => {
+        draft.platform = value;
+      });
   };
 
   const handleSubmitBase = (e: React.FormEvent<HTMLFormElement>) => {
@@ -71,11 +76,24 @@ export default function useContentRegister() {
     setStep("platform");
   };
 
-  const handleSubmitPlatform = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitPlatform = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setStep("success");
-    // Api 통신 =>
     console.log("form", form);
+    try {
+      const body = {
+        platformType: platform,
+        title,
+        content: description,
+      };
+      const res = await contentRegisterApi(body);
+      console.log("res", "res");
+      if (res.status === 201) {
+        console.log("201", res);
+        setStep("success");
+      }
+    } catch (error: any) {
+      console.log(error);
+    }
   };
 
   const getBaseStepProps = ({ ...otherProps } = {}) => ({
@@ -89,6 +107,7 @@ export default function useContentRegister() {
 
   const getPlatformStepProps = ({ ...otherProps } = {}) => ({
     isDisabledSubmit: isDisabledPlatform,
+    selectedPlatform: platform,
     handlePrevStep: () => setStep("base"),
     handleChange: handleChangePlatform,
     handleSubmit: handleSubmitPlatform,
