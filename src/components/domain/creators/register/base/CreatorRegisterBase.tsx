@@ -6,9 +6,11 @@ type CreatorRegisterBaseProps = {
   nickname: string;
   description: string;
   previewImage: string | null;
-  fileInputRef: React.ForwardedRef<HTMLInputElement>;
+  fileInputRef: React.RefObject<HTMLInputElement>;
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleChangeForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChangeForm: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
@@ -25,11 +27,11 @@ export default function CreatorRegisterBase({
   return (
     <S.Form onSubmit={handleSubmit}>
       <Avatar
-        css={S.Avatar}
         previewImage={previewImage}
         fileRef={fileInputRef}
         alt="My profile image"
         onFileChange={handleFileChange}
+        css={S.Avatar}
       />
       <RegisterInput
         autoFocus={true}

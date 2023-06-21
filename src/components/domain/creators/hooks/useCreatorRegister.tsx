@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useImmer } from "use-immer";
 import querystring from "querystring";
 
@@ -6,7 +6,7 @@ import { hasKey } from "@/utils/form";
 
 import { creatorCreateApi } from "@/utils/api/creator";
 import useAddInput from "./useAddInput";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { PATH } from "@/constants";
 import { useUploadImage } from "@/hooks";
 
@@ -51,6 +51,7 @@ export default function useCreatorRegister() {
     useUploadImage();
 
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const {
     inputValues: inputTags,
@@ -82,12 +83,29 @@ export default function useCreatorRegister() {
     } else if (step === "addition" && isDisabledPlatform) {
       setStep("platform");
     }
-
     const query = { step };
     const queryString = querystring.stringify(query);
-    const url = `/creators/register?${queryString}`;
+    const url = `${PATH.CREATORS.REGISTER}?${queryString}`;
     router.push(url);
   }, [step]);
+
+  useEffect(() => {
+    const query = searchParams.get("step");
+    if (query) {
+      setStep(query as Steps);
+    }
+  }, [searchParams]);
+
+  // const page = useMemo(() => {
+  //   const query = searchParams.get("step");
+  //   query && setStep(query as Steps);
+  // }, [searchParams]);
+  // useEffect(() => {
+  //   const routingIndex = components.findIndex(
+  //     component => component.page === page
+  //   );
+  //   setCurrentIndex(routingIndex);
+  // }, [page]);
 
   const handleChangeForm = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -201,6 +219,7 @@ export default function useCreatorRegister() {
 
   const getPlatformStepProps = ({ ...otherProps } = {}) => ({
     isDisabledSubmit: isDisabledPlatform,
+    activityPlatforms,
     handlePrevStep: () => setStep("base"),
     handleChange: handleChangePlatform,
     handleSubmit: handleSubmitPlatform,
