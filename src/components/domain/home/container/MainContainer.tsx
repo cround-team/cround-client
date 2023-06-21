@@ -1,6 +1,6 @@
 "use client";
 
-import SearchInput from "@/components/common/input/search/SearchInput";
+import { SearchInput } from "@/components/common";
 import useMainList from "../hooks/useMainList";
 import InitMainContainer from "./init/InitMainContainer";
 import SearchedContainer from "./searched/SearchedContainer";
