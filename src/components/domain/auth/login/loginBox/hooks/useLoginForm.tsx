@@ -6,6 +6,8 @@ import { PATH, VALID_MSG } from "@/constants";
 import { hasKey } from "@/utils/form";
 import { loginApi } from "@/utils/api";
 import { emailValidCheck } from "@/utils/validation";
+import { useAuthContext } from "@/context/AuthContext";
+import { conversionUserType } from "@/utils/conversion";
 
 type LoginForm = {
   email: string;
@@ -32,10 +34,11 @@ export default function useLoginForm() {
   const [valid, setValid] = useImmer<VALID>(INITIAL_VALID);
   const [message, setMessage] = useState("");
 
-  const { email, password } = form;
-  const isDisableSubmit = !(email && password);
+  const { user, onSetUserType } = useAuthContext();
 
   const router = useRouter();
+  const { email, password } = form;
+  const isDisableSubmit = !(email && password);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,8 +73,12 @@ export default function useLoginForm() {
       const res = await loginApi(body);
 
       if (res.status === 200) {
-        // const tokenWithoutBearer = res.data.accessToken.replace("Bearer ", "");
-        localStorage.setItem("accessToken", res.data.accessToken);
+        const accessToken = res.data.accessToken;
+        const roleName = conversionUserType(res.data.roleName);
+        localStorage.setItem("accessToken", accessToken);
+        sessionStorage.setItem("roleName", roleName);
+        onSetUserType(roleName);
+
         router.push(PATH.ROOT);
       }
     } catch (error: any) {
