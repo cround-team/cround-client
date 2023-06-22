@@ -31,6 +31,7 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
             fill={true}
             alt="profile"
             sizes={media.images.sizes}
+            priority
           />
         </S.Figure>
         <S.TitleWrapper>

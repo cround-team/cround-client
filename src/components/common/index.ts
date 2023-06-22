@@ -9,7 +9,6 @@ export * from "./modal";
 export * from "./panel";
 export * from "./shorts";
 export * from "./indicator";
-export * from "./sidebar";
 export { default as SelectTabs } from "./tab/SelectTabs";
 export { default as Avatar } from "./avatar/Avatar";
 export { default as Label } from "./label/Label";
