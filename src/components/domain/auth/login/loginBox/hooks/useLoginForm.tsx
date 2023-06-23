@@ -34,7 +34,7 @@ export default function useLoginForm() {
   const [valid, setValid] = useImmer<VALID>(INITIAL_VALID);
   const [message, setMessage] = useState("");
 
-  const { user, onSetUserType } = useAuthContext();
+  const { onSetUserInfo } = useAuthContext();
 
   const router = useRouter();
   const { email, password } = form;
@@ -77,9 +77,17 @@ export default function useLoginForm() {
         const roleName = conversionUserType(res.data.roleName);
         localStorage.setItem("accessToken", accessToken);
         sessionStorage.setItem("roleName", roleName);
-        onSetUserType(roleName);
 
+        const userInfo = {
+          name: "코코",
+          type: roleName,
+          profileImage: "",
+          connectType: "이메일 연동",
+          creatorId: 0,
+        };
+        onSetUserInfo(userInfo);
         router.push(PATH.ROOT);
+        ㅈ;
       }
     } catch (error: any) {
       if ([400, 404].includes(error.response.status)) {

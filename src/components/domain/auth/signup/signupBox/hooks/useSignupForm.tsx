@@ -5,7 +5,6 @@ import type { SignupForm } from "@/types";
 import { hasKey } from "@/utils/form";
 import useSignupValid from "./useSignupValid";
 import { signupApi } from "@/utils/api";
-import { useRouter } from "next/navigation";
 
 const INITIAL_FORM: SignupForm = {
   name: "",
@@ -31,8 +30,6 @@ export default function useSignupForm() {
     handleGoSuccessStep,
     handleGoNicknameStep,
   } = useSignupValid(form);
-
-  const router = useRouter();
 
   const isDisabledBase = !(name && email && password && confirmPassword);
   const isDisabledNickname = !nickname;
