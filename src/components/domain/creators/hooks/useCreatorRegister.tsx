@@ -9,6 +9,7 @@ import useAddInput from "./useAddInput";
 import { useRouter, useSearchParams } from "next/navigation";
 import { PATH } from "@/constants";
 import { useUploadImage } from "@/hooks";
+import { useAuthContext } from "@/context/AuthContext";
 
 type Steps = "base" | "platform" | "addition" | "success";
 type CreatorRegisterForm = {
@@ -47,6 +48,7 @@ export default function useCreatorRegister() {
     platformUrl,
   } = form;
 
+  const { onSetUserInfo } = useAuthContext();
   const { selectedImage, previewImage, fileInputRef, handleFileChange } =
     useUploadImage();
 
@@ -167,6 +169,9 @@ export default function useCreatorRegister() {
 
   const handleSubmitPlatform = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setForm((draft) => {
+      draft.platformHeadType = activityPlatforms[0];
+    });
     setStep("addition");
   };
 
@@ -198,6 +203,15 @@ export default function useCreatorRegister() {
       console.log("res", res);
       if (res.status === 201) {
         console.log("201", res);
+        sessionStorage.setItem("roleName", "creator");
+        const userInfo = {
+          name: nickname,
+          type: "creator",
+          profileImage: "",
+          connectType: "",
+          creatorId: 0,
+        };
+        onSetUserInfo(userInfo);
         setStep("success");
       }
     } catch (error: any) {
