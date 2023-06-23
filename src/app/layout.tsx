@@ -67,6 +67,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <StyledRegistry>
           <AppProvider>
             <Header />
+            <aside id="sidebar" />
             {children}
             <Footer />
             <div id="modal-root" />
