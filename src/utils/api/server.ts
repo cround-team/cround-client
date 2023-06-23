@@ -1,3 +1,4 @@
+import { LocalStorage } from "@/constants";
 import axios, { AxiosInstance } from "axios";
 
 export const apiInstance: AxiosInstance = axios.create({
@@ -16,7 +17,7 @@ export const multiPartInstance: AxiosInstance = axios.create({
 
 // Axios 요청시 인터셉트
 apiInstance.interceptors.request.use((req) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = LocalStorage.getItem("accessToken");
   if (accessToken) {
     req.headers["authorization"] = `Bearer ${accessToken}`;
   }
@@ -25,7 +26,7 @@ apiInstance.interceptors.request.use((req) => {
 });
 
 multiPartInstance.interceptors.request.use((req) => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = LocalStorage.getItem("accessToken");
   if (accessToken) {
     req.headers["authorization"] = `Bearer ${accessToken}`;
   }

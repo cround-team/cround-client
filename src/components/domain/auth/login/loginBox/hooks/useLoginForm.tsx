@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useImmer } from "use-immer";
 
-import { PATH, VALID_MSG } from "@/constants";
+import { PATH, LocalStorage, SessionStorage, VALID_MSG } from "@/constants";
 import { hasKey } from "@/utils/form";
 import { loginApi } from "@/utils/api";
 import { emailValidCheck } from "@/utils/validation";
@@ -75,8 +75,8 @@ export default function useLoginForm() {
       if (res.status === 200) {
         const accessToken = res.data.accessToken;
         const roleName = conversionUserType(res.data.roleName);
-        localStorage.setItem("accessToken", accessToken);
-        sessionStorage.setItem("roleName", roleName);
+        LocalStorage.setItem("accessToken", accessToken);
+        SessionStorage.setItem("roleName", roleName);
 
         const userInfo = {
           name: "코코",

@@ -1,3 +1,4 @@
+import { SessionStorage } from "@/constants";
 import { conversionUserType } from "@/utils/conversion";
 import React, { PropsWithChildren, createContext, useContext } from "react";
 import { useImmer } from "use-immer";
@@ -20,7 +21,7 @@ const INITIAL_USER = {
   name: "",
   connectType: "",
   profileImage: "",
-  type: sessionStorage.getItem("roleName") ?? "nonMember",
+  type: SessionStorage.getItem("roleName") ?? "nonMember",
   creatorId: 0,
 };
 
