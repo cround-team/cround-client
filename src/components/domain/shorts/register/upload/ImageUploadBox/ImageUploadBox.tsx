@@ -6,7 +6,7 @@ import Image from "next/image";
 import { media } from "@/styles/themes/foundations";
 
 type ImageUploadBoxProps = {
-  fileRef: React.ForwardedRef<HTMLInputElement>;
+  fileRef: React.RefObject<HTMLInputElement>;
   previewImage: string | null;
   onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };

@@ -5,7 +5,7 @@ import * as S from "./styled";
 type ShortRegisterUploadProps = {
   isDisabledSubmit: boolean;
   url: string;
-  fileInputRef: React.ForwardedRef<HTMLInputElement>;
+  fileInputRef: React.RefObject<HTMLInputElement>;
   previewImage: string | null;
   handlePrevStep: () => void;
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

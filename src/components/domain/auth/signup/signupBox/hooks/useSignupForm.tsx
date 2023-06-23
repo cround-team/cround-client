@@ -114,6 +114,7 @@ export default function useSignupForm() {
 
   const getPlatformStepProps = ({ ...otherProps } = {}) => ({
     name,
+    platforms,
     isDisabledSubmit: isDisabledPlatform,
     handlePrevStep: handleGoNicknameStep,
     handleChange: handleChangePlatform,
