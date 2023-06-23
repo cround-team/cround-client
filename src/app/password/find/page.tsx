@@ -56,7 +56,6 @@ export default function PasswordFindPage() {
       <S.Form onSubmit={handleSubmit}>
         <Input
           autoFocus
-          styles="oauth"
           isVisibleLabel={email.length > 0 ? true : false}
           isInvalid={isValid}
           inputMessage={inputMessage}
