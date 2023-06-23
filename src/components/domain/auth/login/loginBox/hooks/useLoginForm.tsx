@@ -87,7 +87,6 @@ export default function useLoginForm() {
         };
         onSetUserInfo(userInfo);
         router.push(PATH.ROOT);
-        ㅈ;
       }
     } catch (error: any) {
       if ([400, 404].includes(error.response.status)) {

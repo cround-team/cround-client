@@ -18,7 +18,7 @@ export default function PasswordSendPage() {
       </S.TextWrapper>
       <S.LinkWrapper>
         <LinkButton
-          href={PATH.LOGIN}
+          href={PATH.AUTH}
           label="이전 페이지로 이동"
           size="48"
           variant="ghost"

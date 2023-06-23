@@ -4,16 +4,18 @@ import { ArrowNarrowLeftIcon } from "@/assets/icons";
 import * as S from "./styled";
 
 type SignupPlatformStepProps = {
-  name: string;
   isDisabledSubmit: boolean;
+  name: string;
+  platforms: string[];
   handlePrevStep: () => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
 export default function SignupPlatformStep({
-  name,
   isDisabledSubmit,
+  name,
+  platforms,
   handlePrevStep,
   handleChange,
   handleSubmit,
@@ -30,6 +32,7 @@ export default function SignupPlatformStep({
       <S.Form onSubmit={handleSubmit}>
         {PLATFORMS.map((el) => (
           <PlatformCheckbox
+            isChecked={platforms.includes(el.id)}
             key={el.id}
             src={el.src}
             value={el.id}
