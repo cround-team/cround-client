@@ -7,7 +7,7 @@ import { hasKey } from "@/utils/form";
 import { creatorCreateApi } from "@/utils/api/creator";
 import useAddInput from "./useAddInput";
 import { useRouter, useSearchParams } from "next/navigation";
-import { PATH } from "@/constants";
+import { PATH, SessionStorage } from "@/constants";
 import { useUploadImage } from "@/hooks";
 import { useAuthContext } from "@/context/AuthContext";
 
@@ -203,7 +203,7 @@ export default function useCreatorRegister() {
       console.log("res", res);
       if (res.status === 201) {
         console.log("201", res);
-        sessionStorage.setItem("roleName", "creator");
+        SessionStorage.setItem("roleName", "creator");
         const userInfo = {
           name: nickname,
           type: "creator",
