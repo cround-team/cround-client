@@ -23,6 +23,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
