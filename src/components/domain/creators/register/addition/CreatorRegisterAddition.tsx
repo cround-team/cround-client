@@ -53,6 +53,17 @@ export default function CreatorRegisterAddition({
       </S.InputWrapper>
       <S.InputWrapper>
         <RegisterInput
+          label="활동 중이신 플랫폼 url을 등록해 주세요."
+          size="md"
+          id="platformUrl"
+          name="platformUrl"
+          placeholder="20글자 이내로 입력해 주세요"
+          value={platformUrl}
+          onChange={handleChangeForm}
+        />
+      </S.InputWrapper>
+      <S.InputWrapper>
+        <RegisterInput
           label="크리에이터님의 대표 테마를 1개 입력해 주세요."
           size="md"
           id="platformHeadTheme"
@@ -73,17 +84,6 @@ export default function CreatorRegisterAddition({
           onAddInput={handleAddTag}
           onChangeInput={handleChangeTag}
           onRemoveInput={handleRemoveTag}
-        />
-      </S.InputWrapper>
-      <S.InputWrapper>
-        <RegisterInput
-          label="활동 중이신 플랫폼 url을 등록해 주세요."
-          size="md"
-          id="platformUrl"
-          name="platformUrl"
-          placeholder="20글자 이내로 입력해 주세요"
-          value={platformUrl}
-          onChange={handleChangeForm}
         />
       </S.InputWrapper>
       <S.ButtonWrapper>

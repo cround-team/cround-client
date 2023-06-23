@@ -19,3 +19,16 @@ export function conversionSort(sort: string) {
       return "";
   }
 }
+
+export function conversionUserType(roleName: string) {
+  switch (roleName) {
+    case "회원":
+      return "member";
+
+    case "크리에이터":
+      return "creator";
+
+    default:
+      return "nonMember";
+  }
+}

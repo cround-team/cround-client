@@ -8,8 +8,10 @@ export const PATH = {
     NEW: "/password/new",
   },
   MYPAGE: {
+    SETTINGS: "/mypage/settings",
     FOLLOW: "/mypage/follow",
     BOOKMARK: "/mypage/bookmark",
+    ASKED: "/mypage/asked",
   },
 
   CREATORS: {

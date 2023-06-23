@@ -3,7 +3,7 @@ import { PLATFORMS } from "@/constants/platforms";
 import { XCloseIcon } from "@/assets/icons";
 import * as S from "./styled";
 import Modal from "../Modal";
-import PlatformCheckbox from "../../checkbox/platform/PlatformCheckbox";
+import PlatformCheckbox from "../../input/checkbox/platform/PlatformCheckbox";
 import { Button } from "../../button";
 
 type PlatFormModalProps = {
@@ -43,7 +43,7 @@ export default function PlatFormModal({
           <Button
             isDisabled={isDisabledPlatform}
             label={
-              isDisabledPlatform ? "완료" : "플랫폼을 1개 이상 선택해 주세요"
+              isDisabledPlatform ? "플랫폼을 1개 이상 선택해 주세요" : "완료"
             }
             size="48"
             variant="primary"
