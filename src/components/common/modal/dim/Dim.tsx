@@ -1,9 +1,11 @@
 "use client";
 
-import { PropsWithChildren } from "react";
-
 import * as S from "./styled";
 
-export default function Dim({ children }: PropsWithChildren) {
+type DimProps = {
+  children: React.ReactNode;
+};
+
+export default function Dim({ children }: DimProps) {
   return <S.Dim>{children}</S.Dim>;
 }

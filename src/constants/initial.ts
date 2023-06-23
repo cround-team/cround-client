@@ -4,7 +4,7 @@ export const INITIAL_CREATORS = [
     description: "",
     platformActivityName: "",
     platformType: "",
-    profileImage: "",
+    profileImage: "/images/profile.png",
     platformTheme: "",
   },
 ];
