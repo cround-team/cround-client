@@ -32,3 +32,48 @@ export function conversionUserType(roleName: string) {
       return "nonMember";
   }
 }
+
+export function conversionPlatform(platforms: string[]) {
+  return platforms.map((platform) => {
+    switch (platform) {
+      case "INSTAGRAM":
+        return "인스타그램";
+
+      case "YOUTUBE":
+        return "유튜브";
+
+      case "TIKTOK":
+        return "틱톡";
+
+      case "TWITCH":
+        return "트위치";
+
+      case "AFREECATV":
+        return "아프리카TV";
+
+      case "blog":
+        return "블로그";
+
+      case "PODCAST":
+        return "팟캐스트";
+
+      case "SPOON":
+        return "스푼";
+
+      case "ZEPETO":
+        return "제페토";
+
+      case "EMOTICON":
+        return "이모티콘";
+
+      case "WEBTOON":
+        return "웹툰";
+
+      case "NFT":
+        return "nft";
+
+      default:
+        return "플랫폼 네이밍 오류";
+    }
+  });
+}
