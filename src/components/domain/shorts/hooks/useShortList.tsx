@@ -4,27 +4,13 @@ import { useImmer } from "use-immer";
 
 import { useBookmark, useLike, useListFilter, useSearchKeyword } from "@/hooks";
 import { shortsApi, shortsPopularApi } from "@/utils/api";
+import { INITIAL_SHORTS } from "@/constants";
 
 type PopularShorts = {
   visit: ShortCardData[];
   like: ShortCardData[];
   bookmark: ShortCardData[];
 };
-
-const INITIAL_SHORTS = [
-  {
-    shortsId: 0,
-    title: "",
-    thumbnailUrl: "",
-    platformType: "",
-    profileImage: "",
-    author: "",
-    likesCount: 0,
-    bookmarksCount: 0,
-    liked: false,
-    bookmarked: false,
-  },
-];
 
 const INITIAL_POPULAR_SHORTS = {
   visit: INITIAL_SHORTS,
