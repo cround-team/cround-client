@@ -5,7 +5,10 @@ export default function useFollow() {
     let followed = false;
     try {
       const response = await creatorFollowApi(id);
-      followed = response.data.followed;
+      console.log("response", response);
+      if (response?.data.hasOwnProperty("followed")) {
+        followed = response.data.followed;
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -14,10 +17,13 @@ export default function useFollow() {
   };
 
   const handleUnFollow = async (id: number) => {
-    let followed = false;
+    let followed = true;
     try {
       const response = await creatorUnFollowApi(id);
-      followed = response.data.followed;
+      console.log("response", response);
+      if (response?.data.hasOwnProperty("followed")) {
+        followed = response.data.followed;
+      }
     } catch (error) {
       console.error(error);
     } finally {
