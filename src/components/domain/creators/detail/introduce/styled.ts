@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 export const Section = styled.section`
   ${({ theme }) => css`
     ${theme.media.mobile} {
+      width: 100%;
       h3 {
         margin-bottom: 16px;
         ${theme.typo.title.md};

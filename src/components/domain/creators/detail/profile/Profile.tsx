@@ -1,13 +1,39 @@
 import Image from "next/image";
 
-import Button from "@/components/common/button/base/Button";
-import * as S from "./styled";
+import { Button } from "@/components/common";
 import { media } from "@/styles/themes/foundations";
+import { conversionPlatform } from "@/utils/conversion";
+import * as S from "./styled";
+import { CheckIcon } from "@/assets/icons";
 
-export default function Profile({}) {
-  const handleFollowCreator = () => {};
+type ProfileProps = {
+  profileImage: string;
+  creatorNickname: string;
+  activityPlatforms: string[];
+  platformHeadTheme: string;
+  avgRating: string;
+  followersCount: number;
+  platformHeadType: string;
+  followed: boolean;
+  onFollow: () => void;
+  onUnFollow: () => void;
+};
 
-  const handleAskQuestion = () => {};
+export default function Profile({
+  profileImage,
+  creatorNickname,
+  activityPlatforms,
+  platformHeadTheme,
+  avgRating,
+  followersCount,
+  platformHeadType,
+  followed,
+  onFollow,
+  onUnFollow,
+}: ProfileProps) {
+  const handleAskQuestion = () => {
+    alert("준비중입니다.");
+  };
 
   return (
     <S.Section>
@@ -15,7 +41,7 @@ export default function Profile({}) {
         <S.TopWrapper>
           <S.Figure>
             <Image
-              src="/images/profile2.jpg"
+              src={profileImage}
               alt="Profile Image"
               sizes={media.images.sizes}
               fill
@@ -23,40 +49,48 @@ export default function Profile({}) {
             />
           </S.Figure>
           <S.ProfileText>
-            <S.Nickname>코코</S.Nickname>
+            <S.Nickname>{creatorNickname}</S.Nickname>
             <S.PlatformThemeGroup>
-              <span>유튜브, 인스타그램, 틱톡</span>
-              <span>ASMR</span>
+              <span>{conversionPlatform(activityPlatforms).join(", ")}</span>
+              <span>{platformHeadTheme}</span>
             </S.PlatformThemeGroup>
           </S.ProfileText>
         </S.TopWrapper>
         <S.MiddleWrapper>
           <div>
-            <span>4.9</span>
+            <span>{avgRating}</span>
             <span>리뷰</span>
           </div>
           <div>
-            <span>12명</span>
+            <span>{followersCount.toLocaleString()}명</span>
             <span>팔로워</span>
           </div>
           <div>
-            <span>유튜브</span>
+            <span>{platformHeadType}</span>
             <span>대표 플랫폼</span>
           </div>
         </S.MiddleWrapper>
-
         <S.ButtonWrapper>
-          <Button
-            label="팔로우하기"
-            size="32"
-            variant="ghost"
-            onClick={handleFollowCreator}
-          />
+          {followed && (
+            <S.FollowingButton onClick={onUnFollow}>
+              팔로우 중
+              <CheckIcon />
+            </S.FollowingButton>
+          )}
+          {!followed && (
+            <Button
+              label="팔로우하기"
+              size="32"
+              variant="ghost"
+              onClick={onFollow}
+            />
+          )}
+
           <Button
             label="질문하기"
             size="32"
             variant="primary"
-            onClick={handleFollowCreator}
+            onClick={handleAskQuestion}
           />
         </S.ButtonWrapper>
       </S.Container>
