@@ -1,9 +1,12 @@
 "use client";
 
-import { PageFilter, SearchInput } from "@/components/common";
-
+import {
+  PageFilter,
+  PopularShortsList,
+  SearchInput,
+  ShortsList,
+} from "@/components/common";
 import useShortList from "@/components/domain/shorts/hooks/useShortList";
-import { PopularShortsList, ShortsList } from "@/components/domain";
 import NotList from "@/components/common/etc/notList/NotList";
 import * as S from "./styled";
 
