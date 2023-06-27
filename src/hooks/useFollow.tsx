@@ -5,10 +5,7 @@ export default function useFollow() {
     let followed = false;
     try {
       const response = await creatorFollowApi(id);
-      console.log("response", response);
-      if (response?.data.hasOwnProperty("followed")) {
-        followed = response.data.followed;
-      }
+      followed = response.status === 200 && true;
     } catch (error) {
       console.error(error);
     } finally {
@@ -20,10 +17,7 @@ export default function useFollow() {
     let followed = true;
     try {
       const response = await creatorUnFollowApi(id);
-      console.log("response", response);
-      if (response?.data.hasOwnProperty("followed")) {
-        followed = response.data.followed;
-      }
+      followed = response.status === 200 && false;
     } catch (error) {
       console.error(error);
     } finally {
