@@ -74,7 +74,7 @@ export default function useShortList() {
 
   const fetchPopularsShortList = async () => {
     try {
-      const params = { size: 3 };
+      const params = { size: 4 };
       const response = await shortsPopularApi(params);
       setPopularShorts((draft) => {
         draft.visit = response.data.popularVisitShortForms;
