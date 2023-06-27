@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
       ${theme.flex.row("flex-start")};
       flex-wrap: wrap;
       gap: 16px;
+      width: 100%;
     }
   `};
 `;
