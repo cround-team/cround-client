@@ -19,3 +19,11 @@ export const Social = styled.div`
     }
   `};
 `;
+
+export const MarginBottom = css`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      margin-bottom: 40px;
+    }
+  `};
+`;
