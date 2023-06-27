@@ -40,7 +40,7 @@ export const PLATFORMS = [
     src: "/images/platform/spoon.png",
   },
   {
-    id: "zepeto",
+    id: "zepetto",
     title: "제페토",
     src: "/images/platform/zepeto.png",
   },

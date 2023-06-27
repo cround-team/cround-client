@@ -1,9 +1,10 @@
 import Image from "next/image";
 
 import { media } from "@/styles/themes/foundations";
+
+import * as S from "./styled";
 import Heart from "./heart/Heart";
 import Bookmark from "./bookmark/Bookmark";
-import * as S from "./styled";
 
 type CreatorInfoBoxProps = {
   data: {

@@ -60,7 +60,7 @@ export function conversionPlatform(platforms: string[]) {
       case "SPOON":
         return "스푼";
 
-      case "ZEPETO":
+      case "ZEPETTO":
         return "제페토";
 
       case "EMOTICON":
