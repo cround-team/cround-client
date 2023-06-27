@@ -19,7 +19,7 @@ export const Label = styled.label`
     ${theme.media.mobile} {
       ${theme.flex.row("space-between")};
       width: 100%;
-      padding: 12px 0 12px 11px;
+      padding: 12px 0 12px 0;
       cursor: pointer;
 
       span {
