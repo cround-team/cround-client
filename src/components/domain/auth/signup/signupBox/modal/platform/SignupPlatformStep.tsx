@@ -26,7 +26,7 @@ export default function SignupPlatformStep({
         <ArrowNarrowLeftIcon />
       </S.PrevButton>
       <S.TitleWrapper>
-        <h2>관심 있는 플랫폼을 1개 이상 선택해주세요</h2>
+        <h2>관심 있는 플랫폼을 1개 이상 선택해 주세요</h2>
         <p>{name}님에게 맞는 추천 목록을 보여드릴게요</p>
       </S.TitleWrapper>
       <S.Form onSubmit={handleSubmit}>
