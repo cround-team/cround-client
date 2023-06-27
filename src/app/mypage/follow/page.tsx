@@ -1,7 +1,7 @@
 "use client";
 
 import { useFollowList } from "@/hooks";
-import CreatorList from "@/components/domain/creators/list/CreatorList";
+import { CreatorList } from "@/components/common";
 import * as S from "./styled";
 
 export default function MyFollowPage() {
