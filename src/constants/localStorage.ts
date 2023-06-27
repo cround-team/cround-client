@@ -11,7 +11,6 @@ class LocalStorage {
     if (typeof window !== "undefined") {
       return localStorage.getItem(key);
     }
-    // window객체 localStorage, sessionStorage는 값이 없을때 null
     return null;
   }
 

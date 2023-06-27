@@ -1,9 +1,9 @@
-import type { ContentCardData } from "@/types/card";
-import { ContentCard, MorePageButton } from "@/components/common";
+import type { ShortCardData } from "@/types/card";
+import { MorePageButton, ShortCard } from "@/components/common";
 import * as S from "./styled";
 
-type ContentListProps = {
-  data: ContentCardData[];
+type ShortsListProps = {
+  data: ShortCardData[];
   isNextPage?: boolean;
   onFetchData?: (id?: number) => void;
   onLike?: (e: React.MouseEvent<HTMLButtonElement>, id: number) => void;
@@ -15,7 +15,7 @@ type ContentListProps = {
   ) => void;
 };
 
-export default function ContentList({
+export default function ShortsList({
   data,
   isNextPage,
   onFetchData,
@@ -23,18 +23,18 @@ export default function ContentList({
   onCancelLike,
   onBookmark,
   onCancelBookmark,
-}: ContentListProps) {
+}: ShortsListProps) {
   const handleAddList = () => {
-    onFetchData && onFetchData(data.at(-1)?.boardId);
+    onFetchData && onFetchData(data.at(-1)?.shortsId);
   };
 
   return (
     <S.Container>
       <S.Wrapper>
-        {data.map((content: ContentCardData) => (
-          <ContentCard
-            key={content.boardId}
-            content={content}
+        {data.map((short: ShortCardData) => (
+          <ShortCard
+            key={short.shortsId}
+            short={short}
             isShowCreatorInfo={onFetchData ? true : false}
             onLike={onLike}
             onCancelLike={onCancelLike}
@@ -43,7 +43,7 @@ export default function ContentList({
           />
         ))}
       </S.Wrapper>
-      {onFetchData && (
+      {data && onFetchData && (
         <MorePageButton isDisabled={!isNextPage} onClick={handleAddList} />
       )}
     </S.Container>

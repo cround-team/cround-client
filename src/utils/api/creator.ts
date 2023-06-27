@@ -25,19 +25,52 @@ export const creatorsApi = async (params: Record<string, any>) => {
   return response;
 };
 
+export const creatorShortsApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get(
+    `/api/creators/${params.creatorId}/shorts`,
+    { params }
+  );
+
+  return response;
+};
+
+export const creatorContentsApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get(
+    `api/creators/${params.creatorId}/boards`,
+    { params }
+  );
+
+  return response;
+};
+
+export const creatorReviewsApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get(
+    `api/creators/${params.creatorId}/reviews`,
+    { params }
+  );
+
+  return response;
+};
+
 export const creatorsCustomApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get("/api/creators/home", { params });
 
   return response;
 };
 
+export const creatorsDetailApi = async (creatorId: number) => {
+  const response = await apiInstance.get(`/api/creators/${creatorId}`);
+
+  return response;
+};
+
 export const creatorFollowApi = async (id: number) => {
-  const response = await apiInstance.post(`/api/members/${id}following`);
+  const response = await apiInstance.post(`/api/creators/${id}/following`);
   return response;
 };
 
 export const creatorUnFollowApi = async (id: number) => {
-  const response = await apiInstance.delete(`/api/members/${id}following`);
+  const response = await apiInstance.delete(`/api/creators/${id}/following`);
 
   return response;
 };

@@ -9,6 +9,21 @@ export const INITIAL_CREATORS = [
   },
 ];
 
+export const INITIAL_CREATOR_INFO = {
+  owned: false,
+  activityPlatforms: [],
+  avgRating: "0.0",
+  creatorNickname: "",
+  description: "",
+  followed: false,
+  followersCount: 0,
+  platformHeadTheme: "",
+  platformHeadType: "",
+  platformUrl: "",
+  profileImage: "",
+  tags: [],
+};
+
 export const INITIAL_CONTENTS = [
   {
     author: "",
@@ -36,5 +51,15 @@ export const INITIAL_SHORTS = [
     bookmarksCount: 0,
     liked: false,
     bookmarked: false,
+  },
+];
+
+export const INITIAL_REVIEWS = [
+  {
+    memberId: 0,
+    nickname: "",
+    rating: 0,
+    content: "",
+    createdAt: "",
   },
 ];

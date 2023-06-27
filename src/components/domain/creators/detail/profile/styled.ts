@@ -114,3 +114,21 @@ export const ButtonWrapper = styled.div`
     }
   `};
 `;
+
+export const FollowingButton = styled.button`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      ${theme.button.size[32]};
+      gap: 4px;
+      box-sizing: border-box;
+      width: 100%;
+      ${theme.button.variant.proceeding};
+
+      svg {
+        width: 16px;
+        height: 16px;
+        stroke: ${theme.colors.neutral200};
+      }
+    }
+  `};
+`;

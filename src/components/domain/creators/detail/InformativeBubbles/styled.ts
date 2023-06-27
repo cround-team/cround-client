@@ -6,6 +6,7 @@ export const Container = styled.section`
       ${theme.flex.col()};
       gap: 23px;
       margin-top: 16px;
+      width: 100%;
       svg {
         width: 20px;
         height: 20px;
@@ -21,7 +22,8 @@ export const Wrapper = styled.div`
       position: relative;
       ${theme.flex.col()};
       gap: 8px;
-      padding: 24px 62px;
+      width: 100%;
+      padding: 24px 0;
       background-color: ${theme.colors.white};
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.07);
       border-radius: ${theme.radius.md};

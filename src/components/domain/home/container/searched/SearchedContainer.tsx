@@ -1,10 +1,12 @@
 import type { ContentCardData, CreatorCardData, ShortCardData } from "@/types";
 import { PATH } from "@/constants";
 import ListTitle from "../title/ListTitle";
-import { CreatorList } from "@/components/domain/creators";
-import { ShortsList } from "@/components/domain/shorts";
-import { ContentList } from "@/components/domain/contents";
-import { NotList } from "@/components/common/etc";
+import {
+  ContentList,
+  CreatorList,
+  NotList,
+  ShortsList,
+} from "@/components/common";
 import * as S from "./styled";
 
 type CreatorsProps = {

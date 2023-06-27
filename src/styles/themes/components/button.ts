@@ -45,5 +45,10 @@ export const button = {
       border: 1px solid ${colors.primary500};
       color: ${colors.primary500};
     `,
+    proceeding: () => css`
+      background-color: ${colors.white};
+      border: 1px solid ${colors.neutral100};
+      color: ${colors.neutral200};
+    `,
   },
 };

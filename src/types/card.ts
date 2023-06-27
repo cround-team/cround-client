@@ -35,8 +35,9 @@ export type ContentCardData = {
 };
 
 export type ReviewCardData = {
-  id: number;
-  name: string;
+  memberId: number;
+  nickname: string;
   rating: number;
   content: string;
+  createdAt: string;
 };

@@ -1,10 +1,11 @@
 import styled, { css } from "styled-components";
 
-export const Section = styled.section`
+export const Container = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      ${theme.flex.col()};
-      gap: 24px;
+      ${theme.flex.col("center", "flex-start")};
+      gap: 16px;
+      width: 100%;
     }
   `};
 `;
@@ -12,16 +13,17 @@ export const Section = styled.section`
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      ${theme.flex.col()};
+      ${theme.flex.row("flex-start")};
+      flex-wrap: wrap;
       gap: 16px;
+      width: 100%;
     }
   `};
 `;
 
-export const ReviewWriteBtn = styled.button`
+export const WriteButton = styled.button`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      align-self: flex-start;
       padding: 4px 8px;
       background-color: ${theme.colors.white};
       border: 1px solid ${theme.colors.primary300};
