@@ -25,6 +25,33 @@ export const creatorsApi = async (params: Record<string, any>) => {
   return response;
 };
 
+export const creatorShortsApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get(
+    `/api/creators/${params.creatorId}/shorts`,
+    { params }
+  );
+
+  return response;
+};
+
+export const creatorContentsApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get(
+    `api/creators/${params.creatorId}/boards`,
+    { params }
+  );
+
+  return response;
+};
+
+export const creatorReviewsApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get(
+    `api/creators/${params.creatorId}/reviews`,
+    { params }
+  );
+
+  return response;
+};
+
 export const creatorsCustomApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get("/api/creators/home", { params });
 
@@ -33,14 +60,6 @@ export const creatorsCustomApi = async (params: Record<string, any>) => {
 
 export const creatorsDetailApi = async (creatorId: number) => {
   const response = await apiInstance.get(`/api/creators/${creatorId}`);
-
-  return response;
-};
-
-export const creatorsReviewApi = async (params: Record<string, any>) => {
-  const response = await apiInstance.get(
-    `/api/creators/${params.creatorId}/reviews`
-  );
 
   return response;
 };
