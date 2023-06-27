@@ -7,15 +7,16 @@ import {
 import { useBookmark, useFollow, useLike } from "@/hooks";
 import { ContentCardData, ReviewCardData, ShortCardData } from "@/types";
 import {
-  contentsApi,
+  creatorContentsApi,
+  creatorReviewsApi,
+  creatorShortsApi,
   creatorsDetailApi,
-  creatorsReviewApi,
-  shortsApi,
 } from "@/utils/api";
 import { useEffect } from "react";
 import { useImmer } from "use-immer";
 
 type CreatorInfo = {
+  owned: boolean;
   activityPlatforms: string[];
   avgRating: string;
   creatorNickname: string;
@@ -42,6 +43,7 @@ export default function useCreatorDetail(creatorId: number) {
   const [reviews, setReviews] = useImmer<ReviewCardData[]>(INITIAL_REVIEWS);
   const [isNextPage, setIsNextPage] = useImmer(INITIAL_IS_NEXT_PAGE);
   const {
+    owned: isOwned,
     activityPlatforms,
     avgRating,
     creatorNickname,
@@ -91,10 +93,11 @@ export default function useCreatorDetail(creatorId: number) {
   const fetchShortList = async (id?: number) => {
     try {
       const params = {
+        creatorId,
         size: 5,
         cursorId: id,
       };
-      const response = await shortsApi(params);
+      const response = await creatorShortsApi(params);
 
       if (id) {
         setShorts([...shorts, ...response.data.pages]);
@@ -112,10 +115,11 @@ export default function useCreatorDetail(creatorId: number) {
   const fetchContentList = async (id?: number) => {
     try {
       const params = {
+        creatorId,
         size: 5,
         cursorId: id,
       };
-      const response = await contentsApi(params);
+      const response = await creatorContentsApi(params);
 
       if (id) {
         setContents([...contents, ...response.data.pages]);
@@ -137,7 +141,7 @@ export default function useCreatorDetail(creatorId: number) {
         size: 5,
         cursorId: id,
       };
-      const response = await creatorsReviewApi(params);
+      const response = await creatorReviewsApi(params);
 
       if (id) {
         setReviews([...reviews, ...response.data.pages]);
@@ -147,6 +151,7 @@ export default function useCreatorDetail(creatorId: number) {
       setIsNextPage((draft) => {
         draft.reviews = response.data.hasNext;
       });
+      console.log("fetchReviewList", response);
     } catch (error) {
       console.error(error);
     }
@@ -341,12 +346,14 @@ export default function useCreatorDetail(creatorId: number) {
 
   const getReviewListProps = ({ ...otherProps } = {}) => ({
     data: reviews,
+    isOwned,
     isNextPage: isNextPage.reviews,
     onFetchData: fetchReviewList,
     ...otherProps,
   });
 
   const getBubblesProps = ({ ...otherProps } = {}) => ({
+    creatorNickname,
     platformUrl,
     ...otherProps,
   });

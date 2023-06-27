@@ -10,6 +10,7 @@ export const INITIAL_CREATORS = [
 ];
 
 export const INITIAL_CREATOR_INFO = {
+  owned: false,
   activityPlatforms: [],
   avgRating: "0.0",
   creatorNickname: "",

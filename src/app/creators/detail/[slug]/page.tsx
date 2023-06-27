@@ -1,14 +1,15 @@
 "use client";
 
+import { useState } from "react";
+
+import { SelectTabs } from "@/components/common";
+import { ContentList, ShortsList } from "@/components/domain";
 import InformativeBubbles from "@/components/domain/creators/detail/InformativeBubbles/InformativeBubbles";
 import Introduce from "@/components/domain/creators/detail/introduce/Introduce";
 import Profile from "@/components/domain/creators/detail/profile/Profile";
-import CreatorDetailPannel from "@/components/common/panel/creatorDetail/CreatorDetailPannel";
-import * as S from "./styled";
 import useCreatorDetail from "@/components/domain/creators/hooks/useCreatorDetail";
-import { useState } from "react";
-import { SelectTabs } from "@/components/common";
-import { ContentList, ShortsList } from "@/components/domain";
+import ReviewList from "@/components/common/list/review/ReviewList";
+import * as S from "./styled";
 
 type CreatorDetailPageProps = {
   params: {
@@ -26,6 +27,7 @@ export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
     getShortListProps,
     getContentListProps,
     getReviewListProps,
+    getBubblesProps,
   } = useCreatorDetail(params.slug);
 
   const handleTabClick = (selected: string) => {
@@ -34,11 +36,8 @@ export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
 
   return (
     <S.Section>
-      {/* 프로필 컴포넌트 */}
       <Profile {...getProfileProps()} />
-      {/* (자기소개 + 태그) 컴포넌트*/}
       <Introduce {...getIntroduceProps()} />
-
       <SelectTabs
         tabs={TABS}
         selected={selectedPanel}
@@ -46,12 +45,8 @@ export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
       />
       {selectedPanel === "숏클래스" && <ShortsList {...getShortListProps()} />}
       {selectedPanel === "콘텐츠" && <ContentList {...getContentListProps()} />}
-      {/* {selectedPanel === "리뷰" && <Review} */}
-
-      {/* 탭 패널 컴포넌트 (숏클래스, 콘텐츠, 리뷰) */}
-      {/* <CreatorDetailPannel current={selectedPanel} onSelect={handleSelectPanel} /> */}
-      {/* 메세지 컴포넌트 */}
-      <InformativeBubbles />
+      {selectedPanel === "리뷰" && <ReviewList {...getReviewListProps()} />}
+      <InformativeBubbles {...getBubblesProps()} />
     </S.Section>
   );
 }

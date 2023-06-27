@@ -2,9 +2,10 @@
 
 import SearchInput from "@/components/common/input/search/SearchInput";
 import PageFilter from "@/components/common/filter/pageFilter/PageFilter";
-import CreatorList from "@/components/domain/creators/list/CreatorList";
+
 import useCreatorList from "@/components/domain/creators/hooks/useCreatorList";
 import NotList from "@/components/common/etc/notList/NotList";
+import { CreatorList } from "@/components/common";
 import * as S from "./styled";
 
 export default function CreatorsPage() {
