@@ -71,6 +71,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             {children}
             <Footer />
             <div id="modal-root" />
+            <div id="delete-modal" />
           </AppProvider>
         </StyledRegistry>
       </body>

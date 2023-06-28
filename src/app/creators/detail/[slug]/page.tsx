@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 
-import { SelectTabs } from "@/components/common";
-import { ContentList, ShortsList } from "@/components/domain";
+import { ContentList, SelectTabs, ShortsList } from "@/components/common";
 import InformativeBubbles from "@/components/domain/creators/detail/InformativeBubbles/InformativeBubbles";
 import Introduce from "@/components/domain/creators/detail/introduce/Introduce";
 import Profile from "@/components/domain/creators/detail/profile/Profile";

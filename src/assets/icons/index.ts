@@ -21,3 +21,4 @@ export { default as SelectBoxIcon } from "@/assets/icons/select-box.svg";
 export { default as PlusIcon } from "@/assets/icons/plus.svg";
 export { default as UploadCloudIcon } from "@/assets/icons/upload-cloud.svg";
 export { default as XSmallIcon } from "@/assets/icons/x-sm.svg";
+export { default as DotsVerticalIcon } from "@/assets/icons/dots-vertical.svg";

@@ -55,7 +55,6 @@ export default function useContentList() {
         keyword: searchKeyword,
       };
       const response = await contentsApi(params);
-
       if (id) {
         setContents([...contents, ...response.data.pages]);
       } else {

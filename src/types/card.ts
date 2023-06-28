@@ -32,6 +32,8 @@ export type ContentCardData = {
   bookmarksCount?: number;
   liked?: boolean;
   bookmarked?: boolean;
+
+  isOwned?: boolean;
 };
 
 export type ReviewCardData = {

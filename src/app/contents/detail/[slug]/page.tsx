@@ -1,7 +1,12 @@
 "use client";
 
+import { DotsVerticalIcon } from "@/assets/icons";
 import useContentDetail from "@/components/domain/contents/hooks/useContentDetail";
-import { CreatorInfoBox } from "@/components/common/etc";
+import {
+  CreatorInfoBox,
+  DeleteModal,
+  ModifyDropdown,
+} from "@/components/common";
 import * as S from "./styled";
 
 type ContentDetailPageProps = {
@@ -12,30 +17,47 @@ type ContentDetailPageProps = {
 
 export default function ContentDetailPage({ params }: ContentDetailPageProps) {
   const {
-    baseInfo,
-    creatorInfo,
-    handleBookmark,
-    handleCancelBookmark,
-    handleLike,
-    handleCancelLike,
+    isOpenDropdown,
+    isOpenDeleteModal,
+    handleToggleDropdown,
+    getBaseInfoProps,
+    getCreatorInfoProps,
+    getDropdownProps,
+    getDeleteModalProps,
   } = useContentDetail({
     id: params.slug,
   });
 
   return (
-    <S.Section>
-      <S.TextWrapper>
-        <span>{baseInfo.platformType}</span>
-        <h3>{baseInfo.title}</h3>
-        <pre>{baseInfo.content}</pre>
-      </S.TextWrapper>
-      <CreatorInfoBox
-        data={creatorInfo}
-        onBookmark={handleBookmark}
-        onCancelBookmark={handleCancelBookmark}
-        onLike={handleLike}
-        onCancelLike={handleCancelLike}
-      />
-    </S.Section>
+    <>
+      <S.Section>
+        <S.TextWrapper>
+          <S.Title>
+            <span>{getBaseInfoProps().platformType}</span>
+            {getBaseInfoProps().isOwned && (
+              <button onClick={handleToggleDropdown}>
+                <DotsVerticalIcon />
+              </button>
+            )}
+            {isOpenDropdown && <ModifyDropdown {...getDropdownProps()} />}
+          </S.Title>
+          <h3>{getBaseInfoProps().title}</h3>
+          <p>{getBaseInfoProps().content}</p>
+        </S.TextWrapper>
+        <CreatorInfoBox {...getCreatorInfoProps()} />
+      </S.Section>
+
+      {/* 모달 */}
+      {isOpenDeleteModal && (
+        <DeleteModal {...getDeleteModalProps()}>
+          <h3>콘텐츠를 정말 삭제하시겠습니까?</h3>
+          <p>
+            한번 삭제한 콘텐츠는
+            <br />
+            복구가 불가능합니다.
+          </p>
+        </DeleteModal>
+      )}
+    </>
   );
 }

@@ -114,6 +114,7 @@ export default function useMainList() {
       };
       const response = await contentsApi(params);
       setContents(response.data.pages);
+      // console.log(response);
     } catch (error) {
       console.error(error);
     } finally {

@@ -32,7 +32,7 @@ export const OptionList = styled.ul`
       li {
         width: 85px;
         padding: 8px 0;
-        border-bottom: 1px solid #d6d6d6;
+        border-bottom: 1px solid ${theme.colors.neutral100};
 
         :last-child {
           border-bottom: 0px;
