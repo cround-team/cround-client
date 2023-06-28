@@ -55,3 +55,9 @@ export const shortCancelBookmarkApi = async (id: number) => {
 
   return response;
 };
+
+export const shortDeleteApi = async (id: number) => {
+  const response = await apiInstance.delete(`api/shorts/${id}`);
+
+  return response;
+};
