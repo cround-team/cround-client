@@ -1,8 +1,13 @@
 "use client";
 
-import { YoutubeShort } from "@/components/common";
-import { CreatorInfoBox } from "@/components/common/etc";
+import {
+  CreatorInfoBox,
+  DeleteModal,
+  ModifyDropdown,
+  YoutubeShort,
+} from "@/components/common";
 import useShortDetail from "@/components/domain/shorts/hooks/useShortDetail";
+import { DotsVerticalIcon } from "@/assets/icons";
 import * as S from "./styled";
 
 type ShortDetailPageProps = {
@@ -13,32 +18,48 @@ type ShortDetailPageProps = {
 
 export default function ShortDetailPage({ params }: ShortDetailPageProps) {
   const {
-    baseInfo,
-    creatorInfo,
-    handleBookmark,
-    handleCancelBookmark,
-    handleLike,
-    handleCancelLike,
+    isOpenDropdown,
+    isOpenDeleteModal,
+    handleToggleDropdown,
+    getBaseInfoProps,
+    getCreatorInfoProps,
+    getDropdownProps,
+    getDeleteModalProps,
   } = useShortDetail({ id: params.slug });
+
   return (
-    <S.Section>
-      <YoutubeShort css={S.Video} videoId="O-D7g3ajzRM" />
-      {/* <S.Platform>{baseInfo.platformType}}</S.Platform>
-      <S.Title>{baseInfo.title}</S.Title>
-      <S.Content>{baseInfo.content}</S.Content> */}
-      <S.Platform>유튜브</S.Platform>
-      <S.Title>ASMR에 최적인 사운드를 설정하는 방법과 장비 추천</S.Title>
-      <S.Content>
-        ASMR에 도전하고 싶은데 방음부터 장비 설정까지 막막하지 않으신가요? 그런
-        분들을 위해 제 경험을 담은 꿀팁을 준비했습니다!
-      </S.Content>
-      <CreatorInfoBox
-        data={creatorInfo}
-        onBookmark={handleBookmark}
-        onCancelBookmark={handleCancelBookmark}
-        onLike={handleLike}
-        onCancelLike={handleCancelLike}
-      />
-    </S.Section>
+    <>
+      <S.Section>
+        <YoutubeShort
+          css={S.Video}
+          videoId={getBaseInfoProps().shortFormUrl as string}
+        />
+        <S.TextWrapper>
+          <S.Head>
+            <span>{getBaseInfoProps().platformType}</span>
+            {getBaseInfoProps().isOwned && (
+              <button type="button" onClick={handleToggleDropdown}>
+                <DotsVerticalIcon />
+              </button>
+            )}
+            {isOpenDropdown && <ModifyDropdown {...getDropdownProps()} />}
+          </S.Head>
+          <h3>{getBaseInfoProps().title}</h3>
+          <p>{getBaseInfoProps().content}</p>
+        </S.TextWrapper>
+        <CreatorInfoBox {...getCreatorInfoProps()} />
+      </S.Section>
+      {/* 모달 */}
+      {isOpenDeleteModal && (
+        <DeleteModal {...getDeleteModalProps()}>
+          <h3>숏클래스를 정말 삭제하시겠습니까?</h3>
+          <p>
+            한번 삭제한 숏클래스는
+            <br />
+            복구가 불가능합니다.
+          </p>
+        </DeleteModal>
+      )}
+    </>
   );
 }
