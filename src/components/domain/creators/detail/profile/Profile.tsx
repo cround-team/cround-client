@@ -7,6 +7,7 @@ import * as S from "./styled";
 import { CheckIcon } from "@/assets/icons";
 
 type ProfileProps = {
+  isOwned: boolean;
   profileImage: string;
   creatorNickname: string;
   activityPlatforms: string[];
@@ -20,6 +21,7 @@ type ProfileProps = {
 };
 
 export default function Profile({
+  isOwned,
   profileImage,
   creatorNickname,
   activityPlatforms,
@@ -70,29 +72,31 @@ export default function Profile({
             <span>대표 플랫폼</span>
           </div>
         </S.MiddleWrapper>
-        <S.ButtonWrapper>
-          {followed && (
-            <S.FollowingButton onClick={onUnFollow}>
-              팔로우 중
-              <CheckIcon />
-            </S.FollowingButton>
-          )}
-          {!followed && (
-            <Button
-              label="팔로우하기"
-              size="32"
-              variant="ghost"
-              onClick={onFollow}
-            />
-          )}
+        {isOwned && (
+          <S.ButtonWrapper>
+            {followed && (
+              <S.FollowingButton onClick={onUnFollow}>
+                팔로우 중
+                <CheckIcon />
+              </S.FollowingButton>
+            )}
+            {!followed && (
+              <Button
+                label="팔로우하기"
+                size="32"
+                variant="ghost"
+                onClick={onFollow}
+              />
+            )}
 
-          <Button
-            label="질문하기"
-            size="32"
-            variant="primary"
-            onClick={handleAskQuestion}
-          />
-        </S.ButtonWrapper>
+            <Button
+              label="질문하기"
+              size="32"
+              variant="primary"
+              onClick={handleAskQuestion}
+            />
+          </S.ButtonWrapper>
+        )}
       </S.Container>
     </S.Section>
   );
