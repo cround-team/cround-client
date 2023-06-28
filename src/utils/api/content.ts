@@ -49,3 +49,9 @@ export const contentCancelBookmarkApi = async (id: number) => {
 
   return response;
 };
+
+export const contentDeleteApi = async (id: number) => {
+  const response = await apiInstance.delete(`api/boards/${id}`);
+
+  return response;
+};
