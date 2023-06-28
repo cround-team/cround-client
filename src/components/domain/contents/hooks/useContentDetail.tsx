@@ -22,7 +22,7 @@ const INITIAL_STATE = {
   bookmarksCount: 0,
   liked: false,
   bookmarked: false,
-  isOwned: true,
+  owned: true,
 };
 
 export default function useContentDetail({ id }: UseContentDetailProps) {
@@ -30,7 +30,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [data, setData] = useImmer<ContentCardData>(INITIAL_STATE);
   const {
-    isOwned,
+    owned,
     author,
     boardId,
     content,
@@ -56,7 +56,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
     try {
       const response = await contentDetailApi(id);
       setData(response.data);
-      console.log(response.data);
+      console.log("response", response.data);
     } catch (error) {
       console.error(error);
     }
@@ -76,7 +76,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
       authored: false,
       liked: false,
       bookmarked: false,
-      isOwned: true,
+      owned: true,
     };
     setData(response);
   };
@@ -141,7 +141,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   };
 
   const getBaseInfoProps = ({ ...otherProps } = {}) => ({
-    isOwned,
+    isOwned: owned,
     platformType,
     title,
     content,

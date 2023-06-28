@@ -9,7 +9,7 @@ export const Section = styled.section`
     }
   `};
 `;
-export const Title = styled.div`
+export const Head = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       position: relative;

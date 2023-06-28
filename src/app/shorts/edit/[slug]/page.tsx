@@ -2,13 +2,13 @@
 
 import * as S from "./styled";
 
-type ContentEditPageProps = {
+type ShortEditPageProps = {
   params: {
     slug: number;
   };
 };
 
-export default function ContentEditPage({ params }: ContentEditPageProps) {
+export default function ShortEditPage({ params }: ShortEditPageProps) {
   return (
     <S.Section>
       <div>Edit</div>

@@ -302,6 +302,7 @@ export default function useCreatorDetail(creatorId: number) {
   };
 
   const getProfileProps = ({ ...otherProps } = {}) => ({
+    isOwned,
     profileImage,
     creatorNickname,
     activityPlatforms,

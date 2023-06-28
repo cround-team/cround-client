@@ -1,9 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 
 import type { ShortCardData } from "@/types/card";
-import { shortDetailApi } from "@/utils/api/short";
+import { shortDeleteApi, shortDetailApi } from "@/utils/api/short";
 import { useBookmark, useLike } from "@/hooks";
+import { useRouter } from "next/navigation";
+import { PATH } from "@/constants";
+import { getVideoId } from "@/utils/video";
 
 type UseShortDetailProps = {
   id: number;
@@ -21,11 +24,15 @@ const INITIAL_STATE = {
   bookmarksCount: 0,
   liked: false,
   bookmarked: false,
+  owned: true,
 };
 
 export default function useShortDetail({ id }: UseShortDetailProps) {
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [data, setData] = useImmer<ShortCardData>(INITIAL_STATE);
   const {
+    owned,
     shortsId,
     title,
     content,
@@ -41,19 +48,43 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
 
   const { handleLikeShort, handleCancelLikeShort } = useLike();
   const { handleBookmarkShort, handleCancelBookmarkShort } = useBookmark();
+  const router = useRouter();
 
   useEffect(() => {
-    fetchDetailData();
+    // fetchDetailData();
+    testDetailData();
   }, []);
 
   const fetchDetailData = async () => {
     try {
       const response = await shortDetailApi(id);
-      setData(response.data);
+      setData((draft) => {
+        draft = response.data;
+        draft.shortFormUrl = getVideoId(response.data.shortFormUrl);
+      });
       console.log(response.data);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const testDetailData = async () => {
+    const response = {
+      shortsId: 1,
+      title: "ASMR에 최적인 사운드를 설정하는 방법과 장비 추천",
+      content: `ASMR에 도전하고 싶은데 방음부터 장비 설정까지 막막하지 않으신가요?\n 그런 분들을 위해 제 경험을 담은 꿀팁을 준비했습니다!`,
+      author: "코코",
+      platformType: "유튜브",
+      profileImage:
+        "https://cround-bucket.s3.ap-northeast-2.amazonaws.com/zzanggu.jpg",
+      shortFormUrl: getVideoId("https://www.youtube.com/watch?v=eqqhuFA949k"),
+      likesCount: 200,
+      bookmarksCount: 200,
+      liked: false,
+      bookmarked: false,
+      owned: true,
+    };
+    setData(response);
   };
 
   const handleLike = async () => {
@@ -88,14 +119,42 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
     });
   };
 
-  return {
-    baseInfo: {
-      platformType,
-      title,
-      content,
-      shortFormUrl,
-    },
-    creatorInfo: {
+  const handleToggleDropdown = () => setIsOpenDropdown((prev) => !prev);
+
+  const handleOpenDeleteModal = () => {
+    setIsOpenDropdown(false);
+    setIsOpenDeleteModal(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setIsOpenDeleteModal(false);
+  };
+
+  const handleGoEditPage = () => {
+    setIsOpenDropdown(false);
+    router.push(`${PATH.SHORTS.EDIT}/${id}`);
+    // 페이지 이동
+  };
+
+  const handleDeleteShort = async () => {
+    try {
+      return await shortDeleteApi(id);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getBaseInfoProps = ({ ...otherProps } = {}) => ({
+    isOwned: owned,
+    platformType,
+    title,
+    content,
+    shortFormUrl,
+    ...otherProps,
+  });
+
+  const getCreatorInfoProps = ({ ...otherProps } = {}) => ({
+    data: {
       id: shortsId,
       profileImage,
       author,
@@ -104,9 +163,33 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
       bookmarked,
       bookmarksCount,
     },
-    handleBookmark,
-    handleCancelBookmark,
-    handleLike,
-    handleCancelLike,
+    onBookmark: handleBookmark,
+    onCancelBookmark: handleCancelBookmark,
+    onLike: handleLike,
+    onCancelLike: handleCancelLike,
+    ...otherProps,
+  });
+
+  const getDropdownProps = ({ ...otherProps } = {}) => ({
+    onGoEditPage: handleGoEditPage,
+    onOpenDeleteModal: handleOpenDeleteModal,
+    ...otherProps,
+  });
+
+  const getDeleteModalProps = ({ ...otherProps } = {}) => ({
+    isMounted: isOpenDeleteModal,
+    onClose: handleCloseDeleteModal,
+    onDelete: handleDeleteShort,
+    ...otherProps,
+  });
+
+  return {
+    isOpenDropdown,
+    isOpenDeleteModal,
+    handleToggleDropdown,
+    getBaseInfoProps,
+    getCreatorInfoProps,
+    getDropdownProps,
+    getDeleteModalProps,
   };
 }

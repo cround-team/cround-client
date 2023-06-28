@@ -19,6 +19,8 @@ export type ShortCardData = {
   likesCount?: number;
   bookmarked?: boolean;
   bookmarksCount?: number;
+
+  owned?: boolean;
 };
 
 export type ContentCardData = {
@@ -33,7 +35,7 @@ export type ContentCardData = {
   liked?: boolean;
   bookmarked?: boolean;
 
-  isOwned?: boolean;
+  owned?: boolean;
 };
 
 export type ReviewCardData = {
