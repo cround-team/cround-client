@@ -32,21 +32,20 @@ export default function ContentDetailPage({ params }: ContentDetailPageProps) {
     <>
       <S.Section>
         <S.TextWrapper>
-          <S.Title>
+          <S.Head>
             <span>{getBaseInfoProps().platformType}</span>
             {getBaseInfoProps().isOwned && (
-              <button onClick={handleToggleDropdown}>
+              <button type="button" onClick={handleToggleDropdown}>
                 <DotsVerticalIcon />
               </button>
             )}
             {isOpenDropdown && <ModifyDropdown {...getDropdownProps()} />}
-          </S.Title>
+          </S.Head>
           <h3>{getBaseInfoProps().title}</h3>
           <p>{getBaseInfoProps().content}</p>
         </S.TextWrapper>
         <CreatorInfoBox {...getCreatorInfoProps()} />
       </S.Section>
-
       {/* 모달 */}
       {isOpenDeleteModal && (
         <DeleteModal {...getDeleteModalProps()}>
