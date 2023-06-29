@@ -5,6 +5,7 @@ export const Article = styled.article`
     ${theme.media.mobile} {
       ${theme.flex.col("center", "flex-start")};
       gap: 8px;
+      width: 100%;
       padding: 16px;
       background-color: ${theme.colors.white};
       border: 1px solid ${theme.colors.neutral50};

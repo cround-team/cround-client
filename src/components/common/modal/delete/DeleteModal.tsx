@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
 
 import { Button } from "../../button";
-import Portal from "../../portal/Portal";
-import Dim from "../dim/Dim";
 import * as S from "./styled";
+import Modal from "../Modal";
 
 type DeleteModalProps = {
   isMounted: boolean;
@@ -35,28 +34,26 @@ export default function DeleteModal({
   }, []);
 
   return (
-    <Portal elementId="delete-modal" isMounted={isMounted}>
-      <Dim>
-        <S.Container ref={modalRef}>
-          {children}
-          <S.ButtonWrapper>
-            <Button
-              type="button"
-              label="취소"
-              variant="ghost"
-              size="32"
-              onClick={onClose}
-            />
-            <Button
-              type="button"
-              label="삭제하기"
-              variant="primary"
-              size="32"
-              onClick={onDelete}
-            />
-          </S.ButtonWrapper>
-        </S.Container>
-      </Dim>
-    </Portal>
+    <Modal isMounted={isMounted}>
+      <S.Container ref={modalRef}>
+        {children}
+        <S.ButtonWrapper>
+          <Button
+            type="button"
+            label="취소"
+            variant="ghost"
+            size="32"
+            onClick={onClose}
+          />
+          <Button
+            type="button"
+            label="삭제하기"
+            variant="primary"
+            size="32"
+            onClick={onDelete}
+          />
+        </S.ButtonWrapper>
+      </S.Container>
+    </Modal>
   );
 }
