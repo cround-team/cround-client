@@ -8,6 +8,7 @@ type TextAreaProps = {
   value: string;
   placeholder: string;
   label: string;
+  styles?: "base" | "review" | "asked";
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
@@ -19,14 +20,16 @@ export default function TextArea({
   placeholder,
   label,
   onChange,
+  styles = "base",
 }: TextAreaProps) {
   return (
     <S.Container className={className}>
-      <Label label={label} />
+      {label && <Label label={label} />}
       <S.TextArea
         id={id}
         name={name}
         value={value}
+        styles={styles}
         placeholder={placeholder}
         onChange={onChange}
       ></S.TextArea>
