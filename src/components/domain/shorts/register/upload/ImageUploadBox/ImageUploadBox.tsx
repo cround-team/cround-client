@@ -1,4 +1,4 @@
-import { UploadCloudIcon } from "@/assets/icons";
+import { UploadCloudIcon, XClose2Icon } from "@/assets/icons";
 import Button from "@/components/common/button/base/Button";
 import FileInput from "@/components/common/input/file/FileInput";
 import * as S from "./styled";
@@ -22,9 +22,16 @@ export default function ImageUploadBox({
     }
   };
 
+  const handleDeleteImage = () => {
+    alert("작업중입니다.");
+  };
+
   if (previewImage) {
     return (
       <S.Figure>
+        <button onClick={handleDeleteImage}>
+          <XClose2Icon />
+        </button>
         <Image
           src={previewImage}
           fill

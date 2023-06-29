@@ -24,6 +24,15 @@ export const shortDetailApi = async (shortsId: number) => {
   return response;
 };
 
+export const shortEditApi = async (shortsId: number, body: any) => {
+  const response = await multiPartInstance.patch(
+    `/api/shorts/${shortsId}`,
+    body
+  );
+
+  return response;
+};
+
 export const shortsBookmarkListApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get("/api/members/me/shorts/bookmarks", {
     params,

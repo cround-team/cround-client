@@ -19,9 +19,7 @@ const INITIAL_STATE = {
 export default function useContentEdit({ id }: UseContentEditProps) {
   const [form, setForm] = useImmer(INITIAL_STATE);
   const { platformType, title, content } = form;
-
   const router = useRouter();
-
   const isDisabledSubmit = !(platformType && title && content);
 
   useEffect(() => {
@@ -88,8 +86,8 @@ export default function useContentEdit({ id }: UseContentEditProps) {
       // const res = await contentEditApi(body);
 
       // if (res.status === 200) {
-      //   console.log("201", res);
-      //   router.push(`${PATH.CONTENTS.DETAIL}/id`);
+      //   console.log("200", res);
+      //   router.push(`${PATH.CONTENTS.DETAIL}/${id}`);
       // }
     } catch (error) {
       console.error(error);
