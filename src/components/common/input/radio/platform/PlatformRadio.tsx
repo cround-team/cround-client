@@ -29,7 +29,7 @@ export default function PlatformCheckbox({
         onChange={onChange}
       />
       <S.Figure>
-        <Image src={src} fill sizes={media.images.sizes} alt={value} />
+        <Image src={src} fill sizes={media.images.sizes} alt={value} priority />
       </S.Figure>
       <S.Name>{title}</S.Name>
     </S.Label>
