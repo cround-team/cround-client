@@ -94,8 +94,16 @@ export const creatorNicknameCheckApi = async (body: CreatorNicknameBody) => {
 };
 
 export const creatorCreateApi = async (body: any) => {
-  console.log("body", body);
   const response = await multiPartInstance.post("/api/creators", body);
+
+  return response;
+};
+
+export const creatorWriteReivewApi = async (body: any) => {
+  const response = await apiInstance.post(
+    `/api/creators/${body.creatorId}/reviews`,
+    body
+  );
 
   return response;
 };
