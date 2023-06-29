@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react";
-
-import { ContentList, SelectTabs, ShortsList } from "@/components/common";
+import { usePanel } from "@/hooks";
+import {
+  ContentList,
+  ReviewList,
+  SelectTabs,
+  ShortsList,
+} from "@/components/common";
 import InformativeBubbles from "@/components/domain/creators/detail/InformativeBubbles/InformativeBubbles";
 import Introduce from "@/components/domain/creators/detail/introduce/Introduce";
 import Profile from "@/components/domain/creators/detail/profile/Profile";
 import useCreatorDetail from "@/components/domain/creators/hooks/useCreatorDetail";
-import ReviewList from "@/components/common/list/review/ReviewList";
 import * as S from "./styled";
 
 type CreatorDetailPageProps = {
@@ -19,7 +22,7 @@ type CreatorDetailPageProps = {
 const TABS = ["숏클래스", "콘텐츠", "리뷰"];
 
 export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
-  const [selectedPanel, setSelectPanel] = useState(TABS[0]);
+  const { selectedPanel, handleChangePanel } = usePanel(TABS[0]);
   const {
     getProfileProps,
     getIntroduceProps,
@@ -29,10 +32,6 @@ export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
     getBubblesProps,
   } = useCreatorDetail(params.slug);
 
-  const handleTabClick = (selected: string) => {
-    setSelectPanel(selected);
-  };
-
   return (
     <S.Section>
       <Profile {...getProfileProps()} />
@@ -40,11 +39,13 @@ export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
       <SelectTabs
         tabs={TABS}
         selected={selectedPanel}
-        onTabClick={handleTabClick}
+        onTabClick={handleChangePanel}
       />
       {selectedPanel === "숏클래스" && <ShortsList {...getShortListProps()} />}
       {selectedPanel === "콘텐츠" && <ContentList {...getContentListProps()} />}
-      {selectedPanel === "리뷰" && <ReviewList {...getReviewListProps()} />}
+      {selectedPanel === "리뷰" && (
+        <ReviewList {...getReviewListProps()} creatorId={params.slug} />
+      )}
       <InformativeBubbles {...getBubblesProps()} />
     </S.Section>
   );
