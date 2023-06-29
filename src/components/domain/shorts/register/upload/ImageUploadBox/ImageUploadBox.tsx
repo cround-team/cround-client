@@ -61,7 +61,7 @@ export default function ImageUploadBox({
             variant="primary"
             onClick={() => handleOpenFileDialog()}
           />
-          <S.TipMessage>또는 파일을 이곳으로 드래그 해주세요.</S.TipMessage>
+          {/* <S.TipMessage>또는 파일을 이곳으로 드래그 해주세요.</S.TipMessage> */}
         </S.ButtonWrapper>
       </S.Container>
     );

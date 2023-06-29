@@ -50,8 +50,13 @@ export default function useCreatorRegister() {
   } = form;
 
   const { onSetUserInfo } = useAuthContext();
-  const { selectedImage, previewImage, fileInputRef, handleFileChange } =
-    useUploadImage();
+  const {
+    isLoading,
+    selectedImage,
+    previewImage,
+    fileInputRef,
+    handleFileChange,
+  } = useUploadImage();
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -98,17 +103,6 @@ export default function useCreatorRegister() {
       setStep(query as Steps);
     }
   }, [searchParams]);
-
-  // const page = useMemo(() => {
-  //   const query = searchParams.get("step");
-  //   query && setStep(query as Steps);
-  // }, [searchParams]);
-  // useEffect(() => {
-  //   const routingIndex = components.findIndex(
-  //     component => component.page === page
-  //   );
-  //   setCurrentIndex(routingIndex);
-  // }, [page]);
 
   const handleChangeForm = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -224,6 +218,7 @@ export default function useCreatorRegister() {
   };
 
   const getBaseStepProps = ({ ...otherProps } = {}) => ({
+    isLoading,
     isDisabledSubmit: isDisabledBase,
     nickname,
     description,

@@ -324,6 +324,7 @@ export default function useCreatorDetail(creatorId: number) {
     platformHeadType,
     platformUrl,
     followed,
+    receiver: creatorId,
     onFollow: handleCreatorFollow,
     onUnFollow: handleCreatorUnFollow,
     onOpenAskModal: handleOpenAskModal,
