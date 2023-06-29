@@ -65,6 +65,24 @@ export const Figure = styled.figure`
       height: 170px;
       border-radius: ${theme.radius.md};
 
+      button {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        background: rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        z-index: 1;
+
+        svg {
+          width: 16px;
+          height: 16px;
+          stroke: ${theme.colors.white};
+        }
+      }
+
       img {
         border-radius: ${theme.radius.md};
       }
