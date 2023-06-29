@@ -19,7 +19,7 @@ export const contentDetailApi = async (boardId: number) => {
 };
 
 export const contentEditApi = async (body: any) => {
-  const response = await apiInstance.patch(`/api/boards/${body.boardId}`);
+  const response = await apiInstance.patch(`/api/boards/${body.boardId}`, body);
 
   return response;
 };
