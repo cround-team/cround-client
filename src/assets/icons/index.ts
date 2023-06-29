@@ -16,6 +16,7 @@ export { default as RatingStarIcon } from "@/assets/icons/ratingStar.svg";
 
 export { default as FilterIcon } from "@/assets/icons/filter.svg";
 export { default as XCloseIcon } from "@/assets/icons/x-close.svg";
+export { default as XClose2Icon } from "@/assets/icons/x-close2.svg";
 export { default as CameraIcon } from "@/assets/icons/camera.svg";
 export { default as SelectBoxIcon } from "@/assets/icons/select-box.svg";
 export { default as PlusIcon } from "@/assets/icons/plus.svg";
