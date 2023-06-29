@@ -27,25 +27,10 @@ export const PlatformList = styled.ul`
 export const ButtonWrapper = styled.div`
   ${({ theme }) => css`
     ${theme.media.mobile} {
-      ${theme.flex.row()};
-      gap: 8px;
+      display: grid;
+      grid-template-columns: "25.63% 71.88%";
       width: 100%;
-    }
-  `};
-`;
-
-export const PrevButton = css`
-  ${({ theme }) => css`
-    ${theme.media.mobile} {
-      width: 82px;
-    }
-  `};
-`;
-
-export const NextButton = css`
-  ${({ theme }) => css`
-    ${theme.media.mobile} {
-      width: 230px;
+      gap: 8px;
     }
   `};
 `;

@@ -6,7 +6,7 @@ import * as S from "./styled";
 type PlatformFormProps = {
   isDisabledSubmit: boolean;
   selected: string[] | string;
-  onPrevStep: () => void;
+  onPrevStep?: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
@@ -44,23 +44,23 @@ export default function PlatformForm({
             />
           ))}
       </S.PlatformList>
-      <S.ButtonWrapper>
-        <Button
-          type="button"
-          label="이전"
-          size="56"
-          variant="ghost"
-          css={S.PrevButton}
-          onClick={onPrevStep}
-        />
-        <Button
-          label="다음"
-          size="56"
-          variant="primary"
-          css={S.NextButton}
-          isDisabled={isDisabledSubmit}
-        />
-      </S.ButtonWrapper>
+      {onPrevStep && (
+        <S.ButtonWrapper>
+          <Button
+            type="button"
+            label="이전"
+            size="56"
+            variant="ghost"
+            onClick={onPrevStep}
+          />
+          <Button
+            label="다음"
+            size="56"
+            variant="primary"
+            isDisabled={isDisabledSubmit}
+          />
+        </S.ButtonWrapper>
+      )}
     </S.Form>
   );
 }

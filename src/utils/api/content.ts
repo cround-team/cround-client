@@ -18,6 +18,12 @@ export const contentDetailApi = async (boardId: number) => {
   return response;
 };
 
+export const contentEditApi = async (body: any) => {
+  const response = await apiInstance.patch(`/api/boards/${body.boardId}`);
+
+  return response;
+};
+
 export const contentsBookmarkListApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get("/api/members/me/boards/bookmarks", {
     params,
