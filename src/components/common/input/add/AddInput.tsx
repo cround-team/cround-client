@@ -33,19 +33,22 @@ export default function AddInput({
   return (
     <S.Container className={className} tipMessage={tipMessage}>
       <Label label={label} tipMessage={tipMessage} />
-      {inputs.map((item, idx) => (
-        <S.InputWrapper key={item.id}>
-          <S.Input
-            placeholder={placeholder}
-            onChange={(e) => onChangeInput(item.id, e)}
-          />
-          {idx > 0 && (
-            <S.RemoveButton onClick={() => onRemoveInput(item.id)}>
-              <XSmallIcon />
-            </S.RemoveButton>
-          )}
-        </S.InputWrapper>
-      ))}
+      <S.InputContainer>
+        {inputs.map((item, idx) => (
+          <S.InputWrapper key={item.id}>
+            <S.Input
+              placeholder={placeholder}
+              onChange={(e) => onChangeInput(item.id, e)}
+              value={item.value}
+            />
+            {idx > 0 && (
+              <S.RemoveButton onClick={() => onRemoveInput(item.id)}>
+                <XSmallIcon />
+              </S.RemoveButton>
+            )}
+          </S.InputWrapper>
+        ))}
+      </S.InputContainer>
       <S.Button
         type="button"
         disabled={inputs.length >= maxCount}

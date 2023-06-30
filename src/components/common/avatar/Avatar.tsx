@@ -29,13 +29,24 @@ export default function Avatar({
 
   return (
     <S.Figure className={className}>
-      <Image
-        src={previewImage ?? avatarImg}
-        alt={alt}
-        sizes={media.images.sizes}
-        fill={true}
-        priority
-      />
+      {previewImage && (
+        <Image
+          src={previewImage}
+          alt={alt}
+          sizes={media.images.sizes}
+          fill={true}
+          priority
+        />
+      )}
+      {!previewImage && (
+        <Image
+          src={avatarImg}
+          alt={alt}
+          sizes={media.images.sizes}
+          fill={true}
+          priority
+        />
+      )}
       {fileRef && onFileChange && (
         <>
           <FileInput fileRef={fileRef} onFileChange={onFileChange} />

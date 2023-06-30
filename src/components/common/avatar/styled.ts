@@ -4,8 +4,10 @@ export const Figure = styled.figure`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       position: relative;
+      ${theme.flex.row()};
       width: 100px;
       height: 100px;
+      margin-bottom: 32px;
       border-radius: 50%;
 
       img {
