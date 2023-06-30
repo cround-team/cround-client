@@ -3,8 +3,8 @@
 import { useState } from "react";
 
 import { useBookmarkList } from "@/hooks";
-import { SelectTabs } from "@/components/common";
-import { ContentList, ShortsList } from "@/components/domain";
+import { ContentList, SelectTabs, ShortsList } from "@/components/common";
+
 import * as S from "./styled";
 
 const TABS = ["숏클래스", "콘텐츠"];

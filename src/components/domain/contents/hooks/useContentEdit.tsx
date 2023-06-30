@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 
 import { contentDetailApi, contentEditApi } from "@/utils/api";
@@ -18,9 +18,10 @@ const INITIAL_STATE = {
 
 export default function useContentEdit({ id }: UseContentEditProps) {
   const [form, setForm] = useImmer(INITIAL_STATE);
+  const [isModified, setIsModified] = useState(false);
   const { platformType, title, content } = form;
   const router = useRouter();
-  const isDisabledSubmit = !(platformType && title && content);
+  const isDisabledSubmit = !(platformType && title && content && isModified);
 
   useEffect(() => {
     // fetchDetailData();
@@ -52,6 +53,7 @@ export default function useContentEdit({ id }: UseContentEditProps) {
   const handleChangeForm = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    if (!isModified) setIsModified(true);
     const { name, value } = e.target;
 
     if (!hasKey(form, name)) {
@@ -64,6 +66,7 @@ export default function useContentEdit({ id }: UseContentEditProps) {
   };
 
   const handleChangePlatform = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isModified) setIsModified(true);
     const { value, checked } = e.target;
 
     checked &&
