@@ -8,7 +8,7 @@ export const PATH = {
     NEW: "/password/new",
   },
   MYPAGE: {
-    SETTINGS: "/mypage/settings",
+    EDIT: "/mypage/edit",
     FOLLOW: "/mypage/follow",
     BOOKMARK: "/mypage/bookmark",
     ASKED: "/mypage/asked",
@@ -46,5 +46,5 @@ export const PATH_TITLE: Record<string, string> = {
   "/contents/edit": "콘텐츠 수정",
   "/mypage/bookmark": "나의 북마크",
   "/mypage/follow": "나의 팔로우",
-  "/mypage/settings": "멘티 개인정보 변경",
+  "/mypage/edit": "멘티 개인정보 변경",
 };
