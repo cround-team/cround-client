@@ -8,15 +8,6 @@ export const Form = styled.form`
   `};
 `;
 
-export const Avatar = css`
-  ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.row()};
-      margin-bottom: 32px;
-    }
-  `};
-`;
-
 export const Nickname = css`
   ${({ theme }) => css`
     ${theme.media.mobile} {
