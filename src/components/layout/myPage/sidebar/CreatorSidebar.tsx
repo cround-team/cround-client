@@ -32,7 +32,7 @@ const LIST = [
     },
     {
       label: "개인정보 변경",
-      path: PATH.MYPAGE.SETTINGS,
+      path: PATH.CREATORS.EDIT,
     },
   ],
 ];
