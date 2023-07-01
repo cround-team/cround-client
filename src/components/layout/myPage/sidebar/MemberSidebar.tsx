@@ -19,7 +19,7 @@ const LIST = [
   },
   {
     label: "개인정보 변경",
-    path: PATH.MYPAGE.SETTINGS,
+    path: PATH.MYPAGE.EDIT,
   },
   {
     label: "크리에이터 등록하기",

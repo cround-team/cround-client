@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 
 import { shortDetailApi, shortEditApi } from "@/utils/api";
@@ -15,7 +15,6 @@ type EditForm = {
   platformType: string;
   title: string;
   content: string;
-  shortFormUrl: string;
   thumbnailUrl: string;
   thumbnail?: File | null;
 };
@@ -24,23 +23,16 @@ const INITIAL_STATE = {
   platformType: "",
   title: "",
   content: "",
-  shortFormUrl: "",
   thumbnailUrl: "",
   thumbnail: null,
 };
 
 export default function useShortEdit({ id }: UseShortEditProps) {
   const [form, setForm] = useImmer<EditForm>(INITIAL_STATE);
-  const {
-    platformType,
-    title,
-    content,
-    shortFormUrl,
-    thumbnailUrl,
-    thumbnail,
-  } = form;
+  const [isModified, setIsModified] = useState(false);
+  const { platformType, title, content, thumbnailUrl, thumbnail } = form;
   const router = useRouter();
-  const isDisabledSubmit = !(platformType && title && content);
+  const isDisabledSubmit = !(platformType && title && content && isModified);
 
   const { selectedImage, previewImage, fileInputRef, handleFileChange } =
     useUploadImage();
@@ -71,7 +63,6 @@ export default function useShortEdit({ id }: UseShortEditProps) {
         draft.platformType = response.data.platformType;
         draft.title = response.data.title;
         draft.content = response.data.content;
-        draft.shortFormUrl = response.data.shortFormUrl;
         draft.thumbnailUrl = response.data.thumbnailUrl;
       });
     } catch (error) {
@@ -84,7 +75,6 @@ export default function useShortEdit({ id }: UseShortEditProps) {
       platformType: "tiktok",
       title: "기존 제목입니다",
       content: "기존 내용입니다",
-      shortFormUrl: "https://www.youtube.com",
       thumbnailUrl: "/images/profile.png",
     };
     setForm(response);
@@ -93,6 +83,7 @@ export default function useShortEdit({ id }: UseShortEditProps) {
   const handleChangeForm = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    if (!isModified) setIsModified(true);
     const { name, value } = e.target;
 
     if (!hasKey(form, name)) {
@@ -105,6 +96,7 @@ export default function useShortEdit({ id }: UseShortEditProps) {
   };
 
   const handleChangePlatform = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isModified) setIsModified(true);
     const { value, checked } = e.target;
 
     checked &&

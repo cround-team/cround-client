@@ -78,6 +78,7 @@ export const Button = styled.button`
       ${theme.flex.row()};
       width: 100%;
       height: 32px;
+      margin-top: -8px;
       border: 1px solid ${theme.colors.neutral50};
       border-radius: ${theme.radius.md};
 
@@ -86,6 +87,16 @@ export const Button = styled.button`
         height: 24px;
         stroke: ${theme.colors.neutral200};
       }
+    }
+  `};
+`;
+
+export const InputContainer = styled.div`
+  ${({ theme }) => css`
+    ${theme.media.mobile} {
+      ${theme.flex.col()};
+      gap: 8px;
+      width: 100%;
     }
   `};
 `;

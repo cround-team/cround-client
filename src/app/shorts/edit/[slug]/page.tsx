@@ -72,15 +72,6 @@ export default function ShortEditPage({ params }: ShortEditPageProps) {
             onFileChange={handleFileChange}
           />
         </S.Thumbnail>
-        {/* <RegisterInput
-          label="숏클래스의 url을 등록해 주세요."
-          size="md"
-          id="url"
-          name="url"
-          placeholder="url을 등록해 주세요"
-          value={form.shortFormUrl}
-          onChange={handleChangeForm}
-        /> */}
         <Button
           isDisabled={isDisabledSubmit}
           label="수정하기"

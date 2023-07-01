@@ -31,7 +31,6 @@ export default function CreatorRegisterBase({
         fileRef={fileInputRef}
         alt="My profile image"
         onFileChange={handleFileChange}
-        css={S.Avatar}
       />
       <RegisterInput
         autoFocus={true}
