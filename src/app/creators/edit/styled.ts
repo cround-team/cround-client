@@ -63,6 +63,7 @@ export const PlatformList = styled.div`
       column-gap: 15.5px;
       padding: 16px;
       border: 1px solid ${theme.colors.neutral50};
+      border-radius: ${theme.radius.md};
     }
   `};
 `;

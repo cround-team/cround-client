@@ -64,9 +64,7 @@ export default function CreatorEditPage() {
             {PLATFORMS.map((el) => (
               <PlatformCheckbox
                 isChecked={
-                  form.activityPlatforms.includes(el.id.toUpperCase())
-                    ? true
-                    : false
+                  form.activityPlatforms.includes(el.id) ? true : false
                 }
                 key={el.id}
                 src={el.src}
