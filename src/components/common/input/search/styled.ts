@@ -6,6 +6,7 @@ export const Form = styled.form`
       position: relative;
       ${theme.flex.row("space-between")};
       width: 100%;
+      max-width: 585px;
       margin: 0 auto;
       padding: 8px 16px;
       background-color: ${theme.colors.white};
@@ -13,6 +14,10 @@ export const Form = styled.form`
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.02),
         0px 4px 10px rgba(0, 0, 0, 0.05);
       border-radius: ${theme.radius.md};
+    }
+
+    ${theme.media.desktop} {
+      padding: 16px 20px;
     }
   `};
 `;

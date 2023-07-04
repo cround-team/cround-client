@@ -130,6 +130,7 @@ export default function useMainList() {
         keyword: searchKeyword,
       };
       const response = await shortsApi(params);
+      console.log("test", response.data.pages);
       setShorts(response.data.pages);
     } catch (error) {
       console.error(error);

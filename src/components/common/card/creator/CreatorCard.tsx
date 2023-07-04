@@ -28,9 +28,11 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
         <S.Figure>
           <Image
             src={profileImage}
-            fill={true}
+            // fill={true}
             alt="profile"
-            sizes={media.images.sizes}
+            // sizes={media.images.sizes}
+            width={72}
+            height={72}
             priority
           />
         </S.Figure>

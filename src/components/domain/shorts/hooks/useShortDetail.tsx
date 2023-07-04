@@ -51,7 +51,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // fetchDetailData();
+    fetchDetailData();
     testDetailData();
   }, []);
 

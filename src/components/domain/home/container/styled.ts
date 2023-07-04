@@ -6,5 +6,11 @@ export const Section = styled.section`
       margin-bottom: 64px;
       padding: 0 20px;
     }
+
+    ${theme.media.desktop} {
+      width: 1200px;
+      margin: 0 auto 80px auto;
+      padding: 0;
+    }
   `};
 `;
