@@ -9,6 +9,10 @@ import { theme } from "@/styles/themes/theme";
 import { AuthContextProvider } from "@/context/AuthContext";
 
 export default function AppProvider({ children }: PropsWithChildren) {
+  if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
+    import("../../mocks");
+  }
+
   return (
     <ReactQuery>
       <GlobalStyle />
