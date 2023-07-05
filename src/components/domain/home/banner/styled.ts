@@ -51,6 +51,10 @@ export const Wrapper = styled.div`
         margin: 0 !important;
       }
     }
+
+    ${theme.media.desktop} {
+      height: 320px;
+    }
   `};
 `;
 
@@ -70,7 +74,6 @@ export const Title = styled.h2`
       white-space: pre-wrap;
       margin-bottom: 4px;
       ${theme.typo.title.lg};
-
       &[aria-label="insta"],
       &[aria-label="youtube"] {
         color: ${theme.colors.white};
@@ -79,6 +82,11 @@ export const Title = styled.h2`
       &[aria-label="adPost"] {
         color: ${theme.colors.neutral900};
       }
+    }
+
+    ${theme.media.desktop} {
+      margin-bottom: 15px;
+      ${theme.typo.display.md};
     }
   `};
 `;
@@ -97,6 +105,10 @@ export const Sub = styled.p`
       &[aria-label="adPost"] {
         color: ${theme.colors.neutral700};
       }
+    }
+
+    ${theme.media.desktop} {
+      ${theme.typo.head.sm};
     }
   `};
 `;
@@ -124,6 +136,17 @@ export const Figure = styled.figure`
       img {
         width: 100%;
         height: 100%;
+        /* object-fit: contain; */
+      }
+    }
+
+    ${theme.media.desktop} {
+      top: 14px;
+      right: 49px;
+
+      &[aria-label="insta"] {
+        width: 318px;
+        height: 292px;
       }
     }
   `};
