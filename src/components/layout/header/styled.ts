@@ -22,13 +22,13 @@ export const Wrapper = styled.div`
 
 export const Logo = styled.h1`
   ${({ theme }) => css`
-    width: 90px;
-    height: 25px;
-    a {
-      width: 100%;
-      height: 100%;
+    ${theme.media.mobile} {
+      width: 90px;
+      height: 25px;
+      a {
+        width: 100%;
+        height: 100%;
+      }
     }
   `};
 `;
-
-export const Nav = styled.nav``;

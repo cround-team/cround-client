@@ -4,11 +4,11 @@ import Link from "next/link";
 
 import { CroundLogoIcon } from "@/assets/icons";
 import { PATH } from "@/constants";
-import Navigation from "@/components/layout/header/navigation/Navigation";
 import Utils from "./utils/Utils";
-import * as S from "./Header.styled";
 import StepHeader from "./step/StepHeader";
 import useChangeHeader from "./hooks/useChangeHeader";
+import Navigation from "./navigation/Navigation";
+import * as S from "./styled";
 
 export default function Header() {
   const { headerType, stepName } = useChangeHeader();

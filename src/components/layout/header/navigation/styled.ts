@@ -16,10 +16,5 @@ export const Nav = styled.nav`
       padding-left: 20px;
       background: ${theme.colors.white};
     }
-
-    ${theme.media.desktop} {
-      width: 1200px;
-      margin: 0 auto;
-    }
   `};
 `;
