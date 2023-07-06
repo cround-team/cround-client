@@ -22,5 +22,21 @@ export const Container = styled.div`
         ${theme.text.skip(2)};
       }
     }
+
+    ${theme.media.desktop} {
+      gap: 7.31px;
+
+      span {
+        ${theme.typo.body.lg}
+      }
+
+      h3 {
+        ${theme.typo.title.lg};
+      }
+
+      p {
+        ${theme.typo.body.lg};
+      }
+    }
   `};
 `;

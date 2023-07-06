@@ -20,7 +20,7 @@ const INITIAL_CREATORS = [
   {
     creatorId: 0,
     description: "",
-    platformActivityName: "",
+    creatorNickname: "",
     platformType: "",
     profileImage: "",
     platformTheme: "",
@@ -47,8 +47,8 @@ const INITIAL_CONTENTS = [
 const INITIAL_SHORTS = [
   {
     shortsId: 0,
-    title: "",
-    thumbnailUrl: "",
+    title: "sadfdfdfad",
+    thumbnailUrl: "/images/profile.png",
     platformType: "",
     profileImage: "",
     author: "",
@@ -81,6 +81,7 @@ export default function useMainList() {
     try {
       const params = { size: 4 };
       const response = await creatorsCustomApi(params);
+
       setCustomCreators((draft) => {
         draft.latest = response.data.latestCreators;
         draft.interest = response.data.interestCreators;
@@ -114,7 +115,6 @@ export default function useMainList() {
       };
       const response = await contentsApi(params);
       setContents(response.data.pages);
-      // console.log(response);
     } catch (error) {
       console.error(error);
     } finally {

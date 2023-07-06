@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import type { ShortCardData } from "@/types/card";
 import { media } from "@/styles/themes/foundations";
-import { CreatorInfoBox, TextBox } from "../../etc";
+import { CreatorInfoBox } from "../../etc";
 import { PATH } from "@/constants";
 import * as S from "./styled";
 
@@ -59,11 +59,15 @@ export default function ShortCard({
             alt="profile"
             sizes={media.images.sizes}
             style={{ objectFit: "cover" }}
+            priority
             // "fill" | Globals | "contain" | "cover" | "none" | "scale-down"
           />
         </S.Figure>
         <S.InfoGroup>
-          <TextBox platform={platformType} title={title} />
+          <S.TitleGroup>
+            <span>{platformType}</span>
+            <h3>{title}</h3>
+          </S.TitleGroup>
           {isShowCreatorInfo && (
             <CreatorInfoBox
               data={creatorInfo}

@@ -15,33 +15,42 @@ export const List = styled.li`
       width: 50%;
       padding: 8px 0 10px 0;
       text-align: center;
-    }
 
-    &[aria-selected="true"] {
-      border-bottom: 2px solid ${theme.colors.primary500};
-      button {
+      &[aria-selected="true"] {
+        border-bottom: 2px solid ${theme.colors.primary500};
+        button {
+          color: ${theme.colors.neutral900};
+        }
+      }
+
+      &[aria-selected="false"] {
+        border-bottom: 2px solid ${theme.colors.white};
+        button {
+          color: ${theme.colors.neutral300};
+        }
+      }
+
+      :hover button {
         color: ${theme.colors.neutral900};
       }
-    }
 
-    &[aria-selected="false"] {
-      border-bottom: 2px solid ${theme.colors.white};
       button {
-        color: ${theme.colors.neutral300};
+        display: inline-block;
+        width: auto;
+        /* padding: 2px 0; */
+
+        ${theme.typo.button.md};
+        transition: all 0.25s ease-in-out;
       }
     }
 
-    :hover button {
-      color: ${theme.colors.neutral900};
-    }
+    ${theme.media.desktop} {
+      padding: 16px 0 14px 0;
 
-    button {
-      display: inline-block;
-      width: auto;
-      /* padding: 2px 0; */
-
-      ${theme.typo.button.md};
-      transition: all 0.25s ease-in-out;
+      button {
+        padding: 2px 0;
+        ${theme.typo.button.lg};
+      }
     }
   `};
 `;

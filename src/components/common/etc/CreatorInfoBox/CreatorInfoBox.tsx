@@ -51,6 +51,7 @@ export default function CreatorInfoBox({
             alt="Creator Profile Image"
             sizes={media.images.sizes}
             fill
+            priority
           />
         </S.Figure>
         <S.Name>{author}</S.Name>

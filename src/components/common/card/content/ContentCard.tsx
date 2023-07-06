@@ -1,6 +1,6 @@
 import type { ContentCardData } from "@/types/card";
 import { PATH } from "@/constants";
-import { CreatorInfoBox, TextBox } from "../../etc";
+import { CreatorInfoBox } from "../../etc";
 import * as S from "./styled";
 
 type ContentCardProps = {
@@ -50,7 +50,11 @@ export default function ContentCard({
     <S.LinkCard href={`${PATH.CONTENTS.DETAIL}/${boardId}`}>
       <S.Article>
         <S.InfoGroup>
-          <TextBox platform={platformType} title={title} desc={desc} />
+          <S.TitleGroup>
+            <span>{platformType}</span>
+            <h3>{title}</h3>
+            <p>{desc}</p>
+          </S.TitleGroup>
           {isShowCreatorInfo && (
             <CreatorInfoBox
               data={creatorInfo}

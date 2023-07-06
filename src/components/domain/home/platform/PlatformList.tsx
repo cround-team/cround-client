@@ -10,17 +10,21 @@ import * as S from "./styled";
 import { media } from "@/styles/themes/foundations";
 
 const BREAK_POINTS = {
-  640: {
-    slidesPerView: 2,
-    spaceBetween: 20,
-  },
-  768: {
-    slidesPerView: 4,
-    spaceBetween: 40,
-  },
-  1024: {
+  360: {
     slidesPerView: 5,
-    spaceBetween: 50,
+    spaceBetween: 24,
+  },
+  600: {
+    slidesPerView: 7,
+    spaceBetween: 32,
+  },
+  800: {
+    slidesPerView: 10,
+    spaceBetween: 42,
+  },
+  1200: {
+    slidesPerView: 12,
+    spaceBetween: 56.7,
   },
 };
 
