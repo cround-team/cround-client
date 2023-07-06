@@ -15,6 +15,13 @@ export const multiPartInstance: AxiosInstance = axios.create({
   },
 });
 
+export const mockInstance: AxiosInstance = axios.create({
+  baseURL: "http://localhost",
+  headers: {
+    "Content-type": "application/json",
+  },
+});
+
 // Axios 요청시 인터셉트
 apiInstance.interceptors.request.use((req) => {
   const accessToken = LocalStorage.getItem("accessToken");
