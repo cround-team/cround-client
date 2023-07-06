@@ -17,6 +17,12 @@ export const Wrapper = styled.div`
       ${theme.flex.row("space-between", "center")};
       padding: 11px 20px 12px 20px;
     }
+
+    ${theme.media.desktop} {
+      width: 1200px;
+      margin: 0 auto;
+      padding: 22px 0 23px 0;
+    }
   `};
 `;
 
@@ -28,6 +34,11 @@ export const Logo = styled.h1`
       a {
         width: 100%;
         height: 100%;
+
+        svg {
+          width: 90px;
+          height: 25px;
+        }
       }
     }
   `};
