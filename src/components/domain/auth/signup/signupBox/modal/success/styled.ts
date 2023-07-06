@@ -14,6 +14,16 @@ export const TextWrapper = styled.div`
         color: ${theme.colors.neutral500};
       }
     }
+
+    ${theme.media.desktop} {
+      h2 {
+        ${theme.typo.title.md};
+      }
+
+      p {
+        ${theme.typo.title.sm};
+      }
+    }
   `};
 `;
 

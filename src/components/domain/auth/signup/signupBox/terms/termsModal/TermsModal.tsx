@@ -1,7 +1,7 @@
 "use client";
 
 import { Modal } from "@/components/common";
-import { XBtnIcon } from "@/assets/icons";
+import { XCloseIcon } from "@/assets/icons";
 import * as S from "./styled";
 
 type TermsModalProps = {
@@ -22,7 +22,7 @@ export default function TermsModal({
           <h1>{title}</h1>
           {onSetIsMounted && (
             <S.CloseButton onClick={onSetIsMounted}>
-              <XBtnIcon />
+              <XCloseIcon />
             </S.CloseButton>
           )}
           <S.ScrollWrapper>

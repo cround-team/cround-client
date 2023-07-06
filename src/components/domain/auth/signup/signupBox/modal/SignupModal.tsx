@@ -3,8 +3,8 @@
 import { ReactNode } from "react";
 
 import { IndicatorModal, Modal } from "@/components/common";
-import * as S from "./styled";
 import { SignupStep } from "@/types";
+import * as S from "./styled";
 
 type SignupModalProps = {
   isMounted: boolean;

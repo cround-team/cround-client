@@ -14,6 +14,15 @@ export const TitleWrapper = styled.div`
         color: ${theme.colors.neutral500};
       }
     }
+
+    ${theme.media.desktop} {
+      h2 {
+        ${theme.typo.title.md};
+      }
+      p {
+        ${theme.typo.title.sm};
+      }
+    }
   `}
 `;
 export const Form = styled.form`
@@ -22,6 +31,9 @@ export const Form = styled.form`
       display: flex;
       flex-wrap: wrap;
       gap: 16px 16.5px;
+    }
+    ${theme.media.desktop} {
+      gap: 16px;
     }
   `};
 `;
@@ -41,6 +53,11 @@ export const PrevButton = styled.button`
         height: 24px;
         stroke: ${theme.colors.neutral900};
       }
+    }
+
+    ${theme.media.desktop} {
+      top: 22px;
+      left: 24px;
     }
   `};
 `;

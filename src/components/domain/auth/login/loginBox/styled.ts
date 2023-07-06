@@ -6,7 +6,8 @@ export const Container = styled.div`
     ${theme.media.mobile} {
       ${theme.flex.col()};
       gap: 16px;
-      margin-bottom: 212px;
+      /* margin-bottom: 212px; */
+      margin-bottom: 40px;
     }
   `};
 `;

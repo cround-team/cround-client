@@ -10,6 +10,11 @@ export const Container = styled.div`
       ${theme.flex.row()};
       gap: 16px;
     }
+
+    ${theme.media.desktop} {
+      top: 30px;
+      gap: 30px;
+    }
   `};
 `;
 

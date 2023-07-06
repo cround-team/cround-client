@@ -3,6 +3,7 @@ import { PropsWithChildren } from "react";
 
 import { AppProvider, StyledRegistry } from "@/lib/providers";
 import { Header, Footer } from "@/components/layout";
+import ScrollTopButton from "@/components/common/button/scroll/ScrollTopButton";
 
 const pretendard = localFont({
   src: [
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <Header />
             <aside id="sidebar" />
             {children}
+            <ScrollTopButton />
             <Footer />
             <div id="modal-root" />
           </AppProvider>

@@ -32,7 +32,7 @@ const INITIAL_VALID: VALID = {
 export default function useLoginForm() {
   const [form, setForm] = useImmer<LoginForm>(INITIAL_FORM);
   const [valid, setValid] = useImmer<VALID>(INITIAL_VALID);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(VALID_MSG.PSW_TIP);
 
   const { onSetUserInfo } = useAuthContext();
 
