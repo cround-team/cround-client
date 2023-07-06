@@ -1,7 +1,7 @@
 export type CreatorCardData = {
   creatorId: number;
   description: string;
-  platformActivityName: string;
+  creatorNickname: string;
   platformType: string;
   profileImage: string;
   platformTheme: string;
