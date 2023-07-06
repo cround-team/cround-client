@@ -31,6 +31,12 @@ export const Label = styled.label<LabelProps>`
       ${theme.typo.label.sm};
       color: ${theme.colors.neutral500};
     }
+
+    ${theme.media.desktop} {
+      top: 8.5px;
+      left: 16px;
+      ${theme.typo.label.md};
+    }
   `};
 `;
 
