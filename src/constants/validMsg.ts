@@ -8,6 +8,4 @@ export const VALID_MSG = {
   PSW_MISMATCH: "비밀번호가 일치하지 않습니다.",
   NICKNAME_TIP: "한글, 영어, 또는 숫자로 2글자 이상 6글자 이내",
   NICKNAME: "닉네임 형식이 올바르지 않습니다",
-
-  // ID_DUPLICATE: '사용할 수 없는 사용자 이름입니다.\n다름 이름을 사용하세요.',
 };
