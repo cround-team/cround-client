@@ -1,10 +1,9 @@
 import { PLATFORMS } from "@/constants/platforms";
-
 import { XCloseIcon } from "@/assets/icons";
-import * as S from "./styled";
 import Modal from "../Modal";
 import PlatformCheckbox from "../../input/checkbox/platform/PlatformCheckbox";
 import { Button } from "../../button";
+import * as S from "./styled";
 
 type PlatFormModalProps = {
   isDisabledPlatform: boolean;

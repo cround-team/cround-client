@@ -13,6 +13,10 @@ export const CurOptionBtn = styled.button`
         stroke: ${theme.colors.neutral900};
       }
     }
+
+    ${theme.media.desktop} {
+      ${theme.typo.button.xl};
+    }
   `};
 `;
 
@@ -30,7 +34,7 @@ export const OptionList = styled.ul`
       border-radius: ${theme.radius.md};
 
       li {
-        width: 85px;
+        width: 88px;
         padding: 8px 0;
         border-bottom: 1px solid ${theme.colors.neutral100};
 
@@ -39,7 +43,9 @@ export const OptionList = styled.ul`
         }
 
         button {
-          ${theme.flex.row("space-between")};
+          ${theme.flex.row()};
+          justify-content: flex-end;
+          gap: 22px;
           width: 100%;
           ${theme.typo.button.md};
           color: ${theme.colors.neutral900};
@@ -53,8 +59,20 @@ export const OptionList = styled.ul`
           span {
             ${theme.flex.row("flex-end")};
             ${theme.typo.button.md};
-            width: 100%;
             color: ${theme.colors.neutral900};
+          }
+        }
+      }
+    }
+
+    ${theme.media.desktop} {
+      top: 40px;
+
+      li {
+        width: 109px;
+        button {
+          span {
+            ${theme.typo.button.xl};
           }
         }
       }

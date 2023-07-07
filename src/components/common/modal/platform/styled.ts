@@ -7,6 +7,9 @@ export const Layout = styled.div`
       width: 360px;
       backdrop-filter: blur(2px);
     }
+    ${theme.media.desktop} {
+      width: 464px;
+    }
   `};
 `;
 
@@ -14,17 +17,22 @@ export const CloseButton = styled.button`
   ${({ theme }) => css`
     ${theme.media.mobile} {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 12px;
+      right: 20px;
       z-index: ${theme.zIndex.icon};
       ${theme.flex.row()};
       width: 24px;
       height: 24px;
       svg {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         stroke: ${theme.colors.neutral900};
       }
+    }
+
+    ${theme.media.desktop} {
+      top: 22px;
+      right: 32px;
     }
   `};
 `;
@@ -36,9 +44,13 @@ export const Form = styled.form`
       width: 100%;
       height: 100%;
       margin: 0 auto;
-      padding: 42px 20px 16px 20px;
+      padding: 56px 20px 16px 20px;
       background-color: ${theme.colors.white};
       border-radius: ${theme.radius.md};
+    }
+
+    ${theme.media.desktop} {
+      padding: 70px 32px 25px 32px;
     }
   `};
 `;
@@ -51,6 +63,12 @@ export const PlatformList = styled.ul`
       row-gap: 8px;
       column-gap: 32.5px;
       margin-bottom: 16px;
+    }
+
+    ${theme.media.desktop} {
+      row-gap: 16px;
+      column-gap: 20px;
+      margin-bottom: 32px;
     }
   `};
 `;

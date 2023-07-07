@@ -7,7 +7,7 @@ export const Form = styled.form`
       ${theme.flex.row("space-between")};
       width: 100%;
       max-width: 585px;
-      margin: 0 auto;
+      margin: 24px auto;
       padding: 8px 16px;
       background-color: ${theme.colors.white};
       border: 1px solid ${theme.colors.primary500};
@@ -17,6 +17,7 @@ export const Form = styled.form`
     }
 
     ${theme.media.desktop} {
+      margin: 48px auto;
       padding: 16px 20px;
     }
   `};

@@ -19,5 +19,14 @@ export const Button = styled.button`
         stroke: ${theme.colors.neutral400};
       }
     }
+
+    ${theme.media.desktop} {
+      padding: 16px 0;
+      ${theme.typo.label.lg};
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
   `};
 `;

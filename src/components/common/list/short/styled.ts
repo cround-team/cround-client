@@ -24,7 +24,8 @@ export const Wrapper = styled.div`
     }
 
     ${theme.media.desktop} {
-      gap: 30px;
+      row-gap: 32px;
+      column-gap: 30px;
       grid-template-columns: repeat(auto-fit, minmax(585px, 1fr));
     }
   `};
