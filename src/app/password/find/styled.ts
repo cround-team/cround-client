@@ -25,13 +25,29 @@ export const TitleWrapper = styled.div`
         color: ${theme.colors.neutral500};
       }
     }
+
+    ${theme.media.desktop} {
+      gap: 16px;
+      h2 {
+        ${theme.typo.title.lg};
+      }
+      p {
+        ${theme.typo.label.lg};
+      }
+    }
   `};
 `;
 
 export const Form = styled.form`
   ${({ theme }) => css`
-    ${theme.flex.col()};
-    gap: 40px;
-    width: 100%;
+    ${theme.media.mobile} {
+      ${theme.flex.col()};
+      gap: 40px;
+      width: 100%;
+    }
+
+    ${theme.media.desktop} {
+      gap: 64px;
+    }
   `};
 `;

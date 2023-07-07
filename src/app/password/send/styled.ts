@@ -33,7 +33,17 @@ export const TextWrapper = styled.div`
 
     ${theme.media.desktop} {
       h2 {
+        margin-bottom: 40px;
         ${theme.typo.title.lg};
+      }
+
+      span {
+        margin-bottom: 16px;
+        ${theme.typo.label.lg};
+      }
+
+      p {
+        ${theme.typo.label.lg};
       }
     }
   `};
@@ -45,6 +55,10 @@ export const LinkWrapper = styled.div`
       ${theme.flex.col()};
       gap: 8px;
       width: 100%;
+    }
+
+    ${theme.media.desktop} {
+      flex-direction: row;
     }
   `};
 `;

@@ -16,6 +16,10 @@ export const Title = styled.h2`
       color: ${theme.colors.neutral900};
       text-align: center;
     }
+
+    ${theme.media.desktop} {
+      ${theme.typo.title.lg};
+    }
   `};
 `;
 

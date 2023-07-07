@@ -3,8 +3,13 @@
 import LinkButton from "@/components/common/link/base/LinkButton";
 import { PATH } from "@/constants";
 import * as S from "./styled";
+import { useMediaQuery } from "react-responsive";
+import { media } from "@/styles/themes/foundations";
 
 export default function PasswordSendPage() {
+  const isMobile = useMediaQuery({
+    query: media.mobile,
+  });
   return (
     <S.Container>
       <S.TextWrapper>
@@ -20,13 +25,13 @@ export default function PasswordSendPage() {
         <LinkButton
           href={PATH.AUTH}
           label="이전 페이지로 이동"
-          size="48"
+          size={isMobile ? "48" : "56"}
           variant="ghost"
         />
         <LinkButton
           href={PATH.ROOT}
           label="메인 페이지로 이동"
-          size="48"
+          size={isMobile ? "48" : "56"}
           variant="primary"
         />
       </S.LinkWrapper>

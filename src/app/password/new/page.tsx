@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { Button, PasswordInput } from "@/components/common";
 import * as S from "./styled";
+import { VALID_MSG } from "@/constants";
 
 export default function PasswordNewPage() {
   const [user, setUser] = useImmer({
@@ -50,6 +51,7 @@ export default function PasswordNewPage() {
             name="confirmPassword"
             placeholder="비밀번호를 확인해 주세요"
             onChange={handleInputChange}
+            inputMessage={VALID_MSG.PSW_TIP}
           />
         </S.InputContainer>
         <Button label="비밀번호 변경" size="56" variant="primary" />
