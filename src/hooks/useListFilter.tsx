@@ -3,7 +3,7 @@ import { useImmer } from "use-immer";
 
 const CONTENT_OPTIONS: Sorts[] = ["신규순", "좋아요순", "북마크순"];
 const SHORT_OPTIONS: Sorts[] = ["신규순", "좋아요순", "북마크순"];
-const CREATOR_OPTIONS: Sorts[] = ["신규순", "팔로워순", "리뷰순"];
+const CREATOR_OPTIONS: Sorts[] = ["신규순", "리뷰순", "팔로워순"];
 
 const INITIAL_FILTER: Filter = {
   platforms: [],

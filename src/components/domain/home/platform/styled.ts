@@ -6,7 +6,7 @@ export const Section = styled.section`
       width: 100%;
       margin-right: -20px;
       padding-top: 40px;
-      padding-bottom: 44px;
+      padding-bottom: 20px;
       padding-left: 20px;
 
       .swiper-slide {
@@ -19,7 +19,7 @@ export const Section = styled.section`
       width: 1200px;
       margin: 0 auto;
       padding-top: 56px;
-      padding-bottom: 98px;
+      padding-bottom: 56px;
       padding-left: 0px;
     }
   `};

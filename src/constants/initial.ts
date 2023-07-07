@@ -2,9 +2,9 @@ export const INITIAL_CREATORS = [
   {
     creatorId: 0,
     description: "",
-    platformActivityName: "",
+    creatorNickname: "",
     platformType: "",
-    profileImage: "/images/profile.png",
+    profileImage: "",
     platformTheme: "",
   },
 ];

@@ -5,12 +5,11 @@ export const Container = styled.div`
     ${theme.media.mobile} {
       ${theme.flex.col()};
       gap: 24px;
-      margin-top: 24px;
     }
 
     ${theme.media.desktop} {
       gap: 48px;
-      margin-top: 74px;
+      margin-top: 32px;
     }
   `};
 `;

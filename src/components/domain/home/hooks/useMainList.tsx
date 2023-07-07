@@ -126,11 +126,9 @@ export default function useMainList() {
     try {
       const params = {
         size: 4,
-
         keyword: searchKeyword,
       };
       const response = await shortsApi(params);
-      console.log("test", response.data.pages);
       setShorts(response.data.pages);
     } catch (error) {
       console.error(error);
