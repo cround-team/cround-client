@@ -80,6 +80,7 @@ export const TitleGroup = styled.div`
         color: ${theme.colors.neutral900};
       }
       h3 {
+        height: 40px;
         ${theme.typo.title.sm};
         color: ${theme.colors.neutral900};
         ${theme.text.skip(2)};
@@ -93,6 +94,7 @@ export const TitleGroup = styled.div`
       }
 
       h3 {
+        height: 56px;
         ${theme.typo.title.lg};
       }
     }
