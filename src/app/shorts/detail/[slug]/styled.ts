@@ -2,9 +2,15 @@ import styled, { css } from "styled-components";
 
 export const Section = styled.section`
   ${({ theme }) => css`
-    margin-top: 16px;
-    margin-bottom: 64px;
+    width: 100%;
+    max-width: 790px;
+    margin: 16px auto 64px auto;
     padding: 0 20px;
+
+    ${theme.media.desktop} {
+      margin: 40px auto 80px auto;
+      padding: 0;
+    }
   `};
 `;
 
@@ -25,6 +31,20 @@ export const TextWrapper = styled.div`
       white-space: pre-wrap;
       ${theme.typo.body.md};
       color: ${theme.colors.neutral700};
+    }
+
+    ${theme.media.desktop} {
+      gap: 0px;
+      margin-bottom: 32px;
+
+      h3 {
+        margin-bottom: 24px;
+        ${theme.typo.title.lg};
+      }
+
+      p {
+        ${theme.typo.body.lg};
+      }
     }
   `};
 `;
@@ -49,16 +69,37 @@ export const Head = styled.div`
         stroke: ${theme.colors.neutral900};
       }
     }
+
+    ${theme.media.desktop} {
+      margin-bottom: 8px;
+      span {
+        ${theme.typo.body.lg};
+      }
+      button {
+        width: 24px;
+        height: 24px;
+      }
+    }
   `};
 `;
 
 export const Video = css`
   ${({ theme }) => css`
     margin-bottom: 16px;
-    border-radius: 15px;
 
     iframe {
       border-radius: ${theme.radius.md};
+      aspect-ratio: 320/170;
+    }
+
+    ${theme.media.desktop} {
+      margin-bottom: 32px;
+
+      iframe {
+        border-radius: 29px;
+        width: 790px;
+        height: 420px;
+      }
     }
   `};
 `;
