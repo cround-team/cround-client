@@ -4,62 +4,56 @@ import styled, { css } from "styled-components";
 
 export const Swiper = styled(swiper)`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      .swiper-pagination-clickable .swiper-pagination-bullet {
-        width: 8px;
-        height: 8px;
-        margin-right: 8px;
-        background-color: ${theme.colors.white};
-        opacity: 0.5;
-        border-radius: 4px;
-      }
-      .swiper-pagination-bullet.swiper-pagination-bullet-active {
-        width: 16px;
-        height: 8px;
-        opacity: 1;
-      }
+    .swiper-pagination-clickable .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      margin-right: 8px;
+      background-color: ${theme.colors.white};
+      opacity: 0.5;
+      border-radius: 4px;
+    }
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+      width: 16px;
+      height: 8px;
+      opacity: 1;
     }
   `};
 `;
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      width: 100%;
+    width: 100%;
 
-      &[aria-label="insta"] {
-        background: linear-gradient(
-          90deg,
-          #4e41e6 0%,
-          #993ab5 16.37%,
-          #cd4577 52.85%,
-          #ed5835 84.35%,
-          #eea22c 95.05%,
-          #edc767 100.99%
-        );
-      }
-      &[aria-label="youtube"] {
-        background-color: #ed2224;
-      }
-      &[aria-label="adPost"] {
-        background-color: #03cf5d;
-      }
+    &[aria-label="insta"] {
+      background: linear-gradient(
+        90deg,
+        #4e41e6 0%,
+        #993ab5 16.37%,
+        #cd4577 52.85%,
+        #ed5835 84.35%,
+        #eea22c 95.05%,
+        #edc767 100.99%
+      );
+    }
+    &[aria-label="youtube"] {
+      background-color: #ed2224;
+    }
+    &[aria-label="adPost"] {
+      background-color: #03cf5d;
+    }
 
-      span.swiper-pagination-bullet {
-        margin: 0 !important;
-      }
+    span.swiper-pagination-bullet {
+      margin: 0 !important;
     }
   `};
 `;
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      position: relative;
-      width: 100%;
-      height: 240px;
-      margin: 0 auto;
-    }
+    position: relative;
+    width: 100%;
+    height: 240px;
+    margin: 0 auto;
 
     @media screen and (min-width: 600px) {
       height: 260px;
@@ -78,11 +72,9 @@ export const Wrapper = styled.div`
 
 export const TextWrapper = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      position: absolute;
-      bottom: 32px;
-      left: 20px;
-    }
+    position: absolute;
+    bottom: 32px;
+    left: 20px;
 
     @media screen and (min-width: 600px) {
       bottom: 79px;
@@ -101,18 +93,16 @@ export const TextWrapper = styled.div`
 
 export const Title = styled.h2`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      white-space: pre-wrap;
-      margin-bottom: 4px;
-      ${theme.typo.title.lg};
-      &[aria-label="insta"],
-      &[aria-label="youtube"] {
-        color: ${theme.colors.white};
-      }
+    white-space: pre-wrap;
+    margin-bottom: 4px;
+    ${theme.typo.title.lg};
+    &[aria-label="insta"],
+    &[aria-label="youtube"] {
+      color: ${theme.colors.white};
+    }
 
-      &[aria-label="adPost"] {
-        color: ${theme.colors.neutral900};
-      }
+    &[aria-label="adPost"] {
+      color: ${theme.colors.neutral900};
     }
 
     @media screen and (min-width: 600px) {
@@ -134,18 +124,16 @@ export const Title = styled.h2`
 
 export const Sub = styled.p`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      white-space: pre-wrap;
-      ${theme.typo.body.sm};
+    white-space: pre-wrap;
+    ${theme.typo.body.sm};
 
-      &[aria-label="insta"],
-      &[aria-label="youtube"] {
-        color: ${theme.colors.neutral50};
-      }
+    &[aria-label="insta"],
+    &[aria-label="youtube"] {
+      color: ${theme.colors.neutral50};
+    }
 
-      &[aria-label="adPost"] {
-        color: ${theme.colors.neutral700};
-      }
+    &[aria-label="adPost"] {
+      color: ${theme.colors.neutral700};
     }
 
     @media screen and (min-width: 600px) {
@@ -164,23 +152,21 @@ export const Sub = styled.p`
 
 export const Figure = styled.figure`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      position: absolute;
-      top: 16px;
-      right: 16px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
 
-      &[aria-label="insta"] {
-        width: 136px;
-        height: 124px;
-      }
-      &[aria-label="youtube"] {
-        width: 165px;
-        height: 130px;
-      }
-      &[aria-label="adPost"] {
-        width: 156px;
-        height: 126px;
-      }
+    &[aria-label="insta"] {
+      width: 136px;
+      height: 124px;
+    }
+    &[aria-label="youtube"] {
+      width: 165px;
+      height: 130px;
+    }
+    &[aria-label="adPost"] {
+      width: 156px;
+      height: 126px;
     }
 
     @media screen and (min-width: 600px) {

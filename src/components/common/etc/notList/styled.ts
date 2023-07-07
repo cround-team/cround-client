@@ -2,12 +2,10 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.col("center", "flex-start")};
-      gap: 8px;
-      width: 100%;
-      color: ${theme.colors.neutral900};
-    }
+    ${theme.flex.col("center", "flex-start")};
+    gap: 8px;
+    width: 100%;
+    color: ${theme.colors.neutral900};
     ${theme.media.desktop} {
       gap: 32px;
     }
@@ -16,9 +14,7 @@ export const Container = styled.div`
 
 export const Label = styled.p`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.typo.button.md};
-    }
+    ${theme.typo.button.md};
 
     ${theme.media.desktop} {
       ${theme.typo.button.xl};
@@ -28,9 +24,8 @@ export const Label = styled.p`
 
 export const Content = styled.p`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.typo.title.sm};
-    }
+    ${theme.typo.title.sm};
+
     ${theme.media.desktop} {
       ${theme.typo.title.lg};
     }

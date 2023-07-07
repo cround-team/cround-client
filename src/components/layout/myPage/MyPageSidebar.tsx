@@ -7,7 +7,6 @@ import { Dim, Portal } from "@/components/common";
 import MemberSidebar from "./sidebar/MemberSidebar";
 import NonMemberSidebar from "./sidebar/NonMemberSidebar";
 import CreatorSidebar from "./sidebar/CreatorSidebar";
-import { usePathname } from "next/navigation";
 
 type MyPageSidebarProps = {
   isMounted: boolean;

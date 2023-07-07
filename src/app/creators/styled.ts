@@ -2,11 +2,9 @@ import styled, { css } from "styled-components";
 
 export const Section = styled.section`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.col()};
-      margin-bottom: 64px;
-      padding: 0 20px;
-    }
+    ${theme.flex.col()};
+    margin-bottom: 64px;
+    padding: 0 20px;
 
     ${theme.media.desktop} {
       width: 1200px;

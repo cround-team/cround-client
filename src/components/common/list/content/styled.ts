@@ -2,11 +2,9 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.col()};
-      gap: 16px;
-      width: 100%;
-    }
+    ${theme.flex.col()};
+    gap: 16px;
+    width: 100%;
 
     ${theme.media.desktop} {
       gap: 32px;
@@ -16,12 +14,10 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      width: 100%;
-    }
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    width: 100%;
 
     ${theme.media.desktop} {
       row-gap: 32px;

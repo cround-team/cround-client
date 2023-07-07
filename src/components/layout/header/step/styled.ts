@@ -2,23 +2,21 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
+    position: relative;
+    ${theme.flex.row("space-between")};
+    padding: 8px 20px;
+
+    button {
+      position: absolute;
+      left: 20px;
+    }
+
+    h2 {
       position: relative;
-      ${theme.flex.row("space-between")};
-      padding: 8px 20px;
-
-      button {
-        position: absolute;
-        left: 20px;
-      }
-
-      h2 {
-        position: relative;
-        left: 50%;
-        transform: translate(-50%);
-        ${theme.typo.title.sm};
-        color: ${theme.colors.neutral900};
-      }
+      left: 50%;
+      transform: translate(-50%);
+      ${theme.typo.title.sm};
+      color: ${theme.colors.neutral900};
     }
   `};
 `;
