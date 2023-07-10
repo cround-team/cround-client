@@ -15,6 +15,10 @@ export const Container = styled.div<ContainerProps>`
     ${theme.flex.col("center", "flex-start")};
     gap: ${tipMessage ? "16px" : "8px"};
     width: 100%;
+
+    ${theme.media.desktop} {
+      gap: ${tipMessage ? "32px" : "16px"};
+    }
   `};
 `;
 
@@ -44,6 +48,11 @@ export const Input = styled.input<InputProps>`
     ::placeholder {
       ${theme.typo.label.lg};
       ${theme.colors.neutral300};
+    }
+
+    ${theme.media.desktop} {
+      ${inputSize === "sm" && "padding: 12px 16px"};
+      ${inputSize === "md" && "padding: 12px 16px"};
     }
   `};
 `;

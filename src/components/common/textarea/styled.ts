@@ -9,6 +9,10 @@ export const Container = styled.div`
     ${theme.flex.col("center", "flex-start")};
     gap: 8px;
     width: 100%;
+
+    ${theme.media.desktop} {
+      gap: 16px;
+    }
   `};
 `;
 

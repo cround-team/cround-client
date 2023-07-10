@@ -10,6 +10,10 @@ export const Container = styled.div`
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(2.5px);
     border-radius: ${theme.radius.md};
+
+    ${theme.media.desktop} {
+      top: 32px;
+    }
   `};
 `;
 
@@ -30,6 +34,16 @@ export const ListContainer = styled.ul`
         width: 100%;
         ${theme.typo.button.md};
         color: ${theme.colors.neutral900};
+      }
+    }
+
+    ${theme.media.desktop} {
+      li {
+        padding: 8px 13px;
+
+        button {
+          ${theme.typo.button.xl};
+        }
       }
     }
   `};

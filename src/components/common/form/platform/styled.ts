@@ -13,10 +13,14 @@ export const Form = styled.form`
 
 export const PlatformList = styled.ul`
   ${({ theme }) => css`
-    ${theme.flex.row()};
+    ${theme.flex.row("flex-start")};
     flex-wrap: wrap;
     row-gap: 8px;
     column-gap: 32.5px;
+
+    ${theme.media.desktop} {
+      gap: 16px;
+    }
   `};
 `;
 
@@ -26,5 +30,25 @@ export const ButtonWrapper = styled.div`
     grid-template-columns: "25.63% 71.88%";
     width: 100%;
     gap: 8px;
+
+    ${theme.media.desktop} {
+      ${theme.flex.row("flex-end")};
+    }
+  `};
+`;
+
+export const PrevButton = css`
+  ${({ theme }) => css`
+    ${theme.media.desktop} {
+      max-width: 82px;
+    }
+  `};
+`;
+
+export const NextButton = css`
+  ${({ theme }) => css`
+    ${theme.media.desktop} {
+      max-width: 230px;
+    }
   `};
 `;
