@@ -1,6 +1,6 @@
-import PrevButton from "@/components/common/button/prev/PrevButton";
 import useIndicator from "@/hooks/useIndicator";
-import Indicator from "@/components/common/indicator/Indicator";
+import { Indicator } from "@/components/common";
+import PrevButton from "./prev/PrevButton";
 import * as S from "./styled";
 
 type DetailHeaderProps = {

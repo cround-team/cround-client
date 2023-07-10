@@ -18,5 +18,18 @@ export const Container = styled.div`
       ${theme.typo.title.sm};
       color: ${theme.colors.neutral900};
     }
+
+    ${theme.media.desktop} {
+      width: 1200px;
+      margin: 0 auto;
+      padding: 12px 0;
+
+      button {
+        left: 0;
+      }
+      h2 {
+        ${theme.typo.head.sm};
+      }
+    }
   `};
 `;
