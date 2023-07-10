@@ -10,9 +10,11 @@ export const Container = styled.div<ContainerProps>`
     gap: 4px;
 
     button {
+      width: 18px;
+      height: 18px;
       svg {
-        width: 18px;
-        height: 18px;
+        width: 100%;
+        height: 100%;
         stroke: ${isBookmarked
           ? theme.colors.primary200
           : theme.colors.neutral300};
@@ -24,6 +26,16 @@ export const Container = styled.div<ContainerProps>`
       color: ${isBookmarked
         ? theme.colors.neutral900
         : theme.colors.neutral300};
+    }
+
+    ${theme.media.desktop} {
+      button {
+        width: 24px;
+        height: 24px;
+      }
+      span {
+        ${theme.typo.label.lg};
+      }
     }
   `};
 `;

@@ -11,6 +11,10 @@ export const ImageNameGroup = styled.div`
   ${({ theme }) => css`
     ${theme.flex.row()};
     gap: 4px;
+
+    ${theme.media.desktop} {
+      gap: 7.31px;
+    }
   `};
 `;
 
@@ -24,6 +28,11 @@ export const Figure = styled.figure`
     img {
       border-radius: 50%;
     }
+
+    ${theme.media.desktop} {
+      width: 24px;
+      height: 24px;
+    }
   `};
 `;
 
@@ -31,6 +40,10 @@ export const Name = styled.span`
   ${({ theme }) => css`
     ${theme.typo.label.md};
     color: ${theme.colors.neutral300};
+
+    ${theme.media.desktop} {
+      ${theme.typo.label.lg};
+    }
   `};
 `;
 
@@ -38,5 +51,9 @@ export const LikeBookmarkGroup = styled.div`
   ${({ theme }) => css`
     ${theme.flex.row()};
     gap: 8px;
+
+    ${theme.media.desktop} {
+      gap: 14.62px;
+    }
   `};
 `;
