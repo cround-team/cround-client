@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
+import { useClickOutside } from "@/hooks";
 import { Button } from "../../button";
-import * as S from "./styled";
 import Modal from "../Modal";
+import * as S from "./styled";
 
 type DeleteModalProps = {
   isMounted: boolean;
@@ -19,19 +20,7 @@ export default function DeleteModal({
 }: DeleteModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside: EventListener = (e: Event) => {
-    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-      onClose();
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+  useClickOutside(modalRef, onClose);
 
   return (
     <Modal isMounted={isMounted}>

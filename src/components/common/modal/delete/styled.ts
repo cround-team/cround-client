@@ -8,7 +8,7 @@ export const Container = styled.div`
     transform: translate(50%, 0%);
     z-index: ${theme.zIndex.modal};
     ${theme.flex.col()};
-    width: 74.44%;
+    width: 268px;
     padding: 16px 20px;
     background-color: ${theme.colors.white};
     border-radius: ${theme.radius.md};
@@ -23,6 +23,20 @@ export const Container = styled.div`
       ${theme.typo.body.md};
       color: ${theme.colors.neutral700};
     }
+
+    ${theme.media.desktop} {
+      width: 400px;
+      padding: 24px 46px;
+
+      h3 {
+        margin-bottom: 16px;
+        ${theme.typo.title.lg};
+      }
+      p {
+        margin-bottom: 32px;
+        ${theme.typo.body.lg};
+      }
+    }
   `};
 `;
 
@@ -31,5 +45,9 @@ export const ButtonWrapper = styled.div`
     ${theme.flex.row()};
     gap: 8px;
     width: 100%;
+
+    ${theme.media.desktop} {
+      gap: 10px;
+    }
   `};
 `;
