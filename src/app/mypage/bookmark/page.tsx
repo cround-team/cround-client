@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import { useBookmarkList } from "@/hooks";
 import { ContentList, SelectTabs, ShortsList } from "@/components/common";
-
 import * as S from "./styled";
 
 const TABS = ["숏클래스", "콘텐츠"];
