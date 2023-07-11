@@ -11,7 +11,6 @@ export default function MainContainer() {
     searched,
     getLatestCreatorListProps,
     getInterestCreatorListProps,
-    getRandomCreatorListProps,
     getCreatorListProps,
     getShortListProps,
     getContentListProps,
@@ -28,7 +27,6 @@ export default function MainContainer() {
         <InitMainContainer
           getLatestCreatorListProps={getLatestCreatorListProps}
           getInterestCreatorListProps={getInterestCreatorListProps}
-          getRandomCreatorListProps={getRandomCreatorListProps}
           getShortListProps={getShortListProps}
           getContentListProps={getContentListProps}
         />

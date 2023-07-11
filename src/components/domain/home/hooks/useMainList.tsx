@@ -13,7 +13,6 @@ import { useSearchKeyword } from "@/hooks";
 type CustomCreators = {
   latest: CreatorCardData[];
   interest: CreatorCardData[];
-  random: CreatorCardData[];
 };
 
 const INITIAL_CREATORS = [
@@ -30,7 +29,6 @@ const INITIAL_CREATORS = [
 const INITIAL_CUSTOM_CREATORS = {
   latest: INITIAL_CREATORS,
   interest: INITIAL_CREATORS,
-  random: INITIAL_CREATORS,
 };
 
 const INITIAL_CONTENTS = [
@@ -79,13 +77,12 @@ export default function useMainList() {
 
   const fetchCustomCreatorList = async () => {
     try {
-      const params = { size: 4 };
+      const params = { size: 12 };
       const response = await creatorsCustomApi(params);
 
       setCustomCreators((draft) => {
         draft.latest = response.data.latestCreators;
         draft.interest = response.data.interestCreators;
-        draft.random = response.data.randomCreators;
       });
     } catch (error) {
       console.error(error);
@@ -95,7 +92,7 @@ export default function useMainList() {
   const fetchCreatorList = async () => {
     try {
       const params = {
-        size: 4,
+        size: 12,
         keyword: searchKeyword,
       };
       const response = await creatorsApi(params);
@@ -110,7 +107,7 @@ export default function useMainList() {
   const fetchContentList = async () => {
     try {
       const params = {
-        size: 4,
+        size: 6,
         keyword: searchKeyword,
       };
       const response = await contentsApi(params);
@@ -125,7 +122,7 @@ export default function useMainList() {
   const fetchShortList = async () => {
     try {
       const params = {
-        size: 4,
+        size: 6,
         keyword: searchKeyword,
       };
       const response = await shortsApi(params);
@@ -151,11 +148,6 @@ export default function useMainList() {
 
   const getInterestCreatorListProps = ({ ...otherProps } = {}) => ({
     data: customCreators.interest,
-    ...otherProps,
-  });
-
-  const getRandomCreatorListProps = ({ ...otherProps } = {}) => ({
-    data: customCreators.random,
     ...otherProps,
   });
 
@@ -186,7 +178,6 @@ export default function useMainList() {
     searched,
     getLatestCreatorListProps,
     getInterestCreatorListProps,
-    getRandomCreatorListProps,
     getCreatorListProps,
     getShortListProps,
     getContentListProps,

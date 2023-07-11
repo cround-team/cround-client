@@ -18,9 +18,9 @@ const BREAK_POINTS = {
     slidesPerView: 7,
     spaceBetween: 32,
   },
-  800: {
-    slidesPerView: 10,
-    spaceBetween: 42,
+  768: {
+    slidesPerView: 7,
+    spaceBetween: 24,
   },
   1200: {
     slidesPerView: 12,

@@ -7,7 +7,6 @@ export const Container = styled.div`
 
     ${theme.media.desktop} {
       gap: 48px;
-      margin-top: 32px;
     }
   `};
 `;
@@ -17,6 +16,10 @@ export const ListWrapper = styled.div`
     ${theme.flex.col("center", "flex-start")};
     gap: 8px;
     width: 100%;
+
+    ${theme.media.tablet} {
+      gap: 24px;
+    }
 
     ${theme.media.desktop} {
       gap: 32px;

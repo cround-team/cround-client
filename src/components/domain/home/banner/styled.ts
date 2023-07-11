@@ -59,6 +59,10 @@ export const Wrapper = styled.div`
       height: 260px;
     }
 
+    ${theme.media.tablet} {
+      height: 240px;
+    }
+
     @media screen and (min-width: 900px) {
       height: 300px;
     }
@@ -80,8 +84,14 @@ export const TextWrapper = styled.div`
       bottom: 79px;
     }
 
+    ${theme.media.tablet} {
+      bottom: 74px;
+      left: 24px;
+    }
+
     @media screen and (min-width: 900px) {
       bottom: 74px;
+      left: 20px;
     }
 
     ${theme.media.desktop} {
@@ -108,6 +118,11 @@ export const Title = styled.h2`
     @media screen and (min-width: 600px) {
       margin-bottom: 8px;
       ${theme.typo.head.sm};
+    }
+
+    ${theme.media.tablet} {
+      margin-bottom: 4px;
+      ${theme.typo.title.lg};
     }
 
     @media screen and (min-width: 900px) {
@@ -138,6 +153,10 @@ export const Sub = styled.p`
 
     @media screen and (min-width: 600px) {
       ${theme.typo.body.md};
+    }
+
+    ${theme.media.tablet} {
+      ${theme.typo.body.sm};
     }
 
     @media screen and (min-width: 900px) {
