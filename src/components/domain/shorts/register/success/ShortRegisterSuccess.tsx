@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 import successImg from "public/images/success/short-register-success.png";
-import * as S from "./styled";
 import { Button } from "@/components/common";
 import { media } from "@/styles/themes/foundations";
+import * as S from "./styled";
 
 type ShortRegisterSuccessProps = {
   handleGoMainPage: () => void;

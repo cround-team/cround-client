@@ -7,31 +7,35 @@ export const Thumbnail = styled.div`
     ${theme.flex.col("center", "flex-start")};
     gap: 16px;
     margin-bottom: 32px;
+
+    ${theme.media.desktop} {
+      margin-bottom: 40px;
+    }
   `};
 `;
 
 export const MarginBottom = css`
   ${({ theme }) => css`
     margin-bottom: 213px;
+
+    ${theme.media.desktop} {
+      margin-bottom: 40px;
+    }
   `};
 `;
 
 export const ButtonWrapper = styled.div`
   ${({ theme }) => css`
-    ${theme.flex.row()};
+    ${theme.flex.row("flex-end")};
     gap: 8px;
     width: 100%;
   `};
 `;
 
 export const PrevButton = css`
-  ${({ theme }) => css`
-    width: 82px;
-  `};
+  width: 82px;
 `;
 
 export const NextButton = css`
-  ${({ theme }) => css`
-    width: 230px;
-  `};
+  width: 230px;
 `;

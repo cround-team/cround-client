@@ -1,9 +1,10 @@
-import { UploadCloudIcon, XClose2Icon } from "@/assets/icons";
-import Button from "@/components/common/button/base/Button";
-import FileInput from "@/components/common/input/file/FileInput";
-import * as S from "./styled";
 import Image from "next/image";
+
+import { UploadCloudIcon, XClose2Icon } from "@/assets/icons";
+import { Button, FileInput } from "@/components/common";
 import { media } from "@/styles/themes/foundations";
+import * as S from "./styled";
+import { useDeviceType } from "@/hooks";
 
 type ImageUploadBoxProps = {
   fileRef: React.RefObject<HTMLInputElement>;
@@ -16,6 +17,8 @@ export default function ImageUploadBox({
   previewImage,
   onFileChange,
 }: ImageUploadBoxProps) {
+  const { isDesktop } = useDeviceType();
+
   const handleOpenFileDialog = () => {
     if (fileRef) {
       fileRef.current?.click();
@@ -52,7 +55,7 @@ export default function ImageUploadBox({
         <S.ButtonWrapper>
           <Button
             type="button"
-            size="32"
+            size={isDesktop ? "48" : "32"}
             label="이미지 선택"
             variant="primary"
             onClick={() => handleOpenFileDialog()}

@@ -52,17 +52,19 @@ export default function ShortCard({
   return (
     <S.LinkCard href={`${PATH.SHORTS.DETAIL}/${shortsId}`}>
       <S.Article>
-        <S.Figure>
-          <Image
-            src={thumbnailUrl}
-            fill={true}
-            alt="profile"
-            sizes={media.images.sizes}
-            style={{ objectFit: "cover" }}
-            priority
-            // "fill" | Globals | "contain" | "cover" | "none" | "scale-down"
-          />
-        </S.Figure>
+        {thumbnailUrl && (
+          <S.Figure>
+            <Image
+              src={thumbnailUrl}
+              fill={true}
+              alt="profile"
+              sizes={media.images.sizes}
+              style={{ objectFit: "cover" }}
+              priority
+              // "fill" | Globals | "contain" | "cover" | "none" | "scale-down"
+            />
+          </S.Figure>
+        )}
         <S.InfoGroup>
           <S.TitleGroup>
             <span>{platformType}</span>
