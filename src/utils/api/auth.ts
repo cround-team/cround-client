@@ -6,7 +6,7 @@ type SignupBody = {
   email: string;
   password: string;
   confirmPassword: string;
-  interestPlatform: any;
+  interestPlatforms: string[];
 };
 
 type EmailDupCheckBody = {

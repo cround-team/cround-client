@@ -6,8 +6,14 @@ export const creatorEditApi = async (body: any) => {
   return response;
 };
 
+export const menTeeInfoApi = async () => {
+  const response = await apiInstance.get("/api/members/me");
+
+  return response;
+};
+
 export const menteeEditApi = async (body: any) => {
-  const response = await apiInstance.patch("api/members/me", body);
+  const response = await apiInstance.patch("/api/members/me", body);
 
   return response;
 };
