@@ -4,6 +4,10 @@ export const Form = styled.form`
   ${({ theme }) => css`
     ${theme.flex.col()};
     gap: 32px;
+
+    ${theme.media.desktop} {
+      gap: 40px;
+    }
   `};
 `;
 
@@ -17,16 +21,29 @@ export const InputWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   ${({ theme }) => css`
-    ${theme.flex.row()};
-    gap: 8px;
+    display: grid;
+    grid-template-columns: "25.63% 71.88%";
     width: 100%;
+    gap: 8px;
+
+    ${theme.media.desktop} {
+      ${theme.flex.row("flex-end")};
+    }
   `};
 `;
 
 export const PrevButton = css`
-  width: 82px;
+  ${({ theme }) => css`
+    ${theme.media.desktop} {
+      max-width: 82px;
+    }
+  `};
 `;
 
 export const NextButton = css`
-  width: 230px;
+  ${({ theme }) => css`
+    ${theme.media.desktop} {
+      max-width: 230px;
+    }
+  `};
 `;
