@@ -58,7 +58,7 @@ export default function useSignupForm() {
         email,
         password,
         confirmPassword,
-        interestPlatform: platforms,
+        interestPlatforms: platforms,
       };
 
       const response = await signupApi(body);

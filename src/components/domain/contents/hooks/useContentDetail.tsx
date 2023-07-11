@@ -22,7 +22,7 @@ const INITIAL_STATE = {
   bookmarksCount: 0,
   liked: false,
   bookmarked: false,
-  owned: true,
+  authored: true,
 };
 
 export default function useContentDetail({ id }: UseContentDetailProps) {
@@ -30,7 +30,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [data, setData] = useImmer<ContentCardData>(INITIAL_STATE);
   const {
-    owned,
+    authored,
     author,
     boardId,
     content,
@@ -48,8 +48,8 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // fetchDetailData();
-    testDetailData();
+    fetchDetailData();
+    // testDetailData();
   }, []);
 
   const fetchDetailData = async () => {
@@ -76,7 +76,6 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
       authored: false,
       liked: false,
       bookmarked: false,
-      owned: true,
     };
     setData(response);
   };
@@ -141,7 +140,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   };
 
   const getBaseInfoProps = ({ ...otherProps } = {}) => ({
-    isOwned: owned,
+    isOwned: authored,
     platformType,
     title,
     content,

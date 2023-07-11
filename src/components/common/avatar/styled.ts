@@ -12,6 +12,11 @@ export const Figure = styled.figure`
     img {
       border-radius: 50%;
     }
+    ${theme.media.desktop} {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 0px;
+    }
   `};
 `;
 

@@ -14,6 +14,7 @@ export const Article = styled.article`
     ${theme.flex.col("flex-start")};
     gap: 16px;
     width: 100%;
+    max-width: 585px;
     height: 100%;
     max-height: 333.5px;
     padding-bottom: 16px;
@@ -23,7 +24,6 @@ export const Article = styled.article`
 
     ${theme.media.desktop} {
       gap: 29.23px;
-      width: 585px;
       max-height: 100%;
       padding-bottom: 29.23px;
       border-radius: ${theme.radius.lg};
@@ -41,6 +41,14 @@ export const Figure = styled.figure`
 
     img {
       border-radius: ${theme.radius.md} ${theme.radius.md} 0px 0px;
+    }
+
+    ${theme.media.tablet} {
+      aspect-ratio: 350/129.24;
+    }
+
+    ${theme.media.tablet} {
+      aspect-ratio: 585/215.73;
     }
   `};
 `;
@@ -74,6 +82,18 @@ export const TitleGroup = styled.div`
       color: ${theme.colors.neutral900};
       ${theme.text.skip(2)};
     }
+
+    ${theme.media.tablet} {
+      span {
+        ${theme.typo.body.md};
+      }
+
+      h3 {
+        height: 48px;
+        ${theme.typo.title.md};
+      }
+    }
+
     ${theme.media.desktop} {
       gap: 7.31px;
 

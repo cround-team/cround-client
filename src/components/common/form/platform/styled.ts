@@ -13,7 +13,7 @@ export const Form = styled.form`
 
 export const PlatformList = styled.ul`
   ${({ theme }) => css`
-    ${theme.flex.row("flex-start")};
+    ${theme.flex.row("space-between")};
     flex-wrap: wrap;
     row-gap: 8px;
     column-gap: 32.5px;

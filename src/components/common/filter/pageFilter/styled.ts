@@ -24,7 +24,7 @@ export const FilterButton = styled.button`
       stroke: ${theme.colors.neutral900};
     }
 
-    ${theme.media.desktop} {
+    ${theme.media.tablet} {
       width: 32px;
       height: 32px;
     }

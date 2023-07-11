@@ -9,8 +9,14 @@ export const Article = styled.article`
     border: 1px solid ${theme.colors.neutral50};
     border-radius: ${theme.radius.md};
     aspect-ratio: 152/228;
-    max-width: 277.5px;
-    max-height: 374.49px;
+    /* max-width: 277.5px;
+    max-height: 374.49px; */
+
+    ${theme.media.tablet} {
+      aspect-ratio: 227/341;
+      gap: 16px;
+      padding: 42.5px 26.5px;
+    }
 
     ${theme.media.desktop} {
       gap: 14.63px;
@@ -28,6 +34,14 @@ export const Figure = styled.figure`
     border-radius: 50%;
     width: 61.02%;
     aspect-ratio: 1/1;
+
+    ${theme.media.tablet} {
+      width: 52.46%;
+    }
+
+    ${theme.media.desktop} {
+      width: 60%;
+    }
 
     img {
       border-radius: 50%;
@@ -50,6 +64,16 @@ export const TitleWrapper = styled.div`
       color: ${theme.colors.neutral900};
     }
 
+    ${theme.media.tablet} {
+      h3 {
+        ${theme.typo.title.md};
+      }
+
+      span {
+        ${theme.typo.body.md};
+      }
+    }
+
     ${theme.media.desktop} {
       gap: 7.32px;
       h3 {
@@ -68,6 +92,10 @@ export const Desc = styled.p`
     color: ${theme.colors.neutral700};
     ${theme.text.skip(3)};
     text-align: center;
+
+    ${theme.media.tablet} {
+      ${theme.typo.body.md};
+    }
 
     ${theme.media.desktop} {
       ${theme.typo.body.lg};

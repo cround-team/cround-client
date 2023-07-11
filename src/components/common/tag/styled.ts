@@ -15,5 +15,9 @@ export const Tag = styled.span`
     border-radius: 3.5px;
     ${theme.typo.body.sm};
     color: ${theme.colors.neutral500};
+
+    ${theme.media.tablet} {
+      ${theme.typo.body.md};
+    }
   `};
 `;

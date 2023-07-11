@@ -9,10 +9,14 @@ export const Container = styled.div`
     transform: translate(50%, -50%);
     z-index: ${theme.zIndex.modal};
     ${theme.flex.col()};
-    width: 88.89%;
+    width: 320px;
     padding: 16px;
     background-color: ${theme.colors.white};
     border-radius: ${theme.radius.md};
+
+    ${theme.media.desktop} {
+      width: 590px;
+    }
   `};
 `;
 
@@ -43,6 +47,15 @@ export const Head = styled.div`
       ${theme.typo.label.sm};
       color: ${theme.colors.neutral700};
     }
+
+    ${theme.media.desktop} {
+      h3 {
+        ${theme.typo.title.md};
+      }
+      p {
+        ${theme.typo.label.md};
+      }
+    }
   `};
 `;
 
@@ -51,6 +64,10 @@ export const Form = styled.form`
     ${theme.flex.col()};
     width: 100%;
     gap: 16px;
+
+    ${theme.media.desktop} {
+      gap: 24px;
+    }
   `};
 `;
 
@@ -67,6 +84,13 @@ export const Rating = styled.div`
       svg {
         width: 100%;
         height: 100%;
+      }
+    }
+
+    ${theme.media.desktop} {
+      button {
+        width: 24px;
+        height: 24px;
       }
     }
   `};

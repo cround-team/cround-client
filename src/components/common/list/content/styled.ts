@@ -19,6 +19,12 @@ export const Wrapper = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     width: 100%;
 
+    ${theme.media.tablet} {
+      row-gap: 24px;
+      column-gap: 19px;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+
     ${theme.media.desktop} {
       row-gap: 32px;
       column-gap: 30px;

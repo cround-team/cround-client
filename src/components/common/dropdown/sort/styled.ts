@@ -12,6 +12,10 @@ export const CurOptionBtn = styled.button`
       stroke: ${theme.colors.neutral900};
     }
 
+    ${theme.media.tablet} {
+      ${theme.typo.button.lg};
+    }
+
     ${theme.media.desktop} {
       ${theme.typo.button.xl};
     }

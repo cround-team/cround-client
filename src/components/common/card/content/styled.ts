@@ -13,14 +13,13 @@ export const Article = styled.article`
   ${({ theme }) => css`
     width: 100%;
     height: 100%;
-    /* max-width: 585px; */
+    max-width: 585px;
     max-height: 190.5px;
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.neutral50};
     border-radius: ${theme.radius.md};
 
     ${theme.media.desktop} {
-      width: 585px;
       border-radius: 14px;
     }
   `};
@@ -59,6 +58,19 @@ export const TitleGroup = styled.div`
       color: ${theme.colors.neutral900};
       ${theme.text.skip(2)};
     }
+
+    ${theme.media.tablet} {
+      span {
+        ${theme.typo.body.md};
+      }
+      h3 {
+        ${theme.typo.title.md};
+      }
+      p {
+        ${theme.typo.body.md};
+      }
+    }
+
     ${theme.media.desktop} {
       gap: 4.75px;
 

@@ -24,7 +24,7 @@ const INITIAL_STATE = {
   bookmarksCount: 0,
   liked: false,
   bookmarked: false,
-  owned: true,
+  authored: true,
 };
 
 export default function useShortDetail({ id }: UseShortDetailProps) {
@@ -32,7 +32,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [data, setData] = useImmer<ShortCardData>(INITIAL_STATE);
   const {
-    owned,
+    authored,
     shortsId,
     title,
     content,
@@ -52,15 +52,17 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
 
   useEffect(() => {
     fetchDetailData();
-    testDetailData();
   }, []);
 
   const fetchDetailData = async () => {
     try {
       const response = await shortDetailApi(id);
+
+      setData(response.data);
       setData((draft) => {
-        draft = response.data;
-        draft.shortFormUrl = getVideoId(response.data.shortFormUrl);
+        draft.shortFormUrl = getVideoId(
+          `${response.data.shortFormUrl}/watch?v=eqqhuFA949k`
+        );
       });
       console.log(response.data);
     } catch (error) {
@@ -82,7 +84,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
       bookmarksCount: 200,
       liked: false,
       bookmarked: false,
-      owned: true,
+      authored: true,
     };
     setData(response);
   };
@@ -145,7 +147,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   };
 
   const getBaseInfoProps = ({ ...otherProps } = {}) => ({
-    isOwned: owned,
+    isOwned: authored,
     platformType,
     title,
     content,

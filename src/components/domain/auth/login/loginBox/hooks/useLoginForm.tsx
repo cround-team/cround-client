@@ -72,18 +72,27 @@ export default function useLoginForm() {
       };
       const res = await loginApi(body);
 
+      console.log("res", res);
+
       if (res.status === 200) {
         const accessToken = res.data.accessToken;
         const roleName = conversionUserType(res.data.roleName);
         LocalStorage.setItem("accessToken", accessToken);
         SessionStorage.setItem("roleName", roleName);
+        SessionStorage.setItem("creatorId", res.data.creatorId);
+        SessionStorage.setItem("profileImage", res.data.profileImage);
+        SessionStorage.setItem(
+          "socialLogin",
+          res.data.socialLogin ? "true" : "false"
+        );
+        SessionStorage.setItem("nickname", res.data.nickname);
 
         const userInfo = {
-          name: "코코",
-          type: roleName,
-          profileImage: "",
-          connectType: "이메일 연동",
-          creatorId: 0,
+          nickname: res.data.nickname,
+          roleName: roleName,
+          profileImage: res.data.profileImage,
+          socialLogin: res.data.socialLogin,
+          creatorId: res.data.creatorId,
         };
         onSetUserInfo(userInfo);
         router.push(PATH.ROOT);
