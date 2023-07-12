@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ChevronDownIcon } from "@/assets/icons/arrow";
 import ListItem from "./listItem/ListItem";
 import * as S from "./styled";
+import { conversionPlatform } from "@/utils/conversion";
 
 type PlatformDropdownProps = {
   platforms: string[];
@@ -38,7 +39,7 @@ export default function PlatformDropdown({
               key={platform}
               item={platform}
               name="platformHeadType"
-              isChecked={selected === platform}
+              isChecked={selected === conversionPlatform(platform)}
               onChange={onChange}
             />
           ))}

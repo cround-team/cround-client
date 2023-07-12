@@ -16,12 +16,20 @@ export const Label = styled.label`
   ${({ theme }) => css`
     ${theme.flex.row("space-between")};
     width: 100%;
-    padding: 12px 0 12px 0;
+    padding: 12px 0;
     cursor: pointer;
 
     span {
       ${theme.typo.body.md};
       color: ${theme.colors.neutral900};
+    }
+
+    ${theme.media.desktop} {
+      padding: 16px 0;
+
+      span {
+        ${theme.typo.body.lg};
+      }
     }
   `};
 `;
