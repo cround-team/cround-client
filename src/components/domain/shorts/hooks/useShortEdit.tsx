@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
+import { useRouter } from "next/navigation";
 
 import { shortDetailApi, shortEditApi } from "@/utils/api";
 import { hasKey } from "@/utils/form";
-import { useRouter } from "next/navigation";
 import { PATH } from "@/constants";
 import { useUploadImage } from "@/hooks";
 
@@ -38,8 +38,7 @@ export default function useShortEdit({ id }: UseShortEditProps) {
     useUploadImage();
 
   useEffect(() => {
-    // fetchDetailData();
-    testDetailData();
+    fetchDetailData();
   }, []);
 
   useEffect(() => {
@@ -59,6 +58,7 @@ export default function useShortEdit({ id }: UseShortEditProps) {
   const fetchDetailData = async () => {
     try {
       const response = await shortDetailApi(id);
+      console.log(response);
       setForm((draft) => {
         draft.platformType = response.data.platformType;
         draft.title = response.data.title;
@@ -68,16 +68,6 @@ export default function useShortEdit({ id }: UseShortEditProps) {
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const testDetailData = async () => {
-    const response = {
-      platformType: "tiktok",
-      title: "기존 제목입니다",
-      content: "기존 내용입니다",
-      thumbnailUrl: "/images/profile.png",
-    };
-    setForm(response);
   };
 
   const handleChangeForm = (
@@ -108,43 +98,30 @@ export default function useShortEdit({ id }: UseShortEditProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // try {
-    //   const formData = new FormData();
-
-    //   if (thumbnail) {
-    //     formData.append("thumbnailImage", thumbnail);
-    //   }
-    //   const shortFormSaveRequest = {
-    //     title,
-    //     content,
-    //     platformType,
-    //   };
-    //   formData.append(
-    //     "shortFormSaveRequest",
-    //     new Blob([JSON.stringify(shortFormSaveRequest)], {
-    //       type: "application/json",
-    //     })
-    //   );
-    //   const res = await shortEditApi(id, formData);
-    //   console.log("res", "res");
-    //   if (res.status === 200) {
-    //     router.push(`${PATH.SHORTS.DETAIL}/${id}`);
-    //   }
-    // } catch (error: any) {
-    //   console.log(error);
-    // }
-
     try {
-      const body = {
-        borderId: id,
-        platformType,
+      const formData = new FormData();
+
+      if (thumbnail) {
+        formData.append("thumbnailImage", thumbnail);
+      }
+      const shortFormUpdateRequest = {
         title,
         content,
-        thumbnail,
+        platformType,
       };
-      console.log(body);
-    } catch (error) {
-      console.error(error);
+      formData.append(
+        "shortFormUpdateRequest",
+        new Blob([JSON.stringify(shortFormUpdateRequest)], {
+          type: "application/json",
+        })
+      );
+      const res = await shortEditApi(id, formData);
+      console.log("res", "res");
+      if (res.status === 200) {
+        router.push(`${PATH.SHORTS.DETAIL}/${id}`);
+      }
+    } catch (error: any) {
+      console.log(error);
     }
   };
 
