@@ -18,3 +18,4 @@ export { default as Portal } from "./portal/Portal";
 export { default as CustomSwiper } from "./swiper/CustomSwiper";
 export { default as Tag } from "./tag/Tag";
 export { default as TextArea } from "./textarea/TextArea";
+export { default as ScrollToTop } from "./scrollToTop/ScrollToTop";
