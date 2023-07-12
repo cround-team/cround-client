@@ -108,3 +108,13 @@ export const AddInput = css`
     }
   `};
 `;
+
+export const TextArea = css`
+  ${({ theme }) => css`
+    ${theme.media.desktop} {
+      textarea {
+        height: 122px;
+      }
+    }
+  `};
+`;

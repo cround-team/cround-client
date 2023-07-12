@@ -53,6 +53,7 @@ export default function CreatorEditPage() {
           onChange={handleChangeForm}
         />
         <TextArea
+          css={S.TextArea}
           label="크리에이터 소개글"
           id="description"
           name="description"
