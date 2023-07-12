@@ -6,8 +6,8 @@ import "swiper/css";
 
 import { PLATFORMS } from "@/constants/platforms";
 import CustomSwiper from "@/components/common/swiper/CustomSwiper";
-import * as S from "./styled";
 import { media } from "@/styles/themes/foundations";
+import * as S from "./styled";
 
 const BREAK_POINTS = {
   360: {
@@ -20,7 +20,7 @@ const BREAK_POINTS = {
   },
   768: {
     slidesPerView: 7,
-    spaceBetween: 24,
+    spaceBetween: 60,
   },
   1200: {
     slidesPerView: 12,

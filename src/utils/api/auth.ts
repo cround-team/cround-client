@@ -1,3 +1,4 @@
+import { LocalStorage, SessionStorage } from "@/constants";
 import { apiInstance } from "./server";
 
 type SignupBody = {
@@ -50,6 +51,12 @@ export const loginApi = async (body: LoginBody) => {
   const response = await apiInstance.post("/auth/login", body);
 
   return response;
+};
+
+export const logoutApi = () => {
+  LocalStorage.removeItem("accessToken");
+  SessionStorage.initUser();
+  window.location.replace("/auth");
 };
 
 export const kakaoSocialApi = async (params?: Record<string, any>) => {

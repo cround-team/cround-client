@@ -60,9 +60,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
 
       setData(response.data);
       setData((draft) => {
-        draft.shortFormUrl = getVideoId(
-          `${response.data.shortFormUrl}/watch?v=eqqhuFA949k`
-        );
+        draft.shortFormUrl = getVideoId(response.data.shortFormUrl);
       });
       console.log(response.data);
     } catch (error) {
