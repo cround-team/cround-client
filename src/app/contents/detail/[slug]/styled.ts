@@ -2,9 +2,16 @@ import styled, { css } from "styled-components";
 
 export const Section = styled.section`
   ${({ theme }) => css`
-    margin-top: 16px;
-    margin-bottom: 64px;
+    width: 100%;
+    max-width: 830px;
+    margin: 16px auto 64px auto;
     padding: 0 20px;
+
+    ${theme.media.desktop} {
+      max-width: 790px;
+      margin: 40px auto 80px auto;
+      padding: 0;
+    }
   `};
 `;
 export const Head = styled.div`
@@ -28,6 +35,17 @@ export const Head = styled.div`
         stroke: ${theme.colors.neutral900};
       }
     }
+
+    ${theme.media.desktop} {
+      span {
+        ${theme.typo.body.lg};
+      }
+
+      button {
+        width: 24px;
+        height: 24px;
+      }
+    }
   `};
 `;
 
@@ -48,6 +66,18 @@ export const TextWrapper = styled.div`
       margin-bottom: 24px;
       ${theme.typo.body.md};
       color: ${theme.colors.neutral900};
+    }
+
+    ${theme.media.desktop} {
+      h3 {
+        margin-bottom: 24px;
+        ${theme.typo.title.lg};
+      }
+
+      p {
+        margin-bottom: 32px;
+        ${theme.typo.body.lg};
+      }
     }
   `};
 `;
