@@ -34,14 +34,23 @@ export default function MyPageSidebar({
     };
   }, []);
 
+  const renderSidebar = () => {
+    switch (user.roleName) {
+      case "member":
+        return <MemberSidebar />;
+
+      case "creator":
+        return <CreatorSidebar />;
+
+      default:
+        return <NonMemberSidebar />;
+    }
+  };
+
   return (
     <Portal elementId="sidebar" isMounted={isMounted}>
       <Dim>
-        <div ref={sidebarRef}>
-          {user.type === "nonMember" && <NonMemberSidebar />}
-          {user.type === "member" && <MemberSidebar />}
-          {user.type === "creator" && <CreatorSidebar />}
-        </div>
+        <div ref={sidebarRef}>{renderSidebar()}</div>
       </Dim>
     </Portal>
   );

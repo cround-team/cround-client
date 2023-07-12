@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PATH } from "@/constants";
 import * as S from "./styled";
 import { useAuthContext } from "@/context/AuthContext";
+import { logoutApi } from "@/utils/api";
 
 const LIST = [
   {
@@ -33,8 +34,8 @@ export default function MemberSidebar() {
   return (
     <S.Container>
       <S.Member>
-        <S.Name>{user.name}</S.Name>
-        <S.Connect>{user.connectType}</S.Connect>
+        <S.Name>{user.nickname}</S.Name>
+        <S.Connect>{user.socialLogin ? "소셜 연동" : "이메일 연동"}</S.Connect>
       </S.Member>
       {/*  리스트 부분 */}
       <S.List>
@@ -46,7 +47,7 @@ export default function MemberSidebar() {
       </S.List>
       <S.List>
         <li>
-          <button>로그아웃</button>
+          <button onClick={() => logoutApi()}>로그아웃</button>
         </li>
       </S.List>
     </S.Container>

@@ -78,6 +78,11 @@ export const Figure = styled.figure`
     position: relative;
     width: 40px;
     height: 40px;
+    border-radius: 50%;
+
+    img {
+      border-radius: 50%;
+    }
   `};
 `;
 
