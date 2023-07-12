@@ -10,6 +10,7 @@ import {
 import useContentEdit from "@/components/domain/contents/hooks/useContentEdit";
 import { PLATFORMS } from "@/constants";
 import * as S from "./styled";
+import { conversionEnPlatform } from "@/utils/conversion";
 
 type ContentEditPageProps = {
   params: {
@@ -52,10 +53,16 @@ export default function ContentEditPage({ params }: ContentEditPageProps) {
           <S.PlatformList>
             {PLATFORMS.map((el) => (
               <PlatformRadio
-                isChecked={form.platformType.includes(el.id) ? true : false}
+                isChecked={
+                  conversionEnPlatform(form.platformType).includes(
+                    el.id.toUpperCase()
+                  )
+                    ? true
+                    : false
+                }
                 key={el.id}
                 src={el.src}
-                value={el.id}
+                value={el.id.toUpperCase()}
                 title={el.title}
                 onChange={handleChangePlatform}
               />
