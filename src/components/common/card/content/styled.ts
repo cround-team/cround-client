@@ -27,9 +27,10 @@ export const Article = styled.article`
 
 export const InfoGroup = styled.div`
   ${({ theme }) => css`
-    ${theme.flex.col("center", "flex-start")};
+    ${theme.flex.col("space-between", "flex-start")};
     gap: 16px;
     padding: 16px;
+    height: 100%;
 
     ${theme.media.desktop} {
       gap: 19px;
