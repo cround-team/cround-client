@@ -7,7 +7,6 @@ class SessionStorage {
     }
   }
 
-  // getItem 은 return 을 넣어줘야함! setItem, removeItem이랑 다르게 값을 보여주는녀석!
   static getItem(key: string) {
     if (typeof window !== "undefined") {
       return sessionStorage.getItem(key);
@@ -19,6 +18,16 @@ class SessionStorage {
   static removeItem(key: string) {
     if (typeof window !== "undefined") {
       sessionStorage.removeItem(key);
+    }
+  }
+
+  static initUser() {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("roleName", "nonMember");
+      sessionStorage.removeItem("creatorId");
+      sessionStorage.removeItem("socialLogin");
+      sessionStorage.removeItem("nickname");
+      sessionStorage.removeItem("profileImage");
     }
   }
 }
