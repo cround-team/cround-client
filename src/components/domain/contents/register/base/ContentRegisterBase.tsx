@@ -34,6 +34,7 @@ export default function ContentRegisterBase({
           onChange={handleChangeForm}
         />
         <TextArea
+          css={S.TextArea}
           id="description"
           name="description"
           placeholder="내용을 입력해 주세요"
@@ -44,6 +45,7 @@ export default function ContentRegisterBase({
       </S.InputWrapper>
       <Button
         isDisabled={isDisabledSubmit}
+        css={S.Button}
         label="다음"
         size="56"
         variant="primary"
