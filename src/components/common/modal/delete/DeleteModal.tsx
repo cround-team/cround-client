@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { useClickOutside } from "@/hooks";
+import { useClickOutside, useHiddenScroll } from "@/hooks";
 import { Button } from "../../button";
 import Modal from "../Modal";
 import * as S from "./styled";
@@ -21,6 +21,7 @@ export default function DeleteModal({
   const modalRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(modalRef, onClose);
+  useHiddenScroll(modalRef);
 
   return (
     <Modal isMounted={isMounted}>

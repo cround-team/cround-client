@@ -7,6 +7,7 @@ import ReactQuery from "./ReactQuery";
 import GlobalStyle from "@/styles/global";
 import { theme } from "@/styles/themes/theme";
 import { AuthContextProvider } from "@/context/AuthContext";
+import ScrollToTop from "@/components/common/scrollToTop/ScrollToTop";
 
 export default function AppProvider({ children }: PropsWithChildren) {
   if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
@@ -18,7 +19,9 @@ export default function AppProvider({ children }: PropsWithChildren) {
     <ReactQuery>
       <GlobalStyle />
       <AuthContextProvider>
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <ScrollToTop>{children}</ScrollToTop>
+        </ThemeProvider>
       </AuthContextProvider>
     </ReactQuery>
   );

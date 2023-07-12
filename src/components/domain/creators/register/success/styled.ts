@@ -40,10 +40,8 @@ export const Figure = styled.figure`
     height: 260px;
 
     ${theme.media.desktop} {
-      /* width: 590px;
-      height: 496px; */
-      width: 390px;
-      height: 300px;
+      width: 480px;
+      height: 403px;
       margin-bottom: 40px;
     }
   `};

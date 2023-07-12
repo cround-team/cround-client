@@ -11,7 +11,7 @@ export const Form = styled.form`
   `};
 `;
 
-export const PlatformList = styled.ul`
+export const PlatformList = styled.div`
   ${({ theme }) => css`
     ${theme.flex.row("space-between")};
     flex-wrap: wrap;
@@ -19,7 +19,8 @@ export const PlatformList = styled.ul`
     column-gap: 32.5px;
 
     ${theme.media.desktop} {
-      gap: 16px;
+      row-gap: 16px;
+      column-gap: 16px;
     }
   `};
 `;
