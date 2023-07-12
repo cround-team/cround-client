@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import successImg from "public/images/success/short-register-success.png";
-import successCreatorImg from "public/images/success/creator-register-success.png";
 import { Button } from "@/components/common";
 import { media } from "@/styles/themes/foundations";
 import { useDeviceType } from "@/hooks";
@@ -33,7 +32,7 @@ export default function ShortRegisterSuccess({
       )}
       <S.Figure>
         <Image
-          src={isDesktop ? successCreatorImg : successImg}
+          src={successImg}
           fill
           sizes={media.images.sizes}
           alt="Croods Standing"

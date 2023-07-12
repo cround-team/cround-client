@@ -39,7 +39,7 @@ export default function ShortRegisterUpload({
         size="md"
         id="url"
         name="url"
-        placeholder="url을 등록해 주세요"
+        placeholder="https://를 포함하여 입력해주세요"
         value={url}
         onChange={handleChangeForm}
       />

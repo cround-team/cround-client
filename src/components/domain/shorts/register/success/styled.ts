@@ -2,8 +2,10 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    ${theme.flex.col("cetner", "center")}
+    ${theme.flex.col("cetner", "flex-start")}
     width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
     text-align: left;
     h3 {
       margin-bottom: 4px;
@@ -18,6 +20,7 @@ export const Container = styled.div`
     }
 
     ${theme.media.desktop} {
+      max-width: 100%;
       h3 {
         ${theme.typo.head.sm};
       }
@@ -37,12 +40,10 @@ export const Figure = styled.figure`
     height: 260px;
 
     ${theme.media.desktop} {
-      width: 460px;
-      height: 366px;
+      align-self: center;
+      width: 480px;
+      height: 386px;
       margin-bottom: 40px;
-
-      width: 490px;
-      height: 396px;
     }
   `};
 `;
