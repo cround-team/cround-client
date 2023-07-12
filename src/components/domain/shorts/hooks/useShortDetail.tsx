@@ -133,12 +133,13 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   const handleGoEditPage = () => {
     setIsOpenDropdown(false);
     router.push(`${PATH.SHORTS.EDIT}/${id}`);
-    // 페이지 이동
   };
 
   const handleDeleteShort = async () => {
     try {
-      return await shortDeleteApi(id);
+      await shortDeleteApi(id);
+      setIsOpenDeleteModal(false);
+      router.replace("/");
     } catch (error) {
       console.error(error);
     }
@@ -173,6 +174,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   const getDropdownProps = ({ ...otherProps } = {}) => ({
     onGoEditPage: handleGoEditPage,
     onOpenDeleteModal: handleOpenDeleteModal,
+    onToggleDropdown: handleToggleDropdown,
     ...otherProps,
   });
 

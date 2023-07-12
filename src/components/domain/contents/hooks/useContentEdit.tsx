@@ -24,8 +24,7 @@ export default function useContentEdit({ id }: UseContentEditProps) {
   const isDisabledSubmit = !(platformType && title && content && isModified);
 
   useEffect(() => {
-    // fetchDetailData();
-    testDetailData();
+    fetchDetailData();
   }, []);
 
   const fetchDetailData = async () => {
@@ -39,15 +38,6 @@ export default function useContentEdit({ id }: UseContentEditProps) {
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const testDetailData = async () => {
-    const response = {
-      platformType: "tiktok",
-      title: "기존 제목입니다",
-      content: "기존 내용입니다",
-    };
-    setForm(response);
   };
 
   const handleChangeForm = (
@@ -75,23 +65,23 @@ export default function useContentEdit({ id }: UseContentEditProps) {
       });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       const body = {
-        borderId: id,
+        boardId: id,
         platformType,
         title,
         content,
       };
       console.log(body);
-      // const res = await contentEditApi(body);
+      const res = await contentEditApi(body);
 
-      // if (res.status === 200) {
-      //   console.log("200", res);
-      //   router.push(`${PATH.CONTENTS.DETAIL}/${id}`);
-      // }
+      if (res.status === 200) {
+        console.log("200", res);
+        router.push(`${PATH.CONTENTS.DETAIL}/${id}`);
+      }
     } catch (error) {
       console.error(error);
     }
