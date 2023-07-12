@@ -1,17 +1,18 @@
 "use client";
 
-import { usePanel } from "@/hooks";
+import { useDeviceType, usePanel } from "@/hooks";
 import {
   ContentList,
   ReviewList,
   SelectTabs,
   ShortsList,
 } from "@/components/common";
-import InformativeBubbles from "@/components/domain/creators/detail/InformativeBubbles/InformativeBubbles";
-import Introduce from "@/components/domain/creators/detail/introduce/Introduce";
-import Profile from "@/components/domain/creators/detail/profile/Profile";
+import InformativeBubbles from "@/components/domain/creators/detail/common/InformativeBubbles/InformativeBubbles";
 import useCreatorDetail from "@/components/domain/creators/hooks/useCreatorDetail";
+import MobileProfile from "@/components/domain/creators/detail/mobile/MobileProfile";
+import TabletProfile from "@/components/domain/creators/detail/tablet/TabletProfile";
 import * as S from "./styled";
+import DesktopProfile from "@/components/domain/creators/detail/desktop/DesktopProfile";
 
 type CreatorDetailPageProps = {
   params: {
@@ -25,18 +26,28 @@ export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
   const { selectedPanel, handleChangePanel } = usePanel(TABS[0]);
   const {
     getProfileProps,
-    getIntroduceProps,
     getShortListProps,
     getContentListProps,
     getReviewListProps,
     getBubblesProps,
   } = useCreatorDetail(params.slug);
+  const { isDesktop, isTablet } = useDeviceType();
+
+  const renderDeviceProfile = () => {
+    if (isTablet) {
+      return <TabletProfile {...getProfileProps()} />;
+    } else if (isDesktop) {
+      return <DesktopProfile {...getProfileProps()} />;
+    } else {
+      return <MobileProfile {...getProfileProps()} />;
+    }
+  };
 
   return (
     <S.Section>
-      <Profile {...getProfileProps()} />
-      <Introduce {...getIntroduceProps()} />
+      {renderDeviceProfile()}
       <SelectTabs
+        css={S.TabsStyles}
         tabs={TABS}
         selected={selectedPanel}
         onTabClick={handleChangePanel}
@@ -46,7 +57,7 @@ export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
       {selectedPanel === "리뷰" && (
         <ReviewList {...getReviewListProps()} creatorId={params.slug} />
       )}
-      <InformativeBubbles {...getBubblesProps()} />
+      {!isDesktop && <InformativeBubbles {...getBubblesProps()} />}
     </S.Section>
   );
 }

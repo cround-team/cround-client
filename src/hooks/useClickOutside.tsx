@@ -11,16 +11,10 @@ export default function useClickOutside(
       }
     };
 
-    const handleScroll = () => {
-      window.scrollTo(0, 0);
-    };
-
     document.addEventListener("click", handleClickOutside);
-    document.addEventListener("scroll", handleScroll);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
-      document.removeEventListener("scroll", handleScroll);
     };
   }, [ref, onClose]);
 }

@@ -12,4 +12,5 @@ export { default as useListFilter } from "./useListFilter";
 export { default as useSearchKeyword } from "./useSearchKeyword";
 export { default as usePanel } from "./usePanel";
 export { default as useClickOutside } from "./useClickOutside";
+export { default as useHiddenScroll } from "./useHiddenScroll";
 export { default as useModal } from "./useModal";
