@@ -28,11 +28,16 @@ export default function ScrollTopButton() {
       behavior: "smooth",
     });
   };
-  return (
-    isVisible && (
-      <S.Button onClick={handleScrollTotop}>
-        <ArrowNarrowTopIcon />
-      </S.Button>
-    )
-  );
+
+  if (!isVisible) {
+    return <></>;
+  } else {
+    return (
+      isVisible && (
+        <S.Button onClick={handleScrollTotop}>
+          <ArrowNarrowTopIcon />
+        </S.Button>
+      )
+    );
+  }
 }

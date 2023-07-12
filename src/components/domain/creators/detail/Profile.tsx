@@ -58,7 +58,10 @@ export default function Profile({
           <S.ProfileText>
             <S.Nickname>{creatorNickname}</S.Nickname>
             <S.PlatformThemeGroup>
-              <span>{conversionPlatform(activityPlatforms).join(", ")}</span>
+              {/* {conversionPlatform(activityPlatforms).map(platform => (
+              <span>{platform}</span>
+            ))}
+              <span>{conversionPlatform(activityPlatforms).join(", ")}</span> */}
               <span>{platformHeadTheme}</span>
             </S.PlatformThemeGroup>
           </S.ProfileText>

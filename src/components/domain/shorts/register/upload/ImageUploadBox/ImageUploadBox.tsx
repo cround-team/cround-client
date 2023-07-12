@@ -25,7 +25,7 @@ export default function ImageUploadBox({
     }
   };
 
-  const handleDeleteImage = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+  const handleDeleteImage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     alert("작업중입니다.");
   };
@@ -33,7 +33,7 @@ export default function ImageUploadBox({
   if (previewImage) {
     return (
       <S.Figure>
-        <button onClick={handleDeleteImage}>
+        <button onClick={(e) => handleDeleteImage(e)}>
           <XClose2Icon />
         </button>
         <Image

@@ -16,7 +16,7 @@ export default function BaseWrapper({
     <S.Container>
       <S.Nickname>{creatorNickname}</S.Nickname>
       <S.PlatformThemeGroup>
-        <span>{conversionPlatform(activityPlatforms).join(", ")}</span>
+        {/* <span>{conversionPlatform(activityPlatforms).join(", ")}</span> */}
         <span>{platformHeadTheme}</span>
       </S.PlatformThemeGroup>
     </S.Container>
