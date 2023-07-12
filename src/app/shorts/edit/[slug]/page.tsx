@@ -10,6 +10,7 @@ import { PLATFORMS } from "@/constants";
 import useShortEdit from "@/components/domain/shorts/hooks/useShortEdit";
 import * as S from "./styled";
 import ImageUploadBox from "@/components/domain/shorts/register/upload/ImageUploadBox/ImageUploadBox";
+import { conversionEnPlatform } from "@/utils/conversion";
 
 type ShortEditPageProps = {
   params: {
@@ -54,10 +55,16 @@ export default function ShortEditPage({ params }: ShortEditPageProps) {
           <S.PlatformList>
             {PLATFORMS.map((el) => (
               <PlatformRadio
-                isChecked={form.platformType.includes(el.id) ? true : false}
+                isChecked={
+                  conversionEnPlatform(form.platformType).includes(
+                    el.id.toUpperCase()
+                  )
+                    ? true
+                    : false
+                }
                 key={el.id}
                 src={el.src}
-                value={el.id}
+                value={el.id.toUpperCase()}
                 title={el.title}
                 onChange={handleChangePlatform}
               />
