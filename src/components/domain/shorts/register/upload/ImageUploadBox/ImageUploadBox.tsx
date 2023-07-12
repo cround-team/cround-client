@@ -25,7 +25,8 @@ export default function ImageUploadBox({
     }
   };
 
-  const handleDeleteImage = () => {
+  const handleDeleteImage = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     alert("작업중입니다.");
   };
 
