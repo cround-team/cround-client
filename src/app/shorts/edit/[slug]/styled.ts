@@ -39,11 +39,6 @@ export const PlatformWrapper = styled.div`
 
 export const PlatformList = styled.div`
   ${({ theme }) => css`
-    /* ${theme.flex.row()};
-    flex-wrap: wrap;
-    row-gap: 8px;
-    column-gap: 32.5px; */
-
     ${theme.flex.row("space-between")};
     flex-wrap: wrap;
     row-gap: 8px;
