@@ -1,4 +1,4 @@
-import { PATH } from "@/constants";
+import { PATH, SessionStorage } from "@/constants";
 import { useAuthContext } from "@/context/AuthContext";
 import { menTeeInfoApi, menteeEditApi } from "@/utils/api/mypage";
 import { hasKey } from "@/utils/form";
@@ -72,20 +72,10 @@ export default function useMenteeEdit() {
         interestPlatforms,
       };
       const editResponse = await menteeEditApi(body);
-      const infoResponse = await menTeeInfoApi();
 
       if (editResponse.status === 200) {
-        if (infoResponse.status === 200) {
-          const userInfo = {
-            nickname: infoResponse.data.nickname as string,
-            roleName: "member",
-            profileImage: null,
-            isSocialLogin: false,
-            creatorId: null,
-          };
-          onSetUserInfo(userInfo);
-          router.push(PATH.ROOT);
-        }
+        onSetUserInfo({ nickname });
+        router.push(PATH.ROOT);
       }
     } catch (error) {
       console.error(error);
