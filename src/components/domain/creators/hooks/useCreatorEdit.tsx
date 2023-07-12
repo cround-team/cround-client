@@ -1,16 +1,15 @@
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useImmer } from "use-immer";
 import { v4 as uuidv4 } from "uuid";
 
-import avatarImg from "public/images/avatar.png";
 import { PATH } from "@/constants";
 import { useAuthContext } from "@/context/AuthContext";
 import { useUploadImage } from "@/hooks";
 import { creatorsDetailApi } from "@/utils/api";
 import { creatorEditApi } from "@/utils/api/mypage";
 import { hasKey } from "@/utils/form";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useImmer } from "use-immer";
-import useAddInput from "./useAddInput";
+import { conversionEnPlatform, conversionPlatform } from "@/utils/conversion";
 
 type EditForm = {
   imageFile?: File | null;
@@ -77,8 +76,7 @@ export default function useCreatorEdit() {
   const { user, onSetUserInfo } = useAuthContext();
 
   useEffect(() => {
-    // fetchDetailData();
-    testDetailData();
+    fetchDetailData();
   }, []);
 
   useEffect(() => {
@@ -99,17 +97,17 @@ export default function useCreatorEdit() {
 
   const fetchDetailData = async () => {
     try {
-      const body = {};
-
-      const response = await creatorsDetailApi(user.creatorId);
+      const response = await creatorsDetailApi(user.creatorId as number);
+      console.log("response", response);
       setForm((draft) => {
         draft.profileImage = response.data.profileImage;
-        draft.nickname = response.data.nickname;
+        draft.nickname = response.data.creatorNickname;
         draft.activityPlatforms = response.data.activityPlatforms;
         draft.platformHeadType = response.data.platformHeadType;
         draft.platformUrl = response.data.platformUrl;
         draft.platformHeadTheme = response.data.platformHeadTheme;
         draft.tags = response.data.tags;
+        draft.description = response.data.description;
       });
       const tt = response.data.tags.map((tag: string) => ({
         id: uuidv4(),
@@ -121,25 +119,6 @@ export default function useCreatorEdit() {
     }
   };
 
-  const testDetailData = async () => {
-    const response = {
-      profileImage: "/images/profile.png",
-      nickname: "코코",
-      description: "ddddddddddddddddddd",
-      activityPlatforms: ["podcast", "youtube"],
-      platformHeadType: "youtube",
-      platformUrl: "https://www.youtube.com",
-      platformHeadTheme: "ASMR",
-      tags: ["test1", "test2"],
-    };
-    setForm(response);
-    const tt = response.tags.map((tag: string) => ({
-      id: uuidv4(),
-      value: tag,
-    }));
-    setCustomTags(tt);
-  };
-
   const handleChangeForm = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -148,6 +127,10 @@ export default function useCreatorEdit() {
 
     if (!hasKey(form, name)) {
       throw new Error("is not valid name");
+    } else if (name === "platformHeadType") {
+      setForm((draft) => {
+        draft.platformHeadType = conversionPlatform(value) as string;
+      });
     } else if (
       name !== "activityPlatforms" &&
       name !== "imageFile" &&
@@ -163,12 +146,15 @@ export default function useCreatorEdit() {
     if (!isModified) setIsModified(true);
     const { value, checked } = e.target;
 
+    if (!checked && activityPlatforms.length <= 1) return;
+
     const checkedList = checked
       ? [...form.activityPlatforms, value]
       : form.activityPlatforms.filter((v) => v !== value);
 
     setForm((draft) => {
       draft.activityPlatforms = checkedList;
+      draft.platformHeadType = conversionPlatform(checkedList[0]) as string;
     });
   };
 
@@ -213,59 +199,39 @@ export default function useCreatorEdit() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // try {
-    //   const formData = new FormData();
-
-    //   if (imageFile) {
-    //     formData.append("profileImage", profileImage);
-    //   }
-
-    //   const creatorSaveRequest = {
-    //     nickname,
-    //     description,
-    //     platformHeadType,
-    //     platformHeadTheme,
-    //     platformUrl,
-    //     tags,
-    //     activityPlatforms,
-    //   };
-    //   formData.append(
-    //     "creatorSaveRequest",
-    //     new Blob([JSON.stringify(creatorSaveRequest)], {
-    //       type: "application/json",
-    //     })
-    //   );
-    //   const res = await creatorEditApi(formData);
-    //   console.log("res", "res");
-    //   if (res.status === 200) {
-    // const userInfo = {
-    //   name: nickname,
-    //   type: "creator",
-    //   profileImage: "",
-    //   connectType: "",
-    //   creatorId: 0,
-    // };
-    // onSetUserInfo(userInfo);
-    //     router.push(PATH.ROOT);
-    //   }
-    // } catch (error: any) {
-    //   console.log(error);
-    // }
-
+    const creatorUpdateRequest = {
+      nickname,
+      description,
+      platformHeadType: conversionEnPlatform(platformHeadType),
+      platformHeadTheme,
+      platformUrl,
+      tags,
+      activityPlatforms,
+    };
+    console.log("creatorUpdateRequest", creatorUpdateRequest);
     try {
-      const body = {
-        nickname,
-        description,
-        platformHeadType,
-        platformHeadTheme,
-        platformUrl,
-        tags,
-        activityPlatforms,
-      };
-      console.log(body);
-    } catch (error) {
-      console.error(error);
+      const formData = new FormData();
+
+      imageFile && formData.append("profileImage", profileImage);
+      formData.append(
+        "creatorUpdateRequest",
+        new Blob([JSON.stringify(creatorUpdateRequest)], {
+          type: "application/json",
+        })
+      );
+      const res = await creatorEditApi(formData);
+      console.log("res", res);
+
+      if (res.status === 200) {
+        const userInfo = {
+          nickname,
+          profileImage: res.data.profileImage,
+        };
+        onSetUserInfo(userInfo);
+        router.push(PATH.ROOT);
+      }
+    } catch (error: any) {
+      console.log(error);
     }
   };
 
