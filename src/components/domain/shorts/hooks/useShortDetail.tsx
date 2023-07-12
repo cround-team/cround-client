@@ -24,7 +24,7 @@ const INITIAL_STATE = {
   bookmarksCount: 0,
   liked: false,
   bookmarked: false,
-  owned: true,
+  authored: true,
 };
 
 export default function useShortDetail({ id }: UseShortDetailProps) {
@@ -32,7 +32,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [data, setData] = useImmer<ShortCardData>(INITIAL_STATE);
   const {
-    owned,
+    authored,
     shortsId,
     title,
     content,
@@ -51,15 +51,15 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // fetchDetailData();
-    testDetailData();
+    fetchDetailData();
   }, []);
 
   const fetchDetailData = async () => {
     try {
       const response = await shortDetailApi(id);
+
+      setData(response.data);
       setData((draft) => {
-        draft = response.data;
         draft.shortFormUrl = getVideoId(response.data.shortFormUrl);
       });
       console.log(response.data);
@@ -82,7 +82,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
       bookmarksCount: 200,
       liked: false,
       bookmarked: false,
-      owned: true,
+      authored: true,
     };
     setData(response);
   };
@@ -133,19 +133,20 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   const handleGoEditPage = () => {
     setIsOpenDropdown(false);
     router.push(`${PATH.SHORTS.EDIT}/${id}`);
-    // 페이지 이동
   };
 
   const handleDeleteShort = async () => {
     try {
-      return await shortDeleteApi(id);
+      await shortDeleteApi(id);
+      setIsOpenDeleteModal(false);
+      router.replace("/");
     } catch (error) {
       console.error(error);
     }
   };
 
   const getBaseInfoProps = ({ ...otherProps } = {}) => ({
-    isOwned: owned,
+    isOwned: authored,
     platformType,
     title,
     content,
@@ -173,6 +174,7 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
   const getDropdownProps = ({ ...otherProps } = {}) => ({
     onGoEditPage: handleGoEditPage,
     onOpenDeleteModal: handleOpenDeleteModal,
+    onToggleDropdown: handleToggleDropdown,
     ...otherProps,
   });
 

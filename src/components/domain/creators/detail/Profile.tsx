@@ -1,10 +1,11 @@
 import Image from "next/image";
 
+import { useDeviceType } from "@/hooks";
 import { Button } from "@/components/common";
 import { media } from "@/styles/themes/foundations";
 import { conversionPlatform } from "@/utils/conversion";
-import * as S from "./styled";
 import { CheckIcon } from "@/assets/icons";
+import * as S from "./styled";
 
 type ProfileProps = {
   isOwned: boolean;
@@ -33,6 +34,8 @@ export default function Profile({
   onFollow,
   onUnFollow,
 }: ProfileProps) {
+  const { isDesktop } = useDeviceType();
+
   const handleAskQuestion = () => {
     alert("준비중입니다.");
   };
@@ -41,15 +44,17 @@ export default function Profile({
     <S.Section>
       <S.Container>
         <S.TopWrapper>
-          <S.Figure>
-            <Image
-              src={profileImage}
-              alt="Profile Image"
-              sizes={media.images.sizes}
-              fill
-              priority
-            />
-          </S.Figure>
+          {profileImage && (
+            <S.Figure>
+              <Image
+                src={profileImage}
+                alt="Profile Image"
+                sizes={media.images.sizes}
+                fill
+                priority
+              />
+            </S.Figure>
+          )}
           <S.ProfileText>
             <S.Nickname>{creatorNickname}</S.Nickname>
             <S.PlatformThemeGroup>
@@ -72,7 +77,7 @@ export default function Profile({
             <span>대표 플랫폼</span>
           </div>
         </S.MiddleWrapper>
-        {isOwned && (
+        {!isDesktop && !isOwned && (
           <S.ButtonWrapper>
             {followed && (
               <S.FollowingButton onClick={onUnFollow}>
@@ -88,7 +93,6 @@ export default function Profile({
                 onClick={onFollow}
               />
             )}
-
             <Button
               label="질문하기"
               size="32"

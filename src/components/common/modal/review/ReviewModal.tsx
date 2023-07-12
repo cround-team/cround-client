@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { useClickOutside } from "@/hooks";
+import { useClickOutside, useHiddenScroll } from "@/hooks";
 import useWriteReview from "@/components/domain/creators/hooks/useWriteReview";
 import Modal from "../Modal";
 import TextArea from "../../textarea/TextArea";
@@ -31,6 +31,7 @@ export default function ReviewModal({
     handleStarClick,
   } = useWriteReview({ creatorId, onFetchData, onClose });
   useClickOutside(modalRef, onClose);
+  useHiddenScroll(modalRef);
 
   return (
     <Modal isMounted={isMounted}>

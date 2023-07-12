@@ -47,6 +47,7 @@ export default function PlatformForm({
       {onPrevStep && (
         <S.ButtonWrapper>
           <Button
+            css={S.PrevButton}
             type="button"
             label="이전"
             size="56"
@@ -54,6 +55,7 @@ export default function PlatformForm({
             onClick={onPrevStep}
           />
           <Button
+            css={S.NextButton}
             label="다음"
             size="56"
             variant="primary"

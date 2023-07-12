@@ -1,52 +1,41 @@
 import styled, { css } from "styled-components";
 
-export const Form = styled.form`
-  ${({ theme }) => css`
-    ${theme.media.mobile} {
-    }
-  `};
-`;
+export const Form = styled.form``;
 
 export const Thumbnail = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.col("center", "flex-start")};
-      gap: 16px;
-      margin-bottom: 32px;
+    ${theme.flex.col("center", "flex-start")};
+    gap: 16px;
+    margin-bottom: 32px;
+
+    ${theme.media.desktop} {
+      margin-bottom: 40px;
     }
   `};
 `;
 
 export const MarginBottom = css`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      margin-bottom: 213px;
+    margin-bottom: 213px;
+
+    ${theme.media.desktop} {
+      margin-bottom: 40px;
     }
   `};
 `;
 
 export const ButtonWrapper = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.row()};
-      gap: 8px;
-      width: 100%;
-    }
+    ${theme.flex.row("flex-end")};
+    gap: 8px;
+    width: 100%;
   `};
 `;
 
 export const PrevButton = css`
-  ${({ theme }) => css`
-    ${theme.media.mobile} {
-      width: 82px;
-    }
-  `};
+  width: 82px;
 `;
 
 export const NextButton = css`
-  ${({ theme }) => css`
-    ${theme.media.mobile} {
-      width: 230px;
-    }
-  `};
+  width: 230px;
 `;

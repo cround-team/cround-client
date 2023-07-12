@@ -3,34 +3,35 @@ import styled, { css } from "styled-components";
 export const Layout = styled.div`
   ${({ theme }) => css`
     position: relative;
-    width: 520px;
+    width: 88.39%;
+    max-width: 508px;
 
-    ${theme.media.mobile} {
-      width: 320px;
+    ${theme.media.desktop} {
+      width: 508px;
     }
   `};
 `;
 
 export const Container = styled.div`
   ${({ theme }) => css`
-    padding: 35px 30px 30px 30px;
+    padding: 16px 8px 16px 24px;
     background-color: ${theme.colors.white};
     backdrop-filter: blur(2px);
     border-radius: ${theme.radius.md};
 
     h1 {
-      margin-bottom: 65px;
-      ${theme.typo.title.lg};
+      margin-bottom: 24px;
+      ${theme.typo.title.md};
       text-align: center;
       color: ${theme.colors.neutral900};
     }
 
-    ${theme.media.mobile} {
-      padding: 16px 8px 16px 24px;
+    ${theme.media.desktop} {
+      padding: 30px 24px 32px 24px;
 
       h1 {
-        margin-bottom: 24px;
-        ${theme.typo.title.md};
+        margin-bottom: 31px;
+        ${theme.typo.title.lg};
       }
     }
   `};
@@ -39,7 +40,7 @@ export const Container = styled.div`
 export const ScrollWrapper = styled.div`
   ${({ theme }) => css`
     padding-right: 12px;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 378px;
 
     ::-webkit-scrollbar {
@@ -53,6 +54,10 @@ export const ScrollWrapper = styled.div`
 
     ::-webkit-scrollbar-track {
       background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
+    }
+
+    ${theme.media.desktop} {
+      height: 479px;
     }
   `};
 `;
@@ -83,15 +88,27 @@ export const Wrapper = styled.div`
 export const CloseButton = styled.button`
   ${({ theme }) => css`
     position: absolute;
-    top: 35px;
-    right: 8px;
-    width: 28px;
-    height: 28px;
-    ${theme.media.mobile} {
-      top: 16px;
-      right: 16px;
-      width: 24px;
-      height: 24px;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      stroke: ${theme.colors.neutral900};
+    }
+
+    ${theme.media.desktop} {
+      top: 30px;
+      right: 24px;
+      width: 28px;
+      height: 28px;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
     }
   `};
 `;

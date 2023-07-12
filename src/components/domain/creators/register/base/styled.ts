@@ -2,24 +2,46 @@ import styled, { css } from "styled-components";
 
 export const Form = styled.form`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.col()};
+    ${theme.flex.col()};
+
+    ${theme.media.desktop} {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 32px;
+    }
+  `};
+`;
+
+export const Container = styled.div`
+  ${({ theme }) => css`
+    ${theme.flex.col()};
+    width: 100%;
+
+    ${theme.media.desktop} {
+      width: auto;
+      flex-grow: 1;
     }
   `};
 `;
 
 export const Nickname = css`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      margin-bottom: 56px;
+    margin-bottom: 56px;
+
+    ${theme.media.desktop} {
+      margin-bottom: 64px;
     }
   `};
 `;
 
 export const Description = css`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      margin-bottom: 40px;
+    margin-bottom: 40px;
+
+    ${theme.media.desktop} {
+      textarea {
+        height: 122px;
+      }
     }
   `};
 `;

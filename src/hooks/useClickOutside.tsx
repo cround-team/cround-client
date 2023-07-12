@@ -10,6 +10,7 @@ export default function useClickOutside(
         onClose();
       }
     };
+
     document.addEventListener("click", handleClickOutside);
 
     return () => {

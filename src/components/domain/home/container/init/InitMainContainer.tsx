@@ -19,7 +19,6 @@ type ContentsProps = {
 type InitMainContainerProps = {
   getLatestCreatorListProps: (op?: Partial<CreatorsProps>) => CreatorsProps;
   getInterestCreatorListProps: (op?: Partial<CreatorsProps>) => CreatorsProps;
-  getRandomCreatorListProps: (op?: Partial<CreatorsProps>) => CreatorsProps;
   getShortListProps: (op?: Partial<ShortsProps>) => ShortsProps;
   getContentListProps: (op?: Partial<ContentsProps>) => ContentsProps;
 };
@@ -27,7 +26,6 @@ type InitMainContainerProps = {
 export default function InitMainContainer({
   getLatestCreatorListProps,
   getInterestCreatorListProps,
-  getRandomCreatorListProps,
   getShortListProps,
   getContentListProps,
 }: InitMainContainerProps) {
@@ -51,15 +49,6 @@ export default function InitMainContainer({
           alt="Heart icon"
         />
         <CreatorList {...getInterestCreatorListProps()} />
-      </S.ListWrapper>
-      <S.ListWrapper>
-        <ListTitle
-          href={PATH.CREATORS.LIST}
-          src="/images/title/fire.png"
-          label="크리에이터로 핫데뷔를 도와드릴게요!"
-          alt="Fire icon"
-        />
-        <CreatorList {...getRandomCreatorListProps()} />
       </S.ListWrapper>
 
       {/* 맞춤 숏클래스  */}

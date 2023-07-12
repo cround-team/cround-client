@@ -33,8 +33,8 @@ export function conversionUserType(roleName: string) {
   }
 }
 
-export function conversionPlatform(platforms: string[]) {
-  return platforms.map((platform) => {
+export function conversionPlatform(platforms: string[] | string) {
+  const getPlatformName = (platform: string) => {
     switch (platform) {
       case "INSTAGRAM":
         return "인스타그램";
@@ -51,7 +51,7 @@ export function conversionPlatform(platforms: string[]) {
       case "AFREECATV":
         return "아프리카TV";
 
-      case "blog":
+      case "BLOG":
         return "블로그";
 
       case "PODCAST":
@@ -73,7 +73,66 @@ export function conversionPlatform(platforms: string[]) {
         return "nft";
 
       default:
-        return "플랫폼 네이밍 오류";
+        return platform;
     }
-  });
+  };
+  if (Array.isArray(platforms)) {
+    return platforms.map((platform) => {
+      return getPlatformName(platform);
+    });
+  } else {
+    return getPlatformName(platforms);
+  }
+}
+
+export function conversionEnPlatform(platforms: string[] | string) {
+  const getPlatformName = (platform: string) => {
+    switch (platform) {
+      case "인스타그램":
+        return "INSTAGRAM";
+
+      case "유튜브":
+        return "YOUTUBE";
+
+      case "틱톡":
+        return "TIKTOK";
+
+      case "트위치":
+        return "TWITCH";
+
+      case "아프리카TV":
+        return "AFREECATV";
+
+      case "블로그":
+        return "BLOG";
+
+      case "팟캐스트":
+        return "PODCAST";
+
+      case "스푼":
+        return "SPOON";
+
+      case "제페토":
+        return "ZEPETTO";
+
+      case "이모티콘":
+        return "EMOTICON";
+
+      case "웹툰":
+        return "WEBTOON";
+
+      case "nft":
+        return "NFT";
+
+      default:
+        return platform;
+    }
+  };
+  if (Array.isArray(platforms)) {
+    return platforms.map((platform) => {
+      return getPlatformName(platform);
+    });
+  } else {
+    return getPlatformName(platforms);
+  }
 }

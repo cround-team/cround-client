@@ -25,7 +25,13 @@ export default function ListTitle({
       <S.Title>
         {isRenderImg && (
           <S.Figure>
-            <Image src={src} alt={alt} fill sizes={media.images.sizes} />
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes={media.images.sizes}
+              priority
+            />
           </S.Figure>
         )}
         {label}

@@ -2,7 +2,7 @@ import SignupForm from "./form/SignupForm";
 import SignupTerms from "./terms/SignupTerms";
 import useSignupForm from "./hooks/useSignupForm";
 import SignupModal from "./modal/SignupModal";
-import * as S from "./styled";
+
 import {
   SignupNicknameStep,
   SignupPlatformStep,
@@ -19,7 +19,7 @@ export default function SignupBox() {
     getSuccessStepProps,
   } = useSignupForm();
   return (
-    <S.Container>
+    <>
       <SignupForm {...getBaseStepProps()} />
       <SignupTerms />
       <SignupModal isMounted={isOpenModal} step={step}>
@@ -31,6 +31,6 @@ export default function SignupBox() {
         )}
         {step === "success" && <SignupSuccessStep {...getSuccessStepProps()} />}
       </SignupModal>
-    </S.Container>
+    </>
   );
 }

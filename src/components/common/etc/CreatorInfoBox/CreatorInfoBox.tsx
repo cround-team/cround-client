@@ -45,14 +45,17 @@ export default function CreatorInfoBox({
   return (
     <S.Container>
       <S.ImageNameGroup>
-        <S.Figure>
-          <Image
-            src={profileImage}
-            alt="Creator Profile Image"
-            sizes={media.images.sizes}
-            fill
-          />
-        </S.Figure>
+        {profileImage && (
+          <S.Figure>
+            <Image
+              src={profileImage}
+              alt="Creator Profile Image"
+              sizes={media.images.sizes}
+              fill
+              priority
+            />
+          </S.Figure>
+        )}
         <S.Name>{author}</S.Name>
       </S.ImageNameGroup>
       <S.LikeBookmarkGroup>

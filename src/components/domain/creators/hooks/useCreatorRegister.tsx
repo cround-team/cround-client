@@ -205,12 +205,15 @@ export default function useCreatorRegister() {
       if (res.status === 201) {
         console.log("201", res);
         SessionStorage.setItem("roleName", "creator");
+        SessionStorage.setItem("nickname", nickname);
+        SessionStorage.setItem("profileImage", res.data.profileImage);
+        SessionStorage.setItem("creatorId", res.data.creatorId);
+
         const userInfo = {
-          name: nickname,
-          type: "creator",
-          profileImage: "",
-          connectType: "",
-          creatorId: 0,
+          nickname,
+          roleName: "creator",
+          profileImage: res.data.profileImage,
+          creatorId: res.data.creatorId,
         };
         onSetUserInfo(userInfo);
         setStep("success");

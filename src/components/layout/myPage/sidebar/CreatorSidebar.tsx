@@ -1,3 +1,4 @@
+import avatarImg from "public/images/avatar.png";
 import { PATH } from "@/constants";
 import * as S from "./styled";
 import Link from "next/link";
@@ -5,6 +6,7 @@ import { ChevronRightIcon } from "@/assets/icons";
 import Image from "next/image";
 import { media } from "@/styles/themes/foundations";
 import { useAuthContext } from "@/context/AuthContext";
+import { logoutApi } from "@/utils/api";
 
 const LIST = [
   [
@@ -45,15 +47,15 @@ export default function CreatorSidebar() {
       <S.CreatorLink href={`${PATH.CREATORS.DETAIL}/${user.creatorId}`}>
         <S.Figure>
           <Image
-            src={user.profileImage}
+            src={user.profileImage ?? avatarImg}
             sizes={media.images.sizes}
             fill={true}
             alt="user"
           />
         </S.Figure>
         <S.User>
-          <S.Name>{user.name}</S.Name>
-          <S.Connect>{user.connectType}</S.Connect>
+          <S.Name>{user.nickname}</S.Name>
+          <S.Connect>{user.socialLogin}</S.Connect>
         </S.User>
         <ChevronRightIcon />
       </S.CreatorLink>
@@ -68,7 +70,7 @@ export default function CreatorSidebar() {
       ))}
       <S.List>
         <li>
-          <button>로그아웃</button>
+          <button onClick={() => logoutApi()}>로그아웃</button>
         </li>
       </S.List>
     </S.Container>

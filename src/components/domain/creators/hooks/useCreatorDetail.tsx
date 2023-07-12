@@ -144,9 +144,9 @@ export default function useCreatorDetail(creatorId: number) {
       const response = await creatorReviewsApi(params);
 
       if (id) {
-        setReviews([...reviews, ...response.data.pages]);
+        setReviews([...reviews, ...response.data.reviews]);
       } else {
-        setReviews(response.data.pages);
+        setReviews(response.data.reviews);
       }
       setIsNextPage((draft) => {
         draft.reviews = response.data.hasNext;
@@ -305,21 +305,17 @@ export default function useCreatorDetail(creatorId: number) {
     isOwned,
     profileImage,
     creatorNickname,
+    description,
+    tags,
     activityPlatforms,
     platformHeadTheme,
     avgRating,
     followersCount,
     platformHeadType,
+    platformUrl,
     followed,
     onFollow: handleCreatorFollow,
     onUnFollow: handleCreatorUnFollow,
-    ...otherProps,
-  });
-
-  const getIntroduceProps = ({ ...otherProps } = {}) => ({
-    creatorNickname,
-    description,
-    tags,
     ...otherProps,
   });
 
@@ -361,7 +357,6 @@ export default function useCreatorDetail(creatorId: number) {
 
   return {
     getProfileProps,
-    getIntroduceProps,
     getShortListProps,
     getContentListProps,
     getReviewListProps,

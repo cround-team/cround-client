@@ -22,7 +22,7 @@ const INITIAL_STATE = {
   bookmarksCount: 0,
   liked: false,
   bookmarked: false,
-  owned: true,
+  authored: true,
 };
 
 export default function useContentDetail({ id }: UseContentDetailProps) {
@@ -30,7 +30,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [data, setData] = useImmer<ContentCardData>(INITIAL_STATE);
   const {
-    owned,
+    authored,
     author,
     boardId,
     content,
@@ -48,8 +48,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // fetchDetailData();
-    testDetailData();
+    fetchDetailData();
   }, []);
 
   const fetchDetailData = async () => {
@@ -60,25 +59,6 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const testDetailData = async () => {
-    const response = {
-      boardId: 1,
-      title: "제목한개sdfdfafdadafsdafsdafs",
-      content: `유튜브 채널을 운영하면서 주변 사람들에게 가장 많이 받았던 질문 중 하나는, 당연 수익에 관한 것이었습니다.\n저 또한 시작할 때 가장 궁금했던 부분이기도 했구요. 유튜브 채널을 운영하면서 주변 사람들에게 가장 많이 받았던 질문 중 하나는, 당연 수익에 관한 것이었습니다. 저 또한 시작할 때 가장 궁금했던 부분이기도 했구요. 유튜브 채널을 운영하면서 주변 사람들에게 가장 많이 받았던 질문 중 하나는, 당연 수익에 관한 것이었습니다. 저 또한 시작할 때 가장 궁금했던 부분이기도 했구요. 유튜브 채널을 운영하면서 주변 사람들에게 가장 많이 받았던 질문 중 하나는, 당연 수익에 관한 것이었습니다. 저 또한 시작할 때 가장 궁금했던 부분이기도 했구요.\n유튜브 채널을 운영하면서 주변 사람들에게 가장 많이 받았던 질문 중 하나는, 당연 수익에 관한 것이었습니다. 저 또한 시작할 때 가장 궁금했던 부분이기도 했구요.유튜브 채널을 운영하면서 주변 사람들에게 가장 많이 받았던 질문 중 하나는, 당연 수익에 관한 것이었습니다. 저 또한 시작할 때 가장 궁금했던 부분이기도 했구요.유튜브 채널을 운영하면서 주변 사람들에게 가장 많이 받았던 질문 중 하나는, 당연 수익에 관한 것이었습니다. 저 또한 시작할 때 가장 궁금했던 부분이기도 했구요.`,
-      author: "한개개개",
-      profileImage:
-        "https://cround-bucket.s3.ap-northeast-2.amazonaws.com/zzanggu.jpg",
-      platformType: "NFT",
-      likesCount: 0,
-      bookmarksCount: 0,
-      authored: false,
-      liked: false,
-      bookmarked: false,
-      owned: true,
-    };
-    setData(response);
   };
 
   const handleLike = async () => {
@@ -129,19 +109,20 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   const handleGoEditPage = () => {
     setIsOpenDropdown(false);
     router.push(`${PATH.CONTENTS.EDIT}/${id}`);
-    // 페이지 이동
   };
 
   const handleDeleteContent = async () => {
     try {
-      return await contentDeleteApi(id);
+      await contentDeleteApi(id);
+      setIsOpenDeleteModal(false);
+      router.replace("/");
     } catch (error) {
       console.error(error);
     }
   };
 
   const getBaseInfoProps = ({ ...otherProps } = {}) => ({
-    isOwned: owned,
+    isOwned: authored,
     platformType,
     title,
     content,
@@ -168,6 +149,7 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
   const getDropdownProps = ({ ...otherProps } = {}) => ({
     onGoEditPage: handleGoEditPage,
     onOpenDeleteModal: handleOpenDeleteModal,
+    onToggleDropdown: handleToggleDropdown,
     ...otherProps,
   });
 

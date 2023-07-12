@@ -30,6 +30,12 @@ export default function AddInput({
   onChangeInput,
   onRemoveInput,
 }: AddInputProps) {
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
+  };
+
   return (
     <S.Container className={className} tipMessage={tipMessage}>
       <Label label={label} tipMessage={tipMessage} />
@@ -39,6 +45,7 @@ export default function AddInput({
             <S.Input
               placeholder={placeholder}
               onChange={(e) => onChangeInput(item.id, e)}
+              onKeyDown={handleInputKeyDown}
               value={item.value}
             />
             {idx > 0 && (

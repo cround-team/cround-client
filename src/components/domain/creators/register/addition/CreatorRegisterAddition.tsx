@@ -53,11 +53,11 @@ export default function CreatorRegisterAddition({
       </S.InputWrapper>
       <S.InputWrapper>
         <RegisterInput
-          label="활동 중이신 플랫폼 url을 등록해 주세요."
+          label="선택하신 대표 플랫폼의 url을 등록해 주세요."
           size="md"
           id="platformUrl"
           name="platformUrl"
-          placeholder="20글자 이내로 입력해 주세요"
+          placeholder="https://를 포함하여 입력해주세요"
           value={platformUrl}
           onChange={handleChangeForm}
         />

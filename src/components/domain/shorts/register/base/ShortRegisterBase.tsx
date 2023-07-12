@@ -1,6 +1,7 @@
 import React from "react";
-import * as S from "./styled";
+
 import { Button, RegisterInput, TextArea } from "@/components/common";
+import * as S from "./styled";
 
 type ShortRegisterBaseProps = {
   isDisabledSubmit: boolean;
@@ -33,6 +34,7 @@ export default function ShortRegisterBase({
           onChange={handleChangeForm}
         />
         <TextArea
+          css={S.TextArea}
           id="description"
           name="description"
           placeholder="내용을 입력해 주세요"
@@ -43,6 +45,7 @@ export default function ShortRegisterBase({
       </S.InputWrapper>
       <Button
         isDisabled={isDisabledSubmit}
+        css={S.Button}
         label="다음"
         size="56"
         variant="primary"

@@ -1,10 +1,13 @@
 "use client";
 
-import LinkButton from "@/components/common/link/base/LinkButton";
 import { PATH } from "@/constants";
+import { useDeviceType } from "@/hooks";
+import { LinkButton } from "@/components/common";
 import * as S from "./styled";
 
 export default function PasswordSendPage() {
+  const { isDesktop } = useDeviceType();
+
   return (
     <S.Container>
       <S.TextWrapper>
@@ -20,13 +23,13 @@ export default function PasswordSendPage() {
         <LinkButton
           href={PATH.AUTH}
           label="이전 페이지로 이동"
-          size="48"
+          size={isDesktop ? "56" : "48"}
           variant="ghost"
         />
         <LinkButton
           href={PATH.ROOT}
           label="메인 페이지로 이동"
-          size="48"
+          size={isDesktop ? "56" : "48"}
           variant="primary"
         />
       </S.LinkWrapper>

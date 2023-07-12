@@ -37,11 +37,13 @@ export default function MyEditPage() {
             {PLATFORMS.map((el) => (
               <PlatformCheckbox
                 isChecked={
-                  form.interestPlatforms.includes(el.id) ? true : false
+                  form.interestPlatforms.includes(el.id.toUpperCase())
+                    ? true
+                    : false
                 }
-                key={el.id}
+                key={el.id.toUpperCase()}
                 src={el.src}
-                value={el.id}
+                value={el.id.toUpperCase()}
                 title={el.title}
                 onChange={handleChangePlatform}
               />

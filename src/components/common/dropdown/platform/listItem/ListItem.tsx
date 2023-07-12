@@ -1,3 +1,4 @@
+import { conversionPlatform } from "@/utils/conversion";
 import * as S from "./styled";
 
 type ListItemProps = {
@@ -23,7 +24,7 @@ export default function ListItem({
           value={item}
           onChange={onChange}
         />
-        <span>{item}</span>
+        <span>{conversionPlatform(item)}</span>
         <S.SelectBox aria-checked={isChecked ? "true" : "false"} />
       </S.Label>
     </S.ListItem>

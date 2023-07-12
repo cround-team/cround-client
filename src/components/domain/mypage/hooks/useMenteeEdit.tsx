@@ -1,6 +1,6 @@
-import { PATH } from "@/constants";
+import { PATH, SessionStorage } from "@/constants";
 import { useAuthContext } from "@/context/AuthContext";
-import { menteeEditApi } from "@/utils/api/mypage";
+import { menTeeInfoApi, menteeEditApi } from "@/utils/api/mypage";
 import { hasKey } from "@/utils/form";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -21,19 +21,20 @@ export default function useMenteeEdit() {
   const [isModified, setIsModified] = useState(false);
   const { nickname, interestPlatforms } = form;
   const router = useRouter();
-  const { onSetUserInfo } = useAuthContext();
+  const { user, onSetUserInfo } = useAuthContext();
   const isDisabledSubmit = !(nickname && interestPlatforms && isModified);
 
   useEffect(() => {
-    testData();
+    fetchUserInfo();
   }, []);
 
-  const testData = async () => {
-    const response = {
-      nickname: "코코",
-      interestPlatforms: ["youtube", "spoon"],
-    };
-    setForm(response);
+  const fetchUserInfo = async () => {
+    try {
+      const response = await menTeeInfoApi();
+      setForm(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,24 +68,15 @@ export default function useMenteeEdit() {
 
     try {
       const body = {
-        username: nickname,
+        nickname,
         interestPlatforms,
       };
-      console.log(body);
-      //   const res = await menteeEditApi(body);
+      const editResponse = await menteeEditApi(body);
 
-      //   if (res.status === 200) {
-      //     console.log("200", res);
-      // const userInfo = {
-      //   name: nickname,
-      //   type: "member",
-      //   profileImage: "",
-      //   connectType: "",
-      //   creatorId: 0,
-      // };
-      // onSetUserInfo(userInfo);
-      //     router.push(PATH.ROOT);
-      //   }
+      if (editResponse.status === 200) {
+        onSetUserInfo({ nickname });
+        router.push(PATH.ROOT);
+      }
     } catch (error) {
       console.error(error);
     }

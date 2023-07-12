@@ -1,9 +1,12 @@
 "use client";
 
-import { PageFilter, SearchInput } from "@/components/common";
-import ContentList from "@/components/common/list/content/ContentList";
+import {
+  ContentList,
+  NotList,
+  PageFilter,
+  SearchInput,
+} from "@/components/common";
 import useContentList from "@/components/domain/contents/hooks/useContentList";
-import NotList from "@/components/common/etc/notList/NotList";
 import * as S from "./styled";
 
 export default function ContentsPage() {

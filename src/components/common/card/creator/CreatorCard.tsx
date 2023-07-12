@@ -16,7 +16,7 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
   const {
     creatorId,
     description,
-    platformActivityName,
+    creatorNickname,
     platformType,
     platformTheme,
     profileImage,
@@ -25,17 +25,19 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
   return (
     <Link href={`${PATH.CREATORS.DETAIL}/${creatorId}`}>
       <S.Article>
-        <S.Figure>
-          <Image
-            src={profileImage}
-            fill={true}
-            alt="profile"
-            sizes={media.images.sizes}
-            priority
-          />
-        </S.Figure>
+        {profileImage && (
+          <S.Figure>
+            <Image
+              src={profileImage}
+              alt="profile"
+              fill={true}
+              sizes={media.images.sizes}
+              priority
+            />
+          </S.Figure>
+        )}
         <S.TitleWrapper>
-          <h3>{platformActivityName}</h3>
+          <h3>{creatorNickname}</h3>
           <span>
             {platformType}
             <br />

@@ -1,28 +1,29 @@
-import { SessionStorage } from "@/constants";
-import { conversionUserType } from "@/utils/conversion";
+import { usePathname } from "next/navigation";
 import React, { PropsWithChildren, createContext, useContext } from "react";
 import { useImmer } from "use-immer";
 
+import { SessionStorage } from "@/constants";
+
 type User = {
-  creatorId: number;
-  name: string;
-  connectType: string;
-  profileImage: string;
-  type: string;
+  socialLogin?: boolean;
+  creatorId?: number | null;
+  nickname?: string;
+  profileImage?: string | null;
+  roleName?: string;
 };
 
 type AuthContextProps = {
   user: User;
-  onSetUserType: (roleName: string) => void;
+  onSetUserRoleName: (roleName: string) => void;
   onSetUserInfo: (userInfo: User) => void;
 };
 
-const INITIAL_USER = {
-  name: "",
-  connectType: "",
-  profileImage: "",
-  type: SessionStorage.getItem("roleName") ?? "nonMember",
-  creatorId: 0,
+const INITIAL_USER: User = {
+  socialLogin: SessionStorage.getItem("socialLogin") === "true",
+  creatorId: Number(SessionStorage.getItem("creatorId")) ?? null,
+  nickname: SessionStorage.getItem("nickname") ?? "",
+  profileImage: SessionStorage.getItem("profileImage") ?? null,
+  roleName: SessionStorage.getItem("roleName") ?? "",
 };
 
 export const AuthContext = createContext<AuthContextProps | undefined>(
@@ -31,28 +32,30 @@ export const AuthContext = createContext<AuthContextProps | undefined>(
 
 export const AuthContextProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useImmer<User>(INITIAL_USER);
+  const pathname = usePathname();
 
   const handleSetUserInfo = (userInfo: User) => {
-    const { name, connectType, profileImage, type, creatorId } = userInfo;
+    const { socialLogin, creatorId, nickname, profileImage, roleName } =
+      userInfo;
 
     setUser((draft) => {
-      draft.name = name || user.name;
-      draft.connectType = connectType || user.connectType;
+      draft.nickname = nickname || user.nickname;
+      draft.socialLogin = socialLogin || user.socialLogin;
       draft.profileImage = profileImage || user.profileImage;
-      draft.type = type || user.type;
+      draft.roleName = roleName || user.roleName;
       draft.creatorId = creatorId || user.creatorId;
     });
   };
 
-  const handleSetUserType = (roleName: string) => {
+  const handleSetUserRoleName = (roleName: string) => {
     setUser((draft) => {
-      draft.type = roleName;
+      draft.roleName = roleName;
     });
   };
 
   const contextValue = {
     user,
-    onSetUserType: handleSetUserType,
+    onSetUserRoleName: handleSetUserRoleName,
     onSetUserInfo: handleSetUserInfo,
   };
 

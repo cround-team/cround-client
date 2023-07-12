@@ -2,45 +2,55 @@ import styled, { css } from "styled-components";
 
 export const Article = styled.article`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.col("center", "flex-start")};
-      gap: 8px;
-      width: 100%;
-      padding: 16px;
-      background-color: ${theme.colors.white};
-      border: 1px solid ${theme.colors.neutral50};
-      border-radius: ${theme.radius.md};
-    }
+    ${theme.flex.col("center", "flex-start")};
+    gap: 8px;
+    width: 100%;
+    max-width: 585px;
+    padding: 16px;
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.neutral50};
+    border-radius: ${theme.radius.md};
   `};
 `;
 
 export const NameRatingGroup = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.row()};
-      gap: 9.29px;
+    ${theme.flex.row()};
+    gap: 9.29px;
+
+    ${theme.media.desktop} {
+      gap: 8px;
     }
   `};
 `;
 
 export const Name = styled.span`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.typo.label.md};
-      color: ${theme.colors.black};
+    ${theme.typo.label.md};
+    color: ${theme.colors.black};
+
+    ${theme.media.desktop} {
+      ${theme.typo.label.lg};
     }
   `};
 `;
 
 export const Rating = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.row()};
-      gap: 4.57px;
+    ${theme.flex.row()};
+    gap: 4.57px;
+
+    svg {
+      width: 9.43px;
+      height: 8.99px;
+    }
+
+    ${theme.media.desktop} {
+      gap: 2px;
 
       svg {
-        width: 9.43px;
-        height: 8.99px;
+        width: 12.57px;
+        height: 11.98px;
       }
     }
   `};
@@ -48,9 +58,11 @@ export const Rating = styled.div`
 
 export const Content = styled.p`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.typo.body.sm};
-      color: ${theme.colors.black};
+    ${theme.typo.body.sm};
+    color: ${theme.colors.black};
+
+    ${theme.media.desktop} {
+      ${theme.typo.body.lg};
     }
   `};
 `;

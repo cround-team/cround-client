@@ -7,7 +7,6 @@ import { Dim, Portal } from "@/components/common";
 import MemberSidebar from "./sidebar/MemberSidebar";
 import NonMemberSidebar from "./sidebar/NonMemberSidebar";
 import CreatorSidebar from "./sidebar/CreatorSidebar";
-import { usePathname } from "next/navigation";
 
 type MyPageSidebarProps = {
   isMounted: boolean;
@@ -35,14 +34,23 @@ export default function MyPageSidebar({
     };
   }, []);
 
+  const renderSidebar = () => {
+    switch (user.roleName) {
+      case "member":
+        return <MemberSidebar />;
+
+      case "creator":
+        return <CreatorSidebar />;
+
+      default:
+        return <NonMemberSidebar />;
+    }
+  };
+
   return (
     <Portal elementId="sidebar" isMounted={isMounted}>
       <Dim>
-        <div ref={sidebarRef}>
-          {user.type === "nonMember" && <NonMemberSidebar />}
-          {user.type === "member" && <MemberSidebar />}
-          {user.type === "creator" && <CreatorSidebar />}
-        </div>
+        <div ref={sidebarRef}>{renderSidebar()}</div>
       </Dim>
     </Portal>
   );

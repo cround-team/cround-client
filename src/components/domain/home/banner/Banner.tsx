@@ -6,8 +6,9 @@ import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import bannerInstaImg from "public/images/banner-insta.png";
+import { media } from "@/styles/themes/foundations";
 import bannerYoutubeImg from "public/images/banner-youtube.png";
+import bannerInstaImg from "public/images/banner-insta.png";
 import bannerAdPostImg from "public/images/banner-ad-post.png";
 import * as S from "./styled";
 
@@ -47,21 +48,29 @@ export default function Banner() {
       pagination={pagination}
       modules={[Pagination, Autoplay]}
       autoplay={{
-        delay: 3000,
+        delay: 4000,
         disableOnInteraction: false,
       }}
     >
       {SLIDES.map((slide, idx) => (
         <SwiperSlide key={idx}>
-          <S.Wrapper aria-label={slide.label}>
-            <S.TextWrapper>
-              <S.Title aria-label={slide.label}>{slide.title}</S.Title>
-              <S.Sub aria-label={slide.label}>{slide.sub}</S.Sub>
-            </S.TextWrapper>
-            <S.Figure aria-label={slide.label}>
-              <Image src={slide.src} alt={slide.alt} priority />
-            </S.Figure>
-          </S.Wrapper>
+          <S.Container aria-label={slide.label}>
+            <S.Wrapper>
+              <S.TextWrapper>
+                <S.Title aria-label={slide.label}>{slide.title}</S.Title>
+                <S.Sub aria-label={slide.label}>{slide.sub}</S.Sub>
+              </S.TextWrapper>
+              <S.Figure aria-label={slide.label}>
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  fill={true}
+                  sizes={media.images.sizes}
+                  priority
+                />
+              </S.Figure>
+            </S.Wrapper>
+          </S.Container>
         </SwiperSlide>
       ))}
     </S.Swiper>

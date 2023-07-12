@@ -2,45 +2,48 @@ import styled, { css } from "styled-components";
 
 export const Form = styled.form`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.col()};
-      gap: 32px;
+    ${theme.flex.col()};
+    gap: 32px;
+
+    ${theme.media.desktop} {
+      gap: 40px;
     }
   `};
 `;
 
 export const InputWrapper = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.col("center", "flex-start")};
-      gap: 16px;
-      width: 100%;
-    }
+    ${theme.flex.col("center", "flex-start")};
+    gap: 16px;
+    width: 100%;
   `};
 `;
 
 export const ButtonWrapper = styled.div`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      ${theme.flex.row()};
-      gap: 8px;
-      width: 100%;
+    display: grid;
+    grid-template-columns: "25.63% 71.88%";
+    width: 100%;
+    gap: 8px;
+
+    ${theme.media.desktop} {
+      ${theme.flex.row("flex-end")};
     }
   `};
 `;
 
 export const PrevButton = css`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      width: 82px;
+    ${theme.media.desktop} {
+      max-width: 82px;
     }
   `};
 `;
 
 export const NextButton = css`
   ${({ theme }) => css`
-    ${theme.media.mobile} {
-      width: 230px;
+    ${theme.media.desktop} {
+      max-width: 230px;
     }
   `};
 `;

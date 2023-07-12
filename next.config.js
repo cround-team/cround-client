@@ -14,6 +14,12 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "ifh.cc",
+        port: "",
+        pathname: "/**",
+      },
     ],
     deviceSizes: [360, 700, 1200], // 원하는 기기 사이즈 설정
   },
