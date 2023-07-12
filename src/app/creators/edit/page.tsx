@@ -30,6 +30,8 @@ export default function CreatorEditPage() {
     handleSubmit,
   } = useCreatorEdit();
 
+  console.log(form.platformHeadType);
+
   return (
     <S.Section>
       <S.Form onSubmit={handleSubmit}>
@@ -64,11 +66,13 @@ export default function CreatorEditPage() {
             {PLATFORMS.map((el) => (
               <PlatformCheckbox
                 isChecked={
-                  form.activityPlatforms.includes(el.id) ? true : false
+                  form.activityPlatforms.includes(el.id.toUpperCase())
+                    ? true
+                    : false
                 }
-                key={el.id}
+                key={el.id.toUpperCase()}
                 src={el.src}
-                value={el.id}
+                value={el.id.toUpperCase()}
                 title={el.title}
                 onChange={handleChangePlatform}
               />
@@ -93,6 +97,7 @@ export default function CreatorEditPage() {
           onChange={handleChangeForm}
         />
         <RegisterInput
+          css={S.PlatformHeadTheme}
           label="크리에이터님의 대표 테마"
           size="md"
           id="platformHeadTheme"
