@@ -11,8 +11,8 @@ import InformativeBubbles from "@/components/domain/creators/detail/common/Infor
 import useCreatorDetail from "@/components/domain/creators/hooks/useCreatorDetail";
 import MobileProfile from "@/components/domain/creators/detail/mobile/MobileProfile";
 import TabletProfile from "@/components/domain/creators/detail/tablet/TabletProfile";
-import * as S from "./styled";
 import DesktopProfile from "@/components/domain/creators/detail/desktop/DesktopProfile";
+import * as S from "./styled";
 
 type CreatorDetailPageProps = {
   params: {
