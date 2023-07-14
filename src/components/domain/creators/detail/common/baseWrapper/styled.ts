@@ -10,6 +10,10 @@ export const Container = styled.div`
       margin-left: 68px;
       gap: 16px;
     }
+
+    ${theme.media.desktop} {
+      margin-left: 41px;
+    }
   `};
 `;
 

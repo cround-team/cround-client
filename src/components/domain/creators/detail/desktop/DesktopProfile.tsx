@@ -5,6 +5,7 @@ import AvatarWrapper from "../common/avatarWrapper/AvatarWrapper";
 import Introduce from "../common/introduce/Introduce";
 import * as S from "./styled";
 import InformativeBubbles from "../common/InformativeBubbles/InformativeBubbles";
+import { Tag } from "@/components/common";
 
 type ProfileProps = {
   isOwned: boolean;
@@ -66,18 +67,22 @@ export default function DesktopProfile({
           platformUrl={platformUrl}
         />
       </S.Container>
-      <ButtonWrapper
-        isOwned={isOwned}
-        followed={followed}
-        onFollow={onFollow}
-        onUnFollow={onUnFollow}
-        onAskQuestion={handleAskQuestion}
-      />
-      <Introduce
-        creatorNickname={creatorNickname}
-        description={description}
-        tags={tags}
-      />
+      <S.Introduce>
+        <div>
+          <h3>{creatorNickname}님의 인사말</h3>
+          <p>{description}</p>
+        </div>
+        <S.IntroduceWrapper>
+          <Tag tags={tags} />
+          <ButtonWrapper
+            isOwned={isOwned}
+            followed={followed}
+            onFollow={onFollow}
+            onUnFollow={onUnFollow}
+            onAskQuestion={handleAskQuestion}
+          />
+        </S.IntroduceWrapper>
+      </S.Introduce>
     </S.Section>
   );
 }

@@ -10,6 +10,10 @@ export const Container = styled.div`
       max-width: 728px;
       margin-bottom: 24px;
     }
+
+    ${theme.media.desktop} {
+      width: 50%;
+    }
   `};
 `;
 

@@ -13,8 +13,8 @@ export default function AvatarWrapper({ profileImage }: AvatarWrapperProps) {
       <Image
         src={profileImage}
         alt="Profile Image"
-        sizes={media.images.sizes}
-        fill
+        width={100}
+        height={100}
         priority
       />
     </S.Figure>
