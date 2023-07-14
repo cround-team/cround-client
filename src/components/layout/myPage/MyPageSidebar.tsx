@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 import { useAuthContext } from "@/context/AuthContext";
 import { Dim, Portal } from "@/components/common";
 import MemberSidebar from "./sidebar/MemberSidebar";
 import NonMemberSidebar from "./sidebar/NonMemberSidebar";
 import CreatorSidebar from "./sidebar/CreatorSidebar";
+import { useClickOutside } from "@/hooks";
 
 type MyPageSidebarProps = {
   isMounted: boolean;
@@ -19,20 +20,7 @@ export default function MyPageSidebar({
 }: MyPageSidebarProps) {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const { user } = useAuthContext();
-
-  const handleClickOutside: EventListener = (e: Event) => {
-    if (sidebarRef.current && !sidebarRef.current.contains(e.target as Node)) {
-      onClose && onClose();
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+  onClose && useClickOutside(sidebarRef, onClose);
 
   const renderSidebar = () => {
     switch (user.roleName) {
