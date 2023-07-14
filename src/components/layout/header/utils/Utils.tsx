@@ -4,10 +4,14 @@ import { usePathname } from "next/navigation";
 import { BellIcon, HamburgerIcon } from "@/assets/icons";
 import MyPageSidebar from "@/components/layout/myPage/MyPageSidebar";
 import * as S from "./styled";
+import { useDeviceType } from "@/hooks";
+import DesktopSidebar from "../../myPage/DesktopSidebar";
 
 export default function Utils() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
+
+  const { isDesktop } = useDeviceType();
 
   useEffect(() => {
     isSidebarOpen && setIsSidebarOpen(false);
@@ -32,7 +36,10 @@ export default function Utils() {
         <button onClick={() => handleToggleSidebar()}>
           <HamburgerIcon />
         </button>
-        {isSidebarOpen && (
+        {isSidebarOpen && isDesktop && (
+          <DesktopSidebar onClose={handleCloseSidebar} />
+        )}
+        {isSidebarOpen && !isDesktop && (
           <MyPageSidebar
             isMounted={isSidebarOpen}
             onClose={handleCloseSidebar}

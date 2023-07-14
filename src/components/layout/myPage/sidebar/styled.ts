@@ -11,6 +11,16 @@ export const Container = styled.div`
     height: 100vh;
     padding: 0 8px;
     background-color: ${theme.colors.white};
+
+    ${theme.media.desktop} {
+      position: absolute;
+      top: 47px;
+      right: 0px;
+      width: 200px;
+      height: auto;
+      border-radius: ${theme.radius.md};
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    }
   `};
 `;
 
@@ -19,8 +29,11 @@ export const NonMember = styled.div`
     ${theme.flex.row("flex-start")};
     gap: 8px;
     padding: 16px 16px 16px 8px;
-
     border-bottom: 1px solid ${theme.colors.neutral50};
+
+    ${theme.media.desktop} {
+      gap: 16px;
+    }
   `};
 `;
 
@@ -49,6 +62,10 @@ export const CreatorLink = styled(Link)`
       height: 24px;
       stroke: ${theme.colors.neutral400};
     }
+
+    ${theme.media.desktop} {
+      gap: 16px;
+    }
   `};
 `;
 
@@ -63,6 +80,10 @@ export const Name = styled.span`
   ${({ theme }) => css`
     ${theme.typo.button.sm};
     color: ${theme.colors.neutral900};
+
+    ${theme.media.desktop} {
+      ${theme.typo.button.md};
+    }
   `};
 `;
 
@@ -83,6 +104,11 @@ export const Figure = styled.figure`
     img {
       border-radius: 50%;
     }
+
+    ${theme.media.desktop} {
+      width: 48px;
+      height: 48px;
+    }
   `};
 `;
 
@@ -96,6 +122,10 @@ export const LoginLink = styled(Link)`
       width: 16px;
       height: 16px;
       stroke: ${theme.colors.neutral900};
+    }
+
+    ${theme.media.desktop} {
+      ${theme.typo.button.md};
     }
   `};
 `;
@@ -125,6 +155,17 @@ export const List = styled.ul`
       ${theme.typo.button.sm};
       color: ${theme.colors.neutral900};
       text-align: left;
+    }
+
+    ${theme.media.desktop} {
+      li {
+        height: 64px;
+      }
+
+      li > a,
+      li > button {
+        ${theme.typo.button.md};
+      }
     }
   `};
 `;
