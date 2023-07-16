@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { BellIcon, HamburgerIcon } from "@/assets/icons";
 import MyPageSidebar from "@/components/layout/myPage/MyPageSidebar";
 import * as S from "./styled";
 import { useDeviceType } from "@/hooks";
 import DesktopSidebar from "../../myPage/DesktopSidebar";
+import { PATH } from "@/constants";
 
 export default function Utils() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const { isDesktop } = useDeviceType();
 
@@ -17,7 +19,9 @@ export default function Utils() {
     isSidebarOpen && setIsSidebarOpen(false);
   }, [pathname]);
 
-  const handleBellClick = () => {};
+  const handleBellClick = () => {
+    router.push(PATH.MYPAGE.NOTICE);
+  };
 
   const handleToggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);

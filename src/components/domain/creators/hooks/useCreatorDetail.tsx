@@ -12,7 +12,7 @@ import {
   creatorShortsApi,
   creatorsDetailApi,
 } from "@/utils/api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 
 type CreatorInfo = {
@@ -42,6 +42,7 @@ export default function useCreatorDetail(creatorId: number) {
   const [contents, setContents] = useImmer<ContentCardData[]>(INITIAL_CONTENTS);
   const [reviews, setReviews] = useImmer<ReviewCardData[]>(INITIAL_REVIEWS);
   const [isNextPage, setIsNextPage] = useImmer(INITIAL_IS_NEXT_PAGE);
+  const [isAskModalOpen, setIsAskModalOpen] = useState(false);
   const {
     owned: isOwned,
     activityPlatforms,
@@ -301,8 +302,17 @@ export default function useCreatorDetail(creatorId: number) {
     });
   };
 
+  const handleOpenAskModal = () => {
+    setIsAskModalOpen(true);
+  };
+
+  const handleCloseAskModal = () => {
+    setIsAskModalOpen(false);
+  };
+
   const getProfileProps = ({ ...otherProps } = {}) => ({
     isOwned,
+    isAskModalOpen,
     profileImage,
     creatorNickname,
     description,
@@ -316,6 +326,8 @@ export default function useCreatorDetail(creatorId: number) {
     followed,
     onFollow: handleCreatorFollow,
     onUnFollow: handleCreatorUnFollow,
+    onOpenAskModal: handleOpenAskModal,
+    onCloseAskModal: handleCloseAskModal,
     ...otherProps,
   });
 
