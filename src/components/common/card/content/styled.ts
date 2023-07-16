@@ -45,31 +45,19 @@ export const TitleGroup = styled.div`
     gap: 4px;
 
     span {
-      ${theme.typo.body.sm};
+      ${theme.typo.body.md};
       color: ${theme.colors.neutral900};
     }
     h3 {
-      ${theme.typo.title.sm};
+      ${theme.typo.title.md};
       color: ${theme.colors.neutral900};
       ${theme.text.skip(2)};
     }
 
     p {
-      ${theme.typo.body.sm};
+      ${theme.typo.body.md};
       color: ${theme.colors.neutral900};
       ${theme.text.skip(2)};
-    }
-
-    ${theme.media.tablet} {
-      span {
-        ${theme.typo.body.md};
-      }
-      h3 {
-        ${theme.typo.title.md};
-      }
-      p {
-        ${theme.typo.body.md};
-      }
     }
 
     ${theme.media.desktop} {
