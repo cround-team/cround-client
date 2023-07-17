@@ -5,7 +5,7 @@ export { default as SearchMdIcon } from "@/assets/icons/search-md.svg";
 export { default as XBtnIcon } from "@/assets/icons/x-button.svg";
 export { default as ModalArrowLeftIcon } from "@/assets/icons/modal-arrow-left.svg";
 export { default as EyeOffIcon } from "@/assets/icons/eye-off.svg";
-export { default as BellIcon } from "@/assets/icons/bell.svg";
+export { default as MailIcon } from "@/assets/icons/mail.svg";
 export { default as HamburgerIcon } from "@/assets/icons/hamburger.svg";
 export { default as HeartIcon } from "@/assets/icons/heart.svg";
 export { default as BookmarkIcon } from "@/assets/icons/bookmark.svg";
