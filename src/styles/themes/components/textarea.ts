@@ -43,6 +43,15 @@ export const textarea = {
         color: ${colors.neutral500};
       }
     `,
-    asked: () => css``,
+    asked: () => css`
+      height: 40px;
+      padding: 12px 14px;
+      ${typo.label.md};
+      color: ${colors.neutral900};
+
+      ::placeholder {
+        color: ${colors.neutral300};
+      }
+    `,
   },
 };
