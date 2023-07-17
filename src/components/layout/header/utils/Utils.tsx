@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-import { BellIcon, HamburgerIcon } from "@/assets/icons";
+import { HamburgerIcon, MailIcon } from "@/assets/icons";
 import MyPageSidebar from "@/components/layout/myPage/MyPageSidebar";
 import * as S from "./styled";
 import { useDeviceType } from "@/hooks";
@@ -20,7 +20,7 @@ export default function Utils() {
   }, [pathname]);
 
   const handleBellClick = () => {
-    router.push(PATH.MYPAGE.NOTICE);
+    router.push(PATH.MYPAGE.ASKED);
   };
 
   const handleToggleSidebar = () => {
@@ -35,7 +35,7 @@ export default function Utils() {
     <>
       <S.Container>
         <button onClick={() => handleBellClick()}>
-          <BellIcon />
+          <MailIcon />
         </button>
         <button onClick={() => handleToggleSidebar()}>
           <HamburgerIcon />
