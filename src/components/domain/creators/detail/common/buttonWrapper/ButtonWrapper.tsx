@@ -1,51 +1,57 @@
 import { CheckIcon } from "@/assets/icons";
 import { Button } from "@/components/common";
+
 import * as S from "./styled";
-import { useDeviceType } from "@/hooks";
+import { AskedModal } from "@/components/domain/mypage";
 
 type ButtonWrapperProps = {
   isOwned: boolean;
+  isAskModalOpen: boolean;
   followed: boolean;
   onUnFollow: () => void;
   onFollow: () => void;
-  onAskQuestion: () => void;
+  onOpenAskModal: () => void;
+  onCloseAskModal: () => void;
 };
 
 export default function ButtonWrapper({
   isOwned,
+  isAskModalOpen,
   followed,
   onUnFollow,
   onFollow,
-  onAskQuestion,
+  onOpenAskModal,
+  onCloseAskModal,
 }: ButtonWrapperProps) {
-  const { isMobile } = useDeviceType();
-
   if (!isOwned) {
     return (
-      <S.Container>
-        {followed && (
-          <S.FollowingButton onClick={onUnFollow}>
-            팔로우 중
-            <CheckIcon />
-          </S.FollowingButton>
-        )}
-        {!followed && (
+      <>
+        <S.Container>
+          {followed && (
+            <S.FollowingButton onClick={onUnFollow}>
+              팔로우 중
+              <CheckIcon />
+            </S.FollowingButton>
+          )}
+          {!followed && (
+            <Button
+              css={S.CustomButton}
+              label="팔로우하기"
+              size="32"
+              variant="ghost"
+              onClick={onFollow}
+            />
+          )}
           <Button
             css={S.CustomButton}
-            label="팔로우하기"
+            label="질문하기"
             size="32"
-            variant="ghost"
-            onClick={onFollow}
+            variant="primary"
+            onClick={onOpenAskModal}
           />
-        )}
-        <Button
-          css={S.CustomButton}
-          label="질문하기"
-          size="32"
-          variant="primary"
-          onClick={onAskQuestion}
-        />
-      </S.Container>
+        </S.Container>
+        {isAskModalOpen && <AskedModal onClose={onCloseAskModal} />}
+      </>
     );
   } else {
     return <></>;
