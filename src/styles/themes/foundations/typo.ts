@@ -82,6 +82,11 @@ export const typo = {
     `,
   },
   body: {
+    xs: () => css`
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.6rem;
+    `,
     sm: () => css`
       font-size: 1.2rem;
       font-weight: 400;
