@@ -18,10 +18,6 @@ export const Article = styled.article`
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.neutral50};
     border-radius: ${theme.radius.md};
-
-    ${theme.media.desktop} {
-      border-radius: 14px;
-    }
   `};
 `;
 

@@ -26,7 +26,6 @@ export const Article = styled.article`
       gap: 29.23px;
       max-height: 100%;
       padding-bottom: 29.23px;
-      border-radius: ${theme.radius.lg};
     }
   `};
 `;

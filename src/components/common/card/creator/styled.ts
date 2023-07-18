@@ -23,7 +23,6 @@ export const Article = styled.article`
       width: 277.5px;
       height: 374.79px;
       padding: 29.26px 29.01px;
-      border-radius: ${theme.radius.lg};
     }
   `};
 `;
