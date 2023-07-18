@@ -8,6 +8,10 @@ export const Container = styled.div`
     width: 100%;
     padding: 40px 0;
     border-top: 1px solid ${theme.colors.neutral100};
+
+    ${theme.media.desktop} {
+      gap: 40px;
+    }
   `};
 `;
 
@@ -22,5 +26,9 @@ export const Date = styled.span`
     background-color: #f7f7f7;
     ${theme.typo.body.sm};
     color: ${theme.colors.neutral500};
+
+    ${theme.media.desktop} {
+      ${theme.typo.body.lg};
+    }
   `};
 `;

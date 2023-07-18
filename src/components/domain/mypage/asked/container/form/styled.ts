@@ -7,8 +7,8 @@ export const Form = styled.form`
     ${theme.flex.row("center", "flex-end")};
     gap: 8px;
 
-    textarea {
-      background-color: white;
+    ${theme.media.desktop} {
+      gap: 24px;
     }
   `};
 `;
@@ -22,6 +22,10 @@ export const TextArea = styled.textarea`
     font-family: inherit;
     overflow-y: hidden;
     ${theme.textarea.styles.asked()};
+
+    ${theme.media.desktop} {
+      width: 1088px;
+    }
   `};
 `;
 
@@ -41,6 +45,16 @@ export const SendButton = styled.button`
 
     &[aria-details="true"] {
       background-color: ${theme.colors.primary500};
+    }
+
+    ${theme.media.desktop} {
+      width: 40px;
+      height: 40px;
+
+      svg {
+        width: 26.67px;
+        height: 26.67px;
+      }
     }
   `};
 `;

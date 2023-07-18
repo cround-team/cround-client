@@ -1,4 +1,5 @@
-import { Messages } from "../hooks/useAsked";
+import { useEffect, useRef } from "react";
+import { Messages } from "../hooks/useAskedDetail";
 import AskedForm from "./form/AskedForm";
 import MessageList from "./list/MessageList";
 import * as S from "./styled";
@@ -7,19 +8,31 @@ type MessageContainerProps = {
   creatorNickname: string;
   platformHeadType: string;
   platformHeadTheme: string;
+  profileImage: string;
   messages: Messages;
-  source: number;
-  target: number;
+  sender: number;
+  receiver: number;
 };
 
 export default function MessageContainer({
   creatorNickname,
   platformHeadType,
   platformHeadTheme,
+  profileImage,
   messages,
-  source,
-  target,
+  sender,
+  receiver,
 }: MessageContainerProps) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = wrapperRef.current;
+    if (container) {
+      console.log(container.scrollHeight);
+      container.scrollTop = container.scrollHeight;
+    }
+  }, [messages]);
+
   return (
     <S.Container>
       <S.UserInfo>
@@ -28,17 +41,18 @@ export default function MessageContainer({
           {platformHeadType} / {platformHeadTheme}
         </S.PlatformThemeGroup>
       </S.UserInfo>
-      <S.Wrapper>
+      <S.Wrapper ref={wrapperRef}>
         {Object.keys(messages).map((date) => (
           <MessageList
             key={date}
             date={date}
             data={messages[date]}
-            source={source}
-            target={target}
+            sender={sender}
+            receiver={receiver}
+            profileImage={profileImage}
           />
         ))}
-        <AskedForm />
+        <AskedForm id={receiver} />
       </S.Wrapper>
     </S.Container>
   );

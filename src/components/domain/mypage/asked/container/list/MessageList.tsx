@@ -12,15 +12,17 @@ interface Message {
 type MessageListProps = {
   date: string;
   data: any;
-  source: number;
-  target: number;
+  sender: number;
+  receiver: number;
+  profileImage?: string;
 };
 
 export default function MessageList({
   date,
   data,
-  source,
-  target,
+  sender,
+  receiver,
+  profileImage,
 }: MessageListProps) {
   return (
     <S.Container>
@@ -28,12 +30,10 @@ export default function MessageList({
       {data.map((message: Message) => (
         <Message
           key={message.updatedDate}
+          type={receiver === message.receiver ? "mentee" : "creator"}
           text={message.text}
           time={"07:11"}
-          sender={message.sender}
-          receiver={message.receiver}
-          source={source}
-          target={target}
+          profileImage={profileImage}
         />
       ))}
     </S.Container>
