@@ -5,6 +5,10 @@ export const Container = styled.div`
     ${theme.flex.row("flex-start")};
     flex-wrap: wrap;
     gap: 8px;
+
+    ${theme.media.desktop} {
+      width: 50%;
+    }
   `};
 `;
 

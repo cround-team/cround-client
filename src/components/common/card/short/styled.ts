@@ -26,7 +26,6 @@ export const Article = styled.article`
       gap: 29.23px;
       max-height: 100%;
       padding-bottom: 29.23px;
-      border-radius: ${theme.radius.lg};
     }
   `};
 `;
@@ -73,24 +72,19 @@ export const TitleGroup = styled.div`
     gap: 4px;
 
     span {
-      ${theme.typo.body.sm};
+      ${theme.typo.body.md};
       color: ${theme.colors.neutral900};
     }
     h3 {
       height: 40px;
-      ${theme.typo.title.sm};
+      ${theme.typo.title.md};
       color: ${theme.colors.neutral900};
       ${theme.text.skip(2)};
     }
 
     ${theme.media.tablet} {
-      span {
-        ${theme.typo.body.md};
-      }
-
       h3 {
         height: 48px;
-        ${theme.typo.title.md};
       }
     }
 

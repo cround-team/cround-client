@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { flex, typo, colors, radius } from "../foundations";
+import { flex, typo, colors, radius, media } from "../foundations";
 
 export const textarea = {
   styles: {
@@ -43,6 +43,21 @@ export const textarea = {
         color: ${colors.neutral500};
       }
     `,
-    asked: () => css``,
+    asked: () => css`
+      ${flex.row()};
+      height: 40px;
+      padding: 12px 14px;
+      ${typo.label.md};
+      color: ${colors.neutral900};
+
+      ::placeholder {
+        color: ${colors.neutral300};
+      }
+
+      ${media.desktop} {
+        height: 56px;
+        padding: 20px 16px;
+      }
+    `,
   },
 };

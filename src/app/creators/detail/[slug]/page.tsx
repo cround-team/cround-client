@@ -1,6 +1,6 @@
 "use client";
 
-import { useDeviceType, usePanel } from "@/hooks";
+import { usePanel } from "@/hooks";
 import {
   ContentList,
   ReviewList,
@@ -13,6 +13,8 @@ import MobileProfile from "@/components/domain/creators/detail/mobile/MobileProf
 import TabletProfile from "@/components/domain/creators/detail/tablet/TabletProfile";
 import DesktopProfile from "@/components/domain/creators/detail/desktop/DesktopProfile";
 import * as S from "./styled";
+import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 type CreatorDetailPageProps = {
   params: {
@@ -31,21 +33,26 @@ export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
     getReviewListProps,
     getBubblesProps,
   } = useCreatorDetail(params.slug);
-  const { isDesktop, isTablet } = useDeviceType();
+  const [device, setDevice] = useState("mobile");
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1199 });
+  const isDesktop = useMediaQuery({ minWidth: 1200 });
 
-  const renderDeviceProfile = () => {
+  useEffect(() => {
     if (isTablet) {
-      return <TabletProfile {...getProfileProps()} />;
+      setDevice("tablet");
     } else if (isDesktop) {
-      return <DesktopProfile {...getProfileProps()} />;
+      setDevice("desktop");
     } else {
-      return <MobileProfile {...getProfileProps()} />;
+      setDevice("mobile");
     }
-  };
+  }, [isMobile, isTablet, isDesktop]);
 
   return (
     <S.Section>
-      {renderDeviceProfile()}
+      {device === "mobile" && <MobileProfile {...getProfileProps()} />}
+      {device === "tablet" && <TabletProfile {...getProfileProps()} />}
+      {device === "desktop" && <DesktopProfile {...getProfileProps()} />}
       <SelectTabs
         css={S.TabsStyles}
         tabs={TABS}
@@ -57,7 +64,7 @@ export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
       {selectedPanel === "리뷰" && (
         <ReviewList {...getReviewListProps()} creatorId={params.slug} />
       )}
-      {!isDesktop && <InformativeBubbles {...getBubblesProps()} />}
+      {device !== "desktop" && <InformativeBubbles {...getBubblesProps()} />}
     </S.Section>
   );
 }

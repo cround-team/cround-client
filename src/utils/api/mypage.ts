@@ -17,3 +17,15 @@ export const menteeEditApi = async (body: any) => {
 
   return response;
 };
+
+export const sendMessageApi = async (body: any) => {
+  const response = await apiInstance.post("/api/messages", body);
+
+  return response;
+};
+
+export const messageListApi = async () => {
+  const response = await apiInstance.get("/api/messages");
+
+  return response;
+};

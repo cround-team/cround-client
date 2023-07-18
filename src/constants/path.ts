@@ -47,4 +47,5 @@ export const PATH_TITLE: Record<string, string> = {
   "/mypage/bookmark": "나의 북마크",
   "/mypage/follow": "나의 팔로우",
   "/mypage/edit": "개인정보 변경",
+  "/mypage/asked": "질문함",
 };

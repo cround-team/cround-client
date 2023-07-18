@@ -11,6 +11,17 @@ export const Container = styled.section`
       height: 20px;
       stroke: ${theme.colors.neutral900};
     }
+
+    ${theme.media.desktop} {
+      gap: 38.88px;
+      width: 482px;
+      margin-top: 0px;
+
+      svg {
+        width: 36px;
+        height: 36px;
+      }
+
   `};
 `;
 
@@ -45,6 +56,20 @@ export const Wrapper = styled.div`
     a {
       ${theme.typo.button.md};
       ${theme.colors.black};
+    }
+
+    ${theme.media.desktop} {
+      gap: 12.05px;
+      padding: 36.15px 0;
+      border-radius: 18px;
+
+      p {
+        ${theme.typo.title.md};
+      }
+
+      a {
+        ${theme.typo.title.md};
+      }
     }
   `};
 `;

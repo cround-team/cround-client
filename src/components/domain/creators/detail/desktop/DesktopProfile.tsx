@@ -2,12 +2,13 @@ import ReviewFollowWrapper from "../common/reviewFollowWrapper/ReviewFollowWrapp
 import BaseWrapper from "../common/baseWrapper/BaseWrapper";
 import ButtonWrapper from "../common/buttonWrapper/ButtonWrapper";
 import AvatarWrapper from "../common/avatarWrapper/AvatarWrapper";
-import Introduce from "../common/introduce/Introduce";
 import * as S from "./styled";
 import InformativeBubbles from "../common/InformativeBubbles/InformativeBubbles";
+import { Tag } from "@/components/common";
 
 type ProfileProps = {
   isOwned: boolean;
+  isAskModalOpen: boolean;
   profileImage: string;
   creatorNickname: string;
   description: string;
@@ -21,10 +22,13 @@ type ProfileProps = {
   followed: boolean;
   onFollow: () => void;
   onUnFollow: () => void;
+  onOpenAskModal: () => void;
+  onCloseAskModal: () => void;
 };
 
 export default function DesktopProfile({
   isOwned,
+  isAskModalOpen,
   profileImage,
   creatorNickname,
   description,
@@ -38,11 +42,9 @@ export default function DesktopProfile({
   followed,
   onFollow,
   onUnFollow,
+  onOpenAskModal,
+  onCloseAskModal,
 }: ProfileProps) {
-  const handleAskQuestion = () => {
-    alert("준비중입니다.");
-  };
-
   return (
     <S.Section>
       <S.Container>
@@ -66,18 +68,24 @@ export default function DesktopProfile({
           platformUrl={platformUrl}
         />
       </S.Container>
-      <ButtonWrapper
-        isOwned={isOwned}
-        followed={followed}
-        onFollow={onFollow}
-        onUnFollow={onUnFollow}
-        onAskQuestion={handleAskQuestion}
-      />
-      <Introduce
-        creatorNickname={creatorNickname}
-        description={description}
-        tags={tags}
-      />
+      <S.Introduce>
+        <div>
+          <h3>{creatorNickname}님의 인사말</h3>
+          <p>{description}</p>
+        </div>
+        <S.IntroduceWrapper>
+          <Tag tags={tags} />
+          <ButtonWrapper
+            isOwned={isOwned}
+            isAskModalOpen={isAskModalOpen}
+            followed={followed}
+            onFollow={onFollow}
+            onUnFollow={onUnFollow}
+            onOpenAskModal={onOpenAskModal}
+            onCloseAskModal={onCloseAskModal}
+          />
+        </S.IntroduceWrapper>
+      </S.Introduce>
     </S.Section>
   );
 }

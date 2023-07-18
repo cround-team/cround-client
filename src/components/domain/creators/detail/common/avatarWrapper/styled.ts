@@ -13,6 +13,11 @@ export const Figure = styled.figure`
     ${theme.media.tablet} {
       width: 204px;
       height: 204px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     ${theme.media.desktop} {
