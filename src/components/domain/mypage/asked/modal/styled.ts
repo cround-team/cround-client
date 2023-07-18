@@ -8,6 +8,10 @@ export const Layout = styled.div`
     backdrop-filter: blur(2px);
     background-color: #f7f7f7;
     border-radius: ${theme.radius.md};
+
+    ${theme.media.desktop} {
+      width: 1200px;
+    }
   `};
 `;
 
@@ -24,6 +28,18 @@ export const CloseButton = styled.button`
       width: 12px;
       height: 12px;
       stroke: ${theme.colors.neutral900};
+    }
+
+    ${theme.media.desktop} {
+      width: 32px;
+      height: 32px;
+      top: 12px;
+      right: 12px;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
     }
   `};
 `;

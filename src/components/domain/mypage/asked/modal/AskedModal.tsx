@@ -4,7 +4,7 @@ import { XCloseIcon } from "@/assets/icons";
 import { useClickOutside, useHiddenScroll } from "@/hooks";
 import { Modal } from "@/components/common";
 import MessageContainer from "../container/MessageContainer";
-import useAsked from "../hooks/useAsked";
+import useAskedDetail from "../hooks/useAskedDetail";
 import * as S from "./styled";
 
 type AskedModalProps = {
@@ -16,13 +16,16 @@ export default function AskedModal({ onClose }: AskedModalProps) {
   useClickOutside(modalRef, onClose);
   useHiddenScroll(modalRef);
   const {
-    creatorNickname,
-    platformHeadType,
-    platformHeadTheme,
     messages,
     sender,
     receiver,
-  } = useAsked();
+    creatorNickname,
+    platformHeadType,
+    platformHeadTheme,
+    profileImage,
+  } = useAskedDetail();
+
+  console.log("receiver", receiver);
 
   return (
     <Modal isMounted={true}>
@@ -35,6 +38,9 @@ export default function AskedModal({ onClose }: AskedModalProps) {
           platformHeadType={platformHeadType}
           platformHeadTheme={platformHeadTheme}
           messages={messages}
+          profileImage={profileImage}
+          sender={sender}
+          receiver={receiver}
         />
       </S.Layout>
     </Modal>
