@@ -64,7 +64,7 @@ export default function useNewPassword() {
       const res = await updatePasswordApi(body);
       console.log("body", body);
       console.log("res", res);
-      router.push(PATH.AUTH);
+      // router.push(PATH.AUTH);
     } catch (error: any) {
       console.error(error);
     }
