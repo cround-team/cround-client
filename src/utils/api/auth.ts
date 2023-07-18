@@ -75,7 +75,7 @@ export const findPasswordApi = async (body: any) => {
 };
 
 export const updatePasswordApi = async (body: any) => {
-  const response = await apiInstance.put("/api/members/me/password", body);
+  const response = await apiInstance.patch("/api/members/me/password", body);
 
   return response;
 };

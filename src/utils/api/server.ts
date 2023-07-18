@@ -48,7 +48,7 @@ apiInstance.interceptors.response.use(
   (error: AxiosError) => {
     if (error.response?.status === 401) {
       // 401 에러 처리 로직
-      // window.location.href = "/auth";
+      window.location.href = "/auth";
       LocalStorage.removeItem("accessToken");
       SessionStorage.initUser();
     }
