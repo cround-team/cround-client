@@ -55,7 +55,7 @@ export default function useNewPassword() {
   const updatePassword = async () => {
     try {
       const body = {
-        id,
+        id: parseInt(id, 10),
         code,
         password: user.password,
         confirmPassword: user.confirmPassword,
