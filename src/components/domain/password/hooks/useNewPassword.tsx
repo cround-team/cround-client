@@ -19,7 +19,7 @@ export default function useNewPassword() {
   useEffect(() => {
     const searchParams = new URL(window.location.href).searchParams;
     const id = searchParams.get("id") as string;
-    const code = searchParams.get("id") as string;
+    const code = searchParams.get("code") as string;
     setId(id);
     setCode(code);
   }, []);
