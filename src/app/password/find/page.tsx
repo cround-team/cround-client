@@ -1,47 +1,14 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import Input from "@/components/common/input/base/Input";
 import Button from "@/components/common/button/base/Button";
+
 import * as S from "./styled";
-import { PATH } from "@/constants";
-import { useState } from "react";
-import { emailValidCheck } from "@/utils/validation";
+import useFindPassword from "@/components/domain/password/hooks/useFindPassword";
 
 export default function PasswordFindPage() {
-  const [email, setEmail] = useState("");
-  const [inputMessage, setInputMessage] = useState("");
-  const [isValid, setIsValid] = useState(true);
-  const router = useRouter();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // validCheck() && //유효한 이메일인지 확인 후 router.push()
-    // router.push(PATH.PASSWORD.SEND);
-  };
-
-  const validCheck = () => {
-    if (email === "") {
-      setIsValid(false);
-      setInputMessage("비어있는 항목을 입력해주세요");
-
-      return false;
-    } else if (!emailValidCheck(email)) {
-      setIsValid(false);
-      setInputMessage("이메일 형식이 올바르지 않습니다");
-
-      return false;
-    } else if (emailValidCheck(email)) {
-      setIsValid(true);
-      setInputMessage("");
-
-      return true;
-    }
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
+  const { email, inputMessage, isValid, handleSubmit, handleChange } =
+    useFindPassword();
 
   return (
     <S.Container>
@@ -63,7 +30,7 @@ export default function PasswordFindPage() {
           id="email"
           name="email"
           placeholder="이메일 입력"
-          onChange={handleInputChange}
+          onChange={handleChange}
         />
         <Button label="링크 전송" size="56" variant="primary" />
       </S.Form>
