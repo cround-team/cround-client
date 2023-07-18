@@ -67,3 +67,15 @@ export const kakaoSocialApi = async (params?: Record<string, any>) => {
 
   return response;
 };
+
+export const findPasswordApi = async (body: any) => {
+  const response = await apiInstance.post("/api/members/me/password", body);
+
+  return response;
+};
+
+export const updatePasswordApi = async (body: any) => {
+  const response = await apiInstance.put("/api/members/me/password", body);
+
+  return response;
+};
