@@ -13,9 +13,9 @@ type MenteeAskedListProps = {
     text: string;
     updatedDate: string;
     creatorNickname: string;
-    platformHeadType: string;
-    platformHeadTheme: string;
-    profileImage: string;
+    platformHeadType: string | null;
+    platformHeadTheme: string | null;
+    profileImage: string | null;
   };
 };
 
