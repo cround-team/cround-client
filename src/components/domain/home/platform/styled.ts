@@ -10,6 +10,7 @@ export const Section = styled.section`
 
     .swiper-slide {
       width: 48px !important;
+
       /* margin-right: 24px !important; */
     }
 
@@ -37,5 +38,7 @@ export const Figure = styled.div`
     position: relative;
     width: 48px;
     height: 48px;
+    border: 1px solid ${theme.colors.neutral50};
+    border-radius: 10px;
   `};
 `;
