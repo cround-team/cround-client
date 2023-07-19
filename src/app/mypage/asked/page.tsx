@@ -1,10 +1,11 @@
 "use client";
 
-import useAskedList from "@/components/domain/mypage/asked/hooks/useAskedList";
-import { CreatorAskedList, MenteeAskedList } from "@/components/common";
-import * as S from "./styled";
 import Link from "next/link";
+
+import useAskedList from "@/components/domain/mypage/asked/hooks/useAskedList";
+import { AskedList } from "@/components/common";
 import { PATH } from "@/constants";
+import * as S from "./styled";
 
 export default function MyAskedPage() {
   const { data } = useAskedList();
@@ -14,7 +15,7 @@ export default function MyAskedPage() {
       {data &&
         data.map((v, i) => (
           <Link href={`${PATH.MYPAGE.ASKED}/${v.receiver}`}>
-            <MenteeAskedList key={i} data={v} />
+            <AskedList key={i} data={v} />
           </Link>
         ))}
     </S.Section>
