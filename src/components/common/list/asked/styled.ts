@@ -41,31 +41,6 @@ export const TextWrapper = styled.div`
   `};
 `;
 
-export const CreatorInfo = styled.div`
-  ${({ theme }) => css`
-    ${theme.flex.row()};
-    gap: 8px;
-    margin-bottom: 4px;
-    h3 {
-      ${theme.typo.title.sm};
-      color: ${theme.colors.neutral900};
-    }
-    span {
-      ${theme.typo.label.sm};
-      color: ${theme.colors.neutral700};
-    }
-
-    ${theme.media.desktop} {
-      h3 {
-        ${theme.typo.title.md};
-      }
-      span {
-        ${theme.typo.label.md};
-      }
-    }
-  `};
-`;
-
 export const Text = styled.p`
   ${({ theme }) => css`
     margin-bottom: 8px;

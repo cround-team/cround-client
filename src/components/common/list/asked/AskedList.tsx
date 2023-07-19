@@ -5,7 +5,7 @@ import { PATH } from "@/constants";
 import { media } from "@/styles/themes/foundations";
 import * as S from "./styled";
 
-type MenteeAskedListProps = {
+type AskedListProps = {
   data: {
     id: number;
     sender: number;
@@ -19,7 +19,7 @@ type MenteeAskedListProps = {
   };
 };
 
-export default function MenteeAskedList({ data }: MenteeAskedListProps) {
+export default function AskedList({ data }: AskedListProps) {
   const {
     id,
     sender,
@@ -45,14 +45,6 @@ export default function MenteeAskedList({ data }: MenteeAskedListProps) {
         </S.Figure>
       )}
       <S.TextWrapper>
-        <S.CreatorInfo>
-          <h3>{creatorNickname}</h3>
-          {platformHeadType && (
-            <span>
-              {platformHeadType} / {platformHeadTheme}
-            </span>
-          )}
-        </S.CreatorInfo>
         <S.Text>{text}</S.Text>
         <S.Time>{updatedDate}</S.Time>
       </S.TextWrapper>
