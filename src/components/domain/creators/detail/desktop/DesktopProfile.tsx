@@ -19,6 +19,7 @@ type ProfileProps = {
   followersCount: number;
   platformHeadType: string;
   platformUrl: string;
+  receiver: number;
   followed: boolean;
   onFollow: () => void;
   onUnFollow: () => void;
@@ -40,6 +41,7 @@ export default function DesktopProfile({
   platformHeadType,
   platformUrl,
   followed,
+  receiver,
   onFollow,
   onUnFollow,
   onOpenAskModal,
@@ -79,6 +81,7 @@ export default function DesktopProfile({
             isOwned={isOwned}
             isAskModalOpen={isAskModalOpen}
             followed={followed}
+            receiver={receiver}
             onFollow={onFollow}
             onUnFollow={onUnFollow}
             onOpenAskModal={onOpenAskModal}

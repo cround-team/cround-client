@@ -19,6 +19,7 @@ type ProfileProps = {
   platformHeadType: string;
   platformUrl: string;
   followed: boolean;
+  receiver: number;
   onFollow: () => void;
   onUnFollow: () => void;
   onOpenAskModal: () => void;
@@ -39,6 +40,7 @@ export default function MobileProfile({
   platformHeadType,
   platformUrl,
   followed,
+  receiver,
   onFollow,
   onUnFollow,
   onOpenAskModal,
@@ -65,6 +67,7 @@ export default function MobileProfile({
           isOwned={isOwned}
           isAskModalOpen={isAskModalOpen}
           followed={followed}
+          receiver={receiver}
           onFollow={onFollow}
           onUnFollow={onUnFollow}
           onOpenAskModal={onOpenAskModal}
