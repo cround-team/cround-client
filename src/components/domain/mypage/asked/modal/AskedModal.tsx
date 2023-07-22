@@ -8,22 +8,15 @@ import useAskedDetail from "../hooks/useAskedDetail";
 import * as S from "./styled";
 
 type AskedModalProps = {
+  creatorId: number;
   onClose: () => void;
 };
 
-export default function AskedModal({ onClose }: AskedModalProps) {
+export default function AskedModal({ creatorId, onClose }: AskedModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   useClickOutside(modalRef, onClose);
   useHiddenScroll(modalRef);
-  const {
-    messages,
-    sender,
-    receiver,
-    creatorNickname,
-    platformHeadType,
-    platformHeadTheme,
-    profileImage,
-  } = useAskedDetail();
+  const { messages, sender, receiver, nickname } = useAskedDetail();
 
   console.log("receiver", receiver);
 
@@ -34,11 +27,8 @@ export default function AskedModal({ onClose }: AskedModalProps) {
           <XCloseIcon />
         </S.CloseButton>
         <MessageContainer
-          creatorNickname={creatorNickname}
-          platformHeadType={platformHeadType}
-          platformHeadTheme={platformHeadTheme}
+          nickname={nickname}
           messages={messages}
-          profileImage={profileImage}
           sender={sender}
           receiver={receiver}
         />

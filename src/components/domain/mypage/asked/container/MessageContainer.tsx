@@ -1,27 +1,22 @@
 import { useEffect, useRef } from "react";
+
 import { Messages } from "../hooks/useAskedDetail";
 import AskedForm from "./form/AskedForm";
 import MessageList from "./list/MessageList";
 import * as S from "./styled";
 
 type MessageContainerProps = {
-  creatorNickname: string;
-  platformHeadType: string;
-  platformHeadTheme: string;
-  profileImage: string;
   messages: Messages;
   sender: number;
   receiver: number;
+  nickname: string;
 };
 
 export default function MessageContainer({
-  creatorNickname,
-  platformHeadType,
-  platformHeadTheme,
-  profileImage,
   messages,
   sender,
   receiver,
+  nickname,
 }: MessageContainerProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -35,12 +30,6 @@ export default function MessageContainer({
 
   return (
     <S.Container>
-      <S.UserInfo>
-        <S.Name>{creatorNickname}</S.Name>
-        <S.PlatformThemeGroup>
-          {platformHeadType} / {platformHeadTheme}
-        </S.PlatformThemeGroup>
-      </S.UserInfo>
       <S.Wrapper ref={wrapperRef}>
         {Object.keys(messages).map((date) => (
           <MessageList
@@ -49,7 +38,6 @@ export default function MessageContainer({
             data={messages[date]}
             sender={sender}
             receiver={receiver}
-            profileImage={profileImage}
           />
         ))}
         <AskedForm id={receiver} />
