@@ -5,3 +5,4 @@ export * from "./typo";
 export * from "./radius";
 export * from "./media";
 export * from "./text";
+export * from "./a11y";
