@@ -29,3 +29,9 @@ export const messageListApi = async () => {
 
   return response;
 };
+
+export const messageDetailApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get(`/api/messages/${params.id}`);
+
+  return response;
+};
