@@ -32,6 +32,7 @@ export const PATH = {
     REGISTER: "/contents/register",
     EDIT: "/contents/edit",
   },
+  NOT_FOUND: "/not-found",
 };
 
 export const PATH_TITLE: Record<string, string> = {
