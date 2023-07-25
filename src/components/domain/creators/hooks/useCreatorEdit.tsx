@@ -189,15 +189,20 @@ export default function useCreatorEdit() {
     if (!isModified) setIsModified(true);
     const { value } = e.target;
 
-    setCustomTags((prev) => {
-      const updatedValues = prev.map((item) =>
-        item.id === id ? { ...item, value } : item
-      );
-
-      return updatedValues;
+    const updatedValues = customTags.map((item) => {
+      return item.id === id ? { ...item, value } : item;
     });
+
+    setCustomTags(updatedValues);
+    // setCustomTags((prev) => {
+    //   const updatedValues = prev.map((item) =>
+    //     item.id === id ? { ...item, value } : item
+    //   );
+
+    //   return updatedValues;
+    // });
     setForm((draft) => {
-      draft.tags = customTags.map((v) => v.value);
+      draft.tags = updatedValues.map((v) => v.value);
     });
   };
 
