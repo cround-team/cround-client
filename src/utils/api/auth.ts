@@ -53,20 +53,28 @@ export const loginApi = async (body: LoginBody) => {
   return response;
 };
 
+export const kakaoLoginApi = async (params: Record<string, any>) => {
+  const response = await apiInstance.get("/auth/login/kakao/login", {
+    params,
+  });
+
+  return response;
+};
+
 export const logoutApi = () => {
   LocalStorage.removeItem("accessToken");
   SessionStorage.initUser();
   window.location.replace("/auth");
 };
 
-export const kakaoSocialApi = async (params?: Record<string, any>) => {
-  const response = await apiInstance.get(
-    "https://kauth.kakao.com/oauth/authorize",
-    { params }
-  );
+// export const kakaoSocialApi = async (params?: Record<string, any>) => {
+//   const response = await apiInstance.get(
+//     "https://kauth.kakao.com/oauth/authorize",
+//     { params }
+//   );
 
-  return response;
-};
+//   return response;
+// };
 
 export const findPasswordApi = async (body: any) => {
   const response = await apiInstance.post("/api/members/me/password", body);
