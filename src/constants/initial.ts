@@ -14,6 +14,7 @@ export const INITIAL_CREATOR_INFO = {
   activityPlatforms: [],
   avgRating: "0.0",
   creatorNickname: "",
+  memberId: 0,
   description: "",
   followed: false,
   followersCount: 0,

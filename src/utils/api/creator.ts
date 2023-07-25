@@ -54,6 +54,7 @@ export const creatorReviewsApi = async (params: Record<string, any>) => {
 
 export const creatorsCustomApi = async (params: Record<string, any>) => {
   const response = await apiInstance.get("/api/creators/home", { params });
+  console.log("response", response);
 
   return response;
 };

@@ -7,6 +7,7 @@ import { SessionStorage } from "@/constants";
 type User = {
   socialLogin?: boolean;
   creatorId?: number | null;
+  memberId?: number | null;
   nickname?: string;
   profileImage?: string | null;
   roleName?: string;
@@ -21,6 +22,7 @@ type AuthContextProps = {
 const INITIAL_USER: User = {
   socialLogin: SessionStorage.getItem("socialLogin") === "true",
   creatorId: Number(SessionStorage.getItem("creatorId")) ?? null,
+  creatorId: Number(SessionStorage.getItem("memberId")) ?? null,
   nickname: SessionStorage.getItem("nickname") ?? "",
   profileImage: SessionStorage.getItem("profileImage") ?? null,
   roleName: SessionStorage.getItem("roleName") ?? "",
@@ -35,8 +37,14 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
   const pathname = usePathname();
 
   const handleSetUserInfo = (userInfo: User) => {
-    const { socialLogin, creatorId, nickname, profileImage, roleName } =
-      userInfo;
+    const {
+      socialLogin,
+      creatorId,
+      memberId,
+      nickname,
+      profileImage,
+      roleName,
+    } = userInfo;
 
     setUser((draft) => {
       draft.nickname = nickname || user.nickname;
@@ -44,6 +52,7 @@ export const AuthContextProvider = ({ children }: PropsWithChildren) => {
       draft.profileImage = profileImage || user.profileImage;
       draft.roleName = roleName || user.roleName;
       draft.creatorId = creatorId || user.creatorId;
+      draft.memberId = memberId || user.memberId;
     });
   };
 

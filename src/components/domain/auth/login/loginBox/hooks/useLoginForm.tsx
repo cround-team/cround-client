@@ -80,6 +80,7 @@ export default function useLoginForm() {
         LocalStorage.setItem("accessToken", accessToken);
         SessionStorage.setItem("roleName", roleName);
         SessionStorage.setItem("creatorId", res.data.creatorId);
+        SessionStorage.setItem("memberId", res.data.memberId);
         SessionStorage.setItem("profileImage", res.data.profileImage);
         SessionStorage.setItem(
           "socialLogin",
@@ -93,6 +94,7 @@ export default function useLoginForm() {
           profileImage: res.data.profileImage,
           socialLogin: res.data.socialLogin,
           creatorId: res.data.creatorId,
+          memberId: res.data.memberId,
         };
         onSetUserInfo(userInfo);
         router.push(PATH.ROOT);
