@@ -45,7 +45,7 @@ export default function InitMainContainer({
         <ListTitle
           href={PATH.CREATORS.LIST}
           src="/images/title/heart.png"
-          label="코코님이 관심 있어 할 크리에이터"
+          label="회원님이 관심 있어 할 크리에이터"
           alt="Heart icon"
         />
         <CreatorList {...getInterestCreatorListProps()} />
