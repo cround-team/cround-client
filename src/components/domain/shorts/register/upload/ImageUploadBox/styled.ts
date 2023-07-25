@@ -1,7 +1,9 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const Container = styled.div`
   ${({ theme }) => css`
+    position: relative;
+    overflow: hidden;
     ${theme.flex.col()};
     gap: 24px;
     width: 100%;
@@ -113,6 +115,74 @@ export const Figure = styled.figure`
           width: 29.5px;
           height: 29.5px;
         }
+      }
+    }
+  `};
+`;
+
+export const LoadingHeader = styled.div`
+  ${({ theme }) => css`
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: ${theme.radius.md} ${theme.radius.md} 0 0;
+
+    ${theme.media.desktop} {
+      height: 8px;
+      border-radius: 22px 22px 0 0;
+    }
+  `};
+`;
+
+export const ProgressBar = styled.span`
+  ${({ theme }) => css`
+    display: inline-block;
+    position: absolute;
+    height: 4px;
+    background-color: ${theme.colors.primary500};
+    animation: ${Progress} 2s both;
+
+    ${theme.media.desktop} {
+      height: 8px;
+    }
+  `};
+`;
+
+export const Progress = keyframes` 
+  0%{
+      width: 0%;
+  }
+  50%{ 
+      width: 50%;
+  }
+  100%{
+      width: 100%;
+  }
+`;
+
+export const UploadingWrapper = styled.div`
+  ${({ theme }) => css`
+    ${theme.flex.col()};
+    gap: 8px;
+    svg {
+      width: 24px;
+      height: 24px;
+      stroke: ${theme.colors.neutral500};
+    }
+    span {
+      ${theme.typo.title.sm};
+      color: ${theme.colors.neutral500};
+    }
+
+    ${theme.media.desktop} {
+      gap: 16px;
+      svg {
+        width: 40px;
+        height: 40px;
+      }
+      span {
+        ${theme.typo.title.md};
       }
     }
   `};

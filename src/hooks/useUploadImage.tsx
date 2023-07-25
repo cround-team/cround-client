@@ -6,7 +6,7 @@ export default function useUploadImage() {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
     if (file) {
@@ -15,10 +15,12 @@ export default function useUploadImage() {
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreviewImage(reader.result as string);
+        setTimeout(() => {
+          setIsLoading(false); // 2초 뒤에 isLoading 값을 false로 변경
+        }, 2000);
       };
       reader.readAsDataURL(file);
     }
-    setIsLoading(false);
   };
 
   return {

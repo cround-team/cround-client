@@ -30,8 +30,13 @@ export default function useShortRegister() {
   const [step, setStep] = useState<Steps>("base");
   const { title, description, platform, thumbnail, url } = form;
 
-  const { selectedImage, previewImage, fileInputRef, handleFileChange } =
-    useUploadImage();
+  const {
+    isLoading: isImageLoading,
+    selectedImage,
+    previewImage,
+    fileInputRef,
+    handleFileChange,
+  } = useUploadImage();
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -152,6 +157,7 @@ export default function useShortRegister() {
   });
 
   const getUploadStepProps = ({ ...otherProps } = {}) => ({
+    isImageLoading,
     isDisabledSubmit: isDisabledUpload,
     url,
     fileInputRef,
