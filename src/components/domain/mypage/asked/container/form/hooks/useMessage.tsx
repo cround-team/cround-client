@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 
 import { sendMessageApi } from "@/utils/api/mypage";
 
-export default function useMessage(id: number) {
+export default function useMessage(id: number, onFetchData: () => void) {
   const [message, setMessage] = useState("");
   const [isTextareaFocused, setIsTextareaFocused] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -55,9 +55,10 @@ export default function useMessage(id: number) {
         receiver: id,
         text: message,
       };
-      const res = await sendMessageApi(body);
+      await sendMessageApi(body);
       setMessage("");
       setIsTextareaFocused(true);
+      onFetchData();
     } catch (error: any) {
       console.error(error);
     }

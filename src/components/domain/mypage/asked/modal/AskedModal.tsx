@@ -16,7 +16,8 @@ export default function AskedModal({ memberId, onClose }: AskedModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   useClickOutside(modalRef, onClose);
   useHiddenScroll(modalRef);
-  const { messages, sender, receiver, nickname } = useAskedDetail(memberId);
+  const { messages, sender, receiver, nickname, onFetchData } =
+    useAskedDetail(memberId);
 
   return (
     <Modal isMounted={true}>
@@ -33,6 +34,7 @@ export default function AskedModal({ memberId, onClose }: AskedModalProps) {
           memberId={memberId}
           sender={sender}
           receiver={receiver}
+          onFetchData={onFetchData}
         />
       </S.Layout>
     </Modal>

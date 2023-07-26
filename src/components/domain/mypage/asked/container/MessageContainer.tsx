@@ -4,6 +4,8 @@ import { Messages } from "../hooks/useAskedDetail";
 import AskedForm from "./form/AskedForm";
 import MessageList from "./list/MessageList";
 import * as S from "./styled";
+import { usePathname } from "next/navigation";
+import { PATH } from "@/constants";
 
 type MessageContainerProps = {
   messages: Messages;
@@ -11,6 +13,7 @@ type MessageContainerProps = {
   sender: number;
   receiver: number;
   nickname: string;
+  onFetchData: () => void;
 };
 
 export default function MessageContainer({
@@ -19,8 +22,10 @@ export default function MessageContainer({
   sender,
   receiver,
   nickname,
+  onFetchData,
 }: MessageContainerProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const container = wrapperRef.current;
@@ -31,7 +36,10 @@ export default function MessageContainer({
 
   return (
     <S.Container>
-      <S.Wrapper ref={wrapperRef}>
+      <S.Wrapper
+        ref={wrapperRef}
+        isScroll={!pathname.includes(PATH.MYPAGE.ASKED)}
+      >
         {Object.keys(messages).map((date) => (
           <MessageList
             key={date}
@@ -41,7 +49,11 @@ export default function MessageContainer({
             receiver={receiver}
           />
         ))}
-        <AskedForm memberId={memberId} />
+        <AskedForm
+          css={pathname.includes(PATH.MYPAGE.ASKED) ? S.LargeSize : S.SmallSize}
+          memberId={memberId}
+          onFetchData={onFetchData}
+        />
       </S.Wrapper>
     </S.Container>
   );

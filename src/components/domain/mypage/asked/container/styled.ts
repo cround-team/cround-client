@@ -1,14 +1,22 @@
 import styled, { css } from "styled-components";
 
+type WrapperProps = {
+  isScroll: boolean;
+};
+
 export const Container = styled.div`
-  ${({ theme }) => css``};
+  ${({ theme }) => css`
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+  `};
 `;
 
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
-    height: 60vh;
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, isScroll }) => css`
     padding: 8px 15px;
-    overflow-y: scroll;
+    height: ${isScroll ? "60vh" : "auto"};
+    overflow-y: ${isScroll ? "scroll" : "initial"};
 
     ${theme.media.desktop} {
       padding: 40px 24px 15px 24px;
@@ -50,4 +58,19 @@ export const PlatformThemeGroup = styled.span`
       ${theme.typo.label.lg};
     }
   `};
+`;
+
+export const LargeSize = css`
+  ${({ theme }) => css`
+    width: 93%;
+    margin: 0 auto;
+    textarea {
+      min-width: 292px;
+      width: 100%;
+    }
+  `};
+`;
+
+export const SmallSize = css`
+  ${({ theme }) => css``};
 `;

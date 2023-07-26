@@ -63,5 +63,6 @@ export default function useAskedDetail(id: number) {
     sender: data.sender,
     receiver: data.receiver,
     nickname: data.nickname,
+    onFetchData: fetchData,
   };
 }
