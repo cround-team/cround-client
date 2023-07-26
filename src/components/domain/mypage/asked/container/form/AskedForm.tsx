@@ -3,7 +3,7 @@ import useMessage from "./hooks/useMessage";
 import * as S from "./styled";
 
 type AskedFormProps = {
-  className: string;
+  className?: string;
   memberId: number;
   onFetchData: () => void;
 };
@@ -15,7 +15,6 @@ export default function AskedForm({
 }: AskedFormProps) {
   const {
     isTextareaFocused,
-
     message,
     textareaRef,
     handleResizeHeight,
