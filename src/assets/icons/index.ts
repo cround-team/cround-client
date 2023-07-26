@@ -24,3 +24,4 @@ export { default as UploadCloudIcon } from "@/assets/icons/upload-cloud.svg";
 export { default as XSmallIcon } from "@/assets/icons/x-sm.svg";
 export { default as DotsVerticalIcon } from "@/assets/icons/dots-vertical.svg";
 export { default as PictureIcon } from "@/assets/icons/picture.svg";
+export { default as RefreshIcon } from "@/assets/icons/refresh.svg";
