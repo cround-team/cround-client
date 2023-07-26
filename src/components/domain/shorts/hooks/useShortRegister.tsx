@@ -36,6 +36,7 @@ export default function useShortRegister() {
     previewImage,
     fileInputRef,
     handleFileChange,
+    handleResetImage,
   } = useUploadImage();
 
   const router = useRouter();
@@ -93,6 +94,13 @@ export default function useShortRegister() {
       setForm((draft) => {
         draft.platform = value;
       });
+  };
+
+  const handleChangeImage = () => {
+    handleResetImage();
+    setForm((draft) => {
+      draft.thumbnail = null;
+    });
   };
 
   const handleSubmitBase = (e: React.FormEvent<HTMLFormElement>) => {
@@ -162,6 +170,7 @@ export default function useShortRegister() {
     handlePrevStep: () => setStep("platform"),
     handleFileChange,
     handleChangeForm,
+    handleChangeImage,
     handleSubmit: handleSubmitUpload,
     ...otherProps,
   });

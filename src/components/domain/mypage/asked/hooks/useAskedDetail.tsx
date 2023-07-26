@@ -50,8 +50,6 @@ export default function useAskedDetail(id: number) {
     try {
       const params = { id };
       const response = await messageDetailApi(params);
-      console.log(response);
-      console.log(response.data);
       setData(response.data);
     } catch (error) {
       console.error(error);

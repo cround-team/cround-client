@@ -11,6 +11,7 @@ type ShortRegisterUploadProps = {
   handlePrevStep: () => void;
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleChangeForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChangeImage: () => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
@@ -24,6 +25,7 @@ export default function ShortRegisterUpload({
   handleFileChange,
   handleChangeForm,
   handleSubmit,
+  handleChangeImage,
 }: ShortRegisterUploadProps) {
   return (
     <S.Form onSubmit={handleSubmit}>
@@ -34,6 +36,7 @@ export default function ShortRegisterUpload({
           fileRef={fileInputRef}
           previewImage={previewImage}
           onFileChange={handleFileChange}
+          onRefreshImage={handleChangeImage}
         />
       </S.Thumbnail>
       <RegisterInput

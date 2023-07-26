@@ -23,11 +23,17 @@ export default function useUploadImage() {
     }
   };
 
+  const handleResetImage = () => {
+    setSelectedImage(null);
+    setPreviewImage(null);
+  };
+
   return {
     isLoading,
     selectedImage,
     previewImage,
     fileInputRef,
     handleFileChange,
+    handleResetImage,
   };
 }

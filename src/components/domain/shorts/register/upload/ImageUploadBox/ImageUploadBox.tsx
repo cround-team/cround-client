@@ -11,6 +11,7 @@ type ImageUploadBoxProps = {
   fileRef: React.RefObject<HTMLInputElement>;
   previewImage: string | null;
   onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onRefreshImage: () => void;
 };
 
 export default function ImageUploadBox({
@@ -18,6 +19,7 @@ export default function ImageUploadBox({
   fileRef,
   previewImage,
   onFileChange,
+  onRefreshImage,
 }: ImageUploadBoxProps) {
   const { isDesktop } = useDeviceType();
 
@@ -29,7 +31,7 @@ export default function ImageUploadBox({
 
   const handleDeleteImage = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    alert("작업중입니다.");
+    onRefreshImage();
   };
 
   if (previewImage && !isImageLoading) {

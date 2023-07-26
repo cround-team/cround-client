@@ -21,12 +21,14 @@ type ShortEditPageProps = {
 export default function ShortEditPage({ params }: ShortEditPageProps) {
   const {
     isDisabledSubmit,
+    isImageLoading,
     form,
     fileInputRef,
     handleChangeForm,
     handleChangePlatform,
     handleFileChange,
     handleSubmit,
+    handleChangeImage,
   } = useShortEdit({ id: params.slug });
 
   return (
@@ -74,9 +76,11 @@ export default function ShortEditPage({ params }: ShortEditPageProps) {
         <S.Thumbnail>
           <Label label="숏클래스의 썸네일을 등록해 주세요." />
           <ImageUploadBox
+            isImageLoading={isImageLoading}
             fileRef={fileInputRef}
             previewImage={form.thumbnailUrl}
             onFileChange={handleFileChange}
+            onRefreshImage={handleChangeImage}
           />
         </S.Thumbnail>
         <Button

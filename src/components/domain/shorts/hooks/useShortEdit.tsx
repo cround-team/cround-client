@@ -6,6 +6,7 @@ import { shortDetailApi, shortEditApi } from "@/utils/api";
 import { hasKey } from "@/utils/form";
 import { PATH } from "@/constants";
 import { useUploadImage } from "@/hooks";
+import { conversionEnPlatform } from "@/utils/conversion";
 
 type UseShortEditProps = {
   id: number;
@@ -34,8 +35,14 @@ export default function useShortEdit({ id }: UseShortEditProps) {
   const router = useRouter();
   const isDisabledSubmit = !(platformType && title && content && isModified);
 
-  const { selectedImage, previewImage, fileInputRef, handleFileChange } =
-    useUploadImage();
+  const {
+    isLoading: isImageLoading,
+    selectedImage,
+    previewImage,
+    fileInputRef,
+    handleFileChange,
+    handleResetImage,
+  } = useUploadImage();
 
   useEffect(() => {
     fetchDetailData();
@@ -53,13 +60,16 @@ export default function useShortEdit({ id }: UseShortEditProps) {
         draft.thumbnailUrl = previewImage;
       });
     }
-  }, [selectedImage]);
+  }, [selectedImage, previewImage]);
 
   const fetchDetailData = async () => {
     try {
       const response = await shortDetailApi(id);
+
       setForm((draft) => {
-        draft.platformType = response.data.platformType;
+        draft.platformType = conversionEnPlatform(
+          response.data.platformType
+        ) as string;
         draft.title = response.data.title;
         draft.content = response.data.content;
         draft.thumbnailUrl = response.data.thumbnailUrl;
@@ -94,6 +104,15 @@ export default function useShortEdit({ id }: UseShortEditProps) {
       });
   };
 
+  const handleChangeImage = () => {
+    if (!isModified) setIsModified(true);
+    handleResetImage();
+    setForm((draft) => {
+      draft.thumbnail = null;
+      draft.thumbnailUrl = "";
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -108,6 +127,7 @@ export default function useShortEdit({ id }: UseShortEditProps) {
         content,
         platformType,
       };
+
       formData.append(
         "shortFormUpdateRequest",
         new Blob([JSON.stringify(shortFormUpdateRequest)], {
@@ -125,11 +145,13 @@ export default function useShortEdit({ id }: UseShortEditProps) {
 
   return {
     isDisabledSubmit,
+    isImageLoading,
     form,
     fileInputRef,
     handleChangeForm,
     handleChangePlatform,
     handleFileChange,
+    handleChangeImage,
     handleSubmit,
   };
 }
