@@ -15,20 +15,23 @@ export default function MyAskedPage() {
   return (
     <S.Section>
       {data &&
-        data.map((v) => (
-          <Link
-            href={`${PATH.MYPAGE.ASKED}/${
-              v.receiver === user.memberId ? v.sender : v.receiver
-            }`}
-            key={v.id}
-          >
-            <AskedList
-              nickname={v.nickname}
-              text={v.text}
-              updatedDate={v.updatedDate}
-            />
-          </Link>
-        ))}
+        data.map(
+          (v) =>
+            user.memberId !== v.receiver && (
+              <Link
+                href={`${PATH.MYPAGE.ASKED}/${
+                  v.receiver === user.memberId ? v.sender : v.receiver
+                }`}
+                key={v.id}
+              >
+                <AskedList
+                  nickname={v.nickname}
+                  text={v.text}
+                  updatedDate={v.updatedDate}
+                />
+              </Link>
+            )
+        )}
     </S.Section>
   );
 }
