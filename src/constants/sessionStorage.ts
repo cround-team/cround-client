@@ -24,6 +24,7 @@ class SessionStorage {
   static initUser() {
     if (typeof window !== "undefined") {
       sessionStorage.setItem("roleName", "nonMember");
+      sessionStorage.removeItem("memberId");
       sessionStorage.removeItem("creatorId");
       sessionStorage.removeItem("socialLogin");
       sessionStorage.removeItem("nickname");

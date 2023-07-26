@@ -11,9 +11,7 @@ const roboto = Roboto({
 });
 
 export default function GoogleLoginButton() {
-  const handleGoogleLogin = () => {
-    console.log("handleGoogleLogin");
-  };
+  const handleGoogleLogin = () => {};
 
   return (
     <S.Button onClick={handleGoogleLogin}>

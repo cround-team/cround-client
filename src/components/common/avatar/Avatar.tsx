@@ -1,12 +1,15 @@
 import Image from "next/image";
+import PulseLoader from "react-spinners/PulseLoader";
 
 import avatarImg from "public/images/avatar.png";
-import { media } from "@/styles/themes/foundations";
+import { colors, media } from "@/styles/themes/foundations";
 import { CameraIcon } from "@/assets/icons";
 import * as S from "./styled";
 import { FileInput } from "../input";
+import { CSSProperties } from "styled-components";
 
 type AvatarPorps = {
+  isLoading: boolean;
   fileRef: React.RefObject<HTMLInputElement>;
   previewImage: string | null;
   alt: string;
@@ -14,7 +17,16 @@ type AvatarPorps = {
   onFileChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
+const override: CSSProperties = {
+  display: "flex",
+  justifyContent: "center",
+  alignContent: "center",
+  margin: "0 auto",
+  borderColor: "red",
+};
+
 export default function Avatar({
+  isLoading,
   fileRef,
   previewImage,
   alt,
@@ -51,7 +63,15 @@ export default function Avatar({
         <>
           <FileInput fileRef={fileRef} onFileChange={onFileChange} />
           <S.UploadButton type="button" onClick={() => handleOpenFileDialog()}>
-            <CameraIcon />
+            {isLoading ? (
+              <PulseLoader
+                size={4}
+                color={colors.neutral800}
+                cssOverride={override}
+              />
+            ) : (
+              <CameraIcon />
+            )}
           </S.UploadButton>
         </>
       )}

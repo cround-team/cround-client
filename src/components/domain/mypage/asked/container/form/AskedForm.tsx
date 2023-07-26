@@ -3,12 +3,19 @@ import useMessage from "./hooks/useMessage";
 import * as S from "./styled";
 
 type AskedFormProps = {
-  id: number;
+  className: string;
+  memberId: number;
+  onFetchData: () => void;
 };
 
-export default function AskedForm({ id }: AskedFormProps) {
+export default function AskedForm({
+  className,
+  memberId,
+  onFetchData,
+}: AskedFormProps) {
   const {
     isTextareaFocused,
+
     message,
     textareaRef,
     handleResizeHeight,
@@ -17,10 +24,10 @@ export default function AskedForm({ id }: AskedFormProps) {
     handleTextareaBlur,
     handleKeyDown,
     handleSubmit,
-  } = useMessage(id);
+  } = useMessage(memberId, onFetchData);
 
   return (
-    <S.Form onSubmit={handleSubmit}>
+    <S.Form onSubmit={handleSubmit} className={className}>
       <S.TextArea
         ref={textareaRef}
         id="message"

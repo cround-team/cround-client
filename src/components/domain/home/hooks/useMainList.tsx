@@ -79,7 +79,6 @@ export default function useMainList() {
     try {
       const params = { size: 12 };
       const response = await creatorsCustomApi(params);
-
       setCustomCreators((draft) => {
         draft.latest = response.data.latestCreators;
         draft.interest = response.data.interestCreators;

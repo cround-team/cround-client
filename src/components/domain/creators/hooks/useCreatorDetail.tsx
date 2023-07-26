@@ -1,12 +1,4 @@
 import {
-  INITIAL_CONTENTS,
-  INITIAL_CREATOR_INFO,
-  INITIAL_REVIEWS,
-  INITIAL_SHORTS,
-} from "@/constants";
-import { useBookmark, useFollow, useLike } from "@/hooks";
-import { ContentCardData, ReviewCardData, ShortCardData } from "@/types";
-import {
   creatorContentsApi,
   creatorReviewsApi,
   creatorShortsApi,
@@ -15,11 +7,22 @@ import {
 import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 
+import {
+  INITIAL_CONTENTS,
+  INITIAL_CREATOR_INFO,
+  INITIAL_REVIEWS,
+  INITIAL_SHORTS,
+} from "@/constants";
+import { useBookmark, useFollow, useLike } from "@/hooks";
+import { ContentCardData, ReviewCardData, ShortCardData } from "@/types";
+import { useAuthContext } from "@/context/AuthContext";
+
 type CreatorInfo = {
   owned: boolean;
   activityPlatforms: string[];
   avgRating: string;
   creatorNickname: string;
+  memberId: number;
   description: string;
   followed: boolean;
   followersCount: number;
@@ -43,11 +46,13 @@ export default function useCreatorDetail(creatorId: number) {
   const [reviews, setReviews] = useImmer<ReviewCardData[]>(INITIAL_REVIEWS);
   const [isNextPage, setIsNextPage] = useImmer(INITIAL_IS_NEXT_PAGE);
   const [isAskModalOpen, setIsAskModalOpen] = useState(false);
+  const { user } = useAuthContext();
   const {
     owned: isOwned,
     activityPlatforms,
     avgRating,
     creatorNickname,
+    memberId,
     description,
     followed,
     followersCount,
@@ -84,7 +89,6 @@ export default function useCreatorDetail(creatorId: number) {
   const fetchData = async () => {
     try {
       const response = await creatorsDetailApi(creatorId);
-      console.log("response", response);
       setData(response.data);
     } catch (error) {
       console.error(error);
@@ -152,7 +156,6 @@ export default function useCreatorDetail(creatorId: number) {
       setIsNextPage((draft) => {
         draft.reviews = response.data.hasNext;
       });
-      console.log("fetchReviewList", response);
     } catch (error) {
       console.error(error);
     }
@@ -288,7 +291,6 @@ export default function useCreatorDetail(creatorId: number) {
 
   const handleCreatorFollow = async () => {
     const { followed } = await handleFollow(creatorId);
-    console.log("followed", followed);
     setData((draft) => {
       draft.followed = followed;
       draft.followersCount = followersCount + 1;
@@ -303,6 +305,10 @@ export default function useCreatorDetail(creatorId: number) {
   };
 
   const handleOpenAskModal = () => {
+    if (user.roleName === "creator") {
+      return alert("현재 크리에이터끼리의 대화는 불가능합니다");
+    }
+
     setIsAskModalOpen(true);
   };
 
@@ -315,6 +321,7 @@ export default function useCreatorDetail(creatorId: number) {
     isAskModalOpen,
     profileImage,
     creatorNickname,
+    memberId,
     description,
     tags,
     activityPlatforms,

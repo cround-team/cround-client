@@ -78,7 +78,6 @@ export default function useContentRegister() {
 
   const handleSubmitPlatform = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("form", form);
     try {
       const body = {
         platformType: platform,
@@ -86,13 +85,11 @@ export default function useContentRegister() {
         content: description,
       };
       const res = await contentRegisterApi(body);
-      console.log("res", "res");
       if (res.status === 201) {
-        console.log("201", res);
         setStep("success");
       }
     } catch (error: any) {
-      console.log(error);
+      console.error(error);
     }
   };
 

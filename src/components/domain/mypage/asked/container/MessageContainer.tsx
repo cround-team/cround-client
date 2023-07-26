@@ -1,47 +1,45 @@
 import { useEffect, useRef } from "react";
+
 import { Messages } from "../hooks/useAskedDetail";
 import AskedForm from "./form/AskedForm";
 import MessageList from "./list/MessageList";
 import * as S from "./styled";
+import { usePathname } from "next/navigation";
+import { PATH } from "@/constants";
 
 type MessageContainerProps = {
-  creatorNickname: string;
-  platformHeadType: string;
-  platformHeadTheme: string;
-  profileImage: string;
   messages: Messages;
+  memberId: number;
   sender: number;
   receiver: number;
+  nickname: string;
+  onFetchData: () => void;
 };
 
 export default function MessageContainer({
-  creatorNickname,
-  platformHeadType,
-  platformHeadTheme,
-  profileImage,
   messages,
+  memberId,
   sender,
   receiver,
+  nickname,
+  onFetchData,
 }: MessageContainerProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const container = wrapperRef.current;
     if (container) {
-      console.log(container.scrollHeight);
       container.scrollTop = container.scrollHeight;
     }
   }, [messages]);
 
   return (
     <S.Container>
-      <S.UserInfo>
-        <S.Name>{creatorNickname}</S.Name>
-        <S.PlatformThemeGroup>
-          {platformHeadType} / {platformHeadTheme}
-        </S.PlatformThemeGroup>
-      </S.UserInfo>
-      <S.Wrapper ref={wrapperRef}>
+      <S.Wrapper
+        ref={wrapperRef}
+        isScroll={!pathname.includes(PATH.MYPAGE.ASKED)}
+      >
         {Object.keys(messages).map((date) => (
           <MessageList
             key={date}
@@ -49,10 +47,13 @@ export default function MessageContainer({
             data={messages[date]}
             sender={sender}
             receiver={receiver}
-            profileImage={profileImage}
           />
         ))}
-        <AskedForm id={receiver} />
+        <AskedForm
+          css={pathname.includes(PATH.MYPAGE.ASKED) ? S.LargeSize : S.SmallSize}
+          memberId={memberId}
+          onFetchData={onFetchData}
+        />
       </S.Wrapper>
     </S.Container>
   );

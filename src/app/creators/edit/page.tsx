@@ -16,6 +16,7 @@ import { PLATFORMS } from "@/constants";
 
 export default function CreatorEditPage() {
   const {
+    isLoading,
     isDisabledSubmit,
     customTags,
     handleAddTag,
@@ -30,12 +31,11 @@ export default function CreatorEditPage() {
     handleSubmit,
   } = useCreatorEdit();
 
-  console.log(form.platformHeadType);
-
   return (
     <S.Section>
       <S.Form onSubmit={handleSubmit}>
         <Avatar
+          isLoading={isLoading}
           css={S.Avatar}
           previewImage={previewImage ?? form.profileImage}
           fileRef={fileInputRef}

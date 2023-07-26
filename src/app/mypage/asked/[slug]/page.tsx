@@ -1,8 +1,10 @@
 "use client";
 
 import MessageContainer from "@/components/domain/mypage/asked/container/MessageContainer";
-import * as S from "./styled";
 import useAskedDetail from "@/components/domain/mypage/asked/hooks/useAskedDetail";
+import * as S from "./styled";
+import { RefreshIcon } from "@/assets/icons";
+import { useAuthContext } from "@/context/AuthContext";
 
 type ContentDetailPageProps = {
   params: {
@@ -11,25 +13,27 @@ type ContentDetailPageProps = {
 };
 
 export default function MyAskedDetailPage({ params }: ContentDetailPageProps) {
-  const {
-    messages,
-    sender,
-    receiver,
-    creatorNickname,
-    platformHeadType,
-    platformHeadTheme,
-    profileImage,
-  } = useAskedDetail();
+  const { messages, sender, receiver, nickname, onFetchData } = useAskedDetail(
+    params.slug
+  );
+  const { user } = useAuthContext();
+
   return (
     <S.Section>
+      <S.MessageHeader
+        headerColor={user.roleName === "creator" ? "black" : "red"}
+      >
+        <span>
+          <strong>{nickname}</strong>님과 쪽지중
+        </span>
+      </S.MessageHeader>
       <MessageContainer
-        creatorNickname={creatorNickname}
-        platformHeadType={platformHeadType}
-        platformHeadTheme={platformHeadTheme}
         messages={messages}
-        profileImage={profileImage}
+        memberId={params.slug}
         sender={sender}
         receiver={receiver}
+        nickname={nickname}
+        onFetchData={onFetchData}
       />
     </S.Section>
   );

@@ -1,5 +1,7 @@
+import { PATH } from "@/constants";
 import Message from "./item/Message";
 import * as S from "./styled";
+import { usePathname } from "next/navigation";
 
 interface Message {
   id: number;
@@ -14,7 +16,6 @@ type MessageListProps = {
   data: any;
   sender: number;
   receiver: number;
-  profileImage?: string;
 };
 
 export default function MessageList({
@@ -22,18 +23,18 @@ export default function MessageList({
   data,
   sender,
   receiver,
-  profileImage,
 }: MessageListProps) {
+  const pathname = usePathname();
+
   return (
-    <S.Container>
+    <S.Container isMargin={pathname.includes(PATH.MYPAGE.ASKED)}>
       <S.Date>{date}</S.Date>
       {data.map((message: Message) => (
         <Message
-          key={message.updatedDate}
-          type={receiver === message.receiver ? "mentee" : "creator"}
+          key={message.id}
+          type={receiver === message.receiver ? "right" : "left"}
           text={message.text}
-          time={"07:11"}
-          profileImage={profileImage}
+          updatedDate={message.updatedDate}
         />
       ))}
     </S.Container>

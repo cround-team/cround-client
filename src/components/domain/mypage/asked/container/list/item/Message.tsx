@@ -1,44 +1,35 @@
-import { media } from "@/styles/themes/foundations";
+import { useAuthContext } from "@/context/AuthContext";
 import * as S from "./styled";
-import Image from "next/image";
 
 type MessageProps = {
-  type: "mentee" | "creator";
+  type: "right" | "left";
   text: string;
-  time: string;
-  profileImage?: string;
+  updatedDate: string;
 };
 
-export default function Message({
-  type,
-  text,
-  time,
-  profileImage,
-}: MessageProps) {
+export default function Message({ type, text, updatedDate }: MessageProps) {
+  const { user } = useAuthContext();
   return (
     <>
-      {type === "mentee" && (
-        <S.MenteeContainer>
-          <S.Time>{time}</S.Time>
-          <S.MenteeText>{text}</S.MenteeText>
-        </S.MenteeContainer>
+      {type === "right" && (
+        <S.RightContainer>
+          <S.Time>{updatedDate}</S.Time>
+          <S.RightText
+            aria-current={user.roleName === "creator" ? "true" : "false"}
+          >
+            {text}
+          </S.RightText>
+        </S.RightContainer>
       )}
-      {type === "creator" && profileImage && (
-        <S.CreatorContainer>
-          <S.Figure>
-            <Image
-              src={profileImage}
-              alt="creator profileImage"
-              sizes={media.images.sizes}
-              fill
-              priority
-            />
-          </S.Figure>
-          <S.TextTimeGroup>
-            <S.CreatorText>{text}</S.CreatorText>
-            <S.Time>{time}</S.Time>
-          </S.TextTimeGroup>
-        </S.CreatorContainer>
+      {type === "left" && (
+        <S.LeftContainer>
+          <S.LeftText
+            aria-current={user.roleName === "creator" ? "false" : "true"}
+          >
+            {text}
+          </S.LeftText>
+          <S.Time>{updatedDate}</S.Time>
+        </S.LeftContainer>
       )}
     </>
   );

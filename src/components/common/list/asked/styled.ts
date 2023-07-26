@@ -6,7 +6,7 @@ export const Container = styled.div`
     gap: 16px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 16px 44px 16px 20px;
+    padding: 16px 60px 16px 20px;
     border-bottom: 1px solid ${theme.colors.neutral50};
 
     ${theme.media.desktop} {
@@ -16,53 +16,16 @@ export const Container = styled.div`
   `};
 `;
 
-export const Figure = styled.figure`
-  ${({ theme }) => css`
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-
-    image {
-      border-radius: 50%;
-    }
-
-    ${theme.media.desktop} {
-      width: 68px;
-      height: 68px;
-    }
-  `};
-`;
-
 export const TextWrapper = styled.div`
   ${({ theme }) => css`
     ${theme.flex.col("center", "flex-start")};
-    flex: 1;
   `};
 `;
 
-export const CreatorInfo = styled.div`
+export const Nickname = styled.span`
   ${({ theme }) => css`
-    ${theme.flex.row()};
-    gap: 8px;
     margin-bottom: 4px;
-    h3 {
-      ${theme.typo.title.sm};
-      color: ${theme.colors.neutral900};
-    }
-    span {
-      ${theme.typo.label.sm};
-      color: ${theme.colors.neutral700};
-    }
-
-    ${theme.media.desktop} {
-      h3 {
-        ${theme.typo.title.md};
-      }
-      span {
-        ${theme.typo.label.md};
-      }
-    }
+    ${theme.typo.title.sm};
   `};
 `;
 

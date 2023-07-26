@@ -8,6 +8,7 @@ type ButtonWrapperProps = {
   isOwned: boolean;
   isAskModalOpen: boolean;
   followed: boolean;
+  memberId: number;
   onUnFollow: () => void;
   onFollow: () => void;
   onOpenAskModal: () => void;
@@ -18,6 +19,7 @@ export default function ButtonWrapper({
   isOwned,
   isAskModalOpen,
   followed,
+  memberId,
   onUnFollow,
   onFollow,
   onOpenAskModal,
@@ -50,7 +52,9 @@ export default function ButtonWrapper({
             onClick={onOpenAskModal}
           />
         </S.Container>
-        {isAskModalOpen && <AskedModal onClose={onCloseAskModal} />}
+        {isAskModalOpen && (
+          <AskedModal memberId={memberId} onClose={onCloseAskModal} />
+        )}
       </>
     );
   } else {

@@ -11,6 +11,7 @@ type ProfileProps = {
   isAskModalOpen: boolean;
   profileImage: string;
   creatorNickname: string;
+  memberId: number;
   description: string;
   tags: string[];
   activityPlatforms: string[];
@@ -31,6 +32,7 @@ export default function DesktopProfile({
   isAskModalOpen,
   profileImage,
   creatorNickname,
+  memberId,
   description,
   tags,
   activityPlatforms,
@@ -79,6 +81,7 @@ export default function DesktopProfile({
             isOwned={isOwned}
             isAskModalOpen={isAskModalOpen}
             followed={followed}
+            memberId={memberId}
             onFollow={onFollow}
             onUnFollow={onUnFollow}
             onOpenAskModal={onOpenAskModal}

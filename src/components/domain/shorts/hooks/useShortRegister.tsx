@@ -30,8 +30,14 @@ export default function useShortRegister() {
   const [step, setStep] = useState<Steps>("base");
   const { title, description, platform, thumbnail, url } = form;
 
-  const { selectedImage, previewImage, fileInputRef, handleFileChange } =
-    useUploadImage();
+  const {
+    isLoading: isImageLoading,
+    selectedImage,
+    previewImage,
+    fileInputRef,
+    handleFileChange,
+    handleResetImage,
+  } = useUploadImage();
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -90,6 +96,13 @@ export default function useShortRegister() {
       });
   };
 
+  const handleChangeImage = () => {
+    handleResetImage();
+    setForm((draft) => {
+      draft.thumbnail = null;
+    });
+  };
+
   const handleSubmitBase = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStep("platform");
@@ -102,7 +115,6 @@ export default function useShortRegister() {
 
   const handleSubmitUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("form", form);
 
     try {
       const formData = new FormData();
@@ -123,13 +135,11 @@ export default function useShortRegister() {
         })
       );
       const res = await shortRegisterApi(formData);
-      console.log("res", "res");
       if (res.status === 201) {
-        console.log("201", res);
         setStep("success");
       }
     } catch (error: any) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -152,6 +162,7 @@ export default function useShortRegister() {
   });
 
   const getUploadStepProps = ({ ...otherProps } = {}) => ({
+    isImageLoading,
     isDisabledSubmit: isDisabledUpload,
     url,
     fileInputRef,
@@ -159,6 +170,7 @@ export default function useShortRegister() {
     handlePrevStep: () => setStep("platform"),
     handleFileChange,
     handleChangeForm,
+    handleChangeImage,
     handleSubmit: handleSubmitUpload,
     ...otherProps,
   });

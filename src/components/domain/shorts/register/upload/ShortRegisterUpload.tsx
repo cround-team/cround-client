@@ -3,6 +3,7 @@ import ImageUploadBox from "./ImageUploadBox/ImageUploadBox";
 import * as S from "./styled";
 
 type ShortRegisterUploadProps = {
+  isImageLoading: boolean;
   isDisabledSubmit: boolean;
   url: string;
   fileInputRef: React.RefObject<HTMLInputElement>;
@@ -10,10 +11,12 @@ type ShortRegisterUploadProps = {
   handlePrevStep: () => void;
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleChangeForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChangeImage: () => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
 export default function ShortRegisterUpload({
+  isImageLoading,
   isDisabledSubmit,
   url,
   fileInputRef,
@@ -22,15 +25,18 @@ export default function ShortRegisterUpload({
   handleFileChange,
   handleChangeForm,
   handleSubmit,
+  handleChangeImage,
 }: ShortRegisterUploadProps) {
   return (
     <S.Form onSubmit={handleSubmit}>
       <S.Thumbnail>
         <Label label="숏클래스의 썸네일을 등록해 주세요." />
         <ImageUploadBox
+          isImageLoading={isImageLoading}
           fileRef={fileInputRef}
           previewImage={previewImage}
           onFileChange={handleFileChange}
+          onRefreshImage={handleChangeImage}
         />
       </S.Thumbnail>
       <RegisterInput

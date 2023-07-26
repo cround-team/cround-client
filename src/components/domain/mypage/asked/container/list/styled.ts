@@ -1,16 +1,22 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div`
-  ${({ theme }) => css`
+type ContainerProps = {
+  isMargin: boolean;
+};
+
+export const Container = styled.div<ContainerProps>`
+  ${({ theme, isMargin }) => css`
     position: relative;
     ${theme.flex.col()};
     gap: 28px;
     width: 100%;
+    ${isMargin && "margin-bottom: 40px"};
     padding: 40px 0;
     border-top: 1px solid ${theme.colors.neutral100};
 
     ${theme.media.desktop} {
       gap: 40px;
+      ${isMargin && "margin-bottom: 48px"};
     }
   `};
 `;

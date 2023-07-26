@@ -50,8 +50,13 @@ export default function useCreatorRegister() {
   } = form;
 
   const { onSetUserInfo } = useAuthContext();
-  const { selectedImage, previewImage, fileInputRef, handleFileChange } =
-    useUploadImage();
+  const {
+    isLoading,
+    selectedImage,
+    previewImage,
+    fileInputRef,
+    handleFileChange,
+  } = useUploadImage();
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -98,17 +103,6 @@ export default function useCreatorRegister() {
       setStep(query as Steps);
     }
   }, [searchParams]);
-
-  // const page = useMemo(() => {
-  //   const query = searchParams.get("step");
-  //   query && setStep(query as Steps);
-  // }, [searchParams]);
-  // useEffect(() => {
-  //   const routingIndex = components.findIndex(
-  //     component => component.page === page
-  //   );
-  //   setCurrentIndex(routingIndex);
-  // }, [page]);
 
   const handleChangeForm = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -178,7 +172,6 @@ export default function useCreatorRegister() {
 
   const handleSubmitAddition = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("form", form);
     try {
       const formData = new FormData();
 
@@ -201,9 +194,7 @@ export default function useCreatorRegister() {
         })
       );
       const res = await creatorCreateApi(formData);
-      console.log("res", res);
       if (res.status === 201) {
-        console.log("201", res);
         SessionStorage.setItem("roleName", "creator");
         SessionStorage.setItem("nickname", nickname);
         SessionStorage.setItem("profileImage", res.data.profileImage);
@@ -219,11 +210,12 @@ export default function useCreatorRegister() {
         setStep("success");
       }
     } catch (error: any) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   const getBaseStepProps = ({ ...otherProps } = {}) => ({
+    isLoading,
     isDisabledSubmit: isDisabledBase,
     nickname,
     description,

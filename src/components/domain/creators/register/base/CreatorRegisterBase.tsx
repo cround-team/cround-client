@@ -2,6 +2,7 @@ import { Avatar, Button, RegisterInput, TextArea } from "@/components/common";
 import * as S from "./styled";
 
 type CreatorRegisterBaseProps = {
+  isLoading: boolean;
   isDisabledSubmit: boolean;
   nickname: string;
   description: string;
@@ -15,6 +16,7 @@ type CreatorRegisterBaseProps = {
 };
 
 export default function CreatorRegisterBase({
+  isLoading,
   isDisabledSubmit,
   nickname,
   description,
@@ -27,6 +29,7 @@ export default function CreatorRegisterBase({
   return (
     <S.Form onSubmit={handleSubmit}>
       <Avatar
+        isLoading={isLoading}
         previewImage={previewImage}
         fileRef={fileInputRef}
         alt="My profile image"

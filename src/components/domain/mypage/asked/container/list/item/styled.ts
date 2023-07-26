@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const MenteeContainer = styled.div`
+export const RightContainer = styled.div`
   ${({ theme }) => css`
     ${theme.flex.row("flex-end", "flex-end")}
     gap: 8px;
@@ -12,9 +12,9 @@ export const MenteeContainer = styled.div`
   `};
 `;
 
-export const CreatorContainer = styled.div`
+export const LeftContainer = styled.div`
   ${({ theme }) => css`
-    ${theme.flex.row("flex-start", "flex-start")}
+    ${theme.flex.row("flex-start", "flex-end")}
     gap: 8px;
     width: 100%;
 
@@ -40,7 +40,7 @@ export const Figure = styled.figure`
   `};
 `;
 
-export const MenteeText = styled.div`
+export const RightText = styled.div`
   ${({ theme }) => css`
     width: 200px;
     padding: 8px;
@@ -49,6 +49,10 @@ export const MenteeText = styled.div`
     ${theme.typo.body.sm};
     color: ${theme.colors.black};
 
+    &[aria-current="true"] {
+      border: 1px solid ${theme.colors.primary200};
+    }
+
     ${theme.media.desktop} {
       width: 512px;
       ${theme.typo.body.lg};
@@ -56,15 +60,18 @@ export const MenteeText = styled.div`
   `};
 `;
 
-export const CreatorText = styled.div`
+export const LeftText = styled.div`
   ${({ theme }) => css`
     width: 200px;
     padding: 8px;
-    border: 1px solid ${theme.colors.primary200};
     border-radius: 0px 12px 12px 12px;
     background-color: ${theme.colors.white};
     ${theme.typo.body.sm};
     color: ${theme.colors.black};
+
+    &[aria-current="true"] {
+      border: 1px solid ${theme.colors.primary200};
+    }
 
     ${theme.media.desktop} {
       width: 512px;

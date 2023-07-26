@@ -54,6 +54,11 @@ export const Wrapper = styled.div`
     }
 
     a {
+      display: inline-block;
+      white-space: normal;
+      max-width: 300px;
+      text-overflow: ellipsis;
+      overflow: hidden;
       ${theme.typo.button.md};
       ${theme.colors.black};
     }

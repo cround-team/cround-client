@@ -8,39 +8,33 @@ import useAskedDetail from "../hooks/useAskedDetail";
 import * as S from "./styled";
 
 type AskedModalProps = {
+  memberId: number;
   onClose: () => void;
 };
 
-export default function AskedModal({ onClose }: AskedModalProps) {
+export default function AskedModal({ memberId, onClose }: AskedModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   useClickOutside(modalRef, onClose);
   useHiddenScroll(modalRef);
-  const {
-    messages,
-    sender,
-    receiver,
-    creatorNickname,
-    platformHeadType,
-    platformHeadTheme,
-    profileImage,
-  } = useAskedDetail();
-
-  console.log("receiver", receiver);
+  const { messages, sender, receiver, nickname, onFetchData } =
+    useAskedDetail(memberId);
 
   return (
     <Modal isMounted={true}>
       <S.Layout ref={modalRef}>
-        <S.CloseButton onClick={onClose}>
-          <XCloseIcon />
-        </S.CloseButton>
+        <S.ModalHeader>
+          <span>{nickname}</span>
+          <S.CloseButton onClick={onClose}>
+            <XCloseIcon />
+          </S.CloseButton>
+        </S.ModalHeader>
         <MessageContainer
-          creatorNickname={creatorNickname}
-          platformHeadType={platformHeadType}
-          platformHeadTheme={platformHeadTheme}
+          nickname={nickname}
           messages={messages}
-          profileImage={profileImage}
+          memberId={memberId}
           sender={sender}
           receiver={receiver}
+          onFetchData={onFetchData}
         />
       </S.Layout>
     </Modal>
