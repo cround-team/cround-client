@@ -172,7 +172,6 @@ export default function useCreatorRegister() {
 
   const handleSubmitAddition = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("form", form);
     try {
       const formData = new FormData();
 
@@ -195,9 +194,7 @@ export default function useCreatorRegister() {
         })
       );
       const res = await creatorCreateApi(formData);
-      console.log("res", res);
       if (res.status === 201) {
-        console.log("201", res);
         SessionStorage.setItem("roleName", "creator");
         SessionStorage.setItem("nickname", nickname);
         SessionStorage.setItem("profileImage", res.data.profileImage);
@@ -213,7 +210,7 @@ export default function useCreatorRegister() {
         setStep("success");
       }
     } catch (error: any) {
-      console.log(error);
+      console.error(error);
     }
   };
 

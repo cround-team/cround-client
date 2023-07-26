@@ -72,8 +72,6 @@ export default function useLoginForm() {
       };
       const res = await loginApi(body);
 
-      console.log("res", res);
-
       if (res.status === 200) {
         const accessToken = res.data.accessToken;
         const roleName = conversionUserType(res.data.roleName);

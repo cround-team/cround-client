@@ -75,11 +75,9 @@ export default function useContentEdit({ id }: UseContentEditProps) {
         title,
         content,
       };
-      console.log(body);
       const res = await contentEditApi(body);
 
       if (res.status === 200) {
-        console.log("200", res);
         router.push(`${PATH.CONTENTS.DETAIL}/${id}`);
       }
     } catch (error) {

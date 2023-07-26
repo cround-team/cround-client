@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useEffect } from "react";
 
 import { PictureIcon, UploadCloudIcon, XClose2Icon } from "@/assets/icons";
 import { Button, FileInput } from "@/components/common";
@@ -20,10 +19,6 @@ export default function ImageUploadBox({
   previewImage,
   onFileChange,
 }: ImageUploadBoxProps) {
-  useEffect(() => {
-    console.log("test", isImageLoading);
-  }, [isImageLoading]);
-
   const { isDesktop } = useDeviceType();
 
   const handleOpenFileDialog = () => {

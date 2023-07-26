@@ -76,13 +76,9 @@ export default function useMainList() {
   }, []);
 
   const fetchCustomCreatorList = async () => {
-    console.log("fetch");
     try {
       const params = { size: 12 };
       const response = await creatorsCustomApi(params);
-
-      console.log("response", response);
-
       setCustomCreators((draft) => {
         draft.latest = response.data.latestCreators;
         draft.interest = response.data.interestCreators;

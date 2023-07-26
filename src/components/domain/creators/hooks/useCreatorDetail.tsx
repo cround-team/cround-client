@@ -87,7 +87,6 @@ export default function useCreatorDetail(creatorId: number) {
   const fetchData = async () => {
     try {
       const response = await creatorsDetailApi(creatorId);
-      console.log("response", response);
       setData(response.data);
     } catch (error) {
       console.error(error);
@@ -155,7 +154,6 @@ export default function useCreatorDetail(creatorId: number) {
       setIsNextPage((draft) => {
         draft.reviews = response.data.hasNext;
       });
-      console.log("fetchReviewList", response);
     } catch (error) {
       console.error(error);
     }
@@ -291,7 +289,6 @@ export default function useCreatorDetail(creatorId: number) {
 
   const handleCreatorFollow = async () => {
     const { followed } = await handleFollow(creatorId);
-    console.log("followed", followed);
     setData((draft) => {
       draft.followed = followed;
       draft.followersCount = followersCount + 1;

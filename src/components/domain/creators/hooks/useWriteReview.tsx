@@ -54,7 +54,6 @@ export default function useWriteReview({
         rating,
       };
       const response = await creatorWriteReivewApi(body);
-      console.log("response", response);
       if (response.status === 201) {
         onClose();
         onFetchData && onFetchData();

@@ -12,7 +12,6 @@ export default function useLike() {
 
     try {
       const response = await shortLikeApi(id);
-      console.log("response", response);
       liked = response.data.liked;
       likesCount = response.data.likesCount;
     } catch (error) {
@@ -31,7 +30,6 @@ export default function useLike() {
 
     try {
       const response = await shortCancelLikeApi(id);
-      console.log("response", response);
       liked = response.data.liked;
       likesCount = response.data.likesCount;
     } catch (error) {
@@ -50,7 +48,6 @@ export default function useLike() {
 
     try {
       const response = await contentLikeApi(id);
-      console.log("response", response);
       liked = response.data.liked;
       likesCount = response.data.likesCount;
     } catch (error) {
@@ -69,7 +66,6 @@ export default function useLike() {
 
     try {
       const response = await contentCancelLikeApi(id);
-      console.log("response", response);
       liked = response.data.liked;
       likesCount = response.data.likesCount;
     } catch (error) {

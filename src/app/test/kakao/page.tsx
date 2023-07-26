@@ -17,13 +17,11 @@ export default function KaKaoPage() {
   const testApi = () => {
     const fetchData = async (): Promise<void> => {
       const response = await axios.get("/cround/health");
-      console.log(response.data);
     };
     fetchData();
   };
 
   const kakaoCodeTest = (code: string) => {
-    console.log(code);
     const fetchData = async (): Promise<void> => {
       const response = await axios.get(
         `http://54.180.6.174/auth/kakao/login?code=${code}`
@@ -31,8 +29,6 @@ export default function KaKaoPage() {
       // const response = await axios.get("/auth/kakao/login", {
       //   params: { code },
       // });
-
-      console.log(response.data);
     };
     fetchData();
   };

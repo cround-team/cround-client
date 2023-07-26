@@ -71,8 +71,13 @@ export default function useCreatorEdit() {
     isModified
   );
 
-  const { selectedImage, previewImage, fileInputRef, handleFileChange } =
-    useUploadImage();
+  const {
+    isLoading,
+    selectedImage,
+    previewImage,
+    fileInputRef,
+    handleFileChange,
+  } = useUploadImage();
   const { user, onSetUserInfo } = useAuthContext();
 
   useEffect(() => {
@@ -98,7 +103,6 @@ export default function useCreatorEdit() {
   const fetchDetailData = async () => {
     try {
       const response = await creatorsDetailApi(user.creatorId as number);
-      console.log("response", response);
       setForm((draft) => {
         draft.profileImage = response.data.profileImage;
         draft.nickname = response.data.creatorNickname;
@@ -208,7 +212,6 @@ export default function useCreatorEdit() {
       tags,
       activityPlatforms,
     };
-    console.log("creatorUpdateRequest", creatorUpdateRequest);
     try {
       const formData = new FormData();
 
@@ -220,7 +223,6 @@ export default function useCreatorEdit() {
         })
       );
       const res = await creatorEditApi(formData);
-      console.log("res", res);
 
       if (res.status === 200) {
         const userInfo = {
@@ -231,11 +233,12 @@ export default function useCreatorEdit() {
         router.push(PATH.ROOT);
       }
     } catch (error: any) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   return {
+    isLoading,
     isDisabledSubmit,
     customTags,
     handleAddTag,

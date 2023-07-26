@@ -55,7 +55,6 @@ export default function useContentDetail({ id }: UseContentDetailProps) {
     try {
       const response = await contentDetailApi(id);
       setData(response.data);
-      console.log("response", response.data);
     } catch (error) {
       console.error(error);
     }

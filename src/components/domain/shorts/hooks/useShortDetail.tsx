@@ -62,7 +62,6 @@ export default function useShortDetail({ id }: UseShortDetailProps) {
       setData((draft) => {
         draft.shortFormUrl = getVideoId(response.data.shortFormUrl);
       });
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }

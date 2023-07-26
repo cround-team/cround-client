@@ -58,7 +58,6 @@ export default function useShortEdit({ id }: UseShortEditProps) {
   const fetchDetailData = async () => {
     try {
       const response = await shortDetailApi(id);
-      console.log(response);
       setForm((draft) => {
         draft.platformType = response.data.platformType;
         draft.title = response.data.title;
@@ -116,12 +115,11 @@ export default function useShortEdit({ id }: UseShortEditProps) {
         })
       );
       const res = await shortEditApi(id, formData);
-      console.log("res", "res");
       if (res.status === 200) {
         router.push(`${PATH.SHORTS.DETAIL}/${id}`);
       }
     } catch (error: any) {
-      console.log(error);
+      console.error(error);
     }
   };
 

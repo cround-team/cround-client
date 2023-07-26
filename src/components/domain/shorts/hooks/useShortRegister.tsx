@@ -107,7 +107,6 @@ export default function useShortRegister() {
 
   const handleSubmitUpload = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("form", form);
 
     try {
       const formData = new FormData();
@@ -128,13 +127,11 @@ export default function useShortRegister() {
         })
       );
       const res = await shortRegisterApi(formData);
-      console.log("res", "res");
       if (res.status === 201) {
-        console.log("201", res);
         setStep("success");
       }
     } catch (error: any) {
-      console.log(error);
+      console.error(error);
     }
   };
 

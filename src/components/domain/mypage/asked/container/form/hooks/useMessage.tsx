@@ -56,7 +56,6 @@ export default function useMessage(id: number) {
         text: message,
       };
       const res = await sendMessageApi(body);
-      console.log("res", res);
       setMessage("");
       setIsTextareaFocused(true);
     } catch (error: any) {
