@@ -15,6 +15,7 @@ import {
 } from "@/constants";
 import { useBookmark, useFollow, useLike } from "@/hooks";
 import { ContentCardData, ReviewCardData, ShortCardData } from "@/types";
+import { useAuthContext } from "@/context/AuthContext";
 
 type CreatorInfo = {
   owned: boolean;
@@ -45,6 +46,7 @@ export default function useCreatorDetail(creatorId: number) {
   const [reviews, setReviews] = useImmer<ReviewCardData[]>(INITIAL_REVIEWS);
   const [isNextPage, setIsNextPage] = useImmer(INITIAL_IS_NEXT_PAGE);
   const [isAskModalOpen, setIsAskModalOpen] = useState(false);
+  const { user } = useAuthContext();
   const {
     owned: isOwned,
     activityPlatforms,
@@ -303,6 +305,10 @@ export default function useCreatorDetail(creatorId: number) {
   };
 
   const handleOpenAskModal = () => {
+    if (user.roleName === "creator") {
+      return alert("현재 크리에이터끼리의 대화는 불가능합니다");
+    }
+
     setIsAskModalOpen(true);
   };
 

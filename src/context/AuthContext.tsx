@@ -22,7 +22,7 @@ type AuthContextProps = {
 const INITIAL_USER: User = {
   socialLogin: SessionStorage.getItem("socialLogin") === "true",
   creatorId: Number(SessionStorage.getItem("creatorId")) ?? null,
-  creatorId: Number(SessionStorage.getItem("memberId")) ?? null,
+  memberId: Number(SessionStorage.getItem("memberId")) ?? null,
   nickname: SessionStorage.getItem("nickname") ?? "",
   profileImage: SessionStorage.getItem("profileImage") ?? null,
   roleName: SessionStorage.getItem("roleName") ?? "",
