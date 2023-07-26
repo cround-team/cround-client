@@ -15,6 +15,29 @@ export const Layout = styled.div`
   `};
 `;
 
+export const ModalHeader = styled.div`
+  ${({ theme }) => css`
+    ${theme.flex.row()};
+    padding: 16px 0;
+    border-radius: 12px 12px 0 0;
+
+    span {
+      ${theme.typo.title.md};
+      color: ${theme.colors.neutral900};
+    }
+
+    ${theme.media.desktop} {
+      padding: 12px 0;
+      background-color: ${theme.colors.white};
+      box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, 0.05);
+
+      span {
+        ${theme.typo.head.sm};
+      }
+    }
+  `};
+`;
+
 export const CloseButton = styled.button`
   ${({ theme }) => css`
     position: absolute;

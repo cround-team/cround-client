@@ -10,6 +10,7 @@ type ProfileProps = {
   isAskModalOpen: boolean;
   profileImage: string;
   creatorNickname: string;
+  memberId: number;
   description: string;
   tags: string[];
   activityPlatforms: string[];
@@ -19,7 +20,6 @@ type ProfileProps = {
   platformHeadType: string;
   platformUrl: string;
   followed: boolean;
-  receiver: number;
   onFollow: () => void;
   onUnFollow: () => void;
   onOpenAskModal: () => void;
@@ -30,6 +30,7 @@ export default function TabletProfile({
   isOwned,
   isAskModalOpen,
   profileImage,
+  memberId,
   creatorNickname,
   description,
   tags,
@@ -40,7 +41,6 @@ export default function TabletProfile({
   platformHeadType,
   platformUrl,
   followed,
-  receiver,
   onFollow,
   onUnFollow,
   onOpenAskModal,
@@ -67,7 +67,7 @@ export default function TabletProfile({
         isOwned={isOwned}
         isAskModalOpen={isAskModalOpen}
         followed={followed}
-        receiver={receiver}
+        memberId={memberId}
         onFollow={onFollow}
         onUnFollow={onUnFollow}
         onOpenAskModal={onOpenAskModal}

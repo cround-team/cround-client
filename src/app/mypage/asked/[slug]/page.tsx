@@ -17,6 +17,7 @@ export default function MyAskedDetailPage({ params }: ContentDetailPageProps) {
     <S.Section>
       <MessageContainer
         messages={messages}
+        memberId={params.slug}
         sender={sender}
         receiver={receiver}
         nickname={nickname}

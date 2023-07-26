@@ -4,6 +4,18 @@ export const Container = styled.div`
   ${({ theme }) => css``};
 `;
 
+export const Wrapper = styled.div`
+  ${({ theme }) => css`
+    height: 60vh;
+    padding: 8px 15px;
+    overflow-y: scroll;
+
+    ${theme.media.desktop} {
+      padding: 40px 24px 15px 24px;
+    }
+  `};
+`;
+
 export const UserInfo = styled.div`
   ${({ theme }) => css`
     ${theme.flex.col()};
@@ -36,18 +48,6 @@ export const PlatformThemeGroup = styled.span`
 
     ${theme.media.desktop} {
       ${theme.typo.label.lg};
-    }
-  `};
-`;
-
-export const Wrapper = styled.div`
-  ${({ theme }) => css`
-    height: 60vh;
-    padding: 8px 15px;
-    overflow-y: scroll;
-
-    ${theme.media.desktop} {
-      padding: 40px 24px 15px 24px;
     }
   `};
 `;

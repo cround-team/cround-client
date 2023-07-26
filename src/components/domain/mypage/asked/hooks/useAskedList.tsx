@@ -32,7 +32,7 @@ export default function useAskedList() {
   const fetchData = async () => {
     try {
       const response = await messageListApi();
-      console.log(response.data);
+      console.log("askedList", response.data);
       setData(response.data.messages);
     } catch (error) {
       console.error(error);

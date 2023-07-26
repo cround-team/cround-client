@@ -1,12 +1,4 @@
 import {
-  INITIAL_CONTENTS,
-  INITIAL_CREATOR_INFO,
-  INITIAL_REVIEWS,
-  INITIAL_SHORTS,
-} from "@/constants";
-import { useBookmark, useFollow, useLike } from "@/hooks";
-import { ContentCardData, ReviewCardData, ShortCardData } from "@/types";
-import {
   creatorContentsApi,
   creatorReviewsApi,
   creatorShortsApi,
@@ -15,11 +7,21 @@ import {
 import { useEffect, useState } from "react";
 import { useImmer } from "use-immer";
 
+import {
+  INITIAL_CONTENTS,
+  INITIAL_CREATOR_INFO,
+  INITIAL_REVIEWS,
+  INITIAL_SHORTS,
+} from "@/constants";
+import { useBookmark, useFollow, useLike } from "@/hooks";
+import { ContentCardData, ReviewCardData, ShortCardData } from "@/types";
+
 type CreatorInfo = {
   owned: boolean;
   activityPlatforms: string[];
   avgRating: string;
   creatorNickname: string;
+  memberId: number;
   description: string;
   followed: boolean;
   followersCount: number;
@@ -48,6 +50,7 @@ export default function useCreatorDetail(creatorId: number) {
     activityPlatforms,
     avgRating,
     creatorNickname,
+    memberId,
     description,
     followed,
     followersCount,
@@ -315,6 +318,7 @@ export default function useCreatorDetail(creatorId: number) {
     isAskModalOpen,
     profileImage,
     creatorNickname,
+    memberId,
     description,
     tags,
     activityPlatforms,
@@ -324,7 +328,6 @@ export default function useCreatorDetail(creatorId: number) {
     platformHeadType,
     platformUrl,
     followed,
-    receiver: creatorId,
     onFollow: handleCreatorFollow,
     onUnFollow: handleCreatorUnFollow,
     onOpenAskModal: handleOpenAskModal,

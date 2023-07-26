@@ -1,5 +1,6 @@
-import { sendMessageApi } from "@/utils/api/mypage";
 import React, { useCallback, useRef, useState } from "react";
+
+import { sendMessageApi } from "@/utils/api/mypage";
 
 export default function useMessage(id: number) {
   const [message, setMessage] = useState("");
@@ -56,6 +57,8 @@ export default function useMessage(id: number) {
       };
       const res = await sendMessageApi(body);
       console.log("res", res);
+      setMessage("");
+      setIsTextareaFocused(true);
     } catch (error: any) {
       console.error(error);
     }

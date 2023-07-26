@@ -7,6 +7,7 @@ import * as S from "./styled";
 
 type MessageContainerProps = {
   messages: Messages;
+  memberId: number;
   sender: number;
   receiver: number;
   nickname: string;
@@ -14,6 +15,7 @@ type MessageContainerProps = {
 
 export default function MessageContainer({
   messages,
+  memberId,
   sender,
   receiver,
   nickname,
@@ -23,7 +25,6 @@ export default function MessageContainer({
   useEffect(() => {
     const container = wrapperRef.current;
     if (container) {
-      console.log(container.scrollHeight);
       container.scrollTop = container.scrollHeight;
     }
   }, [messages]);
@@ -40,7 +41,7 @@ export default function MessageContainer({
             receiver={receiver}
           />
         ))}
-        <AskedForm id={receiver} />
+        <AskedForm memberId={memberId} />
       </S.Wrapper>
     </S.Container>
   );
