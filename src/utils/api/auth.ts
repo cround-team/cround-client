@@ -54,7 +54,7 @@ export const loginApi = async (body: LoginBody) => {
 };
 
 export const kakaoLoginApi = async (params: Record<string, any>) => {
-  const response = await apiInstance.get("/auth/login/kakao/login", {
+  const response = await apiInstance.get("/auth/kakao/login", {
     params,
   });
 
