@@ -41,7 +41,13 @@ export default function PlatformList() {
         >
           {PLATFORMS.map((el, idx) => (
             <SwiperSlide key={idx}>
-              <S.Figure>
+              <S.Figure
+                aria-details={
+                  ["zepetto", "webtoon", "blog"].includes(el.id)
+                    ? "border"
+                    : "none"
+                }
+              >
                 <Image
                   src={el.src}
                   fill
