@@ -5,6 +5,7 @@ import useAskedDetail from "@/components/domain/mypage/asked/hooks/useAskedDetai
 import * as S from "./styled";
 import { RefreshIcon } from "@/assets/icons";
 import { useAuthContext } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 type ContentDetailPageProps = {
   params: {
@@ -17,6 +18,7 @@ export default function MyAskedDetailPage({ params }: ContentDetailPageProps) {
     params.slug
   );
   const { user } = useAuthContext();
+  const router = useRouter();
 
   return (
     <S.Section>
@@ -25,6 +27,9 @@ export default function MyAskedDetailPage({ params }: ContentDetailPageProps) {
       >
         <span>
           <strong>{nickname}</strong>님과 쪽지중
+          <button onClick={router.refresh}>
+            <RefreshIcon />
+          </button>
         </span>
       </S.MessageHeader>
       <MessageContainer
