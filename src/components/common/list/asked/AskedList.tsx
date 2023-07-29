@@ -2,11 +2,13 @@ import * as S from "./styled";
 
 type AskedListProps = {
   nickname: string;
+  readStatus: string;
   text: string;
   updatedDate: string;
 };
 
 export default function AskedList({
+  readStatus,
   nickname,
   text,
   updatedDate,

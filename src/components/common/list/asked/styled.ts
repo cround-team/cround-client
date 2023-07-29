@@ -1,7 +1,11 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div`
-  ${({ theme }) => css`
+type ContainerProps = {
+  isReadStatus: boolean;
+};
+
+export const Container = styled.div<ContainerProps>`
+  ${({ theme, isReadStatus }) => css`
     ${theme.flex.row("flex-start", "flex-start")};
     gap: 16px;
     max-width: 1200px;

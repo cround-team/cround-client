@@ -8,6 +8,7 @@ type Data = {
   receiver: number;
   text: string;
   updatedDate: string;
+  readStatus: string;
   nickname: string;
 };
 
@@ -18,6 +19,7 @@ const INITIAL_STATE = [
     receiver: 2,
     text: "",
     updatedDate: "",
+    readStatus: "",
     nickname: "",
   },
 ];
@@ -32,6 +34,7 @@ export default function useAskedList() {
   const fetchData = async () => {
     try {
       const response = await messageListApi();
+      console.log(response);
       setData(response.data.messages);
     } catch (error) {
       console.error(error);
