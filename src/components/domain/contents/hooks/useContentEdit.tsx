@@ -5,6 +5,7 @@ import { contentDetailApi, contentEditApi } from "@/utils/api";
 import { hasKey } from "@/utils/form";
 import { useRouter } from "next/navigation";
 import { PATH } from "@/constants";
+import { conversionEnPlatform } from "@/utils/conversion";
 
 type UseContentEditProps = {
   id: number;
@@ -31,7 +32,9 @@ export default function useContentEdit({ id }: UseContentEditProps) {
     try {
       const response = await contentDetailApi(id);
       setForm((draft) => {
-        draft.platformType = response.data.platformType;
+        draft.platformType = conversionEnPlatform(
+          response.data.platformType
+        ) as string;
         draft.title = response.data.title;
         draft.content = response.data.content;
       });
