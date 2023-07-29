@@ -364,6 +364,7 @@ export default function useCreatorDetail(creatorId: number) {
     data: reviews,
     isOwned,
     isNextPage: isNextPage.reviews,
+    creatorNickname,
     onFetchData: fetchReviewList,
     ...otherProps,
   });
