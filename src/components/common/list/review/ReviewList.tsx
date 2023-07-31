@@ -10,6 +10,7 @@ type ReviewListProps = {
   isNextPage?: boolean;
   data: ReviewCardData[];
   creatorId: number;
+  creatorNickname: string;
   onFetchData?: (id?: number) => void;
 };
 
@@ -18,6 +19,7 @@ export default function ReviewList({
   isNextPage,
   data,
   creatorId,
+  creatorNickname,
   onFetchData,
 }: ReviewListProps) {
   const { isOpenModal, handleOpenModal, handleCloseModal } = useModal();
@@ -44,6 +46,7 @@ export default function ReviewList({
       {isOpenModal && (
         <ReviewModal
           isMounted={isOpenModal}
+          creatorNickname={creatorNickname}
           creatorId={creatorId}
           onClose={handleCloseModal}
           onFetchData={onFetchData}

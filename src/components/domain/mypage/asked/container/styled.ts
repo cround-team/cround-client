@@ -14,12 +14,12 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div<WrapperProps>`
   ${({ theme, isScroll }) => css`
-    padding: 8px 15px;
+    padding: 68px 15px;
     height: ${isScroll ? "60vh" : "auto"};
     overflow-y: ${isScroll ? "scroll" : "initial"};
 
     ${theme.media.desktop} {
-      padding: 40px 24px 15px 24px;
+      padding: 60px 24px 15px 24px;
     }
   `};
 `;
@@ -64,6 +64,7 @@ export const LargeSize = css`
   ${({ theme }) => css`
     width: 93%;
     margin: 0 auto;
+    max-width: 1155px;
     textarea {
       min-width: 292px;
       width: 100%;

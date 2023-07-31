@@ -17,7 +17,7 @@ export default function MyAskedPage() {
       {data &&
         data.map(
           (v) =>
-            user.memberId !== v.receiver && (
+            user.memberId === v.receiver && (
               <Link
                 href={`${PATH.MYPAGE.ASKED}/${
                   v.receiver === user.memberId ? v.sender : v.receiver
@@ -25,6 +25,7 @@ export default function MyAskedPage() {
                 key={v.id}
               >
                 <AskedList
+                  readStatus={v.readStatus}
                   nickname={v.nickname}
                   text={v.text}
                   updatedDate={v.updatedDate}

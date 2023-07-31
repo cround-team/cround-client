@@ -29,6 +29,8 @@ export const MessageHeader = styled.div<MessageHeaderProps>`
     background-color: ${headerColor === "red" && "rgba(242, 53, 85, 0.5)"};
 
     span {
+      display: flex;
+      align-items: center;
       ${theme.typo.label.md};
       color: ${headerColor === "black" && theme.colors.neutral100};
       color: ${headerColor === "red" && theme.colors.neutral800};
@@ -38,6 +40,19 @@ export const MessageHeader = styled.div<MessageHeaderProps>`
         ${theme.typo.title.sm};
         color: ${headerColor === "black" && theme.colors.white};
         color: ${headerColor === "red" && theme.colors.neutral900};
+      }
+
+      button {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 15px;
+        svg {
+          width: 24px;
+          height: 24px;
+          stroke: ${headerColor === "black" && theme.colors.white};
+          stroke: ${headerColor === "red" && theme.colors.black};
+        }
       }
     }
   `};

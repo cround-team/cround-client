@@ -11,6 +11,7 @@ import { XClose2Icon } from "@/assets/icons";
 type ReviewModalProps = {
   isMounted: boolean;
   creatorId: number;
+  creatorNickname: string;
   onClose: () => void;
   onFetchData?: (id?: number) => void;
 };
@@ -18,6 +19,7 @@ type ReviewModalProps = {
 export default function ReviewModal({
   isMounted,
   creatorId,
+  creatorNickname,
   onClose,
   onFetchData,
 }: ReviewModalProps) {
@@ -40,7 +42,7 @@ export default function ReviewModal({
           <XClose2Icon />
         </S.CloseButton>
         <S.Head>
-          <h3>creatorNickname과의 시간은 어떠셨나요?</h3>
+          <h3>{creatorNickname} 님과의 시간은 어떠셨나요?</h3>
           <p>별점을 선택해 주세요!</p>
         </S.Head>
         <S.Form onSubmit={handleSubmit}>
