@@ -21,8 +21,6 @@ export default function KakaoAuthPage() {
   }, []);
 
   const login = async (code: string) => {
-    console.log("로그인시도");
-    console.log("code", code);
     try {
       const params = {
         code,
