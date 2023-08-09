@@ -9,8 +9,6 @@ import * as S from "./styled";
 export default function MainContainer() {
   const {
     searched,
-    getLatestCreatorListProps,
-    getInterestCreatorListProps,
     getCreatorListProps,
     getShortListProps,
     getContentListProps,
@@ -25,8 +23,6 @@ export default function MainContainer() {
       />
       {!searched && (
         <InitMainContainer
-          getLatestCreatorListProps={getLatestCreatorListProps}
-          getInterestCreatorListProps={getInterestCreatorListProps}
           getShortListProps={getShortListProps}
           getContentListProps={getContentListProps}
         />

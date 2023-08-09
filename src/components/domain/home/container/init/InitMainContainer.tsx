@@ -3,10 +3,7 @@ import { PATH } from "@/constants";
 import { ContentList, CreatorList, ShortsList } from "@/components/common";
 import ListTitle from "../title/ListTitle";
 import * as S from "./styled";
-
-type CreatorsProps = {
-  data: CreatorCardData[];
-};
+import { useFetchCustomCreatorList } from "@/service/queries/creator";
 
 type ShortsProps = {
   data: ShortCardData[];
@@ -17,18 +14,16 @@ type ContentsProps = {
 };
 
 type InitMainContainerProps = {
-  getLatestCreatorListProps: (op?: Partial<CreatorsProps>) => CreatorsProps;
-  getInterestCreatorListProps: (op?: Partial<CreatorsProps>) => CreatorsProps;
   getShortListProps: (op?: Partial<ShortsProps>) => ShortsProps;
   getContentListProps: (op?: Partial<ContentsProps>) => ContentsProps;
 };
 
 export default function InitMainContainer({
-  getLatestCreatorListProps,
-  getInterestCreatorListProps,
   getShortListProps,
   getContentListProps,
 }: InitMainContainerProps) {
+  const { data } = useFetchCustomCreatorList();
+
   return (
     <S.Container>
       {/* 맞춤 크리에이터  */}
@@ -39,7 +34,7 @@ export default function InitMainContainer({
           label="크라운드의 새로운 파트너를 만나보세요!"
           alt="Chat icon"
         />
-        <CreatorList {...getLatestCreatorListProps()} />
+        <CreatorList data={data?.latestCreators} />
       </S.ListWrapper>
       <S.ListWrapper>
         <ListTitle
@@ -48,7 +43,7 @@ export default function InitMainContainer({
           label="회원님이 관심 있어 할 크리에이터"
           alt="Heart icon"
         />
-        <CreatorList {...getInterestCreatorListProps()} />
+        <CreatorList data={data?.interestCreators} />
       </S.ListWrapper>
 
       {/* 맞춤 숏클래스  */}

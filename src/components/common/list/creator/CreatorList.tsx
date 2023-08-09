@@ -3,7 +3,7 @@ import { CreatorCard, MorePageButton } from "@/components/common";
 import * as S from "./styled";
 
 type CreatorListProps = {
-  data: CreatorCardData[];
+  data?: CreatorCardData[];
   isNextPage?: boolean;
   onFetchData?: (id?: number) => void;
 };
@@ -14,13 +14,13 @@ export default function CreatorList({
   isNextPage,
 }: CreatorListProps) {
   const handleAddList = () => {
-    onFetchData && onFetchData(data.at(-1)?.creatorId);
+    onFetchData && onFetchData(data?.at(-1)?.creatorId);
   };
 
   return (
     <S.Container>
       <S.Wrapper>
-        {data.map((creator: CreatorCardData) => (
+        {data?.map((creator: CreatorCardData) => (
           <CreatorCard key={creator.creatorId} creator={creator} />
         ))}
       </S.Wrapper>

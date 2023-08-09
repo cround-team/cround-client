@@ -11,6 +11,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { PATH, SessionStorage } from "@/constants";
 import { useUploadImage } from "@/hooks";
 import { useAuthContext } from "@/context/AuthContext";
+import { useRegisterCreator } from "@/service/queries/creator";
 
 type Steps = "base" | "platform" | "addition" | "success";
 type CreatorRegisterForm = {
@@ -60,6 +61,7 @@ export default function useCreatorRegister() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { mutate: registerMutate } = useRegisterCreator();
 
   const {
     inputValues: inputTags,
@@ -172,46 +174,22 @@ export default function useCreatorRegister() {
 
   const handleSubmitAddition = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const formData = new FormData();
 
-      if (profileImage) {
-        formData.append("profileImage", profileImage);
-      }
-      const creatorSaveRequest = {
-        nickname,
-        description,
-        platformHeadType,
-        platformHeadTheme,
-        platformUrl,
-        tags,
-        activityPlatforms,
-      };
-      formData.append(
-        "creatorSaveRequest",
-        new Blob([JSON.stringify(creatorSaveRequest)], {
-          type: "application/json",
-        })
-      );
-      const res = await creatorCreateApi(formData);
-      if (res.status === 201) {
-        SessionStorage.setItem("roleName", "creator");
-        SessionStorage.setItem("nickname", nickname);
-        SessionStorage.setItem("profileImage", res.data.profileImage);
-        SessionStorage.setItem("creatorId", res.data.creatorId);
-
-        const userInfo = {
-          nickname,
-          roleName: "creator",
-          profileImage: res.data.profileImage,
-          creatorId: res.data.creatorId,
-        };
-        onSetUserInfo(userInfo);
+    const creatorSaveRequest = {
+      profileImage,
+      nickname,
+      description,
+      platformHeadType,
+      platformHeadTheme,
+      platformUrl,
+      tags,
+      activityPlatforms,
+    };
+    registerMutate(creatorSaveRequest, {
+      onSuccess: () => {
         setStep("success");
-      }
-    } catch (error: any) {
-      console.error(error);
-    }
+      },
+    });
   };
 
   const getBaseStepProps = ({ ...otherProps } = {}) => ({

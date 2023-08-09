@@ -45,7 +45,7 @@ const INITIAL_CONTENTS = [
 const INITIAL_SHORTS = [
   {
     shortsId: 0,
-    title: "sadfdfdfad",
+    title: "",
     thumbnailUrl: "/images/profile.png",
     platformType: "",
     profileImage: "",
@@ -54,9 +54,9 @@ const INITIAL_SHORTS = [
 ];
 
 export default function useMainList() {
-  const [customCreators, setCustomCreators] = useImmer<CustomCreators>(
-    INITIAL_CUSTOM_CREATORS
-  );
+  // const [customCreators, setCustomCreators] = useImmer<CustomCreators>(
+  //   INITIAL_CUSTOM_CREATORS
+  // );
   const [creators, setCreators] = useImmer<CreatorCardData[]>(INITIAL_CREATORS);
   const [contents, setContents] = useImmer<ContentCardData[]>(INITIAL_CONTENTS);
   const [shorts, setShorts] = useImmer<ShortCardData[]>(INITIAL_SHORTS);
@@ -70,23 +70,23 @@ export default function useMainList() {
   } = useSearchKeyword();
 
   useEffect(() => {
-    fetchCustomCreatorList();
+    // fetchCustomCreatorList();
     fetchShortList();
     fetchContentList();
   }, []);
 
-  const fetchCustomCreatorList = async () => {
-    try {
-      const params = { size: 12 };
-      const response = await creatorsCustomApi(params);
-      setCustomCreators((draft) => {
-        draft.latest = response.data.latestCreators;
-        draft.interest = response.data.interestCreators;
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const fetchCustomCreatorList = async () => {
+  //   try {
+  //     const params = { size: 12 };
+  //     const response = await creatorsCustomApi(params);
+  //     setCustomCreators((draft) => {
+  //       draft.latest = response.data.latestCreators;
+  //       draft.interest = response.data.interestCreators;
+  //     });
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const fetchCreatorList = async () => {
     try {
@@ -140,15 +140,15 @@ export default function useMainList() {
     fetchContentList();
   };
 
-  const getLatestCreatorListProps = ({ ...otherProps } = {}) => ({
-    data: customCreators.latest,
-    ...otherProps,
-  });
+  // const getLatestCreatorListProps = ({ ...otherProps } = {}) => ({
+  //   data: customCreators.latest,
+  //   ...otherProps,
+  // });
 
-  const getInterestCreatorListProps = ({ ...otherProps } = {}) => ({
-    data: customCreators.interest,
-    ...otherProps,
-  });
+  // const getInterestCreatorListProps = ({ ...otherProps } = {}) => ({
+  //   data: customCreators.interest,
+  //   ...otherProps,
+  // });
 
   const getCreatorListProps = ({ ...otherProps } = {}) => ({
     data: creators,
@@ -175,8 +175,8 @@ export default function useMainList() {
 
   return {
     searched,
-    getLatestCreatorListProps,
-    getInterestCreatorListProps,
+    // getLatestCreatorListProps,
+    // getInterestCreatorListProps,
     getCreatorListProps,
     getShortListProps,
     getContentListProps,
