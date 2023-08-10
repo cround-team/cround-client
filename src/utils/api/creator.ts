@@ -1,5 +1,10 @@
 import type { Platforms } from "@/types/service";
 import { apiInstance, multiPartInstance } from "./server";
+import {
+  CreatorRegister,
+  CreatorRegisterBody,
+  CustomCreators,
+} from "@/types/creator";
 
 type CreatorsParams = {
   params: {
@@ -53,9 +58,11 @@ export const creatorReviewsApi = async (params: Record<string, any>) => {
 };
 
 export const creatorsCustomApi = async (params: Record<string, any>) => {
-  const response = await apiInstance.get("/api/creators/home", { params });
+  const { data } = await apiInstance.get<CustomCreators>("/api/creators/home", {
+    params,
+  });
 
-  return response;
+  return data;
 };
 
 export const creatorsDetailApi = async (creatorId: number) => {
@@ -93,10 +100,13 @@ export const creatorNicknameCheckApi = async (body: CreatorNicknameBody) => {
   return response;
 };
 
-export const creatorCreateApi = async (body: any) => {
-  const response = await multiPartInstance.post("/api/creators", body);
+export const creatorCreateApi = async (body: FormData) => {
+  const { data } = await multiPartInstance.post<CreatorRegister>(
+    "/api/creators",
+    body
+  );
 
-  return response;
+  return data;
 };
 
 export const creatorWriteReivewApi = async (body: any) => {
