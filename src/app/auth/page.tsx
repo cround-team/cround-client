@@ -15,6 +15,7 @@ const TABS = ["로그인", "회원가입"];
 export default function AuthPage() {
   const [selected, setSelected] = useState<string>(TABS[0]);
   const handleTabClick = (selected: string) => setSelected(selected);
+
   return (
     <S.Section>
       <SelectTabs
