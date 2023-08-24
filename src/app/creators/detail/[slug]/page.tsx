@@ -57,7 +57,7 @@ export default function CreatorDetailPage({ params }: CreatorDetailPageProps) {
         css={S.TabsStyles}
         tabs={TABS}
         selected={selectedPanel}
-        onTabClick={handleChangePanel}
+        onClickTab={handleChangePanel}
       />
       {selectedPanel === "숏클래스" && <ShortsList {...getShortListProps()} />}
       {selectedPanel === "콘텐츠" && <ContentList {...getContentListProps()} />}

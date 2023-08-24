@@ -2,11 +2,7 @@
 
 import { useState } from "react";
 
-import {
-  GoogleLoginButton,
-  KakaoLoginButton,
-  SelectTabs,
-} from "@/components/common";
+import { KakaoLoginButton, SelectTabs } from "@/components/common";
 import { LoginBox, SignupBox } from "@/components/domain";
 import * as S from "./styled";
 
@@ -14,7 +10,7 @@ const TABS = ["로그인", "회원가입"];
 
 export default function AuthPage() {
   const [selected, setSelected] = useState<string>(TABS[0]);
-  const handleTabClick = (selected: string) => setSelected(selected);
+  const handleClickTab = (selected: string) => setSelected(selected);
 
   return (
     <S.Section>
@@ -22,13 +18,12 @@ export default function AuthPage() {
         css={S.MarginBottom}
         tabs={TABS}
         selected={selected}
-        onTabClick={handleTabClick}
+        onClickTab={handleClickTab}
       />
       {selected === "로그인" && <LoginBox />}
       {selected === "회원가입" && <SignupBox />}
       <S.Social>
         <KakaoLoginButton />
-        <GoogleLoginButton />
       </S.Social>
     </S.Section>
   );

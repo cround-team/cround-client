@@ -64,26 +64,12 @@ export const metadata = {
     description: "크라운드 - 크리에이터를 위한 커피챗 서비스",
     url: "https://cround-client.vercel.app",
     siteName: "Cround",
-    // images: [
-    //   {
-    //     url: "https://blog.kakaocdn.net/dn/kT8fV/btskKl5skJt/XcqUQY5A7DDGcqU4iIY9P0/img.png",
-    //     width: 800,
-    //     height: 600,
-    //   },
-    // ],
     type: "website",
   },
   twitter: {
     card: "summary",
     title: "크라운드 - 크리에이터를 위한 커피챗 서비스",
     description: "크라운드 - 크리에이터를 위한 커피챗 서비스",
-    // images: [
-    //   {
-    //     url: "https://blog.kakaocdn.net/dn/kT8fV/btskKl5skJt/XcqUQY5A7DDGcqU4iIY9P0/img.png",
-    //     width: 800,
-    //     height: 600,
-    //   },
-    // ],
   },
 };
 
