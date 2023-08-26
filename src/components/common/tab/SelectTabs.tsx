@@ -4,20 +4,20 @@ type SelectTabProps = {
   className?: string;
   tabs: string[];
   selected: string;
-  onTabClick: (selected: string) => void;
+  onClickTab: (selected: string) => void;
 };
 
 export default function SelectTabs({
   className,
   tabs,
   selected,
-  onTabClick,
+  onClickTab,
 }: SelectTabProps) {
   return (
     <S.ListContainer className={className}>
       {tabs.map((tab) => (
         <S.List key={tab} aria-selected={tab === selected ? "true" : "false"}>
-          <button onClick={() => onTabClick(tab)}>{tab}</button>
+          <button onClick={() => onClickTab(tab)}>{tab}</button>
         </S.List>
       ))}
     </S.ListContainer>
