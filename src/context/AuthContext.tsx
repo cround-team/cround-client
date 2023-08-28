@@ -1,4 +1,3 @@
-import { usePathname } from "next/navigation";
 import React, { PropsWithChildren, createContext, useContext } from "react";
 import { useImmer } from "use-immer";
 
@@ -34,7 +33,6 @@ export const AuthContext = createContext<AuthContextProps | undefined>(
 
 export const AuthContextProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useImmer<User>(INITIAL_USER);
-  const pathname = usePathname();
 
   const handleSetUserInfo = (userInfo: User) => {
     const {
