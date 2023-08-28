@@ -1,0 +1,78 @@
+{
+  "1": {
+    "id": 1,
+    "profile": {
+      "img": "/images/profile.png",
+      "nickname": "코코",
+      "platform": "유튜브",
+      "theme": "ASMR",
+      "review": 4.9,
+      "follower": 20
+    },
+    "introduce": {
+      "title": "ASMR 유튜버로 활동 중인 코코입니다~!",
+      "content": "안녕하세요! ASMR 콘텐츠로 유튜브를 운영하고 있는 코코입니다! ASMR 크리에이터로 활동을 시작해보고 싶은데 장비 선정부터 막막함을 느끼는 분들! 제게 여러 꿀팁을 받아가세요~!",
+      "tag": [
+        "ASMR",
+        "가성비",
+        "꿀팁 가득",
+        "장비 집중",
+        "유튜버",
+        "방음",
+        "카메라",
+        "마이크"
+      ]
+    },
+    "review": {
+      "nickname": "케이시",
+      "score": 5,
+      "content": "ASMR에 관심이 많아 유튜브를 시작해보고 싶었는데 마이크, 카메라부터 방음은 어떻게 해야 할지, 여러가지로 너무 고민이 많이 됐는데 친절하게 노하우를 공유해주셔서 정말 도움이 많이 됐습니다!! 감사해요~!"
+    },
+    "shorts": [
+      {
+        "id": 1,
+        "title": "ASMR에 최적인 사운드를 설정 하는 방법과 장비 추천",
+        "platform": "유튜브",
+        "img": "/images/short1.png",
+        "profileImg": "/images/profile.png",
+        "name": "코코",
+        "like": 16,
+        "bookmark": 24
+      },
+      {
+        "id": 1,
+        "title": "ASMR에 최적인 사운드를 설정 하는 방법과 장비 추천",
+        "platform": "유튜브",
+        "img": "/images/short1.png",
+        "profileImg": "/images/profile.png",
+        "name": "코코",
+        "like": 16,
+        "bookmark": 24
+      }
+    ],
+    "contents": [
+      {
+        "id": 1,
+        "title": "ASMR에 최적인 사운드를 설정 하는 방법과 장비 추천",
+        "platform": "유튜브",
+        "img": "/images/short1.png",
+        "profileImg": "/images/profile.png",
+        "name": "코코",
+        "desc": "유튜브 채널을 운영하면서 주변 사람들에게 가장 많이 받았던 질문 중 하나는, 당연 수익에 관한 것이었습니다. 저 또한 시작하기 전 가장 궁금했던 부분 중 하나였구요. 현재 20만 구독자를 모으는데 성공하면서 깨달은 것은",
+        "like": 16,
+        "bookmark": 24
+      },
+      {
+        "id": 2,
+        "title": "Lorem ipsum dolor sit amet consectetur adipisicing",
+        "platform": "트위치",
+        "img": "/images/short1.png",
+        "profileImg": "/images/mago.png",
+        "name": "쿠쿠",
+        "desc": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus illo sit assumenda ratione pariatur voluptates quas impedit numquam quos quibusdam corporis aut obcaecati sed dolorem minus repellendus, aperiam exercitationem error.",
+        "like": 1444,
+        "bookmark": 220
+      }
+    ]
+  }
+}

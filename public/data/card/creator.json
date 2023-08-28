@@ -1,0 +1,18 @@
+[
+  {
+    "creatorId": 0,
+    "description": "가성비 마이크와 카메라의 총집합! 장비 추천부터 도와드려요:)",
+    "platformActivityName": "가가",
+    "platformType": "youtube",
+    "profileImage": "/images/profile.png",
+    "platformTheme": "ASMR"
+  },
+  {
+    "creatorId": 1,
+    "description": "가성비 마이크와 카메라의 총집합! 장비 추천부터 도와드려요:)",
+    "platformActivityName": "코코",
+    "platformType": "youtube",
+    "profileImage": "/images/profile.png",
+    "platformTheme": "ASMR"
+  }
+]
