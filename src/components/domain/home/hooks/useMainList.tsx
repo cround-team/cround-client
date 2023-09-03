@@ -86,7 +86,6 @@ export default function useMainList() {
   //   } catch (error) {
   //     console.error(error);
   //   }
-  // };
 
   const fetchCreatorList = async () => {
     try {
