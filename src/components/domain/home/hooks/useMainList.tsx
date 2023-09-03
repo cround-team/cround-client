@@ -54,6 +54,9 @@ const INITIAL_SHORTS = [
 ];
 
 export default function useMainList() {
+  // const [customCreators, setCustomCreators] = useImmer<CustomCreators>(
+  //   INITIAL_CUSTOM_CREATORS
+  // );
   const [creators, setCreators] = useImmer<CreatorCardData[]>(INITIAL_CREATORS);
   const [contents, setContents] = useImmer<ContentCardData[]>(INITIAL_CONTENTS);
   const [shorts, setShorts] = useImmer<ShortCardData[]>(INITIAL_SHORTS);
