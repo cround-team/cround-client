@@ -53,6 +53,7 @@ export default function PlatformList() {
                   fill
                   sizes={media.images.sizes}
                   alt={el.id}
+                  priority
                 />
               </S.Figure>
             </SwiperSlide>
